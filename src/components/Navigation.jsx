@@ -3,7 +3,8 @@ import React from 'react';
 const TABS = [
   { key: 'home', label: 'Accueil' },
   { key: 'elements', label: 'Éléments' },
-  { key: 'relations', label: 'Relations' }
+  { key: 'relations', label: 'Relations' },
+  { key: 'equipes', label: 'Équipes' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

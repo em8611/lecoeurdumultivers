@@ -9,7 +9,8 @@ const EMPTY_STATE = {
   bestiaires: [],
   nourritures: [],
   materiauxs: [],
-  relations: []
+  relations: [],
+  equipes: []
 };
 
 function loadInitialState() {
@@ -33,7 +34,8 @@ const CATEGORY_ALIASES = {
   nourriture: 'nourritures',
   materiau: 'materiauxs',
   materiaux: 'materiauxs',
-  relation: 'relations'
+  relation: 'relations',
+  equipe: 'equipes'
 };
 
 function resolveCategory(category) {

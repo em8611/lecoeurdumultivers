@@ -213,3 +213,35 @@ export function exportFicheObject(object) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheEquipe(equipe) {
+  const lines = [
+    `# Fiche technique — ${equipe.name || 'Sans nom'}`,
+    '',
+    `Type : ${equipe.type || '-'}`,
+    `Statut : ${equipe.status || '-'}`,
+    `Fondation : ${equipe.founded || '-'}`,
+    `Quartier général : ${equipe.headquarters || '-'}`,
+    '',
+    '## Description',
+    equipe.description || '-',
+    '',
+    '## Objectifs',
+    equipe.objectives || '-',
+    '',
+    '## Moments marquants',
+    equipe.keyMoments || '-',
+    '',
+    `## Membres (${(equipe.members || []).length})`,
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(equipe.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

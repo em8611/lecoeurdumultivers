@@ -14,3 +14,14 @@ export function importElementsFromFiles(files, callback) {
     reader.readAsText(file);
   });
 }
+
+// Fusionne un élément dans une liste existante : remplace l'élément de même id, sinon l'ajoute.
+export function mergeElementInList(list, newItem) {
+  const index = list.findIndex(item => item.id === newItem.id);
+  if (index === -1) {
+    return [...list, newItem];
+  }
+  const updated = [...list];
+  updated[index] = { ...updated[index], ...newItem };
+  return updated;
+}

@@ -6,6 +6,10 @@ export const FORM_FIELD_SETS = {
     'physicalAppearance', 'personality', 'behavior', 'backstory',
     'energy', 'abilities', 'skills', 'equipment', 'relationships',
     'teams', 'firstAppearance'
+  ],
+  team: [
+    'name', 'type', 'description', 'members', 'leader', 'founded',
+    'headquarters', 'objectives', 'status'
   ]
 };
 

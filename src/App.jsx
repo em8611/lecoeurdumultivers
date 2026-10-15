@@ -3,13 +3,15 @@ import { Navigation } from './components/Navigation.jsx';
 import { Home } from './home';
 import { ElementsManager } from './elements';
 import { RelationsManager } from './relations';
+import { EquipesManager } from './equipes';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
 const MODULE_MAP = {
   home: 'home',
   elements: 'elements',
-  relations: 'relations'
+  relations: 'relations',
+  equipes: 'equipes'
 };
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         return <ElementsManager />;
       case 'relations':
         return <RelationsManager />;
+      case 'equipes':
+        return <EquipesManager />;
       case 'home':
       default:
         return <Home />;
