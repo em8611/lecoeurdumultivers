@@ -38,6 +38,12 @@ export function saveLocation(location) {
   return { success: true, fileName };
 }
 
+export function saveObject(object) {
+  const fileName = `${slugify(object.name)}.json`;
+  downloadJSON({ type: 'object', ...object }, fileName);
+  return { success: true, fileName };
+}
+
 export function importElementFromFile(file, callback) {
   const reader = new FileReader();
   reader.onload = (event) => {

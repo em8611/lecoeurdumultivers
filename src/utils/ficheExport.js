@@ -131,3 +131,85 @@ export function exportFicheMateriau(materiau) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheAliment(aliment) {
+  const lines = [
+    `# Fiche technique — ${aliment.nom || 'Sans nom'}`,
+    '',
+    `Catégorie : ${aliment.categorie || '-'}`,
+    `Rareté : ${aliment.rarete || '-'}`,
+    `Origine : ${aliment.origine || '-'}`,
+    '',
+    '## Description',
+    aliment.description || '-',
+    '',
+    '## Effets',
+    aliment.effets || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(aliment.nom)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+export function exportFicheRecette(recette) {
+  const lines = [
+    `# Fiche technique — ${recette.nom || 'Sans nom'}`,
+    '',
+    `Difficulté : ${recette.difficulte || '-'}`,
+    `Temps : ${recette.temps || '-'}`,
+    `Origine : ${recette.origine || '-'}`,
+    '',
+    '## Ingrédients',
+    (recette.ingredients || []).join(', ') || '-',
+    '',
+    '## Préparation',
+    recette.preparation || '-',
+    '',
+    '## Effets',
+    recette.effets || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(recette.nom)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+export function exportFicheObject(object) {
+  const lines = [
+    `# Fiche technique — ${object.name || 'Sans nom'}`,
+    '',
+    `Type : ${object.type || '-'}`,
+    `Rareté : ${object.rarity || '-'}`,
+    `Origine : ${object.origin || '-'}`,
+    `Propriétaire actuel : ${object.owner || object.currentOwner || '-'}`,
+    '',
+    '## Description',
+    object.description || '-',
+    '',
+    '## Pouvoirs',
+    (object.powers || []).join(', ') || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(object.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
