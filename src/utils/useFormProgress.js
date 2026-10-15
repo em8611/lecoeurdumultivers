@@ -23,6 +23,10 @@ export const FORM_FIELD_SETS = {
   concept: [
     'name', 'category', 'description', 'mechanism', 'scope',
     'origin', 'exceptions', 'consequences', 'relatedConcepts', 'tags'
+  ],
+  event: [
+    'name', 'category', 'date', 'description', 'consequences',
+    'characterIds', 'locationIds', 'equipeIds', 'relatedEventIds', 'tags'
   ]
 };
 

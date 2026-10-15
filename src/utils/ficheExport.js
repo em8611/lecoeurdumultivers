@@ -355,3 +355,28 @@ export function exportFicheConcept(concept) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheEvenement(evenement) {
+  const lines = [
+    `# Fiche technique — ${evenement.name || 'Sans nom'}`,
+    '',
+    `Catégorie : ${evenement.category || '-'}`,
+    `Date : ${evenement.date || '-'}`,
+    '',
+    '## Description',
+    evenement.description || '-',
+    '',
+    '## Conséquences / Impact',
+    evenement.consequences || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(evenement.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

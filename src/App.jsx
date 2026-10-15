@@ -7,6 +7,7 @@ import { EquipesManager } from './equipes';
 import { PouvoirsManager } from './pouvoirs';
 import { DictionnaireManager } from './dictionnaire';
 import { ConceptsManager } from './concepts';
+import { ChronologieManager } from './chronologie';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
@@ -17,7 +18,8 @@ const MODULE_MAP = {
   equipes: 'equipes',
   pouvoirs: 'pouvoirs',
   dictionnaire: 'dictionnaire',
-  concepts: 'concepts'
+  concepts: 'concepts',
+  chronologie: 'chronologie'
 };
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
         return <DictionnaireManager />;
       case 'concepts':
         return <ConceptsManager />;
+      case 'chronologie':
+        return <ChronologieManager />;
       case 'home':
       default:
         return <Home />;
