@@ -35,3 +35,36 @@ export function exportFicheCharacter(character) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheLocation(location) {
+  const lines = [
+    `# Fiche technique — ${location.name || 'Sans nom'}`,
+    '',
+    `Type : ${location.type || '-'}`,
+    `Climat : ${location.climate || '-'}`,
+    `Taille : ${location.size || '-'}`,
+    `Population : ${location.population ?? '-'}`,
+    '',
+    '## Description',
+    location.description || '-',
+    '',
+    '## Histoire',
+    location.history || '-',
+    '',
+    '## Caractéristiques',
+    (location.features || []).join(', ') || '-',
+    '',
+    '## Habitants',
+    (location.inhabitants || []).join(', ') || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(location.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

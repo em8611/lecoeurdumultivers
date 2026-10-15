@@ -1,7 +1,10 @@
 // Capacités disponibles selon l'environnement (Electron vs navigateur web)
-export const fileManagerCapabilities = {
-  canSaveToProject: typeof window !== 'undefined' && !!window.api,
-};
+export function fileManagerCapabilities() {
+  return {
+    canSaveToProject: typeof window !== 'undefined' && !!window.api,
+    fileSystemAPI: typeof window !== 'undefined' && !!window.showSaveFilePicker
+  };
+}
 
 function slugify(name) {
   return (name || 'element')
@@ -29,6 +32,12 @@ export function saveCharacter(character) {
   return { success: true, fileName };
 }
 
+export function saveLocation(location) {
+  const fileName = `${slugify(location.name)}.json`;
+  downloadJSON({ type: 'location', ...location }, fileName);
+  return { success: true, fileName };
+}
+
 export function importElementFromFile(file, callback) {
   const reader = new FileReader();
   reader.onload = (event) => {
@@ -45,12 +54,25 @@ export function importElementFromFile(file, callback) {
 
 // En mode web (pas d'Electron), on retombe simplement sur le téléchargement du fichier
 export async function saveCharacterToProject(character) {
-  if (!fileManagerCapabilities.canSaveToProject) {
+  if (!fileManagerCapabilities().canSaveToProject) {
     const result = saveCharacter(character);
     return { ...result, info: 'Mode web: fichier téléchargé au lieu d\'être enregistré dans le projet' };
   }
   try {
     const result = await window.api.saveElementToProject?.('character', character);
+    return result || { success: false, error: 'API indisponible' };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+}
+
+export async function saveLocationToProject(location) {
+  if (!fileManagerCapabilities().canSaveToProject) {
+    const result = saveLocation(location);
+    return { ...result, info: 'Mode web: fichier téléchargé au lieu d\'être enregistré dans le projet' };
+  }
+  try {
+    const result = await window.api.saveElementToProject?.('location', location);
     return result || { success: false, error: 'API indisponible' };
   } catch (err) {
     return { success: false, error: err.message };
