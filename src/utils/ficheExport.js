@@ -425,3 +425,28 @@ export function exportFicheTerritoire(territoire) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheDiplomatie(relation, fromName, toName) {
+  const lines = [
+    `# Fiche de relation diplomatique`,
+    '',
+    `De : ${fromName || relation.fromId}`,
+    `Vers : ${toName || relation.toId}`,
+    `Statut : ${relation.status || '-'}`,
+    `Intensité : ${relation.intensity ?? '-'}/5`,
+    `Depuis : ${relation.startDate || '-'}`,
+    '',
+    '## Description / Historique',
+    relation.description || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-diplomatie-${Date.now()}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

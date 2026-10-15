@@ -9,6 +9,7 @@ import { DictionnaireManager } from './dictionnaire';
 import { ConceptsManager } from './concepts';
 import { ChronologieManager } from './chronologie';
 import { GeographieManager } from './geographie';
+import { DiplomatieManager } from './diplomatie';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
@@ -21,7 +22,8 @@ const MODULE_MAP = {
   dictionnaire: 'dictionnaire',
   concepts: 'concepts',
   chronologie: 'chronologie',
-  geographie: 'geographie'
+  geographie: 'geographie',
+  diplomatie: 'diplomatie'
 };
 
 function App() {
@@ -45,6 +47,8 @@ function App() {
         return <ChronologieManager />;
       case 'geographie':
         return <GeographieManager />;
+      case 'diplomatie':
+        return <DiplomatieManager />;
       case 'home':
       default:
         return <Home />;

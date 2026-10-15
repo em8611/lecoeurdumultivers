@@ -27,6 +27,10 @@ export const FORM_FIELD_SETS = {
   event: [
     'name', 'category', 'date', 'description', 'consequences',
     'characterIds', 'locationIds', 'equipeIds', 'relatedEventIds', 'tags'
+  ],
+  diplomatie: [
+    'fromId', 'toId', 'status', 'intensity', 'description',
+    'startDate', 'relatedEventIds', 'tags'
   ]
 };
 

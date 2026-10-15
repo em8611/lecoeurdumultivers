@@ -9,7 +9,8 @@ const TABS = [
   { key: 'dictionnaire', label: 'Dictionnaire' },
   { key: 'concepts', label: 'Concepts' },
   { key: 'chronologie', label: 'Chronologie' },
-  { key: 'geographie', label: 'Cartes & Géographie' }
+  { key: 'geographie', label: 'Cartes & Géographie' },
+  { key: 'diplomatie', label: 'Factions & Diplomatie' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

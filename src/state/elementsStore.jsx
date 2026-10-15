@@ -16,7 +16,8 @@ const EMPTY_STATE = {
   concepts: [],
   evenements: [],
   cartes: [],
-  territoires: []
+  territoires: [],
+  diplomatieRelations: []
 };
 
 function loadInitialState() {
@@ -47,7 +48,8 @@ const CATEGORY_ALIASES = {
   concept: 'concepts',
   evenement: 'evenements',
   carte: 'cartes',
-  territoire: 'territoires'
+  territoire: 'territoires',
+  diplomatie: 'diplomatieRelations'
 };
 
 function resolveCategory(category) {
