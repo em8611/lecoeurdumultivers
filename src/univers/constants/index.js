@@ -1,7 +1,2 @@
-// Placeholder en attendant le module Univers complet.
-export const UNIVERSE_FRANCHISE_GROUPS = [
-  {
-    label: 'À compléter',
-    options: []
-  }
-];
+export { UNIVERSE_FRANCHISES, UNIVERSE_FRANCHISE_GROUPS, FRANCHISE_CATEGORIES } from './franchises.js';
+export { UNIVERSES, UNIVERSE_GROUPS } from './universes.js';
