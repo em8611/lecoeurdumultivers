@@ -245,3 +245,43 @@ export function exportFicheEquipe(equipe) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFichePouvoir(pouvoir) {
+  const lines = [
+    `# Fiche technique — ${pouvoir.name || 'Sans nom'}`,
+    '',
+    `Type : ${pouvoir.type || '-'}`,
+    `Catégorie : ${pouvoir.category || '-'}`,
+    `Niveau : ${pouvoir.level || '-'}`,
+    `Rareté : ${pouvoir.rarity || '-'}`,
+    '',
+    '## Description',
+    pouvoir.description || '-',
+    '',
+    '## Effets',
+    pouvoir.effects || '-',
+    '',
+    '## Coût/Limitations',
+    pouvoir.cost || '-',
+    '',
+    '## Prérequis',
+    pouvoir.requirements || '-',
+    '',
+    '## Caractéristiques',
+    `Portée : ${pouvoir.range || '-'}`,
+    `Durée : ${pouvoir.duration || '-'}`,
+    `Recharge : ${pouvoir.cooldown || '-'}`,
+    `Puissance : ${pouvoir.damage || '-'}`,
+    `Élément : ${pouvoir.element || '-'}`,
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(pouvoir.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

@@ -10,7 +10,8 @@ const EMPTY_STATE = {
   nourritures: [],
   materiauxs: [],
   relations: [],
-  equipes: []
+  equipes: [],
+  pouvoirs: []
 };
 
 function loadInitialState() {
@@ -35,7 +36,8 @@ const CATEGORY_ALIASES = {
   materiau: 'materiauxs',
   materiaux: 'materiauxs',
   relation: 'relations',
-  equipe: 'equipes'
+  equipe: 'equipes',
+  pouvoir: 'pouvoirs'
 };
 
 function resolveCategory(category) {

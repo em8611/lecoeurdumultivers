@@ -4,7 +4,8 @@ const TABS = [
   { key: 'home', label: 'Accueil' },
   { key: 'elements', label: 'Éléments' },
   { key: 'relations', label: 'Relations' },
-  { key: 'equipes', label: 'Équipes' }
+  { key: 'equipes', label: 'Équipes' },
+  { key: 'pouvoirs', label: 'Pouvoirs & Compétences' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

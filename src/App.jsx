@@ -4,6 +4,7 @@ import { Home } from './home';
 import { ElementsManager } from './elements';
 import { RelationsManager } from './relations';
 import { EquipesManager } from './equipes';
+import { PouvoirsManager } from './pouvoirs';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
@@ -11,7 +12,8 @@ const MODULE_MAP = {
   home: 'home',
   elements: 'elements',
   relations: 'relations',
-  equipes: 'equipes'
+  equipes: 'equipes',
+  pouvoirs: 'pouvoirs'
 };
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
         return <RelationsManager />;
       case 'equipes':
         return <EquipesManager />;
+      case 'pouvoirs':
+        return <PouvoirsManager />;
       case 'home':
       default:
         return <Home />;

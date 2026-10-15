@@ -10,6 +10,11 @@ export const FORM_FIELD_SETS = {
   team: [
     'name', 'type', 'description', 'members', 'leader', 'founded',
     'headquarters', 'objectives', 'status'
+  ],
+  power: [
+    'name', 'type', 'category', 'level', 'description', 'effects',
+    'cost', 'requirements', 'range', 'duration', 'cooldown', 'damage',
+    'element', 'origin', 'learningMethod'
   ]
 };
 
