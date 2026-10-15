@@ -12,7 +12,8 @@ const TABS = [
   { key: 'geographie', label: 'Cartes & Géographie' },
   { key: 'diplomatie', label: 'Factions & Diplomatie' },
   { key: 'magie', label: 'Magie & Combat' },
-  { key: 'univers', label: 'Univers / Multivers' }
+  { key: 'univers', label: 'Univers / Multivers' },
+  { key: 'religion', label: 'Religion & Mythologie' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

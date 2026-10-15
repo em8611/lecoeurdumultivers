@@ -514,3 +514,61 @@ export function exportFicheUnivers(univers) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheDivinite(divinite) {
+  const lines = [
+    `# Fiche technique — ${divinite.name || 'Sans nom'}`,
+    '',
+    `Panthéon : ${divinite.pantheon || '-'}`,
+    `Nature/Alignement : ${divinite.alignment || '-'}`,
+    `Statut : ${divinite.status || '-'}`,
+    `Domaines : ${(divinite.domains || []).join(', ') || '-'}`,
+    '',
+    '## Description',
+    divinite.description || '-',
+    '',
+    '## Origine / Mythe de naissance',
+    divinite.origin || '-',
+    '',
+    '## Fidèles / Culte',
+    divinite.followers || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(divinite.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+export function exportFicheMythe(mythe) {
+  const lines = [
+    `# Fiche technique — ${mythe.name || 'Sans nom'}`,
+    '',
+    `Catégorie : ${mythe.category || '-'}`,
+    `Véracité : ${mythe.truthStatus || '-'}`,
+    '',
+    '## Récit',
+    mythe.description || '-',
+    '',
+    '## Origine',
+    mythe.origin || '-',
+    '',
+    '## Signification / Morale',
+    mythe.signification || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(mythe.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

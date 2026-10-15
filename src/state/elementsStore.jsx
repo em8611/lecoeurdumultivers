@@ -20,7 +20,9 @@ const EMPTY_STATE = {
   diplomatieRelations: [],
   ecolesMagie: [],
   stylesCombat: [],
-  universMultivers: []
+  universMultivers: [],
+  divinites: [],
+  mythes: []
 };
 
 function loadInitialState() {
@@ -55,7 +57,9 @@ const CATEGORY_ALIASES = {
   diplomatie: 'diplomatieRelations',
   ecoleMagie: 'ecolesMagie',
   styleCombat: 'stylesCombat',
-  univers: 'universMultivers'
+  univers: 'universMultivers',
+  divinite: 'divinites',
+  mythe: 'mythes'
 };
 
 function resolveCategory(category) {

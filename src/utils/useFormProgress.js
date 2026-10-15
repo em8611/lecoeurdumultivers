@@ -39,6 +39,14 @@ export const FORM_FIELD_SETS = {
   univers: [
     'name', 'franchise', 'group', 'description', 'rules', 'accessPoints',
     'dangerLevel', 'status', 'connectedUniverseIds', 'territoireIds', 'conceptIds', 'tags'
+  ],
+  divinite: [
+    'name', 'pantheon', 'alignment', 'status', 'domains', 'description',
+    'origin', 'symbols', 'followers', 'avatarCharacterIds', 'conceptIds', 'tags'
+  ],
+  mythe: [
+    'name', 'category', 'truthStatus', 'description', 'origin', 'signification',
+    'deityIds', 'characterIds', 'eventIds', 'tags'
   ]
 };
 

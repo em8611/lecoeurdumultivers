@@ -10,3 +10,5 @@ export { default as FicheTerritoireButton } from './FicheTerritoireButton.jsx';
 export { default as FicheDiplomatieButton } from './FicheDiplomatieButton.jsx';
 export { default as FicheDisciplineButton } from './FicheDisciplineButton.jsx';
 export { default as FicheUniversButton } from './FicheUniversButton.jsx';
+export { default as FicheDiviniteButton } from './FicheDiviniteButton.jsx';
+export { default as FicheMytheButton } from './FicheMytheButton.jsx';
