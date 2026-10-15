@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Navigation } from './components/Navigation.jsx';
 import { Home } from './home';
 import { ElementsManager } from './elements';
+import { RelationsManager } from './relations';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
 const MODULE_MAP = {
   home: 'home',
-  elements: 'elements'
+  elements: 'elements',
+  relations: 'relations'
 };
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
     switch (activeTab) {
       case 'elements':
         return <ElementsManager />;
+      case 'relations':
+        return <RelationsManager />;
       case 'home':
       default:
         return <Home />;
