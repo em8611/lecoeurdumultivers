@@ -35,6 +35,10 @@ export const FORM_FIELD_SETS = {
   discipline: [
     'name', 'category', 'description', 'mechanism', 'energySource',
     'masteryLevels', 'limitations', 'practitionerIds', 'tags'
+  ],
+  univers: [
+    'name', 'franchise', 'group', 'description', 'rules', 'accessPoints',
+    'dangerLevel', 'status', 'connectedUniverseIds', 'territoireIds', 'conceptIds', 'tags'
   ]
 };
 

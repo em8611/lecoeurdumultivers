@@ -484,3 +484,33 @@ export function exportFicheDiscipline(discipline, family) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheUnivers(univers) {
+  const lines = [
+    `# Fiche technique — ${univers.name || 'Sans nom'}`,
+    '',
+    `Franchise : ${univers.franchise || '-'}`,
+    `Catégorie : ${univers.group || '-'}`,
+    `Statut : ${univers.status || '-'}`,
+    `Niveau de danger : ${univers.dangerLevel || '-'}`,
+    '',
+    '## Description',
+    univers.description || '-',
+    '',
+    '## Règles spécifiques',
+    univers.rules || '-',
+    '',
+    "## Points d'accès / Portails",
+    univers.accessPoints || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(univers.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

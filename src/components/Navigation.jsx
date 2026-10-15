@@ -11,7 +11,8 @@ const TABS = [
   { key: 'chronologie', label: 'Chronologie' },
   { key: 'geographie', label: 'Cartes & Géographie' },
   { key: 'diplomatie', label: 'Factions & Diplomatie' },
-  { key: 'magie', label: 'Magie & Combat' }
+  { key: 'magie', label: 'Magie & Combat' },
+  { key: 'univers', label: 'Univers / Multivers' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

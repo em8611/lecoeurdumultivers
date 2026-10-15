@@ -19,7 +19,8 @@ const EMPTY_STATE = {
   territoires: [],
   diplomatieRelations: [],
   ecolesMagie: [],
-  stylesCombat: []
+  stylesCombat: [],
+  universMultivers: []
 };
 
 function loadInitialState() {
@@ -53,7 +54,8 @@ const CATEGORY_ALIASES = {
   territoire: 'territoires',
   diplomatie: 'diplomatieRelations',
   ecoleMagie: 'ecolesMagie',
-  styleCombat: 'stylesCombat'
+  styleCombat: 'stylesCombat',
+  univers: 'universMultivers'
 };
 
 function resolveCategory(category) {
