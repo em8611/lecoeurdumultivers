@@ -1,0 +1,52 @@
+.sectionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .sectionGrid { grid-template-columns: 1fr; }
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #374151;
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #CBD5E1;
+  background: #FFFFFF;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: #6366F1;
+  box-shadow: 0 0 0 2px #6366F120;
+}
+
+.inputError { border: 2px solid #dc3545; }
+
+.helperError {
+  color: #dc3545;
+  font-size: 0.7rem;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.fullRow { grid-column: 1 / -1; }

@@ -22,17 +22,35 @@ function loadInitialState() {
   }
 }
 
+// Certains managers passent une catégorie au singulier (ex: 'character'),
+// qu'on fait correspondre au tableau pluriel correspondant dans le store.
+const CATEGORY_ALIASES = {
+  character: 'characters',
+  location: 'locations',
+  object: 'objects',
+  bestiaire: 'bestiaires',
+  nourriture: 'nourritures',
+  materiau: 'materiauxs',
+  materiaux: 'materiauxs'
+};
+
+function resolveCategory(category) {
+  return CATEGORY_ALIASES[category] || category;
+}
+
 function reducer(state, action) {
   switch (action.type) {
     case 'IMPORT_BULK':
       return { ...state, ...action.payload };
     case 'ADD_ELEMENT': {
-      const { category, data } = action;
+      const category = resolveCategory(action.category);
+      const { data } = action;
       const item = { id: data.id || `${category}-${Date.now()}`, ...data };
       return { ...state, [category]: [...(state[category] || []), item] };
     }
     case 'UPDATE_ELEMENT': {
-      const { category, id, data } = action;
+      const category = resolveCategory(action.category);
+      const { id, data } = action;
       return {
         ...state,
         [category]: (state[category] || []).map(item =>
@@ -41,7 +59,8 @@ function reducer(state, action) {
       };
     }
     case 'DELETE_ELEMENT': {
-      const { category, id } = action;
+      const category = resolveCategory(action.category);
+      const { id } = action;
       return {
         ...state,
         [category]: (state[category] || []).filter(item => item.id !== id)

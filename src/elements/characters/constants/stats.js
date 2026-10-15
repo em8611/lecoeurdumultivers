@@ -1,0 +1,18 @@
+export const CHARACTER_STATS = [
+  'Force',
+  'Dextérité',
+  'Constitution',
+  'Intelligence',
+  'Sagesse',
+  'Charisme',
+  'Vitalité',
+  'Attaque',
+  'Défense',
+  'Vitesse',
+  'Chance Critique',
+  'Pourcentage Critique',
+  'Précision',
+  'Esquive',
+  'Résistance Magique',
+  'Puissance Magique',
+];
