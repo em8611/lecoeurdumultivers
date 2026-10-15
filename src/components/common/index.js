@@ -13,3 +13,4 @@ export { default as FicheUniversButton } from './FicheUniversButton.jsx';
 export { default as FicheDiviniteButton } from './FicheDiviniteButton.jsx';
 export { default as FicheMytheButton } from './FicheMytheButton.jsx';
 export { default as FicheQueteButton } from './FicheQueteButton.jsx';
+export { default as FicheLangueButton } from './FicheLangueButton.jsx';

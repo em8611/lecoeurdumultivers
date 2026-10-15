@@ -52,6 +52,11 @@ export const FORM_FIELD_SETS = {
     'name', 'category', 'status', 'description', 'objectives', 'stakes',
     'resolution', 'protagonistIds', 'antagonistIds', 'equipeIds',
     'locationIds', 'relatedEventIds', 'relatedQuestIds', 'tags'
+  ],
+  langue: [
+    'name', 'family', 'status', 'writingSystem', 'description', 'phonetics',
+    'grammar', 'samplePhrases', 'relatedLanguageIds', 'territoireIds',
+    'equipeIds', 'characterIds', 'tags'
   ]
 };
 

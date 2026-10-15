@@ -23,7 +23,8 @@ const EMPTY_STATE = {
   universMultivers: [],
   divinites: [],
   mythes: [],
-  quetes: []
+  quetes: [],
+  langues: []
 };
 
 function loadInitialState() {
@@ -61,7 +62,8 @@ const CATEGORY_ALIASES = {
   univers: 'universMultivers',
   divinite: 'divinites',
   mythe: 'mythes',
-  quete: 'quetes'
+  quete: 'quetes',
+  langue: 'langues'
 };
 
 function resolveCategory(category) {

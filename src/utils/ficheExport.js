@@ -604,3 +604,35 @@ export function exportFicheQuete(quete) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheLangue(langue) {
+  const lines = [
+    `# Fiche technique — ${langue.name || 'Sans nom'}`,
+    '',
+    `Famille : ${langue.family || '-'}`,
+    `Statut : ${langue.status || '-'}`,
+    `Système d'écriture : ${langue.writingSystem || '-'}`,
+    '',
+    '## Description',
+    langue.description || '-',
+    '',
+    '## Phonétique / Prononciation',
+    langue.phonetics || '-',
+    '',
+    '## Grammaire',
+    langue.grammar || '-',
+    '',
+    '## Phrases types',
+    ...((langue.samplePhrases || []).length ? langue.samplePhrases.map(p => `- ${p}`) : ['-']),
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(langue.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
