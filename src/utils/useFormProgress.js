@@ -47,6 +47,11 @@ export const FORM_FIELD_SETS = {
   mythe: [
     'name', 'category', 'truthStatus', 'description', 'origin', 'signification',
     'deityIds', 'characterIds', 'eventIds', 'tags'
+  ],
+  quete: [
+    'name', 'category', 'status', 'description', 'objectives', 'stakes',
+    'resolution', 'protagonistIds', 'antagonistIds', 'equipeIds',
+    'locationIds', 'relatedEventIds', 'relatedQuestIds', 'tags'
   ]
 };
 

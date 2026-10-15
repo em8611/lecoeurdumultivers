@@ -13,7 +13,8 @@ const TABS = [
   { key: 'diplomatie', label: 'Factions & Diplomatie' },
   { key: 'magie', label: 'Magie & Combat' },
   { key: 'univers', label: 'Univers / Multivers' },
-  { key: 'religion', label: 'Religion & Mythologie' }
+  { key: 'religion', label: 'Religion & Mythologie' },
+  { key: 'quetes', label: 'Quêtes & Intrigues' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

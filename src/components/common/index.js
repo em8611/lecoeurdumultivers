@@ -12,3 +12,4 @@ export { default as FicheDisciplineButton } from './FicheDisciplineButton.jsx';
 export { default as FicheUniversButton } from './FicheUniversButton.jsx';
 export { default as FicheDiviniteButton } from './FicheDiviniteButton.jsx';
 export { default as FicheMytheButton } from './FicheMytheButton.jsx';
+export { default as FicheQueteButton } from './FicheQueteButton.jsx';

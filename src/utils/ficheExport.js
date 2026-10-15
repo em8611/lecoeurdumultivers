@@ -572,3 +572,35 @@ export function exportFicheMythe(mythe) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheQuete(quete) {
+  const lines = [
+    `# Fiche technique — ${quete.name || 'Sans nom'}`,
+    '',
+    `Catégorie : ${quete.category || '-'}`,
+    `Statut : ${quete.status || '-'}`,
+    `Avancement : ${quete.advancement ?? 0}%`,
+    '',
+    '## Description',
+    quete.description || '-',
+    '',
+    '## Objectifs / Étapes',
+    ...((quete.objectives || []).length ? quete.objectives.map(o => `- ${o}`) : ['-']),
+    '',
+    '## Enjeux',
+    quete.stakes || '-',
+    '',
+    '## Résolution',
+    quete.resolution || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(quete.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

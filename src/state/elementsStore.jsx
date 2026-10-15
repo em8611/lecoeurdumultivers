@@ -22,7 +22,8 @@ const EMPTY_STATE = {
   stylesCombat: [],
   universMultivers: [],
   divinites: [],
-  mythes: []
+  mythes: [],
+  quetes: []
 };
 
 function loadInitialState() {
@@ -59,7 +60,8 @@ const CATEGORY_ALIASES = {
   styleCombat: 'stylesCombat',
   univers: 'universMultivers',
   divinite: 'divinites',
-  mythe: 'mythes'
+  mythe: 'mythes',
+  quete: 'quetes'
 };
 
 function resolveCategory(category) {

@@ -13,6 +13,7 @@ import { DiplomatieManager } from './diplomatie';
 import { MagieManager } from './magie';
 import { UniversManager } from './univers';
 import { ReligionManager } from './religion';
+import { QuetesManager } from './quetes';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
@@ -29,7 +30,8 @@ const MODULE_MAP = {
   diplomatie: 'diplomatie',
   magie: 'magie',
   univers: 'univers',
-  religion: 'religion'
+  religion: 'religion',
+  quetes: 'quetes'
 };
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
         return <UniversManager />;
       case 'religion':
         return <ReligionManager />;
+      case 'quetes':
+        return <QuetesManager />;
       case 'home':
       default:
         return <Home />;
