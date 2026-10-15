@@ -6,7 +6,8 @@ const TABS = [
   { key: 'relations', label: 'Relations' },
   { key: 'equipes', label: 'Équipes' },
   { key: 'pouvoirs', label: 'Pouvoirs & Compétences' },
-  { key: 'dictionnaire', label: 'Dictionnaire' }
+  { key: 'dictionnaire', label: 'Dictionnaire' },
+  { key: 'concepts', label: 'Concepts' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

@@ -12,7 +12,8 @@ const EMPTY_STATE = {
   relations: [],
   equipes: [],
   pouvoirs: [],
-  termes: []
+  termes: [],
+  concepts: []
 };
 
 function loadInitialState() {
@@ -39,7 +40,8 @@ const CATEGORY_ALIASES = {
   relation: 'relations',
   equipe: 'equipes',
   pouvoir: 'pouvoirs',
-  terme: 'termes'
+  terme: 'termes',
+  concept: 'concepts'
 };
 
 function resolveCategory(category) {

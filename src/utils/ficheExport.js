@@ -316,3 +316,42 @@ export function exportFicheTerme(terme) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheConcept(concept) {
+  const lines = [
+    `# Fiche technique — ${concept.name || 'Sans nom'}`,
+    '',
+    `Catégorie : ${concept.category || '-'}`,
+    '',
+    '## Description',
+    concept.description || '-',
+    '',
+    '## Fonctionnement / Mécanisme',
+    concept.mechanism || '-',
+    '',
+    '## Portée / Application',
+    concept.scope || '-',
+    '',
+    '## Origine / Historique',
+    concept.origin || '-',
+    '',
+    '## Exceptions / Limites',
+    concept.exceptions || '-',
+    '',
+    '## Conséquences / Enjeux',
+    concept.consequences || '-',
+    '',
+    '## Concepts liés',
+    (concept.relatedConcepts || []).join(', ') || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(concept.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

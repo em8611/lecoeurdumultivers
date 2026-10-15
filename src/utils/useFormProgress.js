@@ -19,6 +19,10 @@ export const FORM_FIELD_SETS = {
   term: [
     'term', 'category', 'definition', 'origin', 'pronunciation',
     'examples', 'relatedTerms', 'tags'
+  ],
+  concept: [
+    'name', 'category', 'description', 'mechanism', 'scope',
+    'origin', 'exceptions', 'consequences', 'relatedConcepts', 'tags'
   ]
 };
 
