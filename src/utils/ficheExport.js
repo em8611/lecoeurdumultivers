@@ -380,3 +380,48 @@ export function exportFicheEvenement(evenement) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheCarte(carte) {
+  const lines = [
+    `# Fiche technique — ${carte.name || 'Sans nom'}`,
+    '',
+    '## Description',
+    carte.description || '-',
+    '',
+    `## Points (${(carte.points || []).length})`,
+    ...(carte.points || []).map(p => `- ${p.label || 'Sans nom'}${p.description ? ` : ${p.description}` : ''}`),
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(carte.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+export function exportFicheTerritoire(territoire) {
+  const lines = [
+    `# Fiche technique — ${territoire.name || 'Sans nom'}`,
+    '',
+    `Type : ${territoire.type || '-'}`,
+    `Climat : ${territoire.climate || '-'}`,
+    `Population : ${territoire.population || '-'}`,
+    '',
+    '## Description',
+    territoire.description || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(territoire.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

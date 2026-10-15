@@ -8,7 +8,8 @@ const TABS = [
   { key: 'pouvoirs', label: 'Pouvoirs & Compétences' },
   { key: 'dictionnaire', label: 'Dictionnaire' },
   { key: 'concepts', label: 'Concepts' },
-  { key: 'chronologie', label: 'Chronologie' }
+  { key: 'chronologie', label: 'Chronologie' },
+  { key: 'geographie', label: 'Cartes & Géographie' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

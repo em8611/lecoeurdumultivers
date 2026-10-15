@@ -5,3 +5,5 @@ export { default as FichePouvoirButton } from './FichePouvoirButton.jsx';
 export { default as FicheTermeButton } from './FicheTermeButton.jsx';
 export { default as FicheConceptButton } from './FicheConceptButton.jsx';
 export { default as FicheEvenementButton } from './FicheEvenementButton.jsx';
+export { default as FicheCarteButton } from './FicheCarteButton.jsx';
+export { default as FicheTerritoireButton } from './FicheTerritoireButton.jsx';

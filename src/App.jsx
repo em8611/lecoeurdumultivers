@@ -8,6 +8,7 @@ import { PouvoirsManager } from './pouvoirs';
 import { DictionnaireManager } from './dictionnaire';
 import { ConceptsManager } from './concepts';
 import { ChronologieManager } from './chronologie';
+import { GeographieManager } from './geographie';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
@@ -19,7 +20,8 @@ const MODULE_MAP = {
   pouvoirs: 'pouvoirs',
   dictionnaire: 'dictionnaire',
   concepts: 'concepts',
-  chronologie: 'chronologie'
+  chronologie: 'chronologie',
+  geographie: 'geographie'
 };
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
         return <ConceptsManager />;
       case 'chronologie':
         return <ChronologieManager />;
+      case 'geographie':
+        return <GeographieManager />;
       case 'home':
       default:
         return <Home />;

@@ -14,7 +14,9 @@ const EMPTY_STATE = {
   pouvoirs: [],
   termes: [],
   concepts: [],
-  evenements: []
+  evenements: [],
+  cartes: [],
+  territoires: []
 };
 
 function loadInitialState() {
@@ -43,7 +45,9 @@ const CATEGORY_ALIASES = {
   pouvoir: 'pouvoirs',
   terme: 'termes',
   concept: 'concepts',
-  evenement: 'evenements'
+  evenement: 'evenements',
+  carte: 'cartes',
+  territoire: 'territoires'
 };
 
 function resolveCategory(category) {
