@@ -17,7 +17,9 @@ const EMPTY_STATE = {
   evenements: [],
   cartes: [],
   territoires: [],
-  diplomatieRelations: []
+  diplomatieRelations: [],
+  ecolesMagie: [],
+  stylesCombat: []
 };
 
 function loadInitialState() {
@@ -49,7 +51,9 @@ const CATEGORY_ALIASES = {
   evenement: 'evenements',
   carte: 'cartes',
   territoire: 'territoires',
-  diplomatie: 'diplomatieRelations'
+  diplomatie: 'diplomatieRelations',
+  ecoleMagie: 'ecolesMagie',
+  styleCombat: 'stylesCombat'
 };
 
 function resolveCategory(category) {

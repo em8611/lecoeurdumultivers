@@ -31,6 +31,10 @@ export const FORM_FIELD_SETS = {
   diplomatie: [
     'fromId', 'toId', 'status', 'intensity', 'description',
     'startDate', 'relatedEventIds', 'tags'
+  ],
+  discipline: [
+    'name', 'category', 'description', 'mechanism', 'energySource',
+    'masteryLevels', 'limitations', 'practitionerIds', 'tags'
   ]
 };
 

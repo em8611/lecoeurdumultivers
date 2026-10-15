@@ -450,3 +450,37 @@ export function exportFicheDiplomatie(relation, fromName, toName) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheDiscipline(discipline, family) {
+  const lines = [
+    `# Fiche technique — ${discipline.name || 'Sans nom'}`,
+    '',
+    `Famille : ${family || '-'}`,
+    `Catégorie : ${discipline.category || '-'}`,
+    '',
+    '## Description',
+    discipline.description || '-',
+    '',
+    '## Règles / Mécanique de fonctionnement',
+    discipline.mechanism || '-',
+    '',
+    "## Source d'énergie / Prérequis physiques",
+    discipline.energySource || '-',
+    '',
+    '## Niveaux de maîtrise / Progression',
+    (discipline.masteryLevels || []).join(' → ') || '-',
+    '',
+    '## Limites / Dangers / Contre-mesures',
+    discipline.limitations || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(discipline.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
