@@ -15,6 +15,10 @@ export const FORM_FIELD_SETS = {
     'name', 'type', 'category', 'level', 'description', 'effects',
     'cost', 'requirements', 'range', 'duration', 'cooldown', 'damage',
     'element', 'origin', 'learningMethod'
+  ],
+  term: [
+    'term', 'category', 'definition', 'origin', 'pronunciation',
+    'examples', 'relatedTerms', 'tags'
   ]
 };
 

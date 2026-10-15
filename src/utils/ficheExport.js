@@ -285,3 +285,34 @@ export function exportFichePouvoir(pouvoir) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheTerme(terme) {
+  const lines = [
+    `# Fiche technique — ${terme.term || 'Sans nom'}`,
+    '',
+    `Catégorie : ${terme.category || '-'}`,
+    `Prononciation : ${terme.pronunciation || '-'}`,
+    '',
+    '## Définition',
+    terme.definition || '-',
+    '',
+    '## Origine / Étymologie',
+    terme.origin || '-',
+    '',
+    '## Exemples d\'usage',
+    terme.examples || '-',
+    '',
+    '## Termes liés',
+    (terme.relatedTerms || []).join(', ') || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(terme.term)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
