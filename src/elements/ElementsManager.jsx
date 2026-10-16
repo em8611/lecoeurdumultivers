@@ -21,65 +21,47 @@ function ElementsManager() {
   let fileInputRef;
 
   const managers = [
-    { id: 'overview', label: 'Vue d\'ensemble', icon: '📊' },
-    { id: 'create', label: 'Créer', icon: '➕' },
-    { id: 'statistics', label: 'Statistiques', icon: '📈' },
-    { id: 'export', label: 'Export', icon: '📤' },
-    { id: 'characters', label: 'Personnages', icon: '🎭' },
-    { id: 'locations', label: 'Lieux', icon: '🗺️' },
-    { id: 'objects', label: 'Objets', icon: '💎' },
-    { id: 'bestiaire', label: 'Bestiaire', icon: '🐉' },
-    { id: 'nourriture', label: 'Nourriture', icon: '🍖' },
-    { id: 'materiaux', label: 'Matériaux', icon: '⚒️' }
+    { id: 'overview', label: 'Vue d\'ensemble' },
+    { id: 'create', label: 'Créer' },
+    { id: 'statistics', label: 'Statistiques' },
+    { id: 'export', label: 'Export' },
+    { id: 'characters', label: 'Personnages' },
+    { id: 'locations', label: 'Lieux' },
+    { id: 'objects', label: 'Objets' },
+    { id: 'bestiaire', label: 'Bestiaire' },
+    { id: 'nourriture', label: 'Nourriture' },
+    { id: 'materiaux', label: 'Matériaux' }
   ];
 
   const categories = [
     {
       id: 'characters',
-      icon: '🎭',
       label: 'Personnages',
-      color: '#2196f3',
-      bgColor: '#e3f2fd',
       description: 'Créez et gérez vos personnages avec leurs caractéristiques, capacités et relations.'
     },
     {
       id: 'locations',
-      icon: '🗺️',
       label: 'Lieux',
-      color: '#17a2b8',
-      bgColor: '#e0f7fa',
       description: 'Définissez les environnements, climats et caractéristiques de vos mondes.'
     },
     {
       id: 'objects',
-      icon: '💎',
       label: 'Objets',
-      color: '#6f42c1',
-      bgColor: '#f3e5f5',
       description: 'Cataloguez artefacts, armes et objets magiques avec leurs pouvoirs uniques.'
     },
     {
       id: 'bestiaire',
-      icon: '🐉',
       label: 'Bestiaire',
-      color: '#28a745',
-      bgColor: '#d4edda',
       description: 'Répertoriez créatures, monstres et animaux fantastiques de votre univers.'
     },
     {
       id: 'nourriture',
-      icon: '🍖',
       label: 'Nourriture',
-      color: '#fd7e14',
-      bgColor: '#ffe5cc',
       description: 'Décrivez cuisines, ingrédients et recettes de vos différentes cultures.'
     },
     {
       id: 'materiaux',
-      icon: '⚒️',
       label: 'Matériaux',
-      color: '#6c757d',
-      bgColor: '#e8e9ea',
       description: 'Cataloguez ressources, minerais et matériaux utilisés dans votre monde.'
     }
   ];
@@ -87,7 +69,7 @@ function ElementsManager() {
   const renderOverview = () => (
     <div style={{ padding: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <h2>📊 Vue d'ensemble des éléments</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Vue d'ensemble des éléments</h2>
         <div style={{ display: 'flex', gap: 8 }}>
           <button
             onClick={() => {
@@ -116,8 +98,8 @@ function ElementsManager() {
                 setNotification({ type: 'error', message: `Erreur export: ${e.message}` });
               }
             }}
-            style={{ padding: '8px 12px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer' }}
-          >📤 Export JSON</button>
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
+          >Export JSON</button>
           <input
             type="file"
             accept="application/json,.json"
@@ -160,27 +142,27 @@ function ElementsManager() {
               if (fileInputRef) fileInputRef.click();
             }}
             disabled={importing}
-            style={{ padding: '8px 12px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer' }}
-          >📥 Importer un JSON</button>
+            style={{ padding: '8px 12px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
+          >Importer un JSON</button>
         </div>
       </div>
       {importPreview && (
         <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000 }}>
-          <div style={{ backgroundColor: 'white', borderRadius: 10, padding: 20, width: 520, boxShadow: '0 8px 24px rgba(0,0,0,0.25)' }}>
-            <h3 style={{ marginTop: 0 }}>Aperçu import: {importPreview.fileName}</h3>
-            <p style={{ color: '#555' }}>Confirmez l'import. Comptes par catégorie:</p>
+          <div style={{ backgroundColor: 'var(--fond-carte)', borderRadius: 'var(--rayon-carte)', padding: 20, width: 520, boxShadow: 'var(--ombre-survol)', border: '1px solid var(--trait)' }}>
+            <h3 style={{ marginTop: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Aperçu import: {importPreview.fileName}</h3>
+            <p style={{ color: 'var(--encre-douce)' }}>Confirmez l'import. Comptes par catégorie:</p>
             <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
-              <li>🎭 Personnages: <strong>{importPreview.counts.characters}</strong></li>
-              <li>🗺️ Lieux: <strong>{importPreview.counts.locations}</strong></li>
-              <li>💎 Objets: <strong>{importPreview.counts.objects}</strong></li>
-              <li>🐉 Bestiaire: <strong>{importPreview.counts.bestiaires}</strong></li>
-              <li>🍖 Nourriture: <strong>{importPreview.counts.nourritures}</strong></li>
-              <li>⚒️ Matériaux: <strong>{importPreview.counts.materiauxs}</strong></li>
+              <li>Personnages: <strong>{importPreview.counts.characters}</strong></li>
+              <li>Lieux: <strong>{importPreview.counts.locations}</strong></li>
+              <li>Objets: <strong>{importPreview.counts.objects}</strong></li>
+              <li>Bestiaire: <strong>{importPreview.counts.bestiaires}</strong></li>
+              <li>Nourriture: <strong>{importPreview.counts.nourritures}</strong></li>
+              <li>Matériaux: <strong>{importPreview.counts.materiauxs}</strong></li>
             </ul>
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
               <button
                 onClick={() => setImportPreview(null)}
-                style={{ padding: '8px 12px', border: '1px solid #ccc', borderRadius: 6, background: 'white', cursor: 'pointer' }}
+                style={{ padding: '8px 12px', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', background: 'var(--fond-carte)', color: 'var(--encre)', cursor: 'pointer' }}
               >Annuler</button>
               <button
                 onClick={() => {
@@ -188,13 +170,13 @@ function ElementsManager() {
                   setImportPreview(null);
                   setNotification({ type: 'success', message: 'Import JSON appliqué' });
                 }}
-                style={{ padding: '8px 12px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer' }}
+                style={{ padding: '8px 12px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
               >Confirmer</button>
             </div>
           </div>
         </div>
       )}
-      <p style={{ color: '#666', marginBottom: 30 }}>
+      <p style={{ color: 'var(--encre-douce)', marginBottom: 30 }}>
         Gérez tous les éléments de votre univers narratif : personnages, lieux et objets.
       </p>
 
@@ -203,18 +185,17 @@ function ElementsManager() {
           <div
             key={category.id}
             style={{
-              border: `2px solid ${category.color}`,
-              borderRadius: 12,
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-carte)',
               padding: 20,
-              backgroundColor: category.bgColor,
+              backgroundColor: 'var(--douceur)',
               transition: 'transform 0.2s ease'
             }}
             onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
             onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
           >
-            <div style={{ fontSize: 48, textAlign: 'center', marginBottom: 10 }}>{category.icon}</div>
-            <h3 style={{ textAlign: 'center', color: category.color, marginBottom: 10 }}>{category.label}</h3>
-            <p style={{ textAlign: 'center', fontSize: 14, color: '#555', minHeight: 60 }}>
+            <h3 style={{ textAlign: 'center', color: 'var(--coeur)', fontFamily: 'var(--police-affichage)', marginBottom: 10 }}>{category.label}</h3>
+            <p style={{ textAlign: 'center', fontSize: 14, color: 'var(--encre-douce)', minHeight: 60 }}>
               {category.description}
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 12 }}>
@@ -222,10 +203,10 @@ function ElementsManager() {
                 onClick={() => setActiveManager(category.id)}
                 style={{
                   padding: '8px 16px',
-                  backgroundColor: category.color,
-                  color: 'white',
+                  backgroundColor: 'var(--coeur)',
+                  color: 'var(--sur-coeur)',
                   border: 'none',
-                  borderRadius: 6,
+                  borderRadius: 'var(--rayon-bouton)',
                   cursor: 'pointer',
                   fontSize: 13,
                   fontWeight: 'bold'
@@ -237,10 +218,10 @@ function ElementsManager() {
                 onClick={() => { setCreateInitialCategory(category.id === 'characters' ? 'character' : category.id); setActiveManager('create'); }}
                 style={{
                   padding: '8px 16px',
-                  backgroundColor: '#28a745',
-                  color: 'white',
+                  backgroundColor: 'var(--or)',
+                  color: 'var(--sur-or)',
                   border: 'none',
-                  borderRadius: 6,
+                  borderRadius: 'var(--rayon-bouton)',
                   cursor: 'pointer',
                   fontSize: 13,
                   fontWeight: 'bold'
@@ -298,20 +279,20 @@ function ElementsManager() {
           right: 20,
           zIndex: 1000,
           padding: '12px 20px',
-          borderRadius: 6,
           color: 'white',
           backgroundColor:
-            notification.type === 'success' ? '#28a745' :
-            notification.type === 'error' ? '#dc3545' : '#17a2b8',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+            notification.type === 'success' ? '#2e7d4f' :
+            notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          borderRadius: 'var(--rayon-bouton)',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{
-        backgroundColor: '#f8f9fa',
-        borderBottom: '1px solid #dee2e6',
+        backgroundColor: 'var(--fond-carte)',
+        borderBottom: '1px solid var(--trait)',
         padding: '10px 16px',
         display: 'flex',
         gap: 8
@@ -323,16 +304,17 @@ function ElementsManager() {
             style={{
               padding: '8px 16px',
               border: 'none',
-              borderRadius: 6,
-              backgroundColor: activeManager === manager.id ? '#007bff' : 'transparent',
-              color: activeManager === manager.id ? 'white' : '#495057',
+              borderBottom: activeManager === manager.id ? '2px solid var(--coeur)' : '2px solid transparent',
+              borderRadius: 0,
+              backgroundColor: 'transparent',
+              color: activeManager === manager.id ? 'var(--coeur)' : 'var(--encre-douce)',
               cursor: 'pointer',
               fontSize: 14,
               fontWeight: activeManager === manager.id ? 'bold' : 'normal',
               transition: 'all 0.2s ease'
             }}
           >
-            {manager.icon} {manager.label}
+            {manager.label}
           </button>
         ))}
       </div>

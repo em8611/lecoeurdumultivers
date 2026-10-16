@@ -36,7 +36,7 @@ function EvolutionMaterialsSection({ data, targets, onTargetsChange, onChange, s
     <div style={{ marginTop: '2rem' }}>
       <h4 style={{ marginBottom: '1rem', fontSize: '1.1em', fontWeight: 'bold' }}>Évolution & Matériaux</h4>
       {categories.map(c => (
-        <div key={c.key} style={{ marginBottom: '1.25rem', border: '1px solid #e5e7eb', borderRadius: '6px', padding: '0.75rem' }}>
+        <div key={c.key} style={{ marginBottom: '1.25rem', border: '1px solid var(--trait)', borderRadius: '6px', padding: '0.75rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontWeight: '600' }}>{c.label}</span>
             <button type="button" className="btn-small" onClick={() => addMaterial(c.key)}>Ajouter matériau</button>
@@ -82,13 +82,13 @@ function EvolutionMaterialsSection({ data, targets, onTargetsChange, onChange, s
                   />
                   <button type="button" className="btn-danger-small" onClick={() => removeMaterial(c.key, mat.id)}>✕</button>
                   {palierInvalid && (
-                    <div style={{ gridColumn: '1 / -1', fontSize: '0.65em', color: '#b91c1c' }}>Palier supérieur au maximum suggéré ({maxPalier}).</div>
+                    <div style={{ gridColumn: '1 / -1', fontSize: '0.65em', color: '#a13d3d' }}>Palier supérieur au maximum suggéré ({maxPalier}).</div>
                   )}
                 </div>
               );})}
             </div>
           ) : (
-            <div style={{ fontSize: '0.85em', color: '#6b7280' }}>Aucun matériau ajouté.</div>
+            <div style={{ fontSize: '0.85em', color: 'var(--encre-douce)' }}>Aucun matériau ajouté.</div>
           )}
         </div>
       ))}
@@ -197,14 +197,14 @@ function MaterialsSummary({ data, categories, targets, onTargetsChange }) {
     <div style={{ marginTop: '1.5rem' }}>
       <h5 style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Résumé des matériaux</h5>
       {allItems.length === 0 ? (
-        <div style={{ fontSize: '0.85em', color: '#6b7280' }}>Aucun matériau pour le résumé.</div>
+        <div style={{ fontSize: '0.85em', color: 'var(--encre-douce)' }}>Aucun matériau pour le résumé.</div>
       ) : (
         <div style={{ display: 'grid', gap: '1rem' }}>
           <div>
             <div style={{ fontSize: '0.85em', marginBottom: '0.25rem', fontWeight: '600' }}>Totaux par catégorie</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: '0.5rem' }}>
               {summary.map(s => (
-                <div key={s.key} style={{ background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '6px', padding: '0.5rem' }}>
+                <div key={s.key} style={{ background: 'var(--douceur)', border: '1px solid var(--trait)', borderRadius: '6px', padding: '0.5rem' }}>
                   <div style={{ fontSize: '0.75em', fontWeight: '600', marginBottom: '0.25rem' }}>{s.label}</div>
                   <div style={{ fontSize: '0.8em' }}>Total: <strong>{s.totalQuantite}</strong></div>
                   <div style={{ fontSize: '0.7em', marginTop: '0.25rem' }}>
@@ -223,23 +223,23 @@ function MaterialsSummary({ data, categories, targets, onTargetsChange }) {
                 const tgt = targets && targets[item.nom] ? targets[item.nom] : { total: 0, paliers: {} };
                 const missingTotal = Math.max(0, (tgt.total || 0) - item.quantite);
                 return (
-                  <div key={item.nom} style={{ background: '#f3f4f6', padding: '0.6rem 0.7rem', borderRadius: '6px' }}>
+                  <div key={item.nom} style={{ background: 'var(--douceur)', padding: '0.6rem 0.7rem', borderRadius: '6px' }}>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center', marginBottom: '0.4rem' }}>
                       <span style={{ fontSize: '0.8em', fontWeight: '600' }}>{item.nom}</span>
                       <span style={{ fontSize: '0.7em' }}>Actuel: {item.quantite}</span>
                       <span style={{ fontSize: '0.7em' }}>Cible totale: <input type="number" min={0} value={tgt.total || 0} onChange={(e)=>handleTargetChange(item.nom,'total', parseInt(e.target.value)||0)} style={{ width: '70px' }} /></span>
-                      <span style={{ fontSize: '0.7em', color: missingTotal>0?'#b91c1c':'#059669' }}>Manquant total: {missingTotal}</span>
+                      <span style={{ fontSize: '0.7em', color: missingTotal>0?'#a13d3d':'#2e7d4f' }}>Manquant total: {missingTotal}</span>
                     </div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                       {Object.entries(item.paliers).sort((a,b)=>parseInt(a[0]) - parseInt(b[0])).map(([p,v]) => {
                         const palierTarget = tgt.paliers && tgt.paliers[p] !== undefined ? tgt.paliers[p] : v;
                         const missing = Math.max(0, (palierTarget || 0) - v);
                         return (
-                          <div key={p} style={{ background: '#e5e7eb', padding: '0.3rem 0.45rem', borderRadius: '4px', fontSize: '0.65em', display: 'flex', flexDirection: 'column', minWidth: '105px' }}>
+                          <div key={p} style={{ background: 'var(--douceur)', padding: '0.3rem 0.45rem', borderRadius: '4px', fontSize: '0.65em', display: 'flex', flexDirection: 'column', minWidth: '105px' }}>
                             <span style={{ fontWeight: '600' }}>Palier {p}</span>
                             <span>Actuel: {v}</span>
                             <span>Cible: <input type="number" min={0} value={palierTarget} onChange={(e)=>handleTargetChange(item.nom,'palier', parseInt(e.target.value)||0, p)} style={{ width: '55px' }} /></span>
-                            <span style={{ color: missing>0?'#b91c1c':'#059669' }}>Manquant: {missing}</span>
+                            <span style={{ color: missing>0?'#a13d3d':'#2e7d4f' }}>Manquant: {missing}</span>
                           </div>
                         );
                       })}
@@ -298,7 +298,7 @@ function SkillTreeSection({ data, onChange }) {
   };
 
   const renderNode = (node, depth = 0) => (
-    <div key={node.id} style={{ border: '1px solid #e5e7eb', borderRadius: '6px', padding: '0.5rem', marginBottom: '0.5rem', marginLeft: depth * 12 }}>
+    <div key={node.id} style={{ border: '1px solid var(--trait)', borderRadius: '6px', padding: '0.5rem', marginBottom: '0.5rem', marginLeft: depth * 12 }}>
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 0.6fr 2fr auto auto', gap: '0.5rem', alignItems: 'center' }}>
         <input
           type="text"
@@ -338,7 +338,7 @@ function SkillTreeSection({ data, onChange }) {
       <h4 style={{ marginBottom: '0.75rem', fontSize: '1.1em', fontWeight: 'bold' }}>Arborescence des Compétences</h4>
       <button type="button" className="btn-small" onClick={addRootSkill} style={{ marginBottom: '0.75rem' }}>Ajouter compétence racine</button>
       {data.length === 0 ? (
-        <div style={{ fontSize: '0.85em', color: '#6b7280' }}>Aucune compétence définie.</div>
+        <div style={{ fontSize: '0.85em', color: 'var(--encre-douce)' }}>Aucune compétence définie.</div>
       ) : (
         <div>{data.map(node => renderNode(node))}</div>
       )}
@@ -418,7 +418,7 @@ function StatsSection({ formData, onStatChange, onInputChange }) {
               <div style={{
                 marginTop: '0.25rem',
                 fontSize: '0.85em',
-                color: '#6b7280',
+                color: 'var(--encre-douce)',
                 fontWeight: 'bold'
               }}>
                 Modificateur: {Math.floor((formData.stats[stat] - 10) / 2) >= 0 ? '+' : ''}{Math.floor((formData.stats[stat] - 10) / 2)}

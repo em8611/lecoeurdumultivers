@@ -81,17 +81,17 @@ function RepliquesSection({ formData, onInputChange }) {
                   alignItems: 'center',
                   gap: '0.5rem',
                   padding: '8px 12px',
-                  background: '#f3f4f6',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '6px'
+                  background: 'var(--douceur)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-bouton)'
                 }}
               >
                 <span
                   style={{
                     padding: '4px 8px',
-                    background: '#8b5cf6',
-                    color: 'white',
-                    borderRadius: '4px',
+                    background: 'var(--coeur)',
+                    color: 'var(--sur-coeur)',
+                    borderRadius: 'var(--rayon-bouton)',
                     fontSize: '0.85em',
                     fontWeight: 'bold',
                     minWidth: '100px',
@@ -100,17 +100,17 @@ function RepliquesSection({ formData, onInputChange }) {
                 >
                   {rep.context}
                 </span>
-                <span style={{ flex: 1, color: '#374151', fontStyle: 'italic' }}>
+                <span style={{ flex: 1, color: 'var(--encre)', fontStyle: 'italic' }}>
                   "{rep.quote}"
                 </span>
                 <button
                   type="button"
                   onClick={() => removeReplique(idx)}
                   style={{
-                    background: '#ef4444',
+                    background: '#a13d3d',
                     color: 'white',
                     border: 'none',
-                    borderRadius: '4px',
+                    borderRadius: 'var(--rayon-bouton)',
                     padding: '4px 8px',
                     cursor: 'pointer',
                     fontSize: '0.85em'

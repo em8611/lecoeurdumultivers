@@ -19,11 +19,11 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
   const [activeTab, setActiveTab] = useState('basic');
 
   const tabs = [
-    { id: 'basic', label: 'Informations de base', icon: '📦' },
-    { id: 'properties', label: 'Propriétés', icon: '⚙️' },
-    { id: 'magic', label: 'Magie & Enchantements', icon: '✨' },
-    { id: 'history', label: 'Histoire & Origine', icon: '📜' },
-    { id: 'gameplay', label: 'Mécaniques de jeu', icon: '🎲' }
+    { id: 'basic', label: 'Informations de base' },
+    { id: 'properties', label: 'Propriétés' },
+    { id: 'magic', label: 'Magie & Enchantements' },
+    { id: 'history', label: 'Histoire & Origine' },
+    { id: 'gameplay', label: 'Mécaniques de jeu' }
   ];
 
   const handleInputChange = (field, value) => {
@@ -97,13 +97,13 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: errors.name ? '2px solid #dc3545' : '1px solid #ccc'
+            borderRadius: 'var(--rayon-bouton)',
+            border: errors.name ? '2px solid #a13d3d' : '1px solid var(--trait)'
           }}
           placeholder="Nom de l'objet"
         />
         {errors.name && (
-          <div style={{ color: '#dc3545', fontSize: 12, marginTop: 2 }}>
+          <div style={{ color: '#a13d3d', fontSize: 12, marginTop: 2 }}>
             {errors.name.join(', ')}
           </div>
         )}
@@ -116,7 +116,7 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
         <select
           value={formData.type}
           onChange={(e) => handleInputChange('type', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         >
           {OBJECT_TYPES.map(type => (
             <option key={type} value={type}>{type}</option>
@@ -134,8 +134,8 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: '1px solid #ccc',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             backgroundColor: getRarityColor(formData.rarity) + '20',
             color: getRarityColor(formData.rarity),
             fontWeight: 'bold'
@@ -156,7 +156,7 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
         <select
           value={formData.condition}
           onChange={(e) => handleInputChange('condition', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         >
           {OBJECT_CONDITIONS.map(condition => (
             <option key={condition} value={condition}>{condition}</option>
@@ -175,13 +175,13 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: errors.value ? '2px solid #dc3545' : '1px solid #ccc'
+            borderRadius: 'var(--rayon-bouton)',
+            border: errors.value ? '2px solid #a13d3d' : '1px solid var(--trait)'
           }}
           min="0"
         />
         {errors.value && (
-          <div style={{ color: '#dc3545', fontSize: 12, marginTop: 2 }}>
+          <div style={{ color: '#a13d3d', fontSize: 12, marginTop: 2 }}>
             {errors.value.join(', ')}
           </div>
         )}
@@ -196,7 +196,7 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
           step="0.1"
           value={formData.weight}
           onChange={(e) => handleInputChange('weight', parseFloat(e.target.value) || 0)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           min="0"
         />
       </div>
@@ -211,8 +211,8 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: '1px solid #ccc',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             minHeight: 80,
             resize: 'vertical'
           }}
@@ -228,7 +228,7 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={Array.isArray(formData.materials) ? formData.materials.join(', ') : formData.materials}
           onChange={(e) => handleInputChange('materials', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Acier, cuir, bois magique... (séparés par des virgules)"
         />
       </div>
@@ -258,7 +258,7 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
             <select
               value={formData.magicSchool}
               onChange={(e) => handleInputChange('magicSchool', e.target.value)}
-              style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+              style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
             >
               <option value="">Aucune école spécifique</option>
               {MAGIC_SCHOOLS.map(school => (
@@ -275,7 +275,7 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
               type="number"
               value={formData.charges}
               onChange={(e) => handleInputChange('charges', parseInt(e.target.value) || 0)}
-              style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+              style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
               min="0"
               placeholder="0 = charges illimitées"
             />
@@ -303,8 +303,8 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
               style={{
                 width: '100%',
                 padding: 8,
-                borderRadius: 4,
-                border: '1px solid #ccc',
+                borderRadius: 'var(--rayon-bouton)',
+                border: '1px solid var(--trait)',
                 minHeight: 60,
                 resize: 'vertical'
               }}
@@ -322,8 +322,8 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
               style={{
                 width: '100%',
                 padding: 8,
-                borderRadius: 4,
-                border: '1px solid #ccc',
+                borderRadius: 'var(--rayon-bouton)',
+                border: '1px solid var(--trait)',
                 minHeight: 60,
                 resize: 'vertical'
               }}
@@ -337,9 +337,9 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
 
   return (
     <div style={{
-      border: '1px solid #ddd',
-      borderRadius: 8,
-      backgroundColor: '#fff',
+      border: '1px solid var(--trait)',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflow: 'hidden',
       display: 'flex',
@@ -348,10 +348,10 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
       {/* En-tête */}
       <div style={{
         padding: 16,
-        borderBottom: '1px solid #ddd',
-        backgroundColor: '#f8f9fa'
+        borderBottom: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)'
       }}>
-        <h3 style={{ margin: 0 }}>
+        <h3 style={{ margin: 0, color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>
           {initialData ? 'Modifier' : 'Créer'} un objet
         </h3>
       </div>
@@ -359,8 +359,8 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
       {/* Onglets */}
       <div style={{
         display: 'flex',
-        borderBottom: '1px solid #ddd',
-        backgroundColor: '#f8f9fa',
+        borderBottom: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)',
         overflowX: 'auto'
       }}>
         {tabs.map(tab => (
@@ -370,8 +370,9 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
             style={{
               padding: '12px 16px',
               border: 'none',
-              backgroundColor: activeTab === tab.id ? '#fff' : 'transparent',
-              borderBottom: activeTab === tab.id ? '2px solid #ffc107' : '2px solid transparent',
+              background: 'transparent',
+              color: activeTab === tab.id ? 'var(--coeur)' : 'var(--encre-douce)',
+              borderBottom: activeTab === tab.id ? '2px solid var(--coeur)' : '2px solid transparent',
               cursor: 'pointer',
               fontSize: 12,
               whiteSpace: 'nowrap',
@@ -380,7 +381,6 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
               gap: 6
             }}
           >
-            <span>{tab.icon}</span>
             <span>{tab.label}</span>
           </button>
         ))}
@@ -400,8 +400,8 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
       {/* Boutons */}
       <div style={{
         padding: 16,
-        borderTop: '1px solid #ddd',
-        backgroundColor: '#f8f9fa',
+        borderTop: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)',
         display: 'flex',
         justifyContent: 'flex-end',
         gap: 12
@@ -411,10 +411,10 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
           onClick={onCancel}
           style={{
             padding: '8px 16px',
-            backgroundColor: '#6c757d',
-            color: 'white',
-            border: 'none',
-            borderRadius: 4,
+            backgroundColor: 'var(--fond-carte)',
+            color: 'var(--encre)',
+            border: '1px solid var(--trait)',
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}
         >
@@ -424,10 +424,10 @@ function AdvancedObjectForm({ onSubmit, onCancel, initialData = null }) {
           onClick={handleSubmit}
           style={{
             padding: '8px 16px',
-            backgroundColor: '#ffc107',
-            color: '#000',
+            backgroundColor: 'var(--coeur)',
+            color: 'var(--sur-coeur)',
             border: 'none',
-            borderRadius: 4,
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}
         >

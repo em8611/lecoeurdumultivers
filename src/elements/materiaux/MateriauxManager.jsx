@@ -113,30 +113,30 @@ export default function MateriauxManager() {
   return (
     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {notification && (
-        <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 1000, padding: '12px 20px', borderRadius: 6, color: 'white', backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'error' ? '#dc3545' : '#17a2b8', boxShadow: '0 4px 8px rgba(0,0,0,0.2)' }}>
+        <div style={{ position: 'fixed', top: 20, right: 20, zIndex: 1000, padding: '12px 20px', borderRadius: 'var(--rayon-bouton)', color: 'white', backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d', boxShadow: 'var(--ombre-survol)' }}>
           {notification.message}
         </div>
       )}
-      <header style={{ borderBottom: '3px solid #9C27B0', paddingBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+      <header style={{ borderBottom: '1px solid var(--trait)', paddingBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
         <div>
-          <h2 style={{ fontSize: '2rem', color: '#9C27B0', margin: 0 }}>💎 Matériaux</h2>
-          <p style={{ color: '#666', marginTop: '0.5rem' }}>Gestion des ressources, matériaux et composants de votre univers</p>
+          <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Matériaux</h2>
+          <p style={{ color: 'var(--encre-douce)', marginTop: '0.5rem' }}>Gestion des ressources, matériaux et composants de votre univers</p>
         </div>
         <div>
           <button
             onClick={gotoFiches}
             style={{
               padding: '0.6rem 1rem',
-              background: '#3949ab',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
             title="Ouvrir le viewer des fiches"
           >
-            📄 Fiches
+            Fiches
           </button>
         </div>
       </header>
@@ -144,52 +144,52 @@ export default function MateriauxManager() {
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
         <input
           type="text"
-          placeholder="🔍 Rechercher un matériau..."
+          placeholder="Rechercher un matériau..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ flexGrow: 1, minWidth: '250px', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc', fontSize: '1rem' }}
+          style={{ flexGrow: 1, minWidth: '250px', padding: '0.75rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: '1rem' }}
         />
-        <select value={filterType} onChange={(e) => setFilterType(e.target.value)} style={{ padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc', fontSize: '1rem' }}>
+        <select value={filterType} onChange={(e) => setFilterType(e.target.value)} style={{ padding: '0.75rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: '1rem' }}>
           <option value="Tous">Tous les types</option>
           {MATERIAUX_TYPES.map(type => <option key={type} value={type}>{type}</option>)}
         </select>
-        <select value={filterRarete} onChange={(e) => setFilterRarete(e.target.value)} style={{ padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc', fontSize: '1rem' }}>
+        <select value={filterRarete} onChange={(e) => setFilterRarete(e.target.value)} style={{ padding: '0.75rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: '1rem' }}>
           <option value="Tous">Toutes raretés</option>
           {MATERIAUX_RARETES.map(r => <option key={r} value={r}>{r}</option>)}
         </select>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
-        <StatCard label="Total matériaux" value={materiaux.length} color="#9C27B0" icon="💎" />
-        <StatCard label="Légendaires" value={materiaux.filter(m => m.rarete === 'Légendaire' || m.rarete === 'Mythique').length} color="#FF9800" icon="⭐" />
-        <StatCard label="Dangereux" value={materiaux.filter(m => m.dangereux).length} color="#F44336" icon="⚠️" />
+        <StatCard label="Total matériaux" value={materiaux.length} color="var(--coeur)" />
+        <StatCard label="Légendaires" value={materiaux.filter(m => m.rarete === 'Légendaire' || m.rarete === 'Mythique').length} color="var(--or)" />
+        <StatCard label="Dangereux" value={materiaux.filter(m => m.dangereux).length} color="#a13d3d" />
       </div>
 
       <div style={{ display: 'flex', gap: '2rem' }}>
         <div style={{ width: '320px', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <button onClick={() => { setSelectedMateriau({ ...MATERIAU_DEFAULT }); setIsEditing(true); }} style={{ width: '100%', padding: '0.75rem', background: '#4CAF50', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>+ Nouveau matériau</button>
+          <button onClick={() => { setSelectedMateriau({ ...MATERIAU_DEFAULT }); setIsEditing(true); }} style={{ width: '100%', padding: '0.75rem', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}>+ Nouveau matériau</button>
           <button
             onClick={() => setShowBatchImport(true)}
-            style={{ width: '100%', padding: '0.65rem', background: '#6f42c1', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ width: '100%', padding: '0.65rem', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Importer plusieurs matériaux par leurs noms (une ligne = un matériau)"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <ElementList
             items={filteredMateriaux}
             selectedId={selectedMateriau?.id}
             onSelect={(m) => { setSelectedMateriau(m); setIsEditing(false); }}
             primaryKey="nom"
-            secondary={(m) => `${m.type} • ${m.etat}${m.dangereux ? ' ⚠️' : ''}`}
+            secondary={(m) => `${m.type} • ${m.etat}${m.dangereux ? ' (danger)' : ''}`}
             badge={(m) => ({ kind: 'rarete', value: m.rarete })}
             emptyLabel="Aucun matériau"
             renderActions={(m) => (
               <button
                 onClick={(e) => { e.stopPropagation(); exportFicheMateriau(m); }}
-                style={{ padding: '4px 8px', border: '1px solid #ddd', background: '#fff', borderRadius: 3, cursor: 'pointer', fontSize: 12 }}
+                style={{ padding: '6px 10px', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', background: 'var(--fond-carte)', color: 'var(--encre)', cursor: 'pointer', fontSize: 12 }}
                 title="Exporter la fiche technique"
               >
-                📄
+                Fiche
               </button>
             )}
           />
@@ -213,8 +213,7 @@ export default function MateriauxManager() {
               }}
             />
           ) : (
-            <div style={{ textAlign: 'center', padding: '3rem', color: '#999', fontStyle: 'italic' }}>
-              <p style={{ fontSize: '3rem', margin: 0 }}>💎</p>
+            <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--encre-douce)', fontStyle: 'italic' }}>
               <p>Sélectionnez un matériau ou créez-en un nouveau</p>
             </div>
           )}
@@ -233,12 +232,11 @@ export default function MateriauxManager() {
   );
 }
 
-function StatCard({ label, value, color, icon }) {
+function StatCard({ label, value, color }) {
   return (
-    <div style={{ padding: '1rem', background: 'white', borderRadius: '8px', border: `2px solid ${color}30`, textAlign: 'center' }}>
-      <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{icon}</div>
+    <div style={{ padding: '1rem', backgroundColor: 'var(--fond-carte)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)', textAlign: 'center' }}>
       <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color }}>{value}</div>
-      <div style={{ fontSize: '0.85rem', color: '#666' }}>{label}</div>
+      <div style={{ fontSize: '0.85rem', color: 'var(--encre-douce)' }}>{label}</div>
     </div>
   );
 }
@@ -248,24 +246,24 @@ function MateriauForm({ materiau, onSave, onCancel }) {
   const handleSubmit = (e) => { e.preventDefault(); onSave(form); };
   const handleArrayChange = (field, value) => { setForm({ ...form, [field]: value.split('\n').filter(v => v.trim()) }); };
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxHeight: '600px', overflowY: 'auto', padding: '1rem', background: '#fafafa', borderRadius: '12px' }}>
-      <h3 style={{ color: '#9C27B0', margin: 0 }}>✏️ {form.id ? 'Modifier' : 'Créer'} un matériau</h3>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxHeight: '600px', overflowY: 'auto', padding: 24, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+      <h3 style={{ color: 'var(--coeur)', margin: 0, fontFamily: 'var(--police-affichage)' }}>{form.id ? 'Modifier' : 'Créer'} un matériau</h3>
       <div>
         <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.25rem' }}>Nom du matériau *</label>
-        <input value={form.nom} onChange={e => setForm({ ...form, nom: e.target.value })} required placeholder="Ex: Mithril" style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <input value={form.nom} onChange={e => setForm({ ...form, nom: e.target.value })} required placeholder="Ex: Mithril" style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
         <div>
           <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.25rem' }}>Type</label>
-          <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}>{MATERIAUX_TYPES.map(t => <option key={t} value={t}>{t}</option>)}</select>
+          <select value={form.type} onChange={e => setForm({ ...form, type: e.target.value })} style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}>{MATERIAUX_TYPES.map(t => <option key={t} value={t}>{t}</option>)}</select>
         </div>
         <div>
           <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.25rem' }}>Rareté</label>
-          <select value={form.rarete} onChange={e => setForm({ ...form, rarete: e.target.value })} style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}>{MATERIAUX_RARETES.map(r => <option key={r} value={r}>{r}</option>)}</select>
+          <select value={form.rarete} onChange={e => setForm({ ...form, rarete: e.target.value })} style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}>{MATERIAUX_RARETES.map(r => <option key={r} value={r}>{r}</option>)}</select>
         </div>
         <div>
           <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.25rem' }}>État</label>
-          <select value={form.etat} onChange={e => setForm({ ...form, etat: e.target.value })} style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}>{MATERIAUX_ETATS.map(ea => <option key={ea} value={ea}>{ea}</option>)}</select>
+          <select value={form.etat} onChange={e => setForm({ ...form, etat: e.target.value })} style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}>{MATERIAUX_ETATS.map(ea => <option key={ea} value={ea}>{ea}</option>)}</select>
         </div>
       </div>
       <Textarea label="Description" value={form.description} onChange={v => setForm({ ...form, description: v })} rows={3} placeholder="Description générale..." />
@@ -282,10 +280,10 @@ function MateriauForm({ materiau, onSave, onCancel }) {
         <Input label="Conductivité" value={form.conductivite} onChange={v => setForm({ ...form, conductivite: v })} placeholder="Ex: Électrique" />
       </div>
       <Textarea label="Effets magiques" value={form.effetsMagiques} onChange={v => setForm({ ...form, effetsMagiques: v })} rows={3} placeholder="Propriétés magiques..." />
-      <div style={{ padding: '1rem', background: form.dangereux ? '#FFEBEE' : '#E8F5E9', borderRadius: '8px', border: `2px solid ${form.dangereux ? '#F44336' : '#4CAF50'}` }}>
+      <div style={{ padding: '1rem', backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: form.dangereux ? '3px solid var(--or)' : '1px solid var(--trait)' }}>
         <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
           <input type="checkbox" checked={form.dangereux} onChange={e => setForm({ ...form, dangereux: e.target.checked })} style={{ width: '20px', height: '20px', cursor: 'pointer' }} />
-          <span style={{ fontWeight: 'bold', color: form.dangereux ? '#F44336' : '#4CAF50' }}>{form.dangereux ? '⚠️ Matériau dangereux' : '✅ Matériau sûr'}</span>
+          <span style={{ fontWeight: 'bold', color: form.dangereux ? 'var(--coeur)' : 'var(--encre)' }}>{form.dangereux ? 'Matériau dangereux' : 'Matériau sûr'}</span>
         </label>
         {form.dangereux && (
           <Textarea label="Précautions" value={form.precautions} onChange={v => setForm({ ...form, precautions: v })} rows={3} placeholder="Dangers, équipements..." />
@@ -296,8 +294,8 @@ function MateriauForm({ materiau, onSave, onCancel }) {
       <Textarea label="Origine" value={form.origine} onChange={v => setForm({ ...form, origine: v })} rows={2} placeholder="Univers, dimension..." />
       <Textarea label="Notes" value={form.notes} onChange={v => setForm({ ...form, notes: v })} rows={3} placeholder="Informations supplémentaires..." />
       <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-        <button type="submit" style={btn('#4CAF50', true)}>💾 Enregistrer</button>
-        <button type="button" onClick={onCancel} style={btn('#ccc')}>Annuler</button>
+        <button type="submit" style={btn('primary', true)}>Enregistrer</button>
+        <button type="button" onClick={onCancel} style={btn('secondary')}>Annuler</button>
       </div>
     </form>
   );
@@ -312,35 +310,35 @@ function MateriauDetails({ materiau, onEdit, onDelete, onExport }) {
   ];
   const actions = (
     <>
-      <button onClick={onEdit} style={btn('#2196F3')}>✏️ Modifier</button>
-      <button onClick={() => onExport && onExport(materiau)} style={btn('#6c757d')} title="Exporter JSON">📂 Exporter</button>
-      <button onClick={() => onDelete(materiau.id)} style={btn('#f44336')}>🗑️ Supprimer</button>
+      <button onClick={onEdit} style={btn('modifier')}>Modifier</button>
+      <button onClick={() => onExport && onExport(materiau)} style={btn('secondary')} title="Exporter JSON">Exporter</button>
+      <button onClick={() => onDelete(materiau.id)} style={btn('danger')}>Supprimer</button>
     </>
   );
   return (
     <ElementDetailsShell title={materiau.nom} badges={badges} actions={actions}>
-      <Section title="Description" icon="📋" content={materiau.description} />
-      <Section title="Apparence" icon="👁️" content={materiau.apparence} />
+      <Section title="Description" content={materiau.description} />
+      <Section title="Apparence" content={materiau.apparence} />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px,1fr))', gap: '1rem' }}>
-        <InfoCard label="Valeur" value={materiau.valeur} icon="💰" />
-        <InfoCard label="Poids" value={materiau.poids} icon="⚖️" />
-        <InfoCard label="Dureté" value={materiau.durete} icon="💪" />
-        <InfoCard label="Point de fusion" value={materiau.pointFusion} icon="🔥" />
-        <InfoCard label="Conductivité" value={materiau.conductivite} icon="⚡" />
+        <InfoCard label="Valeur" value={materiau.valeur} />
+        <InfoCard label="Poids" value={materiau.poids} />
+        <InfoCard label="Dureté" value={materiau.durete} />
+        <InfoCard label="Point de fusion" value={materiau.pointFusion} />
+        <InfoCard label="Conductivité" value={materiau.conductivite} />
       </div>
-      <Section title="Propriétés" icon="✨" content={materiau.proprietes} />
-      <Section title="Utilisations" icon="🔨" content={materiau.utilisations} />
-      <Section title="Effets magiques" icon="🔮" content={materiau.effetsMagiques} />
+      <Section title="Propriétés" content={materiau.proprietes} />
+      <Section title="Utilisations" content={materiau.utilisations} />
+      <Section title="Effets magiques" content={materiau.effetsMagiques} />
       {materiau.dangereux && (
-        <div style={{ padding: '1rem', background: '#FFEBEE', borderRadius: '8px', border: '2px solid #F44336' }}>
-          <h4 style={{ color: '#F44336', marginBottom: '0.5rem' }}>⚠️ Précautions</h4>
-          <p style={{ margin: 0, lineHeight: '1.6', color: '#333' }}>{materiau.precautions}</p>
+        <div style={{ padding: '1rem', backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', borderLeft: '3px solid var(--or)' }}>
+          <h4 style={{ color: 'var(--coeur)', marginBottom: '0.5rem' }}>Précautions</h4>
+          <p style={{ margin: 0, lineHeight: '1.6', color: 'var(--encre)' }}>{materiau.precautions}</p>
         </div>
       )}
-      <Section title="Extraction" icon="⛏️" content={materiau.extraction} />
-      <Section title="Transformation" icon="🔧" content={materiau.transformation} />
-      <Section title="Origine" icon="🌍" content={materiau.origine} />
-      <Section title="Notes" icon="📝" content={materiau.notes} />
+      <Section title="Extraction" content={materiau.extraction} />
+      <Section title="Transformation" content={materiau.transformation} />
+      <Section title="Origine" content={materiau.origine} />
+      <Section title="Notes" content={materiau.notes} />
     </ElementDetailsShell>
   );
 }
@@ -349,7 +347,7 @@ function Textarea({ label, value, onChange, rows, placeholder }) {
   return (
     <div>
       <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.25rem' }}>{label}</label>
-      <textarea value={value} onChange={e => onChange(e.target.value)} rows={rows} placeholder={placeholder} style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }} />
+      <textarea value={value} onChange={e => onChange(e.target.value)} rows={rows} placeholder={placeholder} style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
     </div>
   );
 }
@@ -358,22 +356,15 @@ function Input({ label, value, onChange, placeholder }) {
   return (
     <div>
       <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.25rem' }}>{label}</label>
-      <input value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }} />
+      <input value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
     </div>
   );
 }
 
-function btn(color, grow) {
-  return (
-    {
-      padding: '0.75rem 1.25rem',
-      background: color,
-      color: color === '#ccc' ? '#333' : 'white',
-      border: 'none',
-      borderRadius: '8px',
-      cursor: 'pointer',
-      fontWeight: 'bold',
-      flexGrow: grow ? 1 : 0
-    }
-  );
+function btn(variant, grow) {
+  const base = { padding: '0.75rem 1.25rem', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', flexGrow: grow ? 1 : 0 };
+  if (variant === 'primary') return { ...base, backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)' };
+  if (variant === 'modifier') return { ...base, backgroundColor: 'var(--or)', color: 'var(--sur-or)' };
+  if (variant === 'danger') return { ...base, backgroundColor: '#a13d3d', color: 'white' };
+  return { ...base, backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)' };
 }

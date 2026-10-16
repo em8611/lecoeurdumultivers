@@ -35,28 +35,28 @@ function ElementRelationsEditor({ element }) {
   };
 
   return (
-    <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid #eee' }}>
-      <strong>Liaisons</strong>
+    <div style={{ marginTop: 16, paddingTop: 12, borderTop: '1px solid var(--trait)' }}>
+      <strong style={{ color: 'var(--coeur)' }}>Liaisons</strong>
       <div style={{ display: 'flex', gap: 8, marginTop: 8, marginBottom: 8 }}>
-        <select value={targetCategory} onChange={(e) => setTargetCategory(e.target.value)} style={{ padding: 6, borderRadius: 4, border: '1px solid #ccc' }}>
+        <select value={targetCategory} onChange={(e) => setTargetCategory(e.target.value)} style={{ padding: 6, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}>
           {categories.map(c => <option key={c.key} value={c.key}>{c.label}</option>)}
         </select>
-        <select value={targetId} onChange={(e) => setTargetId(e.target.value)} style={{ padding: 6, borderRadius: 4, border: '1px solid #ccc', flex: 1 }}>
+        <select value={targetId} onChange={(e) => setTargetId(e.target.value)} style={{ padding: 6, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', flex: 1 }}>
           <option value="">Choisir un élément...</option>
           {targetItems.map(item => (
             <option key={item.id} value={item.id}>{item.name || item.nom}</option>
           ))}
         </select>
-        <button type="button" onClick={addLink} style={{ padding: '6px 12px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>
+        <button type="button" onClick={addLink} style={{ padding: '6px 12px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}>
           Lier
         </button>
       </div>
       {links.length > 0 && (
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {links.map((link, idx) => (
-            <span key={`${link.category}-${link.id}-${idx}`} style={{ background: '#f1f3f5', padding: '4px 10px', borderRadius: 12, fontSize: 12, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <span key={`${link.category}-${link.id}-${idx}`} style={{ backgroundColor: 'var(--douceur)', color: 'var(--encre)', padding: '4px 10px', borderRadius: 'var(--rayon-pilule)', fontSize: 12, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
               {link.name}
-              <button onClick={() => removeLink(idx)} style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}>✕</button>
+              <button onClick={() => removeLink(idx)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--encre-douce)' }}>✕</button>
             </span>
           ))}
         </div>

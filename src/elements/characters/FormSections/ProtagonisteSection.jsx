@@ -4,7 +4,7 @@ import FormField from '../../../components/common/FormField.jsx';
 function ProtagonisteSection({ formData, onInputChange }) {
   return (
     <div className="form-section-card form-grid">
-      <h4 style={{ margin: '0 0 1rem 0', color: '#0d6efd', gridColumn: '1 / -1' }}>
+      <h4 style={{ margin: '0 0 1rem 0', color: 'var(--coeur)', gridColumn: '1 / -1' }}>
         Section Protagoniste
       </h4>
 

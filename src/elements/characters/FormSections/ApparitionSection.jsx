@@ -15,7 +15,7 @@ function ApparitionSection({ formData, onInputChange }) {
           <select
             value={formData._franchiseDraft || ''}
             onChange={(e) => onInputChange('_franchiseDraft', e.target.value)}
-            style={{ width: '50%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+            style={{ width: '50%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           >
             <option value="">Ajouter...</option>
             {UNIVERSE_FRANCHISE_GROUPS.map(group => (
@@ -37,12 +37,12 @@ function ApparitionSection({ formData, onInputChange }) {
               }
               onInputChange('_franchiseDraft', '');
             }}
-            style={{ padding: '8px 12px', borderRadius: 6, border: '1px solid #2563eb', background: '#2563eb', color: 'white', cursor: 'pointer' }}
+            style={{ padding: '8px 12px', borderRadius: 'var(--rayon-bouton)', border: 'none', background: 'var(--coeur)', color: 'var(--sur-coeur)', cursor: 'pointer' }}
           >Ajouter</button>
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {(Array.isArray(formData.universeFranchises) ? formData.universeFranchises : []).map((f, idx) => (
-            <span key={f + idx} style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', padding: '4px 8px', borderRadius: 12, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span key={f + idx} style={{ background: 'var(--douceur)', border: '1px solid var(--trait)', color: 'var(--encre)', padding: '4px 8px', borderRadius: 'var(--rayon-pilule)', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               {f}
               <button
                 type="button"
@@ -50,7 +50,7 @@ function ApparitionSection({ formData, onInputChange }) {
                   const current = (Array.isArray(formData.universeFranchises) ? formData.universeFranchises : []).filter((x) => x !== f);
                   onInputChange('universeFranchises', current);
                 }}
-                style={{ background: 'transparent', border: 'none', color: '#166534', cursor: 'pointer' }}
+                style={{ background: 'transparent', border: 'none', color: 'var(--encre-douce)', cursor: 'pointer' }}
                 aria-label={`Supprimer ${f}`}
               >✕</button>
             </span>
@@ -62,7 +62,7 @@ function ApparitionSection({ formData, onInputChange }) {
         <select
           value={formData.mainLocation || ''}
           onChange={(e) => onInputChange('mainLocation', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         >
           <option value="">Sélectionner...</option>
           {LOCATION_GROUPS.map(group => (
@@ -81,7 +81,7 @@ function ApparitionSection({ formData, onInputChange }) {
           <select
             value={formData._assocLocationDraft || ''}
             onChange={(e) => onInputChange('_assocLocationDraft', e.target.value)}
-            style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+            style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           >
             <option value="">Lieu...</option>
             {LOCATION_GROUPS.map(group => (
@@ -97,7 +97,7 @@ function ApparitionSection({ formData, onInputChange }) {
             value={formData._assocLocationContext || ''}
             onChange={(e) => onInputChange('_assocLocationContext', e.target.value)}
             placeholder="Contexte (ex: Chapitre 3, Mission X)"
-            style={{ flex: 1, minWidth: 240, padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+            style={{ flex: 1, minWidth: 240, padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           />
           <button
             type="button"
@@ -113,12 +113,12 @@ function ApparitionSection({ formData, onInputChange }) {
                 onInputChange('_assocLocationContext', '');
               }
             }}
-            style={{ padding: '8px 12px', borderRadius: 6, border: '1px solid #2563eb', background: '#2563eb', color: 'white', cursor: 'pointer' }}
+            style={{ padding: '8px 12px', borderRadius: 'var(--rayon-bouton)', border: 'none', background: 'var(--coeur)', color: 'var(--sur-coeur)', cursor: 'pointer' }}
           >Ajouter</button>
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {(Array.isArray(formData.associatedLocations) ? formData.associatedLocations : []).map((entry, idx) => (
-            <span key={(entry.location || 'loc') + idx} style={{ background: '#eef2ff', border: '1px solid #c7d2fe', color: '#1e3a8a', padding: '4px 8px', borderRadius: 12, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span key={(entry.location || 'loc') + idx} style={{ background: 'var(--douceur)', border: '1px solid var(--trait)', color: 'var(--encre)', padding: '4px 8px', borderRadius: 'var(--rayon-pilule)', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <strong>{entry.location}</strong>{entry.context ? ` — ${entry.context}` : ''}
               <button
                 type="button"
@@ -126,7 +126,7 @@ function ApparitionSection({ formData, onInputChange }) {
                   const current = (Array.isArray(formData.associatedLocations) ? formData.associatedLocations : []).filter((e, i) => i !== idx);
                   onInputChange('associatedLocations', current);
                 }}
-                style={{ background: 'transparent', border: 'none', color: '#1e3a8a', cursor: 'pointer' }}
+                style={{ background: 'transparent', border: 'none', color: 'var(--encre-douce)', cursor: 'pointer' }}
                 aria-label={`Supprimer ${entry.location}`}
               >✕</button>
             </span>

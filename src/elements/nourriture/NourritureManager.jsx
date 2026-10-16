@@ -318,19 +318,19 @@ export default function NourritureManager() {
           right: 20,
           zIndex: 1000,
           padding: '12px 20px',
-          borderRadius: 6,
           color: 'white',
           backgroundColor:
-            notification.type === 'success' ? '#28a745' :
-            notification.type === 'error' ? '#dc3545' : '#17a2b8',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+            notification.type === 'success' ? '#2e7d4f' :
+            notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          borderRadius: 'var(--rayon-bouton)',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
-      <header style={{ borderBottom: '3px solid #FF6B35', paddingBottom: '1rem' }}>
-        <h2 style={{ fontSize: '2rem', color: '#FF6B35', margin: 0 }}>🍖 Nourriture</h2>
-        <p style={{ color: '#666', marginTop: '0.5rem' }}>
+      <header style={{ borderBottom: '1px solid var(--trait)', paddingBottom: '1rem' }}>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Nourriture</h2>
+        <p style={{ color: 'var(--encre-douce)', marginTop: '0.5rem' }}>
           Gestion des aliments, recettes et cuisine de votre univers
         </p>
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem' }}>
@@ -338,44 +338,44 @@ export default function NourritureManager() {
             onClick={gotoFiches}
             style={{
               padding: '0.5rem 1rem',
-              background: '#3949ab',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
             title="Ouvrir le viewer des fiches"
           >
-            📄 Fiches
+            Fiches
           </button>
           <button
             onClick={handleGlobalExport}
             style={{
               padding: '0.5rem 1rem',
-              background: '#2196F3',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
             title="Exporter tous les aliments et recettes dans un seul fichier JSON"
           >
-            📤 Export global
+            Export global
           </button>
           <label
             style={{
               padding: '0.5rem 1rem',
-              background: '#17a2b8',
-              color: 'white',
-              borderRadius: '6px',
+              backgroundColor: 'var(--or)',
+              color: 'var(--sur-or)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
             title="Importer un fichier JSON contenant aliments et/ou recettes"
           >
-            📥 Import global
+            Import global
             <input
               type="file"
               accept=".json"
@@ -390,48 +390,50 @@ export default function NourritureManager() {
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <input
           type="text"
-          placeholder="🔍 Rechercher..."
+          placeholder="Rechercher..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{
             flexGrow: 1,
             padding: '0.75rem',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             fontSize: '1rem',
           }}
         />
       </div>
 
       {/* Onglets */}
-      <div style={{ display: 'flex', gap: '1rem', borderBottom: '2px solid #eee', paddingBottom: '0.5rem' }}>
+      <div style={{ display: 'flex', gap: '1rem', borderBottom: '1px solid var(--trait)', paddingBottom: '0.5rem' }}>
         <button
           onClick={() => { setView('aliments'); setSelectedItem(null); setIsEditing(false); }}
           style={{
             padding: '0.5rem 1.5rem',
-            background: view === 'aliments' ? '#FF6B35' : '#f0f0f0',
-            color: view === 'aliments' ? 'white' : '#333',
+            background: 'transparent',
+            color: view === 'aliments' ? 'var(--coeur)' : 'var(--encre-douce)',
             border: 'none',
-            borderRadius: '8px',
+            borderBottom: view === 'aliments' ? '2px solid var(--coeur)' : '2px solid transparent',
+            borderRadius: 0,
             cursor: 'pointer',
             fontWeight: 'bold',
           }}
         >
-          🥩 Aliments
+          Aliments
         </button>
         <button
           onClick={() => { setView('recettes'); setSelectedItem(null); setIsEditing(false); }}
           style={{
             padding: '0.5rem 1.5rem',
-            background: view === 'recettes' ? '#FF6B35' : '#f0f0f0',
-            color: view === 'recettes' ? 'white' : '#333',
+            background: 'transparent',
+            color: view === 'recettes' ? 'var(--coeur)' : 'var(--encre-douce)',
             border: 'none',
-            borderRadius: '8px',
+            borderBottom: view === 'recettes' ? '2px solid var(--coeur)' : '2px solid transparent',
+            borderRadius: 0,
             cursor: 'pointer',
             fontWeight: 'bold',
           }}
         >
-          📖 Recettes
+          Recettes
         </button>
       </div>
 
@@ -447,10 +449,10 @@ export default function NourritureManager() {
             style={{
               width: '100%',
               padding: '0.75rem',
-              background: '#4CAF50',
-              color: 'white',
+              backgroundColor: 'var(--coeur)',
+              color: 'var(--sur-coeur)',
               border: 'none',
-              borderRadius: '8px',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold',
               marginBottom: '1rem',
@@ -464,16 +466,16 @@ export default function NourritureManager() {
               <>
                 <button
                   onClick={handleExportAliments}
-                  style={{ padding: '0.55rem', background: '#2196F3', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+                  style={{ padding: '0.55rem', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
                   title="Exporter uniquement les aliments"
                 >
-                  ⬇️ Export Aliments
+                  Export Aliments
                 </button>
                 <label
-                  style={{ padding: '0.55rem', background: '#17a2b8', color: 'white', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', textAlign: 'center' }}
+                  style={{ padding: '0.55rem', backgroundColor: 'var(--or)', color: 'var(--sur-or)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', textAlign: 'center' }}
                   title="Importer un fichier JSON contenant une liste d'aliments"
                 >
-                  ⬆️ Import Aliments
+                  Import Aliments
                   <input type="file" accept=".json" style={{ display: 'none' }} onChange={(e) => { if (e.target.files[0]) handleImportAliments(e.target.files[0]); e.target.value=''; }} />
                 </label>
               </>
@@ -481,16 +483,16 @@ export default function NourritureManager() {
               <>
                 <button
                   onClick={handleExportRecettes}
-                  style={{ padding: '0.55rem', background: '#2196F3', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+                  style={{ padding: '0.55rem', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
                   title="Exporter uniquement les recettes"
                 >
-                  ⬇️ Export Recettes
+                  Export Recettes
                 </button>
                 <label
-                  style={{ padding: '0.55rem', background: '#17a2b8', color: 'white', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', textAlign: 'center' }}
+                  style={{ padding: '0.55rem', backgroundColor: 'var(--or)', color: 'var(--sur-or)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', textAlign: 'center' }}
                   title="Importer un fichier JSON contenant une liste de recettes"
                 >
-                  ⬆️ Import Recettes
+                  Import Recettes
                   <input type="file" accept=".json" style={{ display: 'none' }} onChange={(e) => { if (e.target.files[0]) handleImportRecettes(e.target.files[0]); e.target.value=''; }} />
                 </label>
               </>
@@ -501,17 +503,17 @@ export default function NourritureManager() {
             style={{
               width: '100%',
               padding: '0.6rem',
-              background: '#6f42c1',
-              color: 'white',
+              backgroundColor: 'var(--or)',
+              color: 'var(--sur-or)',
               border: 'none',
-              borderRadius: '8px',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold',
               marginBottom: '1rem',
             }}
             title={`Importer plusieurs ${view === 'aliments' ? 'aliments' : 'recettes'} par leurs noms`}
           >
-            📝 Import Batch {view === 'aliments' ? 'Aliments' : 'Recettes'}
+            Import Batch {view === 'aliments' ? 'Aliments' : 'Recettes'}
           </button>
 
           {view === 'aliments' ? (
@@ -526,10 +528,10 @@ export default function NourritureManager() {
               renderActions={(a) => (
                 <button
                   onClick={(e) => { e.stopPropagation(); exportFicheAliment(a); }}
-                  style={{ padding: '4px 8px', border: '1px solid #ddd', background: '#fff', borderRadius: 3, cursor: 'pointer', fontSize: 12 }}
+                  style={{ padding: '6px 10px', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', background: 'var(--fond-carte)', color: 'var(--encre)', cursor: 'pointer', fontSize: 12 }}
                   title="Exporter la fiche technique"
                 >
-                  📄
+                  Fiche
                 </button>
               )}
             />
@@ -545,10 +547,10 @@ export default function NourritureManager() {
               renderActions={(r) => (
                 <button
                   onClick={(e) => { e.stopPropagation(); exportFicheRecette(r); }}
-                  style={{ padding: '4px 8px', border: '1px solid #ddd', background: '#fff', borderRadius: 3, cursor: 'pointer', fontSize: 12 }}
+                  style={{ padding: '6px 10px', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', background: 'var(--fond-carte)', color: 'var(--encre)', cursor: 'pointer', fontSize: 12 }}
                   title="Exporter la fiche technique"
                 >
-                  📄
+                  Fiche
                 </button>
               )}
             />
@@ -596,7 +598,7 @@ export default function NourritureManager() {
               />
             )
           ) : (
-            <p style={{ color: '#999', fontStyle: 'italic' }}>
+            <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic' }}>
               Sélectionnez ou créez un {view === 'aliments' ? 'aliment' : 'recette'}
             </p>
           )}
@@ -634,18 +636,18 @@ function AlimentForm({ aliment, onSave, onCancel }) {
 
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <h3>✏️ {form.id ? 'Modifier' : 'Créer'} un aliment</h3>
+      <h3 style={{ color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>{form.id ? 'Modifier' : 'Créer'} un aliment</h3>
       <input
         placeholder="Nom de l'aliment"
         value={form.nom}
         onChange={(e) => setForm({ ...form, nom: e.target.value })}
         required
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <select
         value={form.categorie}
         onChange={(e) => setForm({ ...form, categorie: e.target.value })}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       >
         {NOURRITURE_CATEGORIES.map((cat) => (
           <option key={cat} value={cat}>{cat}</option>
@@ -655,25 +657,25 @@ function AlimentForm({ aliment, onSave, onCancel }) {
         placeholder="Origine (univers, région...)"
         value={form.origine}
         onChange={(e) => setForm({ ...form, origine: e.target.value })}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <textarea
         placeholder="Description"
         value={form.description}
         onChange={(e) => setForm({ ...form, description: e.target.value })}
         rows={4}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <input
         placeholder="Effets (guérison, énergie, poison...)"
         value={form.effets}
         onChange={(e) => setForm({ ...form, effets: e.target.value })}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <select
         value={form.rarete}
         onChange={(e) => setForm({ ...form, rarete: e.target.value })}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       >
         <option>Commun</option>
         <option>Peu commun</option>
@@ -681,10 +683,10 @@ function AlimentForm({ aliment, onSave, onCancel }) {
         <option>Légendaire</option>
       </select>
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <button type="submit" style={{ padding: '0.75rem', background: '#4CAF50', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>
+        <button type="submit" style={{ padding: '0.75rem', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}>
           Enregistrer
         </button>
-        <button type="button" onClick={onCancel} style={{ padding: '0.75rem', background: '#ccc', border: 'none', borderRadius: '8px', cursor: 'pointer' }}>
+        <button type="button" onClick={onCancel} style={{ padding: '0.75rem', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}>
           Annuler
         </button>
       </div>
@@ -700,16 +702,16 @@ function AlimentDetails({ aliment, onEdit, onDelete, onExport }) {
   ];
   const actions = (
     <>
-      <button onClick={onEdit} style={btn('#2196F3')}>✏️ Modifier</button>
-      <button onClick={() => onExport && onExport(aliment)} style={btn('#6c757d')} title="Exporter JSON">📂 Exporter</button>
-      <button onClick={() => onDelete(aliment.id)} style={btn('#f44336')}>🗑️ Supprimer</button>
+      <button onClick={onEdit} style={btn('modifier')}>Modifier</button>
+      <button onClick={() => onExport && onExport(aliment)} style={btn('secondary')} title="Exporter JSON">Exporter</button>
+      <button onClick={() => onDelete(aliment.id)} style={btn('danger')}>Supprimer</button>
     </>
   );
   return (
     <ElementDetailsShell title={aliment.nom} badges={badges} actions={actions}>
-      <Section title="Description" icon="📋" content={aliment.description} />
-      <Section title="Origine" icon="🌍" content={aliment.origine} />
-      <Section title="Effets" icon="✨" content={aliment.effets} />
+      <Section title="Description" content={aliment.description} />
+      <Section title="Origine" content={aliment.origine} />
+      <Section title="Effets" content={aliment.effets} />
     </ElementDetailsShell>
   );
 }
@@ -725,38 +727,38 @@ function RecetteForm({ recette, onSave, onCancel, aliments }) {
 
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <h3>✏️ {form.id ? 'Modifier' : 'Créer'} une recette</h3>
+      <h3 style={{ color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>{form.id ? 'Modifier' : 'Créer'} une recette</h3>
       <input
         placeholder="Nom de la recette"
         value={form.nom}
         onChange={(e) => setForm({ ...form, nom: e.target.value })}
         required
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <textarea
         placeholder="Ingrédients (un par ligne)"
         value={form.ingredients.join('\n')}
         onChange={(e) => setForm({ ...form, ingredients: e.target.value.split('\n') })}
         rows={4}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <textarea
         placeholder="Préparation"
         value={form.preparation}
         onChange={(e) => setForm({ ...form, preparation: e.target.value })}
         rows={6}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <input
         placeholder="Temps de préparation"
         value={form.temps}
         onChange={(e) => setForm({ ...form, temps: e.target.value })}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <select
         value={form.difficulte}
         onChange={(e) => setForm({ ...form, difficulte: e.target.value })}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       >
         <option>Facile</option>
         <option>Moyen</option>
@@ -767,19 +769,19 @@ function RecetteForm({ recette, onSave, onCancel, aliments }) {
         placeholder="Effets (bonus, guérison...)"
         value={form.effets}
         onChange={(e) => setForm({ ...form, effets: e.target.value })}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <input
         placeholder="Origine (culture, région...)"
         value={form.origine}
         onChange={(e) => setForm({ ...form, origine: e.target.value })}
-        style={{ padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+        style={{ padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
       />
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <button type="submit" style={{ padding: '0.75rem', background: '#4CAF50', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>
+        <button type="submit" style={{ padding: '0.75rem', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}>
           Enregistrer
         </button>
-        <button type="button" onClick={onCancel} style={{ padding: '0.75rem', background: '#ccc', border: 'none', borderRadius: '8px', cursor: 'pointer' }}>
+        <button type="button" onClick={onCancel} style={{ padding: '0.75rem', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}>
           Annuler
         </button>
       </div>
@@ -794,31 +796,28 @@ function RecetteDetails({ recette, onEdit, onDelete, onExport }) {
   ];
   const actions = (
     <>
-      <button onClick={onEdit} style={btn('#2196F3')}>✏️ Modifier</button>
-      <button onClick={() => onExport && onExport(recette)} style={btn('#6c757d')} title="Exporter JSON">📂 Exporter</button>
-      <button onClick={() => onDelete(recette.id)} style={btn('#f44336')}>🗑️ Supprimer</button>
+      <button onClick={onEdit} style={btn('modifier')}>Modifier</button>
+      <button onClick={() => onExport && onExport(recette)} style={btn('secondary')} title="Exporter JSON">Exporter</button>
+      <button onClick={() => onDelete(recette.id)} style={btn('danger')}>Supprimer</button>
     </>
   );
   return (
     <ElementDetailsShell title={recette.nom} badges={badges} actions={actions}>
-      <Section title="Ingrédients" icon="🥕" content={recette.ingredients} />
-      <Section title="Préparation" icon="🍳" content={recette.preparation} />
-      {recette.temps && <InfoCard label="Temps" value={recette.temps} icon="⏱️" />}
-      <Section title="Effets" icon="✨" content={recette.effets} />
-      <Section title="Origine" icon="🌍" content={recette.origine} />
+      <Section title="Ingrédients" content={recette.ingredients} />
+      <Section title="Préparation" content={recette.preparation} />
+      {recette.temps && <InfoCard label="Temps" value={recette.temps} />}
+      <Section title="Effets" content={recette.effets} />
+      <Section title="Origine" content={recette.origine} />
     </ElementDetailsShell>
   );
 }
 
-function btn(color, grow) {
-  return {
-    padding: '0.75rem 1.25rem',
-    background: color,
-    color: color === '#ccc' ? '#333' : 'white',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    flexGrow: grow ? 1 : 0
-  };
+function btn(variant, grow) {
+  if (variant === 'modifier') {
+    return { padding: '0.75rem 1.25rem', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', flexGrow: grow ? 1 : 0 };
+  }
+  if (variant === 'danger') {
+    return { padding: '0.75rem 1.25rem', backgroundColor: '#a13d3d', color: 'white', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', flexGrow: grow ? 1 : 0 };
+  }
+  return { padding: '0.75rem 1.25rem', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', flexGrow: grow ? 1 : 0 };
 }

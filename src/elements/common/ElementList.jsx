@@ -1,28 +1,22 @@
 import React from 'react';
 
-const BADGE_COLORS = {
-  danger: '#dc3545',
-  type: '#6c757d',
-  habitat: '#28a745',
-  rarete: '#fd7e14',
-  etat: '#17a2b8'
-};
-
-function badgeStyle(kind) {
+function badgeStyle() {
   return {
-    padding: '2px 8px',
-    borderRadius: 10,
     fontSize: 11,
-    fontWeight: 'bold',
-    background: BADGE_COLORS[kind] || '#6c757d',
-    color: 'white',
+    fontWeight: 600,
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    padding: '2px 8px',
+    borderRadius: 'var(--rayon-pilule)',
+    backgroundColor: 'var(--douceur)',
+    color: 'var(--encre)',
     whiteSpace: 'nowrap'
   };
 }
 
 export function ElementList({ items, selectedId, onSelect, primaryKey, secondary, badge, emptyLabel, renderActions }) {
   if (!items || items.length === 0) {
-    return <p style={{ color: '#999', fontStyle: 'italic' }}>{emptyLabel || 'Aucun élément'}</p>;
+    return <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic' }}>{emptyLabel || 'Aucun élément'}</p>;
   }
 
   return (
@@ -36,10 +30,10 @@ export function ElementList({ items, selectedId, onSelect, primaryKey, secondary
             onClick={() => onSelect(item)}
             style={{
               padding: 10,
-              borderRadius: 8,
+              borderRadius: 'var(--rayon-carte)',
               cursor: 'pointer',
-              background: isSelected ? '#e3f2fd' : '#fff',
-              border: isSelected ? '2px solid #2196f3' : '1px solid #ddd',
+              background: isSelected ? 'var(--douceur)' : 'var(--fond-carte)',
+              border: isSelected ? '1px solid var(--coeur)' : '1px solid var(--trait)',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
@@ -47,14 +41,14 @@ export function ElementList({ items, selectedId, onSelect, primaryKey, secondary
             }}
           >
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontWeight: 'bold', fontSize: 14, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <div style={{ fontWeight: 'bold', fontSize: 14, overflow: 'hidden', textOverflow: 'ellipsis', color: 'var(--encre)' }}>
                 {item[primaryKey] || '(sans nom)'}
               </div>
-              {secondary && <div style={{ fontSize: 12, color: '#666' }}>{secondary(item)}</div>}
+              {secondary && <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>{secondary(item)}</div>}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               {badgeInfo && badgeInfo.value && (
-                <span style={badgeStyle(badgeInfo.kind)}>{badgeInfo.value}</span>
+                <span style={badgeStyle()}>{badgeInfo.value}</span>
               )}
               {renderActions && renderActions(item)}
             </div>

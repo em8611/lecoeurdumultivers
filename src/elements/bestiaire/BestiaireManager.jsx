@@ -149,20 +149,20 @@ export default function BestiaireManager() {
           right: 20,
           zIndex: 1000,
           padding: '12px 20px',
-          borderRadius: 6,
           color: 'white',
           backgroundColor:
-            notification.type === 'success' ? '#28a745' :
-            notification.type === 'error' ? '#dc3545' : '#17a2b8',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+            notification.type === 'success' ? '#2e7d4f' :
+            notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          borderRadius: 'var(--rayon-bouton)',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
-      <header style={{ borderBottom: '3px solid #8B4513', paddingBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+      <header style={{ borderBottom: '1px solid var(--trait)', paddingBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
         <div>
-          <h2 style={{ fontSize: '2rem', color: '#8B4513', margin: 0 }}>🐉 Bestiaire</h2>
-          <p style={{ color: '#666', marginTop: '0.5rem' }}>
+          <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Bestiaire</h2>
+          <p style={{ color: 'var(--encre-douce)', marginTop: '0.5rem' }}>
             Gestion des créatures et espèces de votre univers
           </p>
         </div>
@@ -171,16 +171,16 @@ export default function BestiaireManager() {
             onClick={gotoFiches}
             style={{
               padding: '0.6rem 1rem',
-              background: '#3949ab',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
             title="Ouvrir le viewer des fiches"
           >
-            📄 Fiches
+            Fiches
           </button>
         </div>
       </header>
@@ -189,14 +189,14 @@ export default function BestiaireManager() {
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <input
           type="text"
-          placeholder="🔍 Rechercher une créature..."
+          placeholder="Rechercher une créature..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{
             flexGrow: 1,
             padding: '0.75rem',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             fontSize: '1rem',
           }}
         />
@@ -205,8 +205,8 @@ export default function BestiaireManager() {
           onChange={(e) => setFilterType(e.target.value)}
           style={{
             padding: '0.75rem',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             fontSize: '1rem',
           }}
         >
@@ -229,10 +229,10 @@ export default function BestiaireManager() {
             style={{
               width: '100%',
               padding: '0.75rem',
-              background: '#4CAF50',
-              color: 'white',
+              backgroundColor: 'var(--coeur)',
+              color: 'var(--sur-coeur)',
               border: 'none',
-              borderRadius: '8px',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold',
               marginBottom: '1rem',
@@ -245,17 +245,17 @@ export default function BestiaireManager() {
             style={{
               width: '100%',
               padding: '0.65rem',
-              background: '#6f42c1',
-              color: 'white',
+              backgroundColor: 'var(--or)',
+              color: 'var(--sur-or)',
               border: 'none',
-              borderRadius: '8px',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold',
               marginBottom: '1rem',
             }}
             title="Importer plusieurs créatures par leurs noms (une par ligne)"
           >
-            📝 Import Batch
+            Import Batch
           </button>
 
           <ElementList
@@ -296,10 +296,9 @@ export default function BestiaireManager() {
             <div style={{
               textAlign: 'center',
               padding: '3rem',
-              color: '#999',
+              color: 'var(--encre-douce)',
               fontStyle: 'italic',
             }}>
-              <p style={{ fontSize: '3rem', margin: 0 }}>🐉</p>
               <p>Sélectionnez une créature ou créez-en une nouvelle</p>
             </div>
           )}
@@ -352,12 +351,13 @@ function CreatureForm({ creature, onSave, onCancel }) {
       gap: '1rem',
       maxHeight: '600px',
       overflowY: 'auto',
-      padding: '1rem',
-      background: '#fafafa',
-      borderRadius: '12px',
+      padding: 24,
+      backgroundColor: 'var(--douceur)',
+      borderRadius: 'var(--rayon-carte)',
+      border: '1px solid var(--trait)',
     }}>
-      <h3 style={{ color: '#8B4513', margin: 0 }}>
-        ✏️ {form.id ? 'Modifier' : 'Créer'} une créature
+      <h3 style={{ color: 'var(--coeur)', margin: 0, fontFamily: 'var(--police-affichage)' }}>
+        {form.id ? 'Modifier' : 'Créer'} une créature
       </h3>
 
       <div>
@@ -369,7 +369,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           value={form.nom}
           onChange={(e) => setForm({ ...form, nom: e.target.value })}
           required
-          style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         />
       </div>
 
@@ -379,7 +379,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           <select
             value={form.type}
             onChange={(e) => setForm({ ...form, type: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           >
             {BESTIAIRE_TYPES.map((type) => (
               <option key={type} value={type}>{type}</option>
@@ -392,7 +392,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           <select
             value={form.dangerLevel}
             onChange={(e) => setForm({ ...form, dangerLevel: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           >
             {BESTIAIRE_NIVEAUX_DANGER.map((level) => (
               <option key={level} value={level}>{level}</option>
@@ -407,7 +407,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           <select
             value={form.habitat}
             onChange={(e) => setForm({ ...form, habitat: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           >
             {BESTIAIRE_HABITATS.map((habitat) => (
               <option key={habitat} value={habitat}>{habitat}</option>
@@ -420,7 +420,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           <select
             value={form.rarete}
             onChange={(e) => setForm({ ...form, rarete: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           >
             <option>Commun</option>
             <option>Peu commun</option>
@@ -439,7 +439,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
             placeholder="Ex: 5m"
             value={form.taille}
             onChange={(e) => setForm({ ...form, taille: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           />
         </div>
 
@@ -449,7 +449,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
             placeholder="Ex: 2 tonnes"
             value={form.poids}
             onChange={(e) => setForm({ ...form, poids: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           />
         </div>
 
@@ -458,7 +458,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           <select
             value={form.intelligence}
             onChange={(e) => setForm({ ...form, intelligence: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           >
             <option>Animale</option>
             <option>Primitive</option>
@@ -477,7 +477,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           value={form.apparence}
           onChange={(e) => setForm({ ...form, apparence: e.target.value })}
           rows={3}
-          style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         />
       </div>
 
@@ -488,7 +488,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           value={form.comportement}
           onChange={(e) => setForm({ ...form, comportement: e.target.value })}
           rows={3}
-          style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         />
       </div>
 
@@ -501,7 +501,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           value={form.capacites.join('\n')}
           onChange={(e) => handleArrayChange('capacites', e.target.value)}
           rows={4}
-          style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         />
       </div>
 
@@ -514,7 +514,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           value={form.faiblesses.join('\n')}
           onChange={(e) => handleArrayChange('faiblesses', e.target.value)}
           rows={3}
-          style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         />
       </div>
 
@@ -525,7 +525,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
             placeholder="Ex: Carnivore"
             value={form.alimentation}
             onChange={(e) => setForm({ ...form, alimentation: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           />
         </div>
 
@@ -535,7 +535,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
             placeholder="Ex: Ovipare"
             value={form.reproduction}
             onChange={(e) => setForm({ ...form, reproduction: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           />
         </div>
 
@@ -545,7 +545,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
             placeholder="Ex: 500 ans"
             value={form.dureeVie}
             onChange={(e) => setForm({ ...form, dureeVie: e.target.value })}
-            style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           />
         </div>
       </div>
@@ -556,7 +556,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           placeholder="Univers, dimension, région d'origine..."
           value={form.origine}
           onChange={(e) => setForm({ ...form, origine: e.target.value })}
-          style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         />
       </div>
 
@@ -567,7 +567,7 @@ function CreatureForm({ creature, onSave, onCancel }) {
           value={form.notes}
           onChange={(e) => setForm({ ...form, notes: e.target.value })}
           rows={3}
-          style={{ width: '100%', padding: '0.5rem', borderRadius: '4px', border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: '0.5rem', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         />
       </div>
 
@@ -576,25 +576,26 @@ function CreatureForm({ creature, onSave, onCancel }) {
           type="submit"
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#4CAF50',
-            color: 'white',
+            backgroundColor: 'var(--coeur)',
+            color: 'var(--sur-coeur)',
             border: 'none',
-            borderRadius: '8px',
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer',
             fontWeight: 'bold',
             flexGrow: 1,
           }}
         >
-          💾 Enregistrer
+          Enregistrer
         </button>
         <button
           type="button"
           onClick={onCancel}
           style={{
             padding: '0.75rem 1.5rem',
-            background: '#ccc',
-            border: 'none',
-            borderRadius: '8px',
+            backgroundColor: 'var(--fond-carte)',
+            color: 'var(--encre)',
+            border: '1px solid var(--trait)',
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer',
           }}
         >
@@ -610,7 +611,7 @@ function CreatureDetails({ creature, onEdit, onDelete, onExport }) {
   const [showFiche, setShowFiche] = useState(false);
   const ficheData = {
     title: creature.nom,
-    icon: creature.icon || '🐉',
+    icon: creature.icon || '',
     image: creature.image,
     description: creature.description || creature.apparence,
     metadata: [
@@ -620,12 +621,12 @@ function CreatureDetails({ creature, onEdit, onDelete, onExport }) {
       { label: 'Rareté', value: creature.rarete },
     ].filter(m => m.value),
     sections: [
-      creature.apparence ? { icon: '👁️', titre: 'Apparence', contenu: creature.apparence } : null,
-      creature.comportement ? { icon: '🎭', titre: 'Comportement', contenu: creature.comportement } : null,
-      (creature.capacites && creature.capacites.length) ? { icon: '⚡', titre: 'Capacités', contenu: creature.capacites.join('\n') } : null,
-      (creature.faiblesses && creature.faiblesses.length) ? { icon: '🛡️', titre: 'Faiblesses', contenu: creature.faiblesses.join('\n') } : null,
-      creature.origine ? { icon: '🌍', titre: 'Origine', contenu: creature.origine } : null,
-      creature.notes ? { icon: '📝', titre: 'Notes', contenu: creature.notes } : null,
+      creature.apparence ? { titre: 'Apparence', contenu: creature.apparence } : null,
+      creature.comportement ? { titre: 'Comportement', contenu: creature.comportement } : null,
+      (creature.capacites && creature.capacites.length) ? { titre: 'Capacités', contenu: creature.capacites.join('\n') } : null,
+      (creature.faiblesses && creature.faiblesses.length) ? { titre: 'Faiblesses', contenu: creature.faiblesses.join('\n') } : null,
+      creature.origine ? { titre: 'Origine', contenu: creature.origine } : null,
+      creature.notes ? { titre: 'Notes', contenu: creature.notes } : null,
     ].filter(Boolean)
   };
   const badges = [
@@ -636,10 +637,10 @@ function CreatureDetails({ creature, onEdit, onDelete, onExport }) {
   ];
   const actions = (
     <>
-      <button onClick={onEdit} style={btn('#2196F3')}>✏️ Modifier</button>
-      <button onClick={() => exportFicheBestiaire(creature)} style={btn('#D32F2F')} title="Exporter la fiche">📄 Fiche</button>
-      <button onClick={() => onExport && onExport(creature)} style={btn('#6c757d')} title="Exporter JSON">📂 Exporter</button>
-      <button onClick={() => onDelete(creature.id)} style={btn('#f44336')}>🗑️ Supprimer</button>
+      <button onClick={onEdit} style={btn('modifier')}>Modifier</button>
+      <button onClick={() => exportFicheBestiaire(creature)} style={btn('secondary')} title="Exporter la fiche">Fiche</button>
+      <button onClick={() => onExport && onExport(creature)} style={btn('secondary')} title="Exporter JSON">Exporter</button>
+      <button onClick={() => onDelete(creature.id)} style={btn('danger')}>Supprimer</button>
     </>
   );
   return (
@@ -647,24 +648,24 @@ function CreatureDetails({ creature, onEdit, onDelete, onExport }) {
     <ElementDetailsShell title={creature.nom} badges={badges} actions={actions}>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
-        {creature.taille && <InfoCard label="Taille" value={creature.taille} icon="📏" />}
-        {creature.poids && <InfoCard label="Poids" value={creature.poids} icon="⚖️" />}
-        {creature.intelligence && <InfoCard label="Intelligence" value={creature.intelligence} icon="🧠" />}
+        {creature.taille && <InfoCard label="Taille" value={creature.taille} />}
+        {creature.poids && <InfoCard label="Poids" value={creature.poids} />}
+        {creature.intelligence && <InfoCard label="Intelligence" value={creature.intelligence} />}
       </div>
 
-      <Section title="Apparence" icon="👁️" content={creature.apparence} />
-      <Section title="Comportement" icon="🎭" content={creature.comportement} />
-      <Section title="Capacités" icon="⚡" content={creature.capacites} />
-      <Section title="Faiblesses" icon="🛡️" content={creature.faiblesses} />
+      <Section title="Apparence" content={creature.apparence} />
+      <Section title="Comportement" content={creature.comportement} />
+      <Section title="Capacités" content={creature.capacites} />
+      <Section title="Faiblesses" content={creature.faiblesses} />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
-        {creature.alimentation && <InfoCard label="Alimentation" value={creature.alimentation} icon="🍖" />}
-        {creature.reproduction && <InfoCard label="Reproduction" value={creature.reproduction} icon="🥚" />}
-        {creature.dureeVie && <InfoCard label="Durée de vie" value={creature.dureeVie} icon="⏳" />}
+        {creature.alimentation && <InfoCard label="Alimentation" value={creature.alimentation} />}
+        {creature.reproduction && <InfoCard label="Reproduction" value={creature.reproduction} />}
+        {creature.dureeVie && <InfoCard label="Durée de vie" value={creature.dureeVie} />}
       </div>
 
-      <Section title="Origine" icon="🌍" content={creature.origine} />
-      <Section title="Notes" icon="📝" content={creature.notes} />
+      <Section title="Origine" content={creature.origine} />
+      <Section title="Notes" content={creature.notes} />
 
       {/* Liaisons inter-éléments (store global) */}
       <ElementRelationsEditor
@@ -676,15 +677,12 @@ function CreatureDetails({ creature, onEdit, onDelete, onExport }) {
   );
 }
 
-function btn(color, grow) {
-  return {
-    padding: '0.75rem 1.25rem',
-    background: color,
-    color: color === '#ccc' ? '#333' : 'white',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    flexGrow: grow ? 1 : 0
-  };
+function btn(variant, grow) {
+  if (variant === 'modifier') {
+    return { padding: '0.75rem 1.25rem', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', flexGrow: grow ? 1 : 0 };
+  }
+  if (variant === 'danger') {
+    return { padding: '0.75rem 1.25rem', backgroundColor: '#a13d3d', color: 'white', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', flexGrow: grow ? 1 : 0 };
+  }
+  return { padding: '0.75rem 1.25rem', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold', flexGrow: grow ? 1 : 0 };
 }

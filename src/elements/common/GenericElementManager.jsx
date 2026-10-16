@@ -12,7 +12,7 @@ function emptyForm(fields) {
 
 // Manager générique de catégorie : liste + formulaire CRUD.
 // Sert de base en attendant les managers définitifs (champs métier plus riches).
-export function GenericElementManager({ category, label, icon, color = '#495057', fields = DEFAULT_FIELDS }) {
+export function GenericElementManager({ category, label, icon, color = 'var(--coeur)', fields = DEFAULT_FIELDS }) {
   const state = useElementsState();
   const { addElement, updateElement, deleteElement } = useElementsActions();
   const items = state[category] || [];
@@ -47,19 +47,19 @@ export function GenericElementManager({ category, label, icon, color = '#495057'
 
   return (
     <div style={{ padding: 16 }}>
-      <h2 style={{ color }}>{icon} {label}</h2>
+      <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color }}>{label}</h2>
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 480, marginBottom: 24 }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 480, marginBottom: 24, marginTop: 16, backgroundColor: 'var(--douceur)', padding: 24, borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
         {fields.map(field => (
           <div key={field.key}>
-            <label style={{ display: 'block', fontSize: 13, color: '#555', marginBottom: 4 }}>{field.label}</label>
+            <label style={{ display: 'block', fontSize: 13, color: 'var(--encre-douce)', marginBottom: 4 }}>{field.label}</label>
             {field.type === 'textarea' ? (
               <textarea
                 name={field.key}
                 value={form[field.key] || ''}
                 onChange={handleChange}
                 rows={3}
-                style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
               />
             ) : (
               <input
@@ -67,17 +67,17 @@ export function GenericElementManager({ category, label, icon, color = '#495057'
                 name={field.key}
                 value={form[field.key] || ''}
                 onChange={handleChange}
-                style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
               />
             )}
           </div>
         ))}
         <div style={{ display: 'flex', gap: 8 }}>
-          <button type="submit" style={{ padding: '8px 16px', backgroundColor: color, color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
+          <button type="submit" style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}>
             {editingId ? 'Enregistrer' : '+ Ajouter'}
           </button>
           {editingId && (
-            <button type="button" onClick={handleCancel} style={{ padding: '8px 16px', border: '1px solid #ccc', borderRadius: 6, background: 'white', cursor: 'pointer' }}>
+            <button type="button" onClick={handleCancel} style={{ padding: '8px 16px', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', background: 'var(--fond-carte)', color: 'var(--encre)', cursor: 'pointer' }}>
               Annuler
             </button>
           )}
@@ -85,22 +85,22 @@ export function GenericElementManager({ category, label, icon, color = '#495057'
       </form>
 
       {items.length === 0 ? (
-        <p style={{ color: '#888' }}>Aucun élément pour l'instant.</p>
+        <p style={{ color: 'var(--encre-douce)' }}>Aucun élément pour l'instant.</p>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 12 }}>
           {items.map(item => (
-            <div key={item.id} style={{ border: '1px solid #ddd', borderRadius: 8, padding: 12 }}>
-              <h4 style={{ marginTop: 0 }}>{item[fields[0].key] || '(sans nom)'}</h4>
+            <div key={item.id} style={{ border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)', padding: 12, backgroundColor: 'var(--fond-carte)' }}>
+              <h4 style={{ marginTop: 0, color: 'var(--encre)' }}>{item[fields[0].key] || '(sans nom)'}</h4>
               {fields.slice(1).map(field => (
-                <p key={field.key} style={{ fontSize: 13, color: '#555', margin: '4px 0' }}>
+                <p key={field.key} style={{ fontSize: 13, color: 'var(--encre-douce)', margin: '4px 0' }}>
                   <strong>{field.label} : </strong>{item[field.key]}
                 </p>
               ))}
               <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                <button onClick={() => handleEdit(item)} style={{ padding: '4px 10px', border: '1px solid #ccc', borderRadius: 6, background: 'white', cursor: 'pointer', fontSize: 12 }}>
+                <button onClick={() => handleEdit(item)} style={{ padding: '4px 10px', border: 'none', borderRadius: 'var(--rayon-bouton)', background: 'var(--or)', color: 'var(--sur-or)', cursor: 'pointer', fontSize: 12 }}>
                   Modifier
                 </button>
-                <button onClick={() => deleteElement(category, item.id)} style={{ padding: '4px 10px', border: 'none', borderRadius: 6, background: '#dc3545', color: 'white', cursor: 'pointer', fontSize: 12 }}>
+                <button onClick={() => deleteElement(category, item.id)} style={{ padding: '4px 10px', border: 'none', borderRadius: 'var(--rayon-bouton)', background: '#a13d3d', color: 'white', cursor: 'pointer', fontSize: 12 }}>
                   Supprimer
                 </button>
               </div>

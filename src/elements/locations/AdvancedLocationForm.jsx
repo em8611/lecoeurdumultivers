@@ -22,12 +22,12 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
   const [activeTab, setActiveTab] = useState('basic');
 
   const tabs = [
-    { id: 'basic', label: 'Informations de base', icon: '📍' },
-    { id: 'geography', label: 'Géographie', icon: '🗺️' },
-    { id: 'culture', label: 'Culture & Société', icon: '🏛️' },
-    { id: 'resources', label: 'Ressources', icon: '💎' },
-    { id: 'history', label: 'Histoire', icon: '📜' },
-    { id: 'features', label: 'Caractéristiques', icon: '✨' }
+    { id: 'basic', label: 'Informations de base' },
+    { id: 'geography', label: 'Géographie' },
+    { id: 'culture', label: 'Culture & Société' },
+    { id: 'resources', label: 'Ressources' },
+    { id: 'history', label: 'Histoire' },
+    { id: 'features', label: 'Caractéristiques' }
   ];
 
   const handleInputChange = (field, value) => {
@@ -86,7 +86,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           <select
             value={formData._franchiseDraft || ''}
             onChange={(e) => handleInputChange('_franchiseDraft', e.target.value)}
-            style={{ flex: 1, padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+            style={{ flex: 1, padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           >
             <option value="">Ajouter...</option>
             {UNIVERSE_FRANCHISE_GROUPS.map(group => (
@@ -108,12 +108,12 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
               }
               handleInputChange('_franchiseDraft', '');
             }}
-            style={{ padding: '8px 12px', borderRadius: 6, border: '1px solid #2563eb', background: '#2563eb', color: 'white', cursor: 'pointer' }}
+            style={{ padding: '8px 12px', borderRadius: 'var(--rayon-bouton)', border: 'none', background: 'var(--coeur)', color: 'var(--sur-coeur)', cursor: 'pointer' }}
           >Ajouter</button>
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 8 }}>
           {(Array.isArray(formData.universeFranchises) ? formData.universeFranchises : []).map((f, idx) => (
-            <span key={f + idx} style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', padding: '4px 8px', borderRadius: 12, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span key={f + idx} style={{ background: 'var(--douceur)', border: '1px solid var(--trait)', color: 'var(--encre)', padding: '4px 8px', borderRadius: 'var(--rayon-pilule)', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               {f}
               <button
                 type="button"
@@ -121,7 +121,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
                   const current = (Array.isArray(formData.universeFranchises) ? formData.universeFranchises : []).filter((x) => x !== f);
                   handleInputChange('universeFranchises', current);
                 }}
-                style={{ background: 'transparent', border: 'none', color: '#166534', cursor: 'pointer' }}
+                style={{ background: 'transparent', border: 'none', color: 'var(--encre-douce)', cursor: 'pointer' }}
                 aria-label={`Supprimer ${f}`}
               >✕</button>
             </span>
@@ -138,7 +138,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
             const val = e.target.value;
             if (val) handleInputChange('name', val);
           }}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         >
           <option value="">Sélectionner...</option>
           {LOCATION_GROUPS.map(group => (
@@ -161,13 +161,13 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: errors.name ? '2px solid #dc3545' : '1px solid #ccc'
+            borderRadius: 'var(--rayon-bouton)',
+            border: errors.name ? '2px solid #a13d3d' : '1px solid var(--trait)'
           }}
           placeholder="Nom du lieu"
         />
         {errors.name && (
-          <div style={{ color: '#dc3545', fontSize: 12, marginTop: 2 }}>
+          <div style={{ color: '#a13d3d', fontSize: 12, marginTop: 2 }}>
             {errors.name.join(', ')}
           </div>
         )}
@@ -180,7 +180,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <select
           value={formData.type}
           onChange={(e) => handleInputChange('type', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         >
           {LOCATION_TYPES.map(type => (
             <option key={type} value={type}>{type}</option>
@@ -195,7 +195,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <select
           value={formData.size}
           onChange={(e) => handleInputChange('size', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         >
           {LOCATION_SIZE_CATEGORIES.map(size => (
             <option key={size} value={size}>{size}</option>
@@ -213,8 +213,8 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: '1px solid #ccc',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             backgroundColor: getDangerColor(formData.dangerLevel)
           }}
         >
@@ -235,13 +235,13 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: errors.population ? '2px solid #dc3545' : '1px solid #ccc'
+            borderRadius: 'var(--rayon-bouton)',
+            border: errors.population ? '2px solid #a13d3d' : '1px solid var(--trait)'
           }}
           min="0"
         />
         {errors.population && (
-          <div style={{ color: '#dc3545', fontSize: 12, marginTop: 2 }}>
+          <div style={{ color: '#a13d3d', fontSize: 12, marginTop: 2 }}>
             {errors.population.join(', ')}
           </div>
         )}
@@ -255,7 +255,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={formData.parentRegion}
           onChange={(e) => handleInputChange('parentRegion', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Région, royaume, continent..."
         />
       </div>
@@ -270,8 +270,8 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: '1px solid #ccc',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             minHeight: 80,
             resize: 'vertical'
           }}
@@ -290,7 +290,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <select
           value={formData.climate}
           onChange={(e) => handleInputChange('climate', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         >
           {LOCATION_CLIMATE_TYPES.map(climate => (
             <option key={climate} value={climate}>{climate}</option>
@@ -305,7 +305,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <select
           value={formData.terrain}
           onChange={(e) => handleInputChange('terrain', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
         >
           {LOCATION_TERRAIN_TYPES.map(terrain => (
             <option key={terrain} value={terrain}>{terrain}</option>
@@ -321,7 +321,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="number"
           value={formData.altitude}
           onChange={(e) => handleInputChange('altitude', parseInt(e.target.value) || 0)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Altitude en mètres"
         />
       </div>
@@ -334,7 +334,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="number"
           value={formData.averageTemperature}
           onChange={(e) => handleInputChange('averageTemperature', parseInt(e.target.value) || 0)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Température en degrés Celsius"
         />
       </div>
@@ -349,8 +349,8 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           style={{
             width: '100%',
             padding: 8,
-            borderRadius: 4,
-            border: '1px solid #ccc',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             minHeight: 60,
             resize: 'vertical'
           }}
@@ -369,7 +369,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <textarea
           value={formData.culture}
           onChange={(e) => handleInputChange('culture', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc', minHeight: 80, resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 80, resize: 'vertical' }}
           placeholder="Traditions, coutumes, pratiques culturelles..."
         />
       </div>
@@ -380,7 +380,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <textarea
           value={formData.government}
           onChange={(e) => handleInputChange('government', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc', minHeight: 60, resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 60, resize: 'vertical' }}
           placeholder="Type de gouvernement, dirigeants, lois..."
         />
       </div>
@@ -392,7 +392,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={formData.religion}
           onChange={(e) => handleInputChange('religion', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Religions pratiquées"
         />
       </div>
@@ -404,7 +404,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={Array.isArray(formData.languages) ? formData.languages.join(', ') : formData.languages}
           onChange={(e) => handleInputChange('languages', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Langues parlées (séparées par virgules)"
         />
       </div>
@@ -415,7 +415,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <textarea
           value={Array.isArray(formData.inhabitants) ? formData.inhabitants.join(', ') : formData.inhabitants}
           onChange={(e) => handleInputChange('inhabitants', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc', minHeight: 60, resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 60, resize: 'vertical' }}
           placeholder="Races, espèces, groupes... (séparés par virgules)"
         />
       </div>
@@ -431,7 +431,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <textarea
           value={Array.isArray(formData.resources) ? formData.resources.join(', ') : formData.resources}
           onChange={(e) => handleInputChange('resources', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc', minHeight: 80, resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 80, resize: 'vertical' }}
           placeholder="Minerais, plantes, animaux... (séparés par virgules)"
         />
       </div>
@@ -442,7 +442,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <textarea
           value={formData.economy}
           onChange={(e) => handleInputChange('economy', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc', minHeight: 80, resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 80, resize: 'vertical' }}
           placeholder="Commerce, industrie, monnaie..."
         />
       </div>
@@ -454,7 +454,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={formData.currency}
           onChange={(e) => handleInputChange('currency', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Type de monnaie utilisée"
         />
       </div>
@@ -466,7 +466,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={Array.isArray(formData.threats) ? formData.threats.join(', ') : formData.threats}
           onChange={(e) => handleInputChange('threats', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Dangers, ennemis... (séparés par virgules)"
         />
       </div>
@@ -482,7 +482,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <textarea
           value={formData.history}
           onChange={(e) => handleInputChange('history', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc', minHeight: 120, resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 120, resize: 'vertical' }}
           placeholder="Événements historiques, origines, conflits passés..."
         />
       </div>
@@ -493,7 +493,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <textarea
           value={Array.isArray(formData.landmarks) ? formData.landmarks.join(', ') : formData.landmarks}
           onChange={(e) => handleInputChange('landmarks', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc', minHeight: 80, resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 80, resize: 'vertical' }}
           placeholder="Monuments, bâtiments importants... (séparés par virgules)"
         />
       </div>
@@ -504,7 +504,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
         <textarea
           value={formData.notes}
           onChange={(e) => handleInputChange('notes', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc', minHeight: 80, resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 80, resize: 'vertical' }}
           placeholder="Notes libres, rappels, idées..."
         />
       </div>
@@ -521,7 +521,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={Array.isArray(formData.allies) ? formData.allies.join(', ') : formData.allies}
           onChange={(e) => handleInputChange('allies', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Alliés, nations amies... (séparés par virgules)"
         />
       </div>
@@ -533,7 +533,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={Array.isArray(formData.enemies) ? formData.enemies.join(', ') : formData.enemies}
           onChange={(e) => handleInputChange('enemies', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Ennemis, rivaux... (séparés par virgules)"
         />
       </div>
@@ -545,7 +545,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={Array.isArray(formData.connections) ? formData.connections.join(', ') : formData.connections}
           onChange={(e) => handleInputChange('connections', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="Lieux voisins, routes... (séparés par virgules)"
         />
       </div>
@@ -557,7 +557,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           type="text"
           value={formData.mapImage}
           onChange={(e) => handleInputChange('mapImage', e.target.value)}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
           placeholder="URL de l'image de carte"
         />
       </div>
@@ -569,7 +569,7 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           <img
             src={formData.mapImage}
             alt="Carte du lieu"
-            style={{ maxWidth: '100%', maxHeight: 300, borderRadius: 8, border: '1px solid #ddd' }}
+            style={{ maxWidth: '100%', maxHeight: 300, borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }}
             onError={(e) => e.target.style.display = 'none'}
           />
         </div>
@@ -583,21 +583,21 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
             type="number"
             value={formData.coordinates?.x || 0}
             onChange={(e) => handleInputChange('coordinates', { ...formData.coordinates, x: parseFloat(e.target.value) || 0 })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
             placeholder="X"
           />
           <input
             type="number"
             value={formData.coordinates?.y || 0}
             onChange={(e) => handleInputChange('coordinates', { ...formData.coordinates, y: parseFloat(e.target.value) || 0 })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
             placeholder="Y"
           />
           <input
             type="number"
             value={formData.coordinates?.z || 0}
             onChange={(e) => handleInputChange('coordinates', { ...formData.coordinates, z: parseFloat(e.target.value) || 0 })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}
             placeholder="Z"
           />
         </div>
@@ -619,9 +619,9 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
 
   return (
     <div style={{
-      border: '1px solid #ddd',
-      borderRadius: 8,
-      backgroundColor: '#fff',
+      border: '1px solid var(--trait)',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflow: 'hidden',
       display: 'flex',
@@ -630,10 +630,10 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
       {/* En-tête */}
       <div style={{
         padding: 16,
-        borderBottom: '1px solid #ddd',
-        backgroundColor: '#f8f9fa'
+        borderBottom: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)'
       }}>
-        <h3 style={{ margin: 0 }}>
+        <h3 style={{ margin: 0, color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>
           {initialData ? 'Modifier' : 'Créer'} un lieu
         </h3>
       </div>
@@ -641,8 +641,8 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
       {/* Onglets */}
       <div style={{
         display: 'flex',
-        borderBottom: '1px solid #ddd',
-        backgroundColor: '#f8f9fa',
+        borderBottom: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)',
         overflowX: 'auto'
       }}>
         {tabs.map(tab => (
@@ -652,8 +652,9 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
             style={{
               padding: '12px 16px',
               border: 'none',
-              backgroundColor: activeTab === tab.id ? '#fff' : 'transparent',
-              borderBottom: activeTab === tab.id ? '2px solid #28a745' : '2px solid transparent',
+              background: 'transparent',
+              color: activeTab === tab.id ? 'var(--coeur)' : 'var(--encre-douce)',
+              borderBottom: activeTab === tab.id ? '2px solid var(--coeur)' : '2px solid transparent',
               cursor: 'pointer',
               fontSize: 12,
               whiteSpace: 'nowrap',
@@ -662,7 +663,6 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
               gap: 6
             }}
           >
-            <span>{tab.icon}</span>
             <span>{tab.label}</span>
           </button>
         ))}
@@ -685,8 +685,8 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
       {/* Boutons */}
       <div style={{
         padding: 16,
-        borderTop: '1px solid #ddd',
-        backgroundColor: '#f8f9fa',
+        borderTop: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)',
         display: 'flex',
         justifyContent: 'flex-end',
         gap: 12
@@ -696,10 +696,10 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           onClick={onCancel}
           style={{
             padding: '8px 16px',
-            backgroundColor: '#6c757d',
-            color: 'white',
-            border: 'none',
-            borderRadius: 4,
+            backgroundColor: 'var(--fond-carte)',
+            color: 'var(--encre)',
+            border: '1px solid var(--trait)',
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}
         >
@@ -709,10 +709,10 @@ function AdvancedLocationForm({ onSubmit, onCancel, initialData = null }) {
           onClick={handleSubmit}
           style={{
             padding: '8px 16px',
-            backgroundColor: '#28a745',
-            color: 'white',
+            backgroundColor: 'var(--coeur)',
+            color: 'var(--sur-coeur)',
             border: 'none',
-            borderRadius: 4,
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}
         >

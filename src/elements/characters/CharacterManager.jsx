@@ -183,43 +183,43 @@ function CharacterManager({ preselectedCharacterId }) {
           right: 20,
           zIndex: 1000,
           padding: '12px 20px',
-          borderRadius: 6,
+          borderRadius: 'var(--rayon-bouton)',
           color: 'white',
           backgroundColor:
-            notification.type === 'success' ? '#28a745' :
-            notification.type === 'error' ? '#dc3545' : '#17a2b8',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+            notification.type === 'success' ? '#2e7d4f' :
+            notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <h2>🎭 Gestion des Personnages</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Gestion des Personnages</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={gotoFiches}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#3949ab',
-              color: 'white',
-              border: 'none',
-              borderRadius: 4,
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
             title="Ouvrir le viewer des fiches"
           >
-            📄 Fiches
+            Fiches
           </button>
           <label style={{
             padding: '8px 16px',
-            backgroundColor: '#17a2b8',
-            color: 'white',
-            border: 'none',
-            borderRadius: 4,
+            backgroundColor: 'var(--fond-carte)',
+            color: 'var(--encre)',
+            border: '1px solid var(--trait)',
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}>
-            📁 Importer
+            Importer
             <input
               type="file"
               accept=".json"
@@ -231,25 +231,25 @@ function CharacterManager({ preselectedCharacterId }) {
             onClick={() => setShowBatchImport(true)}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#6f42c1',
-              color: 'white',
+              backgroundColor: 'var(--or)',
+              color: 'var(--sur-or)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
             title="Importer plusieurs personnages par leurs noms"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <button
             onClick={() => setShowForm(!showForm)}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#28a745',
-              color: 'white',
+              backgroundColor: 'var(--coeur)',
+              color: 'var(--sur-coeur)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
           >
@@ -300,35 +300,35 @@ function CharacterManager({ preselectedCharacterId }) {
         <div style={{ display: 'flex', gap: 20 }}>
           <div style={{ flex: 1 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <h3>Liste des personnages ({characters.length})</h3>
+              <h3 style={{ color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>Liste des personnages ({characters.length})</h3>
               <button
                 onClick={() => setShowList(!showList)}
                 style={{
                   padding: '6px 12px',
-                  backgroundColor: showList ? '#6c757d' : '#007bff',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: 4,
+                  backgroundColor: 'var(--fond-carte)',
+                  color: 'var(--encre)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-bouton)',
                   cursor: 'pointer',
                   fontSize: 14
                 }}
               >
-                {showList ? '👁️ Masquer la liste' : '👁️ Afficher la liste'}
+                {showList ? 'Masquer la liste' : 'Afficher la liste'}
               </button>
             </div>
             {showList && (
               <>
                 <input
                   type="text"
-                  placeholder="🔍 Rechercher par nom, origine, type, race ou histoire..."
+                  placeholder="Rechercher par nom, origine, type, race ou histoire..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
                     width: '100%',
                     padding: '8px 12px',
                     marginBottom: 12,
-                    border: '1px solid #ddd',
-                    borderRadius: 4,
+                    border: '1px solid var(--trait)',
+                    borderRadius: 'var(--rayon-bouton)',
                     fontSize: 14,
                     boxSizing: 'border-box'
                   }}
@@ -342,35 +342,36 @@ function CharacterManager({ preselectedCharacterId }) {
               renderHeader={(char) => (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                   <div style={{ flex: 1 }}>
-                    <strong style={{ fontSize: 16 }}>{char.name}</strong>
-                    <div style={{ fontSize: 12, color: '#666', marginTop: 2 }}>
+                    <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{char.name}</strong>
+                    <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 2 }}>
                       {char.age} ans • {char.origin}
                     </div>
                   </div>
                   {char.type && (
                     <span style={{
-                      padding: '4px 12px',
-                      borderRadius: 12,
                       fontSize: 11,
-                      fontWeight: 'bold',
-                      backgroundColor: CHARACTER_TYPE_COLORS[char.type] || '#808080',
-                      color: '#fff',
-                      textShadow: '0 1px 2px rgba(0,0,0,0.3)'
+                      fontWeight: 600,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      padding: '2px 8px',
+                      borderRadius: 'var(--rayon-pilule)',
+                      backgroundColor: 'var(--douceur)',
+                      color: 'var(--encre)'
                     }}>
                       {char.type}
                     </span>
                   )}
                   <button
                     onClick={(e) => { e.stopPropagation(); exportFicheCharacter(char); }}
-                    style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #ddd', background: '#fff', cursor: 'pointer', fontSize: 12 }}
+                    style={{ padding: '6px 10px', borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', background: 'var(--fond-carte)', color: 'var(--encre)', cursor: 'pointer', fontSize: 12 }}
                     title="Exporter la fiche technique"
                   >
-                    📄 Fiche
+                    Fiche
                   </button>
                 </div>
               )}
               renderContent={(char) => (
-                <div style={{ fontSize: 14, color: '#555' }}>
+                <div style={{ fontSize: 14, color: 'var(--encre-douce)' }}>
                   {char.type && (
                     <div style={{ marginBottom: 8 }}>
                       <strong>Type :</strong> {char.type}
@@ -404,16 +405,16 @@ function CharacterManager({ preselectedCharacterId }) {
                       }}
                       style={{
                         padding: '6px 12px',
-                        backgroundColor: '#28a745',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: 4,
+                        backgroundColor: 'var(--fond-carte)',
+                        color: 'var(--encre)',
+                        border: '1px solid var(--trait)',
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 12
                       }}
                       title="Sauvegarder ce personnage"
                     >
-                      💾 Sauvegarder
+                      Sauvegarder
                     </button>
                     <button
                       onClick={async (e) => {
@@ -436,16 +437,16 @@ function CharacterManager({ preselectedCharacterId }) {
                       }}
                       style={{
                         padding: '6px 12px',
-                        backgroundColor: '#6c757d',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: 4,
+                        backgroundColor: 'var(--fond-carte)',
+                        color: 'var(--encre)',
+                        border: '1px solid var(--trait)',
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 12
                       }}
                       title="Enregistrer dans le projet"
                     >
-                      📂 Projet
+                      Projet
                     </button>
                   </div>
                 </div>
@@ -454,14 +455,14 @@ function CharacterManager({ preselectedCharacterId }) {
             />
                 {/* Pagination */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
-                  <div style={{ fontSize: 12, color: '#555' }}>
+                  <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>
                     Affichage {filteredCharacters.length === 0 ? 0 : startIndex + 1}-{endIndex} sur {filteredCharacters.length}
                   </div>
                   <div style={{ display: 'flex', gap: 6 }}>
                     <button
                       onClick={() => setPage(1)}
                       disabled={page <= 1}
-                      style={{ padding: '6px 10px', border: '1px solid #ddd', background: page <= 1 ? '#f1f3f5' : '#fff', cursor: page <= 1 ? 'not-allowed' : 'pointer', borderRadius: 4 }}
+                      style={{ padding: '6px 10px', border: '1px solid var(--trait)', background: page <= 1 ? 'var(--douceur)' : 'var(--fond-carte)', color: 'var(--encre)', cursor: page <= 1 ? 'not-allowed' : 'pointer', borderRadius: 'var(--rayon-bouton)' }}
                       title="Première page"
                     >
                       «
@@ -469,18 +470,18 @@ function CharacterManager({ preselectedCharacterId }) {
                     <button
                       onClick={() => setPage(p => Math.max(1, p - 1))}
                       disabled={page <= 1}
-                      style={{ padding: '6px 10px', border: '1px solid #ddd', background: page <= 1 ? '#f1f3f5' : '#fff', cursor: page <= 1 ? 'not-allowed' : 'pointer', borderRadius: 4 }}
+                      style={{ padding: '6px 10px', border: '1px solid var(--trait)', background: page <= 1 ? 'var(--douceur)' : 'var(--fond-carte)', color: 'var(--encre)', cursor: page <= 1 ? 'not-allowed' : 'pointer', borderRadius: 'var(--rayon-bouton)' }}
                       title="Page précédente"
                     >
                       ←
                     </button>
-                    <span style={{ padding: '6px 10px', fontSize: 12 }}>
+                    <span style={{ padding: '6px 10px', fontSize: 12, color: 'var(--encre)' }}>
                       Page {page} / {totalPages}
                     </span>
                     <button
                       onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                       disabled={page >= totalPages}
-                      style={{ padding: '6px 10px', border: '1px solid #ddd', background: page >= totalPages ? '#f1f3f5' : '#fff', cursor: page >= totalPages ? 'not-allowed' : 'pointer', borderRadius: 4 }}
+                      style={{ padding: '6px 10px', border: '1px solid var(--trait)', background: page >= totalPages ? 'var(--douceur)' : 'var(--fond-carte)', color: 'var(--encre)', cursor: page >= totalPages ? 'not-allowed' : 'pointer', borderRadius: 'var(--rayon-bouton)' }}
                       title="Page suivante"
                     >
                       →
@@ -488,7 +489,7 @@ function CharacterManager({ preselectedCharacterId }) {
                     <button
                       onClick={() => setPage(totalPages)}
                       disabled={page >= totalPages}
-                      style={{ padding: '6px 10px', border: '1px solid #ddd', background: page >= totalPages ? '#f1f3f5' : '#fff', cursor: page >= totalPages ? 'not-allowed' : 'pointer', borderRadius: 4 }}
+                      style={{ padding: '6px 10px', border: '1px solid var(--trait)', background: page >= totalPages ? 'var(--douceur)' : 'var(--fond-carte)', color: 'var(--encre)', cursor: page >= totalPages ? 'not-allowed' : 'pointer', borderRadius: 'var(--rayon-bouton)' }}
                       title="Dernière page"
                     >
                       »
@@ -502,29 +503,29 @@ function CharacterManager({ preselectedCharacterId }) {
         {selectedCharacter && (
           <div style={{
             flex: 1,
-            border: '1px solid #ddd',
-            padding: 16,
-            borderRadius: 8,
-            backgroundColor: '#ffffff',
+            border: '1px solid var(--trait)',
+            padding: 24,
+            borderRadius: 'var(--rayon-carte)',
+            backgroundColor: 'var(--fond-carte)',
             maxHeight: 'fit-content'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <h3 style={{ marginTop: 0, color: '#2196f3' }}>
-                📋 Détails de {selectedCharacter.name}
+              <h3 style={{ marginTop: 0, color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>
+                Détails de {selectedCharacter.name}
               </h3>
               <button
                 onClick={handleEditCharacter}
                 style={{
                   padding: '6px 12px',
-                  backgroundColor: '#2196f3',
-                  color: 'white',
+                  backgroundColor: 'var(--or)',
+                  color: 'var(--sur-or)',
                   border: 'none',
-                  borderRadius: 4,
+                  borderRadius: 'var(--rayon-bouton)',
                   cursor: 'pointer',
                   fontSize: 14
                 }}
               >
-                ✏️ Modifier
+                Modifier
               </button>
             </div>
 
@@ -536,10 +537,10 @@ function CharacterManager({ preselectedCharacterId }) {
                   <div style={{
                     width: 320,
                     height: 320,
-                    borderRadius: 12,
+                    borderRadius: 'var(--rayon-image)',
                     overflow: 'hidden',
-                    border: '3px solid #495057',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                    border: '1px solid var(--trait)',
+                    boxShadow: 'var(--ombre-legere)'
                   }}>
                     <img
                       src={selectedCharacter.images[Math.min(selectedImageIndex, selectedCharacter.images.length - 1)] || selectedCharacter.images[0]}
@@ -547,8 +548,8 @@ function CharacterManager({ preselectedCharacterId }) {
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       onError={(e) => {
                         e.currentTarget.replaceWith(Object.assign(document.createElement('div'), {
-                          style: 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#f8f9fa;color:#6c757d;font-size:12px;',
-                          textContent: '❌ Image indisponible'
+                          style: 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:var(--douceur);color:var(--encre-douce);font-size:12px;',
+                          textContent: 'Image indisponible'
                         }));
                       }}
                     />
@@ -566,12 +567,12 @@ function CharacterManager({ preselectedCharacterId }) {
                         style={{
                           width: 64,
                           height: 64,
-                          borderRadius: 8,
+                          borderRadius: 'var(--rayon-image)',
                           overflow: 'hidden',
                           padding: 0,
-                          border: idx === selectedImageIndex ? '2px solid #2196f3' : '1px solid #dee2e6',
+                          border: idx === selectedImageIndex ? '1px solid var(--coeur)' : '1px solid var(--trait)',
                           cursor: 'pointer',
-                          background: '#fff'
+                          background: 'var(--fond-carte)'
                         }}
                       >
                         <img src={url} alt={`mini-${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -601,14 +602,14 @@ function CharacterManager({ preselectedCharacterId }) {
                 <span style={{
                   display: 'inline-block',
                   padding: '6px 16px',
-                  borderRadius: 16,
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 13,
                   fontWeight: 'bold',
-                  backgroundColor: CHARACTER_ENERGY_COLORS[selectedCharacter.energy] || '#6c757d',
+                  backgroundColor: CHARACTER_ENERGY_COLORS[selectedCharacter.energy] || 'var(--douceur)',
                   color: '#fff',
                   textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                 }}>
-                  ⚡ {selectedCharacter.energy}
+                  {selectedCharacter.energy}
                 </span>
               )}
             </div>
@@ -623,7 +624,7 @@ function CharacterManager({ preselectedCharacterId }) {
 
             <div style={{ marginBottom: 12 }}>
               <strong>Description:</strong>
-              <p style={{ margin: '4px 0', fontStyle: 'italic', color: '#555' }}>
+              <p style={{ margin: '4px 0', fontStyle: 'italic', color: 'var(--encre-douce)' }}>
                 {selectedCharacter.description}
               </p>
             </div>
@@ -637,10 +638,10 @@ function CharacterManager({ preselectedCharacterId }) {
                       key={index}
                       style={{
                         display: 'inline-block',
-                        backgroundColor: '#28a745',
-                        color: 'white',
+                        backgroundColor: 'var(--douceur)',
+                        color: 'var(--encre)',
                         padding: '2px 8px',
-                        borderRadius: 12,
+                        borderRadius: 'var(--rayon-pilule)',
                         fontSize: 12,
                         marginRight: 6,
                         marginBottom: 4
@@ -662,10 +663,10 @@ function CharacterManager({ preselectedCharacterId }) {
                       key={index}
                       style={{
                         display: 'inline-block',
-                        backgroundColor: '#ffc107',
-                        color: '#212529',
+                        backgroundColor: 'var(--or)',
+                        color: 'var(--sur-or)',
                         padding: '2px 8px',
-                        borderRadius: 12,
+                        borderRadius: 'var(--rayon-pilule)',
                         fontSize: 12,
                         marginRight: 6,
                         marginBottom: 4

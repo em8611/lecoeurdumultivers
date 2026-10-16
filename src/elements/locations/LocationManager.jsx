@@ -134,43 +134,43 @@ function LocationManager() {
           right: 20,
           zIndex: 1000,
           padding: '12px 20px',
-          borderRadius: 6,
+          borderRadius: 'var(--rayon-bouton)',
           color: 'white',
           backgroundColor:
-            notification.type === 'success' ? '#28a745' :
-            notification.type === 'error' ? '#dc3545' : '#17a2b8',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+            notification.type === 'success' ? '#2e7d4f' :
+            notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <h2>🗺️ Gestion des Lieux</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Gestion des Lieux</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={gotoFiches}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#3949ab',
-              color: 'white',
-              border: 'none',
-              borderRadius: 4,
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
             title="Ouvrir le viewer des fiches"
           >
-            📄 Fiches
+            Fiches
           </button>
           <label style={{
             padding: '8px 16px',
-            backgroundColor: '#6f42c1',
-            color: 'white',
-            border: 'none',
-            borderRadius: 4,
+            backgroundColor: 'var(--fond-carte)',
+            color: 'var(--encre)',
+            border: '1px solid var(--trait)',
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}>
-            📁 Importer
+            Importer
             <input
               type="file"
               accept=".json"
@@ -182,25 +182,25 @@ function LocationManager() {
             onClick={() => setShowBatchImport(true)}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#6f42c1',
-              color: 'white',
+              backgroundColor: 'var(--or)',
+              color: 'var(--sur-or)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
             title="Importer plusieurs lieux par leurs noms (une ligne = un lieu)"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <button
             onClick={() => setShowForm(!showForm)}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#17a2b8',
-              color: 'white',
+              backgroundColor: 'var(--coeur)',
+              color: 'var(--sur-coeur)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
           >
@@ -220,7 +220,7 @@ function LocationManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>Liste des lieux ({locations.length})</h3>
+          <h3 style={{ color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>Liste des lieux ({locations.length})</h3>
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {locations.map(loc => (
               <li
@@ -228,9 +228,9 @@ function LocationManager() {
                 style={{
                   cursor: 'pointer',
                   padding: 12,
-                  backgroundColor: selectedLocation?.id === loc.id ? '#e0f7fa' : '#f8f9fa',
-                  border: selectedLocation?.id === loc.id ? '2px solid #17a2b8' : '1px solid #dee2e6',
-                  borderRadius: 6,
+                  backgroundColor: selectedLocation?.id === loc.id ? 'var(--douceur)' : 'var(--fond-carte)',
+                  border: selectedLocation?.id === loc.id ? '1px solid var(--coeur)' : '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-carte)',
                   marginBottom: 8,
                   transition: 'all 0.2s ease'
                 }}
@@ -238,18 +238,18 @@ function LocationManager() {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <strong style={{ fontSize: 16 }}>{loc.name}</strong>
-                    <div style={{ fontSize: 12, color: '#666', marginTop: 2 }}>
+                    <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{loc.name}</strong>
+                    <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 2 }}>
                       {loc.type} • Climat {loc.climate}
                     </div>
                   </div>
                   <div style={{ display: 'flex', gap: 4 }}>
                     <button
                       onClick={(e) => { e.stopPropagation(); exportFicheLocation(loc); }}
-                      style={{ padding: '4px 8px', border: '1px solid #ddd', background: '#fff', borderRadius: 3, cursor: 'pointer', fontSize: 12 }}
+                      style={{ padding: '6px 10px', border: '1px solid var(--trait)', background: 'var(--fond-carte)', color: 'var(--encre)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12 }}
                       title="Exporter la fiche technique"
                     >
-                      📄
+                      Fiche
                     </button>
                     <button
                       onClick={(e) => {
@@ -265,16 +265,16 @@ function LocationManager() {
                       }}
                       style={{
                         padding: '4px 8px',
-                        backgroundColor: '#28a745',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: 3,
+                        backgroundColor: 'var(--fond-carte)',
+                        color: 'var(--encre)',
+                        border: '1px solid var(--trait)',
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 12
                       }}
                       title="Sauvegarder ce lieu"
                     >
-                      💾
+                      Sauvegarder
                     </button>
                     <button
                       onClick={async (e) => {
@@ -297,16 +297,16 @@ function LocationManager() {
                       }}
                       style={{
                         padding: '4px 8px',
-                        backgroundColor: '#6c757d',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: 3,
+                        backgroundColor: 'var(--fond-carte)',
+                        color: 'var(--encre)',
+                        border: '1px solid var(--trait)',
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 12
                       }}
                       title="Enregistrer via un sélecteur dans votre projet (ex: src/data/locations)"
                     >
-                      📂
+                      Exporter
                     </button>
                     <button
                       onClick={(e) => {
@@ -315,10 +315,10 @@ function LocationManager() {
                       }}
                       style={{
                         padding: '4px 8px',
-                        backgroundColor: '#dc3545',
+                        backgroundColor: '#a13d3d',
                         color: 'white',
                         border: 'none',
-                        borderRadius: 3,
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 12
                       }}
@@ -336,23 +336,23 @@ function LocationManager() {
         {selectedLocation && !isEditing && (
           <div style={{
             flex: 1,
-            border: '1px solid #ddd',
-            padding: 16,
-            borderRadius: 8,
-            backgroundColor: '#ffffff',
+            border: '1px solid var(--trait)',
+            padding: 24,
+            borderRadius: 'var(--rayon-carte)',
+            backgroundColor: 'var(--fond-carte)',
             maxHeight: 'fit-content'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <h3 style={{ marginTop: 0, marginBottom: 8, color: '#17a2b8' }}>
-                🗺️ Détails de {selectedLocation.name}
+              <h3 style={{ marginTop: 0, marginBottom: 8, color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>
+                Détails de {selectedLocation.name}
               </h3>
               <div style={{ display: 'flex', gap: 8 }}>
                 <button
                   onClick={() => setIsEditing(true)}
-                  style={{ padding: '6px 10px', backgroundColor: '#17a2b8', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+                  style={{ padding: '6px 10px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
                   title="Modifier ce lieu"
                 >
-                  ✏️ Modifier
+                  Modifier
                 </button>
               </div>
             </div>
@@ -367,7 +367,7 @@ function LocationManager() {
 
             <div style={{ marginBottom: 12 }}>
               <strong>Description:</strong>
-              <p style={{ margin: '4px 0', fontStyle: 'italic', color: '#555' }}>
+              <p style={{ margin: '4px 0', fontStyle: 'italic', color: 'var(--encre-douce)' }}>
                 {selectedLocation.description}
               </p>
             </div>
@@ -381,10 +381,10 @@ function LocationManager() {
                       key={index}
                       style={{
                         display: 'inline-block',
-                        backgroundColor: '#17a2b8',
-                        color: 'white',
+                        backgroundColor: 'var(--douceur)',
+                        color: 'var(--encre)',
                         padding: '2px 8px',
-                        borderRadius: 12,
+                        borderRadius: 'var(--rayon-pilule)',
                         fontSize: 12,
                         marginRight: 6,
                         marginBottom: 4
@@ -406,10 +406,10 @@ function LocationManager() {
                       key={index}
                       style={{
                         display: 'inline-block',
-                        backgroundColor: '#6f42c1',
-                        color: 'white',
+                        backgroundColor: 'var(--or)',
+                        color: 'var(--sur-or)',
                         padding: '2px 8px',
-                        borderRadius: 12,
+                        borderRadius: 'var(--rayon-pilule)',
                         fontSize: 12,
                         marginRight: 6,
                         marginBottom: 4

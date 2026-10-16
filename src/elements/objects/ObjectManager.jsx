@@ -42,19 +42,6 @@ function ObjectManager() {
   const objectTypes = ['Artefact', 'Arme', 'Bijou', 'Livre', 'Outil', 'Relique', 'Cristal', 'Potion', 'Technologie'];
   const rarityLevels = ['Commun', 'Peu commun', 'Rare', 'Épique', 'Légendaire', 'Mythique', 'Unique'];
 
-  const getRarityColor = (rarity) => {
-    const colors = {
-      'Commun': '#6c757d',
-      'Peu commun': '#28a745',
-      'Rare': '#007bff',
-      'Épique': '#6f42c1',
-      'Légendaire': '#fd7e14',
-      'Mythique': '#dc3545',
-      'Unique': '#ffc107'
-    };
-    return colors[rarity] || '#6c757d';
-  };
-
   const handleAddObject = () => {
     const newObject = {
       id: Date.now(),
@@ -216,43 +203,43 @@ function ObjectManager() {
           right: 20,
           zIndex: 1000,
           padding: '12px 20px',
-          borderRadius: 6,
           color: 'white',
           backgroundColor:
-            notification.type === 'success' ? '#28a745' :
-            notification.type === 'error' ? '#dc3545' : '#17a2b8',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+            notification.type === 'success' ? '#2e7d4f' :
+            notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          borderRadius: 'var(--rayon-bouton)',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <h2>💎 Gestion des Objets</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Gestion des Objets</h2>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <button
             onClick={gotoFiches}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#3949ab',
-              color: 'white',
-              border: 'none',
-              borderRadius: 4,
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
             title="Ouvrir le viewer des fiches"
           >
-            📄 Fiches
+            Fiches
           </button>
           <label style={{
             padding: '8px 16px',
-            backgroundColor: '#fd7e14',
-            color: 'white',
-            border: 'none',
-            borderRadius: 4,
+            backgroundColor: 'var(--fond-carte)',
+            color: 'var(--encre)',
+            border: '1px solid var(--trait)',
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}>
-            📁 Importer
+            Importer
             <input
               type="file"
               accept=".json"
@@ -264,25 +251,25 @@ function ObjectManager() {
             onClick={() => setShowBatchImport(true)}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#6f42c1',
-              color: 'white',
+              backgroundColor: 'var(--or)',
+              color: 'var(--sur-or)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
             title="Importer plusieurs objets par leurs noms (une ligne = un objet)"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <button
             onClick={() => setShowForm(!showForm)}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#6f42c1',
-              color: 'white',
+              backgroundColor: 'var(--coeur)',
+              color: 'var(--sur-coeur)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
           >
@@ -293,15 +280,15 @@ function ObjectManager() {
               onClick={() => handleExportObject(selectedObject)}
               style={{
                 padding: '8px 16px',
-                backgroundColor: '#17a2b8',
-                color: 'white',
-                border: 'none',
-                borderRadius: 4,
+                backgroundColor: 'var(--fond-carte)',
+                color: 'var(--encre)',
+                border: '1px solid var(--trait)',
+                borderRadius: 'var(--rayon-bouton)',
                 cursor: 'pointer'
               }}
               title="Exporter en JSON dans le projet"
             >
-              📤 Exporter
+              Exporter
             </button>
           )}
         </div>
@@ -309,42 +296,42 @@ function ObjectManager() {
 
       {showForm && (
         <div style={{
-          border: '1px solid #ddd',
-          padding: 16,
-          borderRadius: 8,
-          backgroundColor: '#f8f9fa',
+          border: '1px solid var(--trait)',
+          padding: 24,
+          borderRadius: 'var(--rayon-carte)',
+          backgroundColor: 'var(--douceur)',
           marginBottom: 20
         }}>
-          <h3>Créer un nouvel objet</h3>
+          <h3 style={{ color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>Créer un nouvel objet</h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-            <input type="text" placeholder="Nom de l'objet" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <select value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}>
+            <input type="text" placeholder="Nom de l'objet" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <select value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}>
               <option value="">Sélectionner un type</option>
               {objectTypes.map(type => (<option key={type} value={type}>{type}</option>))}
             </select>
-            <select value={formData.rarity} onChange={e => setFormData({...formData, rarity: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }}>
+            <select value={formData.rarity} onChange={e => setFormData({...formData, rarity: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }}>
               <option value="">Sélectionner une rareté</option>
               {rarityLevels.map(rarity => (<option key={rarity} value={rarity}>{rarity}</option>))}
             </select>
-            <input type="text" placeholder="Pouvoirs (séparés par virgules)" value={formData.powers} onChange={e => setFormData({...formData, powers: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Origine/Créateur" value={formData.origin} onChange={e => setFormData({...formData, origin: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Localisation actuelle" value={formData.currentLocation} onChange={e => setFormData({...formData, currentLocation: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Image (URL)" value={formData.image} onChange={e => setFormData({...formData, image: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="date" placeholder="Date de création/découverte" value={formData.creationDate} onChange={e => setFormData({...formData, creationDate: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Propriétaire actuel" value={formData.owner} onChange={e => setFormData({...formData, owner: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Propriétaires précédents (séparés par virgules)" value={formData.previousOwners} onChange={e => setFormData({...formData, previousOwners: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Valeur estimée" value={formData.estimatedValue} onChange={e => setFormData({...formData, estimatedValue: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="État (neuf, usé, etc.)" value={formData.state} onChange={e => setFormData({...formData, state: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Matériaux/Composition" value={formData.materials} onChange={e => setFormData({...formData, materials: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Dimensions/Poids" value={formData.dimensions} onChange={e => setFormData({...formData, dimensions: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Symbolisme/Légende associée" value={formData.symbolism} onChange={e => setFormData({...formData, symbolism: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Tags/Catégories (séparés par virgules)" value={formData.tags} onChange={e => setFormData({...formData, tags: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Restrictions d’utilisation" value={formData.restrictions} onChange={e => setFormData({...formData, restrictions: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Effets secondaires/Dangers" value={formData.sideEffects} onChange={e => setFormData({...formData, sideEffects: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
-            <input type="text" placeholder="Apparitions notables (histoire, quêtes...)" value={formData.notableAppearances} onChange={e => setFormData({...formData, notableAppearances: e.target.value})} style={{ padding: 8, borderRadius: 4, border: '1px solid #ccc' }} />
+            <input type="text" placeholder="Pouvoirs (séparés par virgules)" value={formData.powers} onChange={e => setFormData({...formData, powers: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Origine/Créateur" value={formData.origin} onChange={e => setFormData({...formData, origin: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Localisation actuelle" value={formData.currentLocation} onChange={e => setFormData({...formData, currentLocation: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Image (URL)" value={formData.image} onChange={e => setFormData({...formData, image: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="date" placeholder="Date de création/découverte" value={formData.creationDate} onChange={e => setFormData({...formData, creationDate: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Propriétaire actuel" value={formData.owner} onChange={e => setFormData({...formData, owner: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Propriétaires précédents (séparés par virgules)" value={formData.previousOwners} onChange={e => setFormData({...formData, previousOwners: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Valeur estimée" value={formData.estimatedValue} onChange={e => setFormData({...formData, estimatedValue: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="État (neuf, usé, etc.)" value={formData.state} onChange={e => setFormData({...formData, state: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Matériaux/Composition" value={formData.materials} onChange={e => setFormData({...formData, materials: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Dimensions/Poids" value={formData.dimensions} onChange={e => setFormData({...formData, dimensions: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Symbolisme/Légende associée" value={formData.symbolism} onChange={e => setFormData({...formData, symbolism: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Tags/Catégories (séparés par virgules)" value={formData.tags} onChange={e => setFormData({...formData, tags: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Restrictions d’utilisation" value={formData.restrictions} onChange={e => setFormData({...formData, restrictions: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Effets secondaires/Dangers" value={formData.sideEffects} onChange={e => setFormData({...formData, sideEffects: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
+            <input type="text" placeholder="Apparitions notables (histoire, quêtes...)" value={formData.notableAppearances} onChange={e => setFormData({...formData, notableAppearances: e.target.value})} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)' }} />
           </div>
-          <textarea placeholder="Description de l'objet" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} style={{ width: '100%', padding: 8, marginTop: 12, borderRadius: 4, border: '1px solid #ccc', minHeight: 60, resize: 'vertical' }} />
-          <button onClick={handleAddObject} disabled={!formData.name} style={{ marginTop: 12, padding: '8px 16px', backgroundColor: formData.name ? '#6f42c1' : '#6c757d', color: 'white', border: 'none', borderRadius: 4, cursor: formData.name ? 'pointer' : 'not-allowed' }}>
+          <textarea placeholder="Description de l'objet" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} style={{ width: '100%', padding: 8, marginTop: 12, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', minHeight: 60, resize: 'vertical' }} />
+          <button onClick={handleAddObject} disabled={!formData.name} style={{ marginTop: 12, padding: '8px 16px', backgroundColor: formData.name ? 'var(--coeur)' : 'var(--douceur)', color: formData.name ? 'var(--sur-coeur)' : 'var(--encre-douce)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: formData.name ? 'pointer' : 'not-allowed' }}>
             Créer l'objet
           </button>
         </div>
@@ -352,7 +339,7 @@ function ObjectManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>Liste des objets ({objects.length})</h3>
+          <h3 style={{ color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>Liste des objets ({objects.length})</h3>
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {objects.map(obj => (
               <li
@@ -360,9 +347,9 @@ function ObjectManager() {
                 style={{
                   cursor: 'pointer',
                   padding: 12,
-                  backgroundColor: selectedObject?.id === obj.id ? '#f3e5f5' : '#f8f9fa',
-                  border: selectedObject?.id === obj.id ? '2px solid #6f42c1' : '1px solid #dee2e6',
-                  borderRadius: 6,
+                  backgroundColor: selectedObject?.id === obj.id ? 'var(--douceur)' : 'var(--fond-carte)',
+                  border: selectedObject?.id === obj.id ? '1px solid var(--coeur)' : '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-carte)',
                   marginBottom: 8,
                   transition: 'all 0.2s ease'
                 }}
@@ -371,46 +358,48 @@ function ObjectManager() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <strong style={{ fontSize: 16 }}>{obj.name}</strong>
+                      <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{obj.name}</strong>
                       <span
                         style={{
-                          backgroundColor: getRarityColor(obj.rarity),
-                          color: 'white',
-                          padding: '2px 6px',
-                          borderRadius: 8,
-                          fontSize: 10,
-                          fontWeight: 'bold'
+                          fontSize: 11,
+                          fontWeight: 600,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          padding: '2px 8px',
+                          borderRadius: 'var(--rayon-pilule)',
+                          backgroundColor: 'var(--douceur)',
+                          color: 'var(--encre)'
                         }}
                       >
                         {obj.rarity}
                       </span>
                     </div>
-                    <div style={{ fontSize: 12, color: '#666', marginTop: 2 }}>
+                    <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 2 }}>
                       {obj.type} • {obj.currentLocation}
                     </div>
                   </div>
                   <div style={{ display: 'flex', gap: 4 }}>
                     <button
                       onClick={(e) => { e.stopPropagation(); exportFicheObject(obj); }}
-                      style={{ padding: '4px 8px', border: '1px solid #ddd', background: '#fff', borderRadius: 3, cursor: 'pointer', fontSize: 12 }}
+                      style={{ padding: '6px 10px', border: '1px solid var(--trait)', background: 'var(--fond-carte)', color: 'var(--encre)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12 }}
                       title="Exporter la fiche technique"
                     >
-                      📄
+                      Fiche
                     </button>
                     <button
                       onClick={(e) => { e.stopPropagation(); handleExportObject(obj); }}
                       style={{
                         padding: '4px 8px',
-                        backgroundColor: '#17a2b8',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: 3,
+                        backgroundColor: 'var(--fond-carte)',
+                        color: 'var(--encre)',
+                        border: '1px solid var(--trait)',
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 12
                       }}
                       title="Exporter cet objet"
                     >
-                      📤
+                      Exporter
                     </button>
                     <button
                       onClick={(e) => {
@@ -419,10 +408,10 @@ function ObjectManager() {
                       }}
                       style={{
                         padding: '4px 8px',
-                        backgroundColor: '#dc3545',
+                        backgroundColor: '#a13d3d',
                         color: 'white',
                         border: 'none',
-                        borderRadius: 3,
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 12
                       }}
@@ -440,23 +429,23 @@ function ObjectManager() {
         {selectedObject && !isEditing && (
           <div style={{
             flex: 1,
-            border: '1px solid #ddd',
-            padding: 16,
-            borderRadius: 8,
-            backgroundColor: '#ffffff',
+            border: '1px solid var(--trait)',
+            padding: 24,
+            borderRadius: 'var(--rayon-carte)',
+            backgroundColor: 'var(--fond-carte)',
             maxHeight: 'fit-content'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, marginBottom: 16 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <h3 style={{ margin: 0, color: '#6f42c1' }}>
-                  💎 {selectedObject.name}
+                <h3 style={{ margin: 0, color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>
+                  {selectedObject.name}
                 </h3>
                 <span
                   style={{
-                    backgroundColor: getRarityColor(selectedObject.rarity),
-                    color: 'white',
-                    padding: '4px 8px',
-                    borderRadius: 12,
+                    padding: '4px 10px',
+                    backgroundColor: 'var(--douceur)',
+                    color: 'var(--encre)',
+                    borderRadius: 'var(--rayon-pilule)',
                     fontSize: 12,
                     fontWeight: 'bold'
                   }}
@@ -466,15 +455,15 @@ function ObjectManager() {
               </div>
               <button
                 onClick={() => setIsEditing(true)}
-                style={{ padding: '6px 10px', backgroundColor: '#6f42c1', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+                style={{ padding: '6px 10px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
                 title="Modifier cet objet"
               >
-                ✏️ Modifier
+                Modifier
               </button>
             </div>
             {selectedObject.image && (
               <div style={{ marginBottom: 12 }}>
-                <img src={selectedObject.image} alt={selectedObject.name} style={{ maxWidth: '100%', maxHeight: 180, borderRadius: 8, border: '1px solid #eee' }} />
+                <img src={selectedObject.image} alt={selectedObject.name} style={{ maxWidth: '100%', maxHeight: 180, borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }} />
               </div>
             )}
             <div style={{ marginBottom: 12 }}>
@@ -528,7 +517,7 @@ function ObjectManager() {
             </div>
             <div style={{ marginBottom: 12 }}>
               <strong>Description:</strong>
-              <p style={{ margin: '4px 0', fontStyle: 'italic', color: '#555' }}>
+              <p style={{ margin: '4px 0', fontStyle: 'italic', color: 'var(--encre-douce)' }}>
                 {selectedObject.description}
               </p>
             </div>
@@ -541,16 +530,16 @@ function ObjectManager() {
                       key={index}
                       style={{
                         display: 'inline-block',
-                        backgroundColor: '#6f42c1',
-                        color: 'white',
+                        backgroundColor: 'var(--or)',
+                        color: 'var(--sur-or)',
                         padding: '2px 8px',
-                        borderRadius: 12,
+                        borderRadius: 'var(--rayon-pilule)',
                         fontSize: 12,
                         marginRight: 6,
                         marginBottom: 4
                       }}
                     >
-                      ⚡ {power}
+                      {power}
                     </span>
                   ))}
                 </div>

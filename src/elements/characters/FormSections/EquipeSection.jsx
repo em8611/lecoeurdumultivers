@@ -68,14 +68,14 @@ function EquipeSection({ formData, onInputChange }) {
                   alignItems: 'center',
                   gap: '0.5rem',
                   padding: '8px 12px',
-                  background: '#f3f4f6',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '6px'
+                  background: 'var(--douceur)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-bouton)'
                 }}
               >
-                <span style={{ flex: 1, fontWeight: 'bold' }}>{team.name}</span>
+                <span style={{ flex: 1, fontWeight: 'bold', color: 'var(--encre)' }}>{team.name}</span>
                 {team.role && (
-                  <span style={{ flex: 1, color: '#6b7280', fontSize: '0.9em' }}>
+                  <span style={{ flex: 1, color: 'var(--encre-douce)', fontSize: '0.9em' }}>
                     ({team.role})
                   </span>
                 )}
@@ -83,10 +83,10 @@ function EquipeSection({ formData, onInputChange }) {
                   type="button"
                   onClick={() => removeTeam(idx)}
                   style={{
-                    background: '#ef4444',
+                    background: '#a13d3d',
                     color: 'white',
                     border: 'none',
-                    borderRadius: '4px',
+                    borderRadius: 'var(--rayon-bouton)',
                     padding: '4px 8px',
                     cursor: 'pointer',
                     fontSize: '0.85em'

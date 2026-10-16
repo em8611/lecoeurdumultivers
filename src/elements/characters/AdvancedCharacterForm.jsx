@@ -67,20 +67,20 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
   };
 
   const allTabs = [
-    { id: 'basic', label: 'Informations de base', icon: '👤' },
-    { id: 'specifique', label: 'Spécifique', icon: '⭐' },
-    { id: 'physical', label: 'Apparence', icon: '🎨' },
-    { id: 'personality', label: 'Personnalité', icon: '🧠' },
-    { id: 'histoire', label: 'Histoire', icon: '📖' },
-    { id: 'abilities', label: 'Capacités', icon: '⚡' },
-    { id: 'equipment', label: 'Équipement', icon: '🛡️' },
-    { id: 'relationships', label: 'Relations', icon: '🤝' },
-    { id: 'equipe', label: 'Équipe', icon: '👥' },
-    { id: 'apparition', label: 'Apparition', icon: '🎬' },
-    { id: 'animation', label: 'Animation', icon: '🎭' },
-    { id: 'repliques', label: 'Répliques', icon: '💬' },
-    { id: 'stats', label: 'Statistiques', icon: '🎮' },
-    { id: 'autre', label: 'Autre', icon: '❓' },
+    { id: 'basic', label: 'Informations de base' },
+    { id: 'specifique', label: 'Spécifique' },
+    { id: 'physical', label: 'Apparence' },
+    { id: 'personality', label: 'Personnalité' },
+    { id: 'histoire', label: 'Histoire' },
+    { id: 'abilities', label: 'Capacités' },
+    { id: 'equipment', label: 'Équipement' },
+    { id: 'relationships', label: 'Relations' },
+    { id: 'equipe', label: 'Équipe' },
+    { id: 'apparition', label: 'Apparition' },
+    { id: 'animation', label: 'Animation' },
+    { id: 'repliques', label: 'Répliques' },
+    { id: 'stats', label: 'Statistiques' },
+    { id: 'autre', label: 'Autre' },
   ];
 
   // Filtrer les onglets selon le type de personnage
@@ -237,9 +237,9 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
 
   return (
     <div style={{
-      border: '1px solid #ddd',
-      borderRadius: 8,
-      backgroundColor: '#fff',
+      border: '1px solid var(--trait)',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflow: 'hidden',
       display: 'flex',
@@ -248,18 +248,18 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
       {/* En-tête */}
       <div style={{
         padding: 16,
-        borderBottom: '1px solid #ddd',
-        backgroundColor: '#f8f9fa',
+        borderBottom: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: 12
       }}>
-        <h3 style={{ margin: 0 }}>
+        <h3 style={{ margin: 0, color: 'var(--coeur)', fontFamily: 'var(--police-affichage)' }}>
           {initialData ? 'Modifier' : 'Créer'} un personnage
         </h3>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 12, color: '#6c757d', marginRight: 8 }}>
+          <span style={{ fontSize: 12, color: 'var(--encre-douce)', marginRight: 8 }}>
             {navCurrentIndex > 0 && navTotalCount > 0 ? `${navCurrentIndex}/${navTotalCount}` : ''}
           </span>
           <button
@@ -269,10 +269,10 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
             title="Précédent (Alt+←)"
             style={{
               padding: '6px 10px',
-              backgroundColor: hasPrev ? '#6c757d' : '#adb5bd',
-              color: 'white',
-              border: 'none',
-              borderRadius: 4,
+              backgroundColor: 'var(--fond-carte)',
+              color: hasPrev ? 'var(--encre)' : 'var(--encre-douce)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: hasPrev ? 'pointer' : 'not-allowed'
             }}
           >
@@ -285,10 +285,10 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
             title="Suivant (Alt+→)"
             style={{
               padding: '6px 10px',
-              backgroundColor: hasNext ? '#007bff' : '#adb5bd',
-              color: 'white',
+              backgroundColor: hasNext ? 'var(--coeur)' : 'var(--douceur)',
+              color: hasNext ? 'var(--sur-coeur)' : 'var(--encre-douce)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: hasNext ? 'pointer' : 'not-allowed'
             }}
           >
@@ -300,8 +300,8 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
       {/* Onglets */}
       <div style={{
         display: 'flex',
-        borderBottom: '1px solid #ddd',
-        backgroundColor: '#f8f9fa',
+        borderBottom: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)',
         overflowX: 'auto'
       }}>
         {availableTabs.map(tab => (
@@ -311,8 +311,9 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
             style={{
               padding: '12px 16px',
               border: 'none',
-              backgroundColor: activeTab === tab.id ? '#fff' : 'transparent',
-              borderBottom: activeTab === tab.id ? '2px solid #007bff' : '2px solid transparent',
+              background: 'transparent',
+              color: activeTab === tab.id ? 'var(--coeur)' : 'var(--encre-douce)',
+              borderBottom: activeTab === tab.id ? '2px solid var(--coeur)' : '2px solid transparent',
               cursor: 'pointer',
               fontSize: 12,
               whiteSpace: 'nowrap',
@@ -321,7 +322,6 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
               gap: 6
             }}
           >
-            <span>{tab.icon}</span>
             <span>{tab.label}</span>
           </button>
         ))}
@@ -391,11 +391,11 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
           position: 'absolute',
           bottom: 70,
           left: 20,
-          background: '#28a745',
+          background: '#2e7d4f',
           color: '#fff',
           padding: '6px 10px',
-          borderRadius: 6,
-          boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+          borderRadius: 'var(--rayon-bouton)',
+          boxShadow: 'var(--ombre-survol)',
           fontSize: 12,
           zIndex: 5
         }}>
@@ -406,8 +406,8 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
       {/* Boutons */}
       <div style={{
         padding: 16,
-        borderTop: '1px solid #ddd',
-        backgroundColor: '#f8f9fa',
+        borderTop: '1px solid var(--trait)',
+        backgroundColor: 'var(--douceur)',
         display: 'flex',
         justifyContent: 'space-between',
         gap: 12,
@@ -419,25 +419,25 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
             onClick={handleQuickSave}
             style={{
               padding: '8px 16px',
-              backgroundColor: '#17a2b8',
-              color: 'white',
+              backgroundColor: 'var(--or)',
+              color: 'var(--sur-or)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
             title="Sauvegarde rapide (Ctrl+S)"
           >
-            💾 Sauvegarder (Ctrl+S)
+            Sauvegarder (Ctrl+S)
           </button>
           <div style={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             fontSize: 11,
-            color: '#555'
+            color: 'var(--encre-douce)'
           }}>
             <span>Dernière sauvegarde: {formatTime(lastSaveTime)}</span>
-            {dirtySinceLastSave && <span style={{ color: '#d9534f' }}>Modifications non sauvegardées…</span>}
+            {dirtySinceLastSave && <span style={{ color: '#a13d3d' }}>Modifications non sauvegardées…</span>}
           </div>
         </div>
         <button
@@ -445,10 +445,10 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
           onClick={onCancel}
           style={{
             padding: '8px 16px',
-            backgroundColor: '#6c757d',
-            color: 'white',
-            border: 'none',
-            borderRadius: 4,
+            backgroundColor: 'var(--fond-carte)',
+            color: 'var(--encre)',
+            border: '1px solid var(--trait)',
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}
         >
@@ -458,10 +458,10 @@ function AdvancedCharacterForm({ onSubmit, onCancel, initialData = null, onPrev,
           onClick={handleSubmit}
           style={{
             padding: '8px 16px',
-            backgroundColor: '#007bff',
-            color: 'white',
+            backgroundColor: 'var(--coeur)',
+            color: 'var(--sur-coeur)',
             border: 'none',
-            borderRadius: 4,
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer'
           }}
         >
