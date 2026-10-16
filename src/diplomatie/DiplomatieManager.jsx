@@ -12,22 +12,6 @@ const statusOptions = [
   'Embargo', 'Non-agression', 'Rivalité', 'Autre'
 ];
 
-const statusIcons = {
-  'Alliance': '🤝',
-  'Guerre': '⚔️',
-  'Neutralité': '⚖️',
-  'Vassalité': '👑',
-  'Traité': '📜',
-  'Embargo': '🚫',
-  'Non-agression': '🕊️',
-  'Rivalité': '😠',
-  'Autre': '🔘'
-};
-
-function getStatusIcon(status) {
-  return statusIcons[status] || '🔘';
-}
-
 export default function DiplomatieManager() {
   const { diplomatieRelations, equipes, territoires, evenements } = useElementsState();
   const { addElement, deleteElement, updateElement } = useElementsActions();
@@ -108,23 +92,23 @@ export default function DiplomatieManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>🤝 Factions & Diplomatie</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Factions & Diplomatie</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={gotoFiches}
-            style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Ouvrir le viewer des fiches techniques"
           >
-            📄 Fiches
+            Fiches
           </button>
           <button
             onClick={() => {
@@ -137,19 +121,19 @@ export default function DiplomatieManager() {
                 setIsEditing(false);
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {showForm ? '✕ Annuler' : '+ Nouvelle Relation'}
+            {showForm ? 'Annuler' : '+ Nouvelle Relation'}
           </button>
           <button
             onClick={() => exportElementsToFile(diplomatieRelations, 'diplomatie_export.json')}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
             title="Exporter toutes les relations diplomatiques en JSON"
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }} title="Importer des relations depuis JSON">
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }} title="Importer des relations depuis JSON">
+            Importer
             <input
               type="file"
               accept=".json"
@@ -184,32 +168,32 @@ export default function DiplomatieManager() {
       </div>
 
       {(equipes.length === 0 && territoires.length === 0) && (
-        <p style={{ color: '#856404', backgroundColor: '#fff3cd', border: '1px solid #ffc107', borderRadius: 6, padding: 12, fontSize: 14 }}>
+        <p style={{ color: 'var(--encre)', backgroundColor: 'var(--douceur)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)', padding: 12, fontSize: 14 }}>
           Aucune Équipe ni Territoire n'existe encore. Créez-en d'abord dans les modules « Équipes » ou « Cartes & Géographie » pour pouvoir établir des relations diplomatiques.
         </p>
       )}
 
-      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
+      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
         <div style={{ flex: 2 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Recherche</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Recherche</label>
           <input
             type="text"
-            placeholder="🔍 Rechercher par entité ou description..."
+            placeholder="Rechercher par entité ou description..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ flex: 1 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Statut</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Statut</label>
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="Tous">Tous les statuts</option>
             {statusOptions.map(s => (
-              <option key={s} value={s}>{getStatusIcon(s)} {s}</option>
+              <option key={s} value={s}>{s}</option>
             ))}
           </select>
         </div>
@@ -234,7 +218,7 @@ export default function DiplomatieManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>Relations diplomatiques ({filteredRelations.length}/{diplomatieRelations.length})</h3>
+          <h3 style={{ color: 'var(--encre)' }}>Relations diplomatiques ({filteredRelations.length}/{diplomatieRelations.length})</h3>
           <DiplomatieList
             relations={filteredRelations}
             selectedRelation={selectedRelation}
@@ -242,7 +226,6 @@ export default function DiplomatieManager() {
             onDelete={handleDeleteRelation}
             onEdit={handleEditRelation}
             getEntityById={getEntityById}
-            getStatusIcon={getStatusIcon}
           />
         </div>
 
@@ -250,7 +233,6 @@ export default function DiplomatieManager() {
           <DiplomatieDetails
             selectedRelation={selectedRelation}
             getEntityById={getEntityById}
-            getStatusIcon={getStatusIcon}
             evenements={evenements}
           />
         )}
