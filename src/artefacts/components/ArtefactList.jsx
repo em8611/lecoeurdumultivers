@@ -1,22 +1,28 @@
 import React from 'react';
 import AccordionList from '../../components/common/AccordionList.jsx';
 
-export default function ArtefactList({ artefacts, selectedArtefact, onSelect, onDelete, onEdit, getCategoryIcon, getStatusIcon }) {
+export default function ArtefactList({ artefacts, selectedArtefact, onSelect, onDelete, onEdit }) {
   const renderHeader = (artefact) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 18 }}>{getCategoryIcon(artefact.category)}</span>
-        <strong style={{ fontSize: 16 }}>{artefact.name}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{artefact.name}</strong>
+        {artefact.status && (
+          <span style={{
+            fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+            padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+          }}>
+            {artefact.status}
+          </span>
+        )}
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
         {artefact.category || 'Catégorie inconnue'}
-        {artefact.status && ` • ${getStatusIcon(artefact.status)} ${artefact.status}`}
       </div>
     </div>
   );
 
   const renderContent = (artefact) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {artefact.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Description :</strong>
