@@ -29,7 +29,6 @@ export default function MagieManager() {
   const config = subTab === 'magie'
     ? {
         family: 'Magie',
-        icon: '🔮',
         category: 'ecoleMagie',
         items: ecolesMagie,
         categoryOptions: magieCategoryOptions,
@@ -39,7 +38,6 @@ export default function MagieManager() {
       }
     : {
         family: 'Combat',
-        icon: '⚔️',
         category: 'styleCombat',
         items: stylesCombat,
         categoryOptions: combatCategoryOptions,
@@ -119,57 +117,57 @@ export default function MagieManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>🔮 Magie & Système de Combat</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Magie & Système de Combat</h2>
         <button
           onClick={gotoFiches}
-          style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+          style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           title="Ouvrir le viewer des fiches techniques"
         >
-          📄 Fiches
+          Fiches
         </button>
       </div>
 
-      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid #dee2e6' }}>
+      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid var(--trait)' }}>
         <button
           onClick={() => switchTab('magie')}
           style={{
             padding: '10px 18px',
             border: 'none',
-            borderBottom: subTab === 'magie' ? '2px solid #2196f3' : '2px solid transparent',
+            borderBottom: subTab === 'magie' ? '2px solid var(--coeur)' : '2px solid transparent',
             marginBottom: -2,
             backgroundColor: 'transparent',
-            color: subTab === 'magie' ? '#2196f3' : '#666',
+            color: subTab === 'magie' ? 'var(--coeur)' : 'var(--encre-douce)',
             fontWeight: subTab === 'magie' ? 'bold' : 'normal',
             cursor: 'pointer',
             fontSize: 14
           }}
         >
-          🔮 Écoles de Magie ({ecolesMagie.length})
+          Écoles de Magie ({ecolesMagie.length})
         </button>
         <button
           onClick={() => switchTab('combat')}
           style={{
             padding: '10px 18px',
             border: 'none',
-            borderBottom: subTab === 'combat' ? '2px solid #2196f3' : '2px solid transparent',
+            borderBottom: subTab === 'combat' ? '2px solid var(--coeur)' : '2px solid transparent',
             marginBottom: -2,
             backgroundColor: 'transparent',
-            color: subTab === 'combat' ? '#2196f3' : '#666',
+            color: subTab === 'combat' ? 'var(--coeur)' : 'var(--encre-douce)',
             fontWeight: subTab === 'combat' ? 'bold' : 'normal',
             cursor: 'pointer',
             fontSize: 14
           }}
         >
-          ⚔️ Styles de Combat ({stylesCombat.length})
+          Styles de Combat ({stylesCombat.length})
         </button>
       </div>
 
@@ -177,10 +175,10 @@ export default function MagieManager() {
         <div style={{ flex: 2 }}>
           <input
             type="text"
-            placeholder={`🔍 Rechercher une ${config.label.toLowerCase()}...`}
+            placeholder={`Rechercher une ${config.label.toLowerCase()}...`}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -196,18 +194,18 @@ export default function MagieManager() {
                 setIsEditing(false);
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {showForm ? '✕ Annuler' : `+ Nouvelle ${config.label}`}
+            {showForm ? 'Annuler' : `+ Nouvelle ${config.label}`}
           </button>
           <button
             onClick={() => exportElementsToFile(config.items, config.exportFileName)}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }}>
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }}>
+            Importer
             <input
               type="file"
               accept=".json"
@@ -256,21 +254,19 @@ export default function MagieManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>{config.labelPlural} ({filteredItems.length}/{config.items.length})</h3>
+          <h3 style={{ color: 'var(--encre)' }}>{config.labelPlural} ({filteredItems.length}/{config.items.length})</h3>
           <DisciplineList
             items={filteredItems}
             selectedItem={selectedItem}
             onSelect={setSelectedItem}
             onDelete={handleDeleteItem}
             onEdit={handleEditItem}
-            icon={config.icon}
           />
         </div>
 
         {selectedItem && (
           <DisciplineDetails
             selectedItem={selectedItem}
-            icon={config.icon}
             getCharacterById={getCharacterById}
             family={config.family}
           />
