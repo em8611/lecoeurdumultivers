@@ -16,7 +16,8 @@ const TABS = [
   { key: 'religion', label: 'Religion & Mythologie' },
   { key: 'quetes', label: 'Quêtes & Intrigues' },
   { key: 'langues', label: 'Langues & Écritures' },
-  { key: 'artefacts', label: 'Artefacts & Reliques' }
+  { key: 'artefacts', label: 'Artefacts & Reliques' },
+  { key: 'economie', label: 'Économie & Commerce' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

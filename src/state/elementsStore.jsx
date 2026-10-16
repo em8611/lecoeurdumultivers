@@ -25,7 +25,9 @@ const EMPTY_STATE = {
   mythes: [],
   quetes: [],
   langues: [],
-  artefacts: []
+  artefacts: [],
+  ressources: [],
+  routesCommerciales: []
 };
 
 function loadInitialState() {
@@ -65,7 +67,9 @@ const CATEGORY_ALIASES = {
   mythe: 'mythes',
   quete: 'quetes',
   langue: 'langues',
-  artefact: 'artefacts'
+  artefact: 'artefacts',
+  ressource: 'ressources',
+  route: 'routesCommerciales'
 };
 
 function resolveCategory(category) {

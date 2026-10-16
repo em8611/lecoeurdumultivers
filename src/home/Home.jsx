@@ -19,7 +19,8 @@ const MODULES = [
   { key: 'religion', label: 'Religion & Mythologie', icon: '⛩️', count: s => s.divinites.length + s.mythes.length },
   { key: 'quetes', label: 'Quêtes & Intrigues', icon: '🗡️', count: s => s.quetes.length },
   { key: 'langues', label: 'Langues & Écritures', icon: '🗣️', count: s => s.langues.length },
-  { key: 'artefacts', label: 'Artefacts & Reliques', icon: '🗝️', count: s => s.artefacts.length }
+  { key: 'artefacts', label: 'Artefacts & Reliques', icon: '🗝️', count: s => s.artefacts.length },
+  { key: 'economie', label: 'Économie & Commerce', icon: '💰', count: s => s.ressources.length + s.routesCommerciales.length }
 ];
 
 // Collections dont les entrées possèdent un nom + des dates, pour l'activité récente
@@ -44,7 +45,9 @@ const RECENT_SOURCES = [
   { moduleKey: 'religion', label: 'Mythe', icon: '⛩️', stateKey: 'mythes' },
   { moduleKey: 'quetes', label: 'Quête', icon: '🗡️', stateKey: 'quetes' },
   { moduleKey: 'langues', label: 'Langue', icon: '🗣️', stateKey: 'langues' },
-  { moduleKey: 'artefacts', label: 'Artefact', icon: '🗝️', stateKey: 'artefacts' }
+  { moduleKey: 'artefacts', label: 'Artefact', icon: '🗝️', stateKey: 'artefacts' },
+  { moduleKey: 'economie', label: 'Ressource', icon: '💰', stateKey: 'ressources' },
+  { moduleKey: 'economie', label: 'Route commerciale', icon: '💰', stateKey: 'routesCommerciales' }
 ];
 
 function timeAgo(isoDate) {

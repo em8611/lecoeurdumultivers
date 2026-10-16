@@ -15,3 +15,5 @@ export { default as FicheMytheButton } from './FicheMytheButton.jsx';
 export { default as FicheQueteButton } from './FicheQueteButton.jsx';
 export { default as FicheLangueButton } from './FicheLangueButton.jsx';
 export { default as FicheArtefactButton } from './FicheArtefactButton.jsx';
+export { default as FicheRessourceButton } from './FicheRessourceButton.jsx';
+export { default as FicheRouteButton } from './FicheRouteButton.jsx';

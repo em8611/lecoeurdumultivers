@@ -62,6 +62,13 @@ export const FORM_FIELD_SETS = {
     'name', 'category', 'status', 'description', 'powers', 'history',
     'creator', 'currentOwnerId', 'previousOwnerIds', 'locationId',
     'relatedQuestIds', 'relatedEventIds', 'tags'
+  ],
+  ressource: [
+    'name', 'category', 'rarity', 'value', 'description', 'territoireIds', 'tags'
+  ],
+  route: [
+    'name', 'status', 'fromTerritoireId', 'toTerritoireId', 'description',
+    'dangers', 'ressourceIds', 'equipeIds', 'tags'
   ]
 };
 

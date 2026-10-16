@@ -665,3 +665,50 @@ export function exportFicheArtefact(artefact) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheRessource(ressource) {
+  const lines = [
+    `# Fiche technique — ${ressource.name || 'Sans nom'}`,
+    '',
+    `Catégorie : ${ressource.category || '-'}`,
+    `Rareté : ${ressource.rarity || '-'}`,
+    `Valeur estimée : ${ressource.value || '-'}`,
+    '',
+    '## Description',
+    ressource.description || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(ressource.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+export function exportFicheRoute(route) {
+  const lines = [
+    `# Fiche technique — ${route.name || 'Sans nom'}`,
+    '',
+    `Statut : ${route.status || '-'}`,
+    '',
+    '## Description',
+    route.description || '-',
+    '',
+    '## Dangers',
+    route.dangers || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(route.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
