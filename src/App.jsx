@@ -19,6 +19,7 @@ import { ArtefactsManager } from './artefacts';
 import { EconomieManager } from './economie';
 import { TechnologieManager } from './technologie';
 import { CultureManager } from './culture';
+import { CalendriersManager } from './calendriers';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
@@ -41,7 +42,8 @@ const MODULE_MAP = {
   artefacts: 'artefacts',
   economie: 'economie',
   technologie: 'technologie',
-  culture: 'culture'
+  culture: 'culture',
+  calendriers: 'calendriers'
 };
 
 function App() {
@@ -85,6 +87,8 @@ function App() {
         return <TechnologieManager />;
       case 'culture':
         return <CultureManager />;
+      case 'calendriers':
+        return <CalendriersManager />;
       case 'home':
       default:
         return <Home onNavigate={setActiveTab} />;

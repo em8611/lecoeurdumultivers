@@ -73,6 +73,13 @@ export const FORM_FIELD_SETS = {
   tradition: [
     'name', 'category', 'description', 'origin', 'practice', 'significance',
     'equipeIds', 'territoireIds', 'tags'
+  ],
+  calendrier: [
+    'name', 'universId', 'description', 'units', 'epoch', 'notes', 'tags'
+  ],
+  ere: [
+    'name', 'status', 'calendrierId', 'startDate', 'endDate', 'description',
+    'majorEventIds', 'tags'
   ]
 };
 

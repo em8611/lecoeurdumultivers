@@ -19,7 +19,8 @@ const TABS = [
   { key: 'artefacts', label: 'Artefacts & Reliques' },
   { key: 'economie', label: 'Économie & Commerce' },
   { key: 'technologie', label: 'Technologie & Sciences' },
-  { key: 'culture', label: 'Culture & Société' }
+  { key: 'culture', label: 'Culture & Société' },
+  { key: 'calendriers', label: 'Calendriers & Ères' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

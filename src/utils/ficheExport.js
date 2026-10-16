@@ -742,3 +742,53 @@ export function exportFicheTradition(tradition) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheCalendrier(calendrier) {
+  const lines = [
+    `# Fiche technique — ${calendrier.name || 'Sans nom'}`,
+    '',
+    '## Description',
+    calendrier.description || '-',
+    '',
+    '## Unités de temps',
+    (calendrier.units || []).join(' → ') || '-',
+    '',
+    '## Point de départ / Année zéro',
+    calendrier.epoch || '-',
+    '',
+    '## Particularités',
+    calendrier.notes || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(calendrier.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+export function exportFicheEre(ere) {
+  const lines = [
+    `# Fiche technique — ${ere.name || 'Sans nom'}`,
+    '',
+    `Statut : ${ere.status || '-'}`,
+    `Période : ${ere.startDate || '?'} — ${ere.endDate || '?'}`,
+    '',
+    '## Description',
+    ere.description || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(ere.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
