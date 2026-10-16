@@ -1,22 +1,28 @@
 import React from 'react';
 import AccordionList from '../../components/common/AccordionList.jsx';
 
-export default function DisciplineList({ items, selectedItem, onSelect, onDelete, onEdit, icon }) {
+export default function DisciplineList({ items, selectedItem, onSelect, onDelete, onEdit }) {
   const renderHeader = (item) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 20 }}>{icon}</span>
-        <strong style={{ fontSize: 16 }}>{item.name}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{item.name}</strong>
+        {item.category && (
+          <span style={{
+            fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+            padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+          }}>
+            {item.category}
+          </span>
+        )}
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
-        {item.category}
-        {item.description && ` • ${item.description.slice(0, 80)}${item.description.length > 80 ? '…' : ''}`}
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
+        {item.description ? `${item.description.slice(0, 80)}${item.description.length > 80 ? '…' : ''}` : 'Aucune description'}
       </div>
     </div>
   );
 
   const renderContent = (item) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {item.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Description :</strong>
