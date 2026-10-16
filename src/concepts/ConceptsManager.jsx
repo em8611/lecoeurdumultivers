@@ -11,19 +11,6 @@ import ConceptDetails from './components/ConceptDetails.jsx';
 
 const categoryOptions = ['Loi', 'Règle', 'Système', 'Principe', 'Phénomène', 'Autre'];
 
-const categoryIcons = {
-  'Loi': '⚖️',
-  'Règle': '📜',
-  'Système': '⚙️',
-  'Principe': '🧭',
-  'Phénomène': '🌌',
-  'Autre': '💭'
-};
-
-function getCategoryIcon(category) {
-  return categoryIcons[category] || '💭';
-}
-
 export default function ConceptsManager() {
   const { concepts } = useElementsState();
   const { addElement, deleteElement, updateElement } = useElementsActions();
@@ -133,23 +120,23 @@ export default function ConceptsManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>⚖️ Concepts</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Concepts</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={gotoFiches}
-            style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Ouvrir le viewer des fiches techniques"
           >
-            📄 Fiches
+            Fiches
           </button>
           <button
             onClick={() => {
@@ -162,26 +149,26 @@ export default function ConceptsManager() {
                 setIsEditing(false);
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {showForm ? '✕ Annuler' : '+ Nouveau Concept'}
+            {showForm ? 'Annuler' : '+ Nouveau Concept'}
           </button>
           <button
             onClick={() => setShowBatchImport(true)}
-            style={{ padding: '8px 16px', backgroundColor: '#6f42c1', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Importer plusieurs concepts par leurs noms"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <button
             onClick={() => exportElementsToFile(concepts, 'concepts_export.json')}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
             title="Exporter tous les concepts en JSON"
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }} title="Importer des concepts depuis JSON">
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }} title="Importer des concepts depuis JSON">
+            Importer
             <input
               type="file"
               accept=".json"
@@ -224,27 +211,27 @@ export default function ConceptsManager() {
         description="Entrez un nom de concept par ligne. Chaque concept sera créé avec des valeurs par défaut que vous pourrez modifier ensuite."
       />
 
-      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
+      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
         <div style={{ flex: 2 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Recherche</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Recherche</label>
           <input
             type="text"
-            placeholder="🔍 Rechercher un concept ou une description..."
+            placeholder="Rechercher un concept ou une description..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ flex: 1 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Catégorie</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Catégorie</label>
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="Tous">Toutes les catégories</option>
             {categoryOptions.map(cat => (
-              <option key={cat} value={cat}>{getCategoryIcon(cat)} {cat}</option>
+              <option key={cat} value={cat}>{cat}</option>
             ))}
           </select>
         </div>
@@ -267,7 +254,7 @@ export default function ConceptsManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>
+          <h3 style={{ color: 'var(--encre)' }}>
             {filterCategory === 'Tous' ? 'Tous les concepts' : filterCategory}
             {' '}({filteredConcepts.length}/{concepts.length})
           </h3>
@@ -277,7 +264,6 @@ export default function ConceptsManager() {
             onSelect={setSelectedConcept}
             onDelete={handleDeleteConcept}
             onEdit={handleEditConcept}
-            getCategoryIcon={getCategoryIcon}
           />
         </div>
 
@@ -285,7 +271,6 @@ export default function ConceptsManager() {
           <ConceptDetails
             selectedConcept={selectedConcept}
             allConcepts={concepts}
-            getCategoryIcon={getCategoryIcon}
             onSelectConcept={setSelectedConcept}
           />
         )}

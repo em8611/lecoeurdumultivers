@@ -4,7 +4,6 @@ import FicheConceptButton from '../../components/common/FicheConceptButton.jsx';
 export default function ConceptDetails({
   selectedConcept,
   allConcepts,
-  getCategoryIcon,
   onSelectConcept
 }) {
   const relatedEntries = (selectedConcept.relatedConcepts || [])
@@ -14,20 +13,19 @@ export default function ConceptDetails({
   return (
     <div style={{
       flex: 1,
-      border: '1px solid #ddd',
+      border: '1px solid var(--trait)',
       padding: 16,
-      borderRadius: 8,
-      backgroundColor: '#ffffff',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 15 }}>
-        <span style={{ fontSize: 32 }}>{getCategoryIcon(selectedConcept.category)}</span>
         <div style={{ flex: 1 }}>
-          <h3 style={{ margin: 0, color: '#2196f3' }}>
+          <h3 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>
             {selectedConcept.name}
           </h3>
-          <div style={{ fontSize: 14, color: '#666' }}>
+          <div style={{ fontSize: 14, color: 'var(--encre-douce)' }}>
             {selectedConcept.category}
           </div>
         </div>
@@ -36,17 +34,17 @@ export default function ConceptDetails({
 
       {selectedConcept.description && (
         <div style={{ marginBottom: 15 }}>
-          <strong>📘 Description :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>
+          <strong style={{ color: 'var(--encre)' }}>Description :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>
             {selectedConcept.description}
           </p>
         </div>
       )}
 
       {selectedConcept.mechanism && (
-        <div style={{ marginBottom: 15, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
-          <strong style={{ color: '#2196f3' }}>⚙️ Fonctionnement / Mécanisme :</strong>
-          <p style={{ margin: '8px 0 0 0', color: '#555', lineHeight: 1.5 }}>
+        <div style={{ marginBottom: 15, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
+          <strong style={{ color: 'var(--coeur)' }}>Fonctionnement / Mécanisme :</strong>
+          <p style={{ margin: '8px 0 0 0', color: 'var(--encre)', lineHeight: 1.5 }}>
             {selectedConcept.mechanism}
           </p>
         </div>
@@ -54,8 +52,8 @@ export default function ConceptDetails({
 
       {selectedConcept.scope && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🎯 Portée / Application :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>
+          <strong style={{ color: 'var(--encre)' }}>Portée / Application :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>
             {selectedConcept.scope}
           </p>
         </div>
@@ -63,26 +61,26 @@ export default function ConceptDetails({
 
       {selectedConcept.origin && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🌍 Origine / Historique :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>
+          <strong style={{ color: 'var(--encre)' }}>Origine / Historique :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>
             {selectedConcept.origin}
           </p>
         </div>
       )}
 
       {selectedConcept.exceptions && (
-        <div style={{ marginBottom: 15, padding: 10, backgroundColor: '#fff3cd', borderRadius: 6, border: '1px solid #ffc107' }}>
-          <strong style={{ color: '#856404' }}>⚠️ Exceptions / Limites :</strong>
-          <p style={{ margin: '4px 0', fontSize: 14, color: '#856404' }}>
+        <div style={{ marginBottom: 15, padding: 10, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', borderLeft: '3px solid var(--or)' }}>
+          <strong style={{ color: 'var(--encre)' }}>Exceptions / Limites :</strong>
+          <p style={{ margin: '4px 0', fontSize: 14, color: 'var(--encre)' }}>
             {selectedConcept.exceptions}
           </p>
         </div>
       )}
 
       {selectedConcept.consequences && (
-        <div style={{ marginBottom: 15, padding: 10, backgroundColor: '#f8d7da', borderRadius: 6, border: '1px solid #dc3545' }}>
-          <strong style={{ color: '#721c24' }}>💥 Conséquences / Enjeux :</strong>
-          <p style={{ margin: '4px 0', fontSize: 14, color: '#721c24' }}>
+        <div style={{ marginBottom: 15, padding: 10, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', borderLeft: '3px solid var(--coeur)' }}>
+          <strong style={{ color: 'var(--encre)' }}>Conséquences / Enjeux :</strong>
+          <p style={{ margin: '4px 0', fontSize: 14, color: 'var(--encre)' }}>
             {selectedConcept.consequences}
           </p>
         </div>
@@ -90,7 +88,7 @@ export default function ConceptDetails({
 
       {relatedEntries.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🔗 Concepts liés :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Concepts liés :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {relatedEntries.map(entry => (
               <button
@@ -98,16 +96,16 @@ export default function ConceptDetails({
                 onClick={() => onSelectConcept(entry)}
                 style={{
                   padding: '4px 10px',
-                  backgroundColor: '#e3f2fd',
-                  color: '#1976d2',
-                  border: '1px solid #90caf9',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--douceur)',
+                  color: 'var(--coeur)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold',
                   cursor: 'pointer'
                 }}
               >
-                {getCategoryIcon(entry.category)} {entry.name}
+                {entry.name}
               </button>
             ))}
           </div>
@@ -115,23 +113,23 @@ export default function ConceptDetails({
       )}
 
       {selectedConcept.relatedConcepts && selectedConcept.relatedConcepts.length > relatedEntries.length && (
-        <div style={{ marginBottom: 15, fontSize: 12, color: '#999', fontStyle: 'italic' }}>
+        <div style={{ marginBottom: 15, fontSize: 12, color: 'var(--encre-douce)', fontStyle: 'italic' }}>
           D'autres concepts liés référencés n'ont pas encore de fiche.
         </div>
       )}
 
       {selectedConcept.tags && selectedConcept.tags.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🏷️ Tags :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Tags :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {selectedConcept.tags.map((tag, idx) => (
               <span
                 key={idx}
                 style={{
                   padding: '4px 10px',
-                  backgroundColor: '#e7f3ff',
-                  color: '#0c5460',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--or)',
+                  color: 'var(--sur-or)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold'
                 }}
@@ -145,14 +143,14 @@ export default function ConceptDetails({
 
       {selectedConcept.images && selectedConcept.images.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🖼️ Illustrations :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Illustrations :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {selectedConcept.images.map((src, idx) => (
               <img
                 key={idx}
                 src={src}
                 alt={`${selectedConcept.name} ${idx + 1}`}
-                style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 6, border: '1px solid #ddd' }}
+                style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }}
               />
             ))}
           </div>
