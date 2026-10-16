@@ -3,8 +3,6 @@ import FichePouvoirButton from '../../components/common/FichePouvoirButton.jsx';
 
 export default function PouvoirDetails({
   selectedPouvoir,
-  getCategoryIcon,
-  getLevelColor,
   characters,
   availableCharacters,
   getCharacterById,
@@ -14,20 +12,19 @@ export default function PouvoirDetails({
   return (
     <div style={{
       flex: 1,
-      border: '1px solid #ddd',
+      border: '1px solid var(--trait)',
       padding: 16,
-      borderRadius: 8,
-      backgroundColor: '#ffffff',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 15 }}>
-        <span style={{ fontSize: 32 }}>{getCategoryIcon(selectedPouvoir.category)}</span>
         <div style={{ flex: 1 }}>
-          <h3 style={{ margin: 0, color: '#2196f3' }}>
+          <h3 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>
             {selectedPouvoir.name}
           </h3>
-          <div style={{ fontSize: 14, color: '#666' }}>
+          <div style={{ fontSize: 14, color: 'var(--encre-douce)' }}>
             {selectedPouvoir.type} • {selectedPouvoir.category}
           </div>
         </div>
@@ -36,12 +33,12 @@ export default function PouvoirDetails({
       <div style={{ marginBottom: 15 }}>
         <span style={{
           display: 'inline-block',
-          padding: '4px 12px',
-          borderRadius: 12,
-          fontSize: 13,
-          fontWeight: 'bold',
-          color: 'white',
-          backgroundColor: getLevelColor(selectedPouvoir.level)
+          padding: '4px 10px',
+          backgroundColor: 'var(--douceur)',
+          color: 'var(--encre)',
+          borderRadius: 'var(--rayon-pilule)',
+          fontSize: 12,
+          fontWeight: 'bold'
         }}>
           Niveau: {selectedPouvoir.level}
         </span>
@@ -49,8 +46,8 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.description && (
         <div style={{ marginBottom: 15 }}>
-          <strong>Description:</strong>
-          <p style={{ margin: '4px 0', color: '#555' }}>
+          <strong style={{ color: 'var(--encre)' }}>Description:</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)' }}>
             {selectedPouvoir.description}
           </p>
         </div>
@@ -58,8 +55,8 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.effects && (
         <div style={{ marginBottom: 15 }}>
-          <strong>Effets:</strong>
-          <p style={{ margin: '4px 0', color: '#555' }}>
+          <strong style={{ color: 'var(--encre)' }}>Effets:</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)' }}>
             {selectedPouvoir.effects}
           </p>
         </div>
@@ -67,8 +64,8 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.cost && (
         <div style={{ marginBottom: 15 }}>
-          <strong>Coût/Limitations:</strong>
-          <p style={{ margin: '4px 0', color: '#555' }}>
+          <strong style={{ color: 'var(--encre)' }}>Coût/Limitations:</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)' }}>
             {selectedPouvoir.cost}
           </p>
         </div>
@@ -76,16 +73,16 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.requirements && (
         <div style={{ marginBottom: 15 }}>
-          <strong>Prérequis:</strong>
-          <p style={{ margin: '4px 0', color: '#555' }}>
+          <strong style={{ color: 'var(--encre)' }}>Prérequis:</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)' }}>
             {selectedPouvoir.requirements}
           </p>
         </div>
       )}
 
       {(selectedPouvoir.range || selectedPouvoir.duration || selectedPouvoir.cooldown || selectedPouvoir.damage || selectedPouvoir.element || selectedPouvoir.rarity) && (
-        <div style={{ marginBottom: 15, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
-          <h4 style={{ margin: '0 0 10px 0', color: '#2196f3' }}>📊 Caractéristiques</h4>
+        <div style={{ marginBottom: 15, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
+          <h4 style={{ margin: '0 0 10px 0', color: 'var(--coeur)' }}>Caractéristiques</h4>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, fontSize: 14 }}>
             {selectedPouvoir.range && (
               <div><strong>Portée:</strong> {selectedPouvoir.range}</div>
@@ -103,7 +100,7 @@ export default function PouvoirDetails({
               <div><strong>Élément:</strong> {selectedPouvoir.element}</div>
             )}
             {selectedPouvoir.rarity && (
-              <div><strong>Rareté:</strong> <span style={{ color: '#6f42c1', fontWeight: 'bold' }}>{selectedPouvoir.rarity}</span></div>
+              <div><strong>Rareté:</strong> <span style={{ color: 'var(--coeur)', fontWeight: 'bold' }}>{selectedPouvoir.rarity}</span></div>
             )}
           </div>
         </div>
@@ -111,8 +108,8 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.origin && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🌍 Origine:</strong>
-          <p style={{ margin: '4px 0', color: '#555' }}>
+          <strong style={{ color: 'var(--encre)' }}>Origine:</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)' }}>
             {selectedPouvoir.origin}
           </p>
         </div>
@@ -120,16 +117,16 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.learningMethod && (
         <div style={{ marginBottom: 15 }}>
-          <strong>📚 Méthode d'apprentissage:</strong>
-          <p style={{ margin: '4px 0', color: '#555' }}>
+          <strong style={{ color: 'var(--encre)' }}>Méthode d'apprentissage:</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)' }}>
             {selectedPouvoir.learningMethod}
           </p>
         </div>
       )}
 
       {(selectedPouvoir.visualEffect || selectedPouvoir.soundEffect) && (
-        <div style={{ marginBottom: 15, padding: 12, backgroundColor: '#fff3cd', borderRadius: 6 }}>
-          <h4 style={{ margin: '0 0 10px 0', color: '#f57c00' }}>🎨 Effets sensoriels</h4>
+        <div style={{ marginBottom: 15, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
+          <h4 style={{ margin: '0 0 10px 0', color: 'var(--coeur)' }}>Effets sensoriels</h4>
           {selectedPouvoir.visualEffect && (
             <div style={{ marginBottom: 6, fontSize: 14 }}>
               <strong>Visuel:</strong> {selectedPouvoir.visualEffect}
@@ -145,8 +142,8 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.evolution && (
         <div style={{ marginBottom: 15 }}>
-          <strong>⬆️ Évolution:</strong>
-          <p style={{ margin: '4px 0', color: '#555' }}>
+          <strong style={{ color: 'var(--encre)' }}>Évolution:</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)' }}>
             {selectedPouvoir.evolution}
           </p>
         </div>
@@ -154,8 +151,8 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.combinations && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🔗 Combinaisons possibles:</strong>
-          <p style={{ margin: '4px 0', color: '#555' }}>
+          <strong style={{ color: 'var(--encre)' }}>Combinaisons possibles:</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)' }}>
             {selectedPouvoir.combinations}
           </p>
         </div>
@@ -165,17 +162,17 @@ export default function PouvoirDetails({
         <div style={{ marginBottom: 15 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             {selectedPouvoir.strengths && (
-              <div style={{ padding: 10, backgroundColor: '#d4edda', borderRadius: 6, border: '1px solid #28a745' }}>
-                <strong style={{ color: '#155724' }}>✓ Points forts:</strong>
-                <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#155724' }}>
+              <div style={{ padding: 10, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+                <strong style={{ color: 'var(--coeur)' }}>Points forts:</strong>
+                <p style={{ margin: '4px 0 0 0', fontSize: 13, color: 'var(--encre)' }}>
                   {selectedPouvoir.strengths}
                 </p>
               </div>
             )}
             {selectedPouvoir.weaknesses && (
-              <div style={{ padding: 10, backgroundColor: '#f8d7da', borderRadius: 6, border: '1px solid #dc3545' }}>
-                <strong style={{ color: '#721c24' }}>✗ Points faibles:</strong>
-                <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#721c24' }}>
+              <div style={{ padding: 10, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', borderLeft: '3px solid var(--or)' }}>
+                <strong style={{ color: 'var(--coeur)' }}>Points faibles:</strong>
+                <p style={{ margin: '4px 0 0 0', fontSize: 13, color: 'var(--encre)' }}>
                   {selectedPouvoir.weaknesses}
                 </p>
               </div>
@@ -185,9 +182,9 @@ export default function PouvoirDetails({
       )}
 
       {selectedPouvoir.sideEffects && (
-        <div style={{ marginBottom: 15, padding: 10, backgroundColor: '#fff3cd', borderRadius: 6, border: '1px solid #ffc107' }}>
-          <strong style={{ color: '#856404' }}>⚠️ Effets secondaires:</strong>
-          <p style={{ margin: '4px 0', fontSize: 13, color: '#856404' }}>
+        <div style={{ marginBottom: 15, padding: 10, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', borderLeft: '3px solid var(--or)' }}>
+          <strong style={{ color: 'var(--coeur)' }}>Effets secondaires:</strong>
+          <p style={{ margin: '4px 0', fontSize: 13, color: 'var(--encre)' }}>
             {selectedPouvoir.sideEffects}
           </p>
         </div>
@@ -195,16 +192,16 @@ export default function PouvoirDetails({
 
       {selectedPouvoir.tags && selectedPouvoir.tags.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🏷️ Tags:</strong>
+          <strong style={{ color: 'var(--encre)' }}>Tags:</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {(Array.isArray(selectedPouvoir.tags) ? selectedPouvoir.tags : selectedPouvoir.tags.split(',')).map((tag, idx) => (
               <span
                 key={idx}
                 style={{
                   padding: '4px 10px',
-                  backgroundColor: '#e3f2fd',
-                  color: '#1976d2',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--or)',
+                  color: 'var(--sur-or)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold'
                 }}
@@ -217,20 +214,20 @@ export default function PouvoirDetails({
       )}
 
       {selectedPouvoir.usageMoments && (
-        <div style={{ marginBottom: 15, padding: 12, backgroundColor: '#f0f4ff', borderRadius: 6, border: '1px solid #2196f3' }}>
-          <strong style={{ color: '#1565c0' }}>📖 Moments d'utilisation:</strong>
-          <p style={{ margin: '8px 0 0 0', fontSize: 14, color: '#1565c0', whiteSpace: 'pre-wrap' }}>
+        <div style={{ marginBottom: 15, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
+          <strong style={{ color: 'var(--coeur)' }}>Moments d'utilisation:</strong>
+          <p style={{ margin: '8px 0 0 0', fontSize: 14, color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>
             {selectedPouvoir.usageMoments}
           </p>
         </div>
       )}
 
-      <hr style={{ margin: '20px 0', border: 'none', borderTop: '1px solid #dee2e6' }} />
+      <hr style={{ margin: '20px 0', border: 'none', borderTop: '1px solid var(--trait)' }} />
 
       <div style={{ marginBottom: 20 }}>
-        <strong>Utilisateurs ({selectedPouvoir.users.length}):</strong>
+        <strong style={{ color: 'var(--encre)' }}>Utilisateurs ({selectedPouvoir.users.length}):</strong>
         {selectedPouvoir.users.length === 0 ? (
-          <p style={{ color: '#666', fontSize: 14, marginTop: 8 }}>
+          <p style={{ color: 'var(--encre-douce)', fontSize: 14, marginTop: 8 }}>
             Aucun personnage ne possède ce pouvoir
           </p>
         ) : (
@@ -245,14 +242,14 @@ export default function PouvoirDetails({
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     padding: 8,
-                    backgroundColor: '#f8f9fa',
-                    borderRadius: 4,
+                    backgroundColor: 'var(--douceur)',
+                    borderRadius: 'var(--rayon-bouton)',
                     marginBottom: 6
                   }}
                 >
                   <div>
-                    <strong>{character.name}</strong>
-                    <div style={{ fontSize: 12, color: '#666' }}>
+                    <strong style={{ color: 'var(--encre)' }}>{character.name}</strong>
+                    <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>
                       {character.age} ans • {character.origin}
                     </div>
                   </div>
@@ -260,10 +257,10 @@ export default function PouvoirDetails({
                     onClick={() => onRemoveUser(userId)}
                     style={{
                       padding: '4px 8px',
-                      backgroundColor: '#dc3545',
+                      backgroundColor: '#a13d3d',
                       color: 'white',
                       border: 'none',
-                      borderRadius: 3,
+                      borderRadius: 'var(--rayon-bouton)',
                       cursor: 'pointer',
                       fontSize: 12
                     }}
@@ -279,9 +276,9 @@ export default function PouvoirDetails({
       </div>
 
       <div>
-        <strong>Attribuer à un personnage:</strong>
+        <strong style={{ color: 'var(--encre)' }}>Attribuer à un personnage:</strong>
         {availableCharacters.length === 0 ? (
-          <p style={{ color: '#666', fontSize: 14, marginTop: 8 }}>
+          <p style={{ color: 'var(--encre-douce)', fontSize: 14, marginTop: 8 }}>
             {characters.length === 0
               ? "Aucun personnage disponible. Créez d'abord des personnages."
               : "Tous les personnages possèdent déjà ce pouvoir."}
@@ -298,15 +295,16 @@ export default function PouvoirDetails({
                   textAlign: 'left',
                   padding: 8,
                   marginBottom: 6,
-                  backgroundColor: '#e7f3ff',
-                  border: '1px solid #90caf9',
-                  borderRadius: 4,
+                  backgroundColor: 'var(--douceur)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-bouton)',
                   cursor: 'pointer',
-                  fontSize: 14
+                  fontSize: 14,
+                  color: 'var(--encre)'
                 }}
               >
                 <strong>{character.name}</strong>
-                <div style={{ fontSize: 12, color: '#666' }}>
+                <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>
                   {character.age} ans • {character.origin}
                 </div>
               </button>

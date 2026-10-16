@@ -89,35 +89,6 @@ export default function PouvoirsManager() {
     setNotification
   );
 
-  const getCategoryIcon = (category) => {
-    const icons = {
-      'Élémentaire': '🔥',
-      'Mental': '🧠',
-      'Physique': '💪',
-      'Magique': '✨',
-      'Technologique': '⚙️',
-      'Spirituel': '🌟',
-      'Temporel': '⏰',
-      'Spatial': '🌌',
-      'Énergétique': '⚡',
-      'Guérison': '💚',
-      'Autre': '🎯'
-    };
-    return icons[category] || '🎯';
-  };
-
-  const getLevelColor = (level) => {
-    const colors = {
-      'Débutant': '#6c757d',
-      'Intermédiaire': '#17a2b8',
-      'Avancé': '#007bff',
-      'Expert': '#28a745',
-      'Maître': '#6f42c1',
-      'Légendaire': '#fd7e14'
-    };
-    return colors[level] || '#6c757d';
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -194,23 +165,23 @@ export default function PouvoirsManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>✨ Gestion des Pouvoirs et Compétences</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Gestion des Pouvoirs et Compétences</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={gotoFiches}
-            style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Ouvrir le viewer des fiches techniques"
           >
-            📄 Fiches
+            Fiches
           </button>
           <button
             onClick={() => {
@@ -223,26 +194,26 @@ export default function PouvoirsManager() {
                 setIsEditing(false);
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {showForm ? '✕ Annuler' : '+ Nouveau Pouvoir/Compétence'}
+            {showForm ? 'Annuler' : '+ Nouveau Pouvoir/Compétence'}
           </button>
           <button
             onClick={() => setShowBatchImport(true)}
-            style={{ padding: '8px 16px', backgroundColor: '#6f42c1', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Importer plusieurs pouvoirs par leurs noms"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <button
             onClick={() => exportElementsToFile(pouvoirs, 'pouvoirs_export.json')}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
             title="Exporter tous les pouvoirs en JSON"
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }} title="Importer des pouvoirs depuis JSON">
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }} title="Importer des pouvoirs depuis JSON">
+            Importer
             <input
               type="file"
               accept=".json"
@@ -301,9 +272,9 @@ export default function PouvoirsManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>Liste des pouvoirs ({filteredPouvoirs.length}/{pouvoirs.length})</h3>
+          <h3 style={{ color: 'var(--encre)' }}>Liste des pouvoirs ({filteredPouvoirs.length}/{pouvoirs.length})</h3>
           {filteredPouvoirs.length === 0 ? (
-            <p style={{ color: '#666', fontStyle: 'italic' }}>
+            <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic' }}>
               {pouvoirs.length === 0 ? 'Aucun pouvoir créé. Cliquez sur le bouton ci-dessus pour commencer.' : 'Aucun pouvoir ne correspond aux filtres sélectionnés.'}
             </p>
           ) : (
@@ -313,8 +284,6 @@ export default function PouvoirsManager() {
               onSelect={setSelectedPouvoir}
               onDelete={handleDeletePouvoir}
               onEdit={handleEditPouvoir}
-              getCategoryIcon={getCategoryIcon}
-              getLevelColor={getLevelColor}
             />
           )}
         </div>
@@ -322,8 +291,6 @@ export default function PouvoirsManager() {
         {selectedPouvoir && (
           <PouvoirDetails
             selectedPouvoir={selectedPouvoir}
-            getCategoryIcon={getCategoryIcon}
-            getLevelColor={getLevelColor}
             characters={characters}
             availableCharacters={availableCharacters}
             getCharacterById={getCharacterById}

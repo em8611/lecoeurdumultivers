@@ -7,11 +7,11 @@ export default function PouvoirFilters({ filterType, setFilterType, filterLevel,
       gap: 15,
       marginBottom: 20,
       padding: 12,
-      backgroundColor: '#f8f9fa',
-      borderRadius: 6
+      backgroundColor: 'var(--douceur)',
+      borderRadius: 'var(--rayon-carte)'
     }}>
       <div style={{ flex: 1 }}>
-        <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>
+        <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>
           Type
         </label>
         <select
@@ -20,8 +20,8 @@ export default function PouvoirFilters({ filterType, setFilterType, filterLevel,
           style={{
             width: '100%',
             padding: 6,
-            borderRadius: 4,
-            border: '1px solid #ced4da',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             fontSize: 14
           }}
         >
@@ -34,7 +34,7 @@ export default function PouvoirFilters({ filterType, setFilterType, filterLevel,
         </select>
       </div>
       <div style={{ flex: 1 }}>
-        <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>
+        <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>
           Niveau
         </label>
         <select
@@ -43,8 +43,8 @@ export default function PouvoirFilters({ filterType, setFilterType, filterLevel,
           style={{
             width: '100%',
             padding: 6,
-            borderRadius: 4,
-            border: '1px solid #ced4da',
+            borderRadius: 'var(--rayon-bouton)',
+            border: '1px solid var(--trait)',
             fontSize: 14
           }}
         >

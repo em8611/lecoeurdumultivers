@@ -8,8 +8,8 @@ export default function PouvoirForm({ formData, setFormData, onSubmit, onCancel,
   const inputStyle = {
     width: '100%',
     padding: 8,
-    borderRadius: 4,
-    border: '1px solid #ced4da',
+    borderRadius: 'var(--rayon-bouton)',
+    border: '1px solid var(--trait)',
     fontSize: 14,
     boxSizing: 'border-box'
   };
@@ -22,13 +22,13 @@ export default function PouvoirForm({ formData, setFormData, onSubmit, onCancel,
 
   return (
     <div style={{
-      backgroundColor: '#f8f9fa',
+      backgroundColor: 'var(--douceur)',
       padding: 24,
-      borderRadius: 8,
+      borderRadius: 'var(--rayon-carte)',
       marginBottom: 24,
-      border: '1px solid #dee2e6'
+      border: '1px solid var(--trait)'
     }}>
-      <h3 style={{ marginTop: 0, marginBottom: 20 }}>
+      <h3 style={{ marginTop: 0, marginBottom: 20, color: 'var(--encre)' }}>
         {isEditing ? 'Modifier le pouvoir/compétence' : 'Créer un nouveau pouvoir/compétence'}
       </h3>
 
@@ -77,17 +77,17 @@ export default function PouvoirForm({ formData, setFormData, onSubmit, onCancel,
               onChange={(e) => setFormData({ ...formData, category: e.target.value })}
               style={inputStyle}
             >
-              <option value="Élémentaire">🔥 Élémentaire</option>
-              <option value="Mental">🧠 Mental</option>
-              <option value="Physique">💪 Physique</option>
-              <option value="Magique">✨ Magique</option>
-              <option value="Technologique">⚙️ Technologique</option>
-              <option value="Spirituel">🌟 Spirituel</option>
-              <option value="Temporel">⏰ Temporel</option>
-              <option value="Spatial">🌌 Spatial</option>
-              <option value="Énergétique">⚡ Énergétique</option>
-              <option value="Guérison">💚 Guérison</option>
-              <option value="Autre">🎯 Autre</option>
+              <option value="Élémentaire">Élémentaire</option>
+              <option value="Mental">Mental</option>
+              <option value="Physique">Physique</option>
+              <option value="Magique">Magique</option>
+              <option value="Technologique">Technologique</option>
+              <option value="Spirituel">Spirituel</option>
+              <option value="Temporel">Temporel</option>
+              <option value="Spatial">Spatial</option>
+              <option value="Énergétique">Énergétique</option>
+              <option value="Guérison">Guérison</option>
+              <option value="Autre">Autre</option>
             </select>
           </div>
           <div>
@@ -152,8 +152,8 @@ export default function PouvoirForm({ formData, setFormData, onSubmit, onCancel,
           />
         </div>
 
-        <h4 style={{ marginTop: 24, marginBottom: 18, color: '#2196f3', fontSize: 16 }}>
-          📊 Caractéristiques avancées
+        <h4 style={{ marginTop: 24, marginBottom: 18, color: 'var(--coeur)', fontSize: 16 }}>
+          Caractéristiques avancées
         </h4>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20, marginBottom: 20 }}>
@@ -357,29 +357,29 @@ export default function PouvoirForm({ formData, setFormData, onSubmit, onCancel,
             type="submit"
             style={{
               padding: '10px 20px',
-              backgroundColor: '#28a745',
-              color: 'white',
+              backgroundColor: 'var(--coeur)',
+              color: 'var(--sur-coeur)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
           >
-            {isEditing ? '✓ Mettre à jour' : '✓ Créer le pouvoir'}
+            {isEditing ? 'Mettre à jour' : 'Créer le pouvoir'}
           </button>
           <button
             type="button"
             onClick={onCancel}
             style={{
               padding: '10px 20px',
-              backgroundColor: '#6c757d',
-              color: 'white',
-              border: 'none',
-              borderRadius: 4,
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
           >
-            ✕ Annuler
+            Annuler
           </button>
         </div>
       </form>

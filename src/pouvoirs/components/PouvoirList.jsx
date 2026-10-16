@@ -6,27 +6,27 @@ export default function PouvoirList({
   selectedPouvoir,
   onSelect,
   onDelete,
-  onEdit,
-  getCategoryIcon,
-  getLevelColor
+  onEdit
 }) {
-  const renderHeader = (pouvoir, isSelected) => (
+  const renderHeader = (pouvoir) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 20 }}>{getCategoryIcon(pouvoir.category)}</span>
-        <strong style={{ fontSize: 16 }}>{pouvoir.name}</strong>
-      </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4, display: 'flex', gap: 10 }}>
-        <span>{pouvoir.type}</span>
-        <span>•</span>
-        <span>{pouvoir.category}</span>
-        <span>•</span>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{pouvoir.name}</strong>
         <span style={{
-          color: getLevelColor(pouvoir.level),
-          fontWeight: 'bold'
+          fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+        }}>
+          {pouvoir.category}
+        </span>
+        <span style={{
+          fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
         }}>
           {pouvoir.level}
         </span>
+      </div>
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4, display: 'flex', gap: 10 }}>
+        <span>{pouvoir.type}</span>
         <span>•</span>
         <span>{pouvoir.users.length} utilisateur(s)</span>
       </div>
@@ -34,7 +34,7 @@ export default function PouvoirList({
   );
 
   const renderContent = (pouvoir) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {pouvoir.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Description :</strong>
