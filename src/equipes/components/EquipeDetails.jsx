@@ -24,10 +24,10 @@ export default function EquipeDetails({
   return (
     <div style={{
       flex: 1,
-      border: `2px solid ${selectedEquipe.colors?.primary || '#2196f3'}`,
+      border: `2px solid ${selectedEquipe.colors?.primary || 'var(--trait)'}`,
       padding: 20,
-      borderRadius: 8,
-      backgroundColor: '#ffffff',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: 'calc(100vh - 200px)',
       overflowY: 'auto'
     }}>
@@ -38,34 +38,36 @@ export default function EquipeDetails({
         gap: 16,
         marginBottom: 20,
         paddingBottom: 16,
-        borderBottom: `2px solid ${selectedEquipe.colors?.primary || '#2196f3'}`
+        borderBottom: `2px solid ${selectedEquipe.colors?.primary || 'var(--trait)'}`
       }}>
         {selectedEquipe.emblem && (
           <img
             src={selectedEquipe.emblem}
             alt={selectedEquipe.name}
-            style={{ width: 80, height: 80, objectFit: 'contain' }}
+            style={{ width: 80, height: 80, objectFit: 'contain', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }}
             onError={(e) => e.target.style.display = 'none'}
           />
         )}
         <div style={{ flex: 1 }}>
           <h3 style={{
             margin: 0,
-            color: selectedEquipe.colors?.primary || '#2196f3',
+            fontFamily: 'var(--police-affichage)',
+            fontWeight: 600,
+            color: 'var(--coeur)',
             fontSize: 24
           }}>
             {selectedEquipe.name}
           </h3>
-          <div style={{ fontSize: 14, color: '#666', marginTop: 4 }}>
+          <div style={{ fontSize: 14, color: 'var(--encre-douce)', marginTop: 4 }}>
             {selectedEquipe.type}
           </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
           <span style={{
-            padding: '6px 12px',
-            borderRadius: 16,
-            backgroundColor: selectedEquipe.status === 'Active' ? '#28a745' : '#6c757d',
-            color: 'white',
+            padding: '4px 10px',
+            backgroundColor: 'var(--douceur)',
+            color: 'var(--encre)',
+            borderRadius: 'var(--rayon-pilule)',
             fontSize: 12,
             fontWeight: 'bold'
           }}>
@@ -77,29 +79,29 @@ export default function EquipeDetails({
 
       {/* Informations générales */}
       <div style={{ marginBottom: 20 }}>
-        <h4 style={{ color: selectedEquipe.colors?.primary || '#2196f3', marginBottom: 12 }}>
-          📋 Informations générales
+        <h4 style={{ fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)', marginBottom: 12 }}>
+          Informations générales
         </h4>
 
         {selectedEquipe.founded && (
           <div style={{ marginBottom: 8, fontSize: 14 }}>
-            <strong>📅 Fondation:</strong> {selectedEquipe.founded}
+            <strong>Fondation:</strong> {selectedEquipe.founded}
           </div>
         )}
 
         {selectedEquipe.headquarters && (
           <div style={{ marginBottom: 8, fontSize: 14 }}>
-            <strong>🏛️ Quartier général:</strong> {selectedEquipe.headquarters}
+            <strong>Quartier général:</strong> {selectedEquipe.headquarters}
           </div>
         )}
 
         {selectedEquipe.description && (
           <div style={{ marginBottom: 12 }}>
-            <strong>📝 Description:</strong>
+            <strong>Description:</strong>
             <p style={{
               margin: '4px 0',
               fontStyle: 'italic',
-              color: '#555',
+              color: 'var(--encre-douce)',
               fontSize: 14,
               lineHeight: 1.5
             }}>
@@ -110,10 +112,10 @@ export default function EquipeDetails({
 
         {selectedEquipe.objectives && (
           <div style={{ marginBottom: 12 }}>
-            <strong>🎯 Objectifs:</strong>
+            <strong>Objectifs:</strong>
             <p style={{
               margin: '4px 0',
-              color: '#555',
+              color: 'var(--encre-douce)',
               fontSize: 14,
               lineHeight: 1.5
             }}>
@@ -123,21 +125,21 @@ export default function EquipeDetails({
         )}
 
         <div style={{ marginTop: 12 }}>
-          <strong>🎨 Couleurs:</strong>
+          <strong>Couleurs:</strong>
           <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
             <div style={{
               width: 40,
               height: 40,
-              backgroundColor: selectedEquipe.colors?.primary || '#2196f3',
-              borderRadius: 4,
-              border: '1px solid #ddd'
+              backgroundColor: selectedEquipe.colors?.primary || 'var(--coeur)',
+              borderRadius: 'var(--rayon-bouton)',
+              border: '1px solid var(--trait)'
             }} title="Couleur primaire" />
             <div style={{
               width: 40,
               height: 40,
-              backgroundColor: selectedEquipe.colors?.secondary || '#90caf9',
-              borderRadius: 4,
-              border: '1px solid #ddd'
+              backgroundColor: selectedEquipe.colors?.secondary || 'var(--douceur)',
+              borderRadius: 'var(--rayon-bouton)',
+              border: '1px solid var(--trait)'
             }} title="Couleur secondaire" />
           </div>
         </div>
@@ -146,19 +148,19 @@ export default function EquipeDetails({
       {/* Moments marquants */}
       {selectedEquipe.keyMoments && (
         <div style={{ marginBottom: 20 }}>
-          <h4 style={{ color: selectedEquipe.colors?.primary || '#2196f3', marginBottom: 12 }}>
-            ⭐ Moments marquants
+          <h4 style={{ fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)', marginBottom: 12 }}>
+            Moments marquants
           </h4>
           <div style={{
             padding: 12,
-            backgroundColor: '#f0f4ff',
-            borderRadius: 6,
-            border: '1px solid #2196f3'
+            backgroundColor: 'var(--douceur)',
+            borderRadius: 'var(--rayon-carte)',
+            borderLeft: '3px solid var(--or)'
           }}>
             <p style={{
               margin: 0,
               fontSize: 14,
-              color: '#1565c0',
+              color: 'var(--encre)',
               whiteSpace: 'pre-wrap',
               lineHeight: 1.6
             }}>
@@ -170,8 +172,8 @@ export default function EquipeDetails({
 
       {/* Hiérarchie */}
       <div style={{ marginBottom: 20 }}>
-        <h4 style={{ color: selectedEquipe.colors?.primary || '#2196f3', marginBottom: 12 }}>
-          👑 Hiérarchie
+        <h4 style={{ fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)', marginBottom: 12 }}>
+          Hiérarchie
         </h4>
 
         <div style={{ marginBottom: 12 }}>
@@ -180,22 +182,22 @@ export default function EquipeDetails({
             <div style={{
               marginTop: 4,
               padding: 8,
-              backgroundColor: '#fff3cd',
-              borderRadius: 4,
-              border: '1px solid #ffc107',
+              backgroundColor: 'var(--douceur)',
+              borderRadius: 'var(--rayon-bouton)',
+              border: '1px solid var(--or)',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center'
             }}>
-              <span>👑 {getCharacterById(selectedEquipe.leader)?.name}</span>
+              <span>{getCharacterById(selectedEquipe.leader)?.name}</span>
               <button
                 onClick={() => onSetLeader(null)}
                 style={{
                   padding: '2px 6px',
-                  backgroundColor: '#dc3545',
+                  backgroundColor: '#a13d3d',
                   color: 'white',
                   border: 'none',
-                  borderRadius: 3,
+                  borderRadius: 'var(--rayon-bouton)',
                   cursor: 'pointer',
                   fontSize: 11
                 }}
@@ -204,7 +206,7 @@ export default function EquipeDetails({
               </button>
             </div>
           ) : (
-            <div style={{ fontSize: 13, color: '#666', marginTop: 4 }}>
+            <div style={{ fontSize: 13, color: 'var(--encre-douce)', marginTop: 4 }}>
               Aucun leader désigné
             </div>
           )}
@@ -219,23 +221,23 @@ export default function EquipeDetails({
                 return secondChar ? (
                   <div key={secondId} style={{
                     padding: 8,
-                    backgroundColor: '#d1ecf1',
-                    borderRadius: 4,
-                    border: '1px solid #17a2b8',
+                    backgroundColor: 'var(--douceur)',
+                    borderRadius: 'var(--rayon-bouton)',
+                    border: '1px solid var(--trait)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     marginBottom: 4
                   }}>
-                    <span>🥈 {secondChar.name}</span>
+                    <span>{secondChar.name}</span>
                     <button
                       onClick={() => onRemoveSecond(secondId)}
                       style={{
                         padding: '2px 6px',
-                        backgroundColor: '#dc3545',
+                        backgroundColor: '#a13d3d',
                         color: 'white',
                         border: 'none',
-                        borderRadius: 3,
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 11
                       }}
@@ -247,7 +249,7 @@ export default function EquipeDetails({
               })}
             </div>
           ) : (
-            <div style={{ fontSize: 13, color: '#666', marginTop: 4 }}>
+            <div style={{ fontSize: 13, color: 'var(--encre-douce)', marginTop: 4 }}>
               Aucun second désigné
             </div>
           )}
@@ -256,11 +258,11 @@ export default function EquipeDetails({
 
       {/* Membres actuels */}
       <div style={{ marginBottom: 20 }}>
-        <h4 style={{ color: selectedEquipe.colors?.primary || '#2196f3', marginBottom: 12 }}>
-          👥 Membres ({selectedEquipe.members.length})
+        <h4 style={{ fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)', marginBottom: 12 }}>
+          Membres ({selectedEquipe.members.length})
         </h4>
         {selectedEquipe.members.length === 0 ? (
-          <p style={{ color: '#666', fontSize: 14, marginTop: 8, fontStyle: 'italic' }}>
+          <p style={{ color: 'var(--encre-douce)', fontSize: 14, marginTop: 8, fontStyle: 'italic' }}>
             Aucun membre pour le moment
           </p>
         ) : (
@@ -278,19 +280,41 @@ export default function EquipeDetails({
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     padding: 10,
-                    backgroundColor: isLeader ? '#fff3cd' : isSecond ? '#d1ecf1' : '#f8f9fa',
-                    borderRadius: 4,
+                    backgroundColor: isLeader || isSecond ? 'var(--douceur)' : 'var(--fond-carte)',
+                    borderRadius: 'var(--rayon-bouton)',
                     marginBottom: 6,
-                    border: isLeader ? '1px solid #ffc107' : isSecond ? '1px solid #17a2b8' : '1px solid #dee2e6'
+                    border: isLeader ? '1px solid var(--or)' : isSecond ? '1px solid var(--coeur)' : '1px solid var(--trait)'
                   }}
                 >
                   <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      {isLeader && <span title="Leader">👑</span>}
-                      {isSecond && <span title="Second">🥈</span>}
+                      {isLeader && (
+                        <span style={{
+                          fontSize: 10,
+                          fontWeight: 600,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          padding: '2px 6px',
+                          borderRadius: 'var(--rayon-pilule)',
+                          backgroundColor: 'var(--or)',
+                          color: 'var(--sur-or)'
+                        }}>Leader</span>
+                      )}
+                      {isSecond && (
+                        <span style={{
+                          fontSize: 10,
+                          fontWeight: 600,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          padding: '2px 6px',
+                          borderRadius: 'var(--rayon-pilule)',
+                          backgroundColor: 'var(--douceur)',
+                          color: 'var(--coeur)'
+                        }}>Second</span>
+                      )}
                       <strong>{character.name}</strong>
                     </div>
-                    <div style={{ fontSize: 12, color: '#666' }}>
+                    <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>
                       {character.age} ans • {character.origin}
                     </div>
                   </div>
@@ -300,16 +324,16 @@ export default function EquipeDetails({
                         onClick={() => onSetLeader(memberId)}
                         style={{
                           padding: '4px 8px',
-                          backgroundColor: '#ffc107',
-                          color: '#333',
+                          backgroundColor: 'var(--or)',
+                          color: 'var(--sur-or)',
                           border: 'none',
-                          borderRadius: 3,
+                          borderRadius: 'var(--rayon-bouton)',
                           cursor: 'pointer',
                           fontSize: 11
                         }}
                         title="Définir comme leader"
                       >
-                        👑
+                        Leader
                       </button>
                     )}
                     {!isSecond && !isLeader && (
@@ -317,26 +341,26 @@ export default function EquipeDetails({
                         onClick={() => onSetSecond(memberId)}
                         style={{
                           padding: '4px 8px',
-                          backgroundColor: '#17a2b8',
-                          color: 'white',
+                          backgroundColor: 'var(--coeur)',
+                          color: 'var(--sur-coeur)',
                           border: 'none',
-                          borderRadius: 3,
+                          borderRadius: 'var(--rayon-bouton)',
                           cursor: 'pointer',
                           fontSize: 11
                         }}
                         title="Définir comme second"
                       >
-                        🥈
+                        Second
                       </button>
                     )}
                     <button
                       onClick={() => onRemoveMember(memberId)}
                       style={{
                         padding: '4px 8px',
-                        backgroundColor: '#dc3545',
+                        backgroundColor: '#a13d3d',
                         color: 'white',
                         border: 'none',
-                        borderRadius: 3,
+                        borderRadius: 'var(--rayon-bouton)',
                         cursor: 'pointer',
                         fontSize: 11
                       }}
@@ -368,11 +392,11 @@ export default function EquipeDetails({
 
       {/* Ajouter des membres */}
       <div>
-        <h4 style={{ color: selectedEquipe.colors?.primary || '#2196f3', marginBottom: 12 }}>
-          ➕ Ajouter un membre
+        <h4 style={{ fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)', marginBottom: 12 }}>
+          Ajouter un membre
         </h4>
         {availableCharacters.length === 0 ? (
-          <p style={{ color: '#666', fontSize: 14, marginTop: 8, fontStyle: 'italic' }}>
+          <p style={{ color: 'var(--encre-douce)', fontSize: 14, marginTop: 8, fontStyle: 'italic' }}>
             {characters.length === 0
               ? "Aucun personnage disponible. Créez d'abord des personnages dans la section Personnages."
               : "Tous les personnages sont déjà membres de cette équipe."}
@@ -389,22 +413,22 @@ export default function EquipeDetails({
                   textAlign: 'left',
                   padding: 10,
                   marginBottom: 6,
-                  backgroundColor: '#e7f3ff',
-                  border: '1px solid #90caf9',
-                  borderRadius: 4,
+                  backgroundColor: 'var(--douceur)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-bouton)',
                   cursor: 'pointer',
                   fontSize: 14,
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#bbdefb';
+                  e.target.style.borderColor = 'var(--coeur)';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = '#e7f3ff';
+                  e.target.style.borderColor = 'var(--trait)';
                 }}
               >
                 <strong>{character.name}</strong>
-                <div style={{ fontSize: 12, color: '#666' }}>
+                <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>
                   {character.age} ans • {character.origin}
                 </div>
               </button>

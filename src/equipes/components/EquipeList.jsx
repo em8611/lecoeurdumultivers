@@ -11,7 +11,7 @@ export default function EquipeList({
 }) {
   if (equipes.length === 0) {
     return (
-      <p style={{ color: '#666', fontStyle: 'italic', textAlign: 'center', padding: 40 }}>
+      <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic', textAlign: 'center', padding: 40 }}>
         Aucune équipe créée. Cliquez sur le bouton ci-dessus pour commencer.
       </p>
     );
@@ -23,7 +23,7 @@ export default function EquipeList({
         <div style={{
           width: 4,
           height: 40,
-          backgroundColor: equipe.colors?.primary || '#2196f3',
+          backgroundColor: equipe.colors?.primary || 'var(--coeur)',
           borderRadius: 2,
           marginRight: 8
         }} />
@@ -31,7 +31,7 @@ export default function EquipeList({
           <img
             src={equipe.emblem}
             alt={equipe.name}
-            style={{ width: 32, height: 32, objectFit: 'contain' }}
+            style={{ width: 32, height: 32, objectFit: 'contain', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }}
             onError={(e) => e.target.style.display = 'none'}
           />
         )}
@@ -39,16 +39,19 @@ export default function EquipeList({
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <strong style={{ fontSize: 16 }}>{equipe.name}</strong>
             <span style={{
-              fontSize: 10,
-              padding: '2px 6px',
-              borderRadius: 10,
-              backgroundColor: equipe.status === 'Active' ? '#28a745' : '#6c757d',
-              color: 'white'
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              padding: '2px 8px',
+              borderRadius: 'var(--rayon-pilule)',
+              backgroundColor: 'var(--douceur)',
+              color: 'var(--encre)'
             }}>
               {equipe.status}
             </span>
           </div>
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
             {equipe.type} • {equipe.members.length} membre(s)
             {equipe.headquarters && ` • ${equipe.headquarters}`}
           </div>
@@ -57,7 +60,7 @@ export default function EquipeList({
     );
 
     const renderContent = (equipe) => (
-      <div style={{ fontSize: 14, color: '#555' }}>
+      <div style={{ fontSize: 14, color: 'var(--encre-douce)' }}>
         {equipe.description && (
           <div style={{ marginBottom: 12 }}>
             <strong>Description :</strong>
@@ -112,11 +115,11 @@ export default function EquipeList({
           style={{
             cursor: 'pointer',
             padding: 16,
-            backgroundColor: selectedEquipe?.id === equipe.id ? '#e3f2fd' : 'white',
-            border: selectedEquipe?.id === equipe.id ? '2px solid #2196f3' : '1px solid #dee2e6',
-            borderRadius: 8,
+            backgroundColor: selectedEquipe?.id === equipe.id ? 'var(--douceur)' : 'var(--fond-carte)',
+            border: selectedEquipe?.id === equipe.id ? '2px solid var(--coeur)' : '1px solid var(--trait)',
+            borderRadius: 'var(--rayon-carte)',
             transition: 'all 0.2s ease',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            boxShadow: 'var(--ombre-legere)',
             position: 'relative'
           }}
         >
@@ -134,17 +137,17 @@ export default function EquipeList({
               }}
               style={{
                 padding: '4px 8px',
-                backgroundColor: '#ffc107',
-                color: '#000',
+                backgroundColor: 'var(--or)',
+                color: 'var(--sur-or)',
                 border: 'none',
-                borderRadius: 3,
+                borderRadius: 'var(--rayon-bouton)',
                 cursor: 'pointer',
                 fontSize: 11,
                 fontWeight: 'bold'
               }}
               title="Modifier"
             >
-              ✏️
+              Modifier
             </button>
             <button
               onClick={(e) => {
@@ -153,10 +156,10 @@ export default function EquipeList({
               }}
               style={{
                 padding: '4px 8px',
-                backgroundColor: '#dc3545',
+                backgroundColor: '#a13d3d',
                 color: 'white',
                 border: 'none',
-                borderRadius: 3,
+                borderRadius: 'var(--rayon-bouton)',
                 cursor: 'pointer',
                 fontSize: 11
               }}
@@ -170,7 +173,7 @@ export default function EquipeList({
               <img
                 src={equipe.emblem}
                 alt={equipe.name}
-                style={{ width: 60, height: 60, objectFit: 'contain' }}
+                style={{ width: 60, height: 60, objectFit: 'contain', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }}
                 onError={(e) => e.target.style.display = 'none'}
               />
             </div>
@@ -178,19 +181,21 @@ export default function EquipeList({
 
           <h4 style={{
             margin: '0 0 8px 0',
-            color: equipe.colors?.primary || '#2196f3',
+            fontFamily: 'var(--police-affichage)',
+            fontWeight: 600,
+            color: 'var(--coeur)',
             fontSize: 16
           }}>
             {equipe.name}
           </h4>
 
-          <div style={{ fontSize: 12, color: '#666', marginBottom: 8 }}>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginBottom: 8 }}>
             {equipe.type}
           </div>
 
           <div style={{
             fontSize: 12,
-            color: '#333',
+            color: 'var(--encre)',
             marginBottom: 8,
             height: 40,
             overflow: 'hidden',
@@ -204,17 +209,20 @@ export default function EquipeList({
             justifyContent: 'space-between',
             alignItems: 'center',
             paddingTop: 8,
-            borderTop: '1px solid #eee'
+            borderTop: '1px solid var(--trait)'
           }}>
-            <span style={{ fontSize: 12, color: '#666' }}>
-              👥 {equipe.members.length} membres
+            <span style={{ fontSize: 12, color: 'var(--encre-douce)' }}>
+              {equipe.members.length} membres
             </span>
             <span style={{
-              fontSize: 10,
-              padding: '2px 6px',
-              borderRadius: 10,
-              backgroundColor: equipe.status === 'Active' ? '#28a745' : '#6c757d',
-              color: 'white'
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              padding: '2px 8px',
+              borderRadius: 'var(--rayon-pilule)',
+              backgroundColor: 'var(--douceur)',
+              color: 'var(--encre)'
             }}>
               {equipe.status}
             </span>

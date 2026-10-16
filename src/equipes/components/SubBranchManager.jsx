@@ -15,32 +15,32 @@ export default function SubBranchManager({
   return (
     <div style={{ marginBottom: 20 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-        <h4 style={{ color: selectedEquipe.colors?.primary || '#2196f3', margin: 0 }}>
-          🌿 Sous-branches ({(selectedEquipe.subBranches || []).length})
+        <h4 style={{ fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)', margin: 0 }}>
+          Sous-branches ({(selectedEquipe.subBranches || []).length})
         </h4>
         <button
           onClick={() => setShowSubBranchForm(!showSubBranchForm)}
           style={{
             padding: '6px 12px',
-            backgroundColor: '#17a2b8',
-            color: 'white',
+            backgroundColor: 'var(--coeur)',
+            color: 'var(--sur-coeur)',
             border: 'none',
-            borderRadius: 4,
+            borderRadius: 'var(--rayon-bouton)',
             cursor: 'pointer',
             fontSize: 12,
             fontWeight: 'bold'
           }}
         >
-          {showSubBranchForm ? '✕ Annuler' : '+ Nouvelle sous-branche'}
+          {showSubBranchForm ? 'Annuler' : '+ Nouvelle sous-branche'}
         </button>
       </div>
 
       {showSubBranchForm && (
         <div style={{
           padding: 12,
-          backgroundColor: '#e7f3ff',
-          borderRadius: 6,
-          border: '1px solid #17a2b8',
+          backgroundColor: 'var(--douceur)',
+          borderRadius: 'var(--rayon-carte)',
+          border: '1px solid var(--trait)',
           marginBottom: 12
         }}>
           <form onSubmit={onAddSubBranch}>
@@ -56,8 +56,8 @@ export default function SubBranchManager({
                 style={{
                   width: '100%',
                   padding: 8,
-                  borderRadius: 4,
-                  border: '1px solid #ced4da',
+                  borderRadius: 'var(--rayon-bouton)',
+                  border: '1px solid var(--trait)',
                   fontSize: 14
                 }}
                 placeholder="Ex: Équipe Alpha, Branche Nord"
@@ -67,23 +67,23 @@ export default function SubBranchManager({
               type="submit"
               style={{
                 padding: '6px 12px',
-                backgroundColor: '#28a745',
-                color: 'white',
+                backgroundColor: 'var(--coeur)',
+                color: 'var(--sur-coeur)',
                 border: 'none',
-                borderRadius: 4,
+                borderRadius: 'var(--rayon-bouton)',
                 cursor: 'pointer',
                 fontSize: 13,
                 fontWeight: 'bold'
               }}
             >
-              ✓ Créer
+              Créer
             </button>
           </form>
         </div>
       )}
 
       {(selectedEquipe.subBranches || []).length === 0 ? (
-        <p style={{ color: '#666', fontSize: 14, fontStyle: 'italic' }}>
+        <p style={{ color: 'var(--encre-douce)', fontSize: 14, fontStyle: 'italic' }}>
           Aucune sous-branche créée
         </p>
       ) : (
@@ -93,24 +93,24 @@ export default function SubBranchManager({
               key={subBranch.id}
               style={{
                 padding: 12,
-                backgroundColor: '#f8f9fa',
-                borderRadius: 6,
-                border: '1px solid #dee2e6',
+                backgroundColor: 'var(--fond-carte)',
+                borderRadius: 'var(--rayon-carte)',
+                border: '1px solid var(--trait)',
                 marginBottom: 10
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                <strong style={{ fontSize: 14, color: selectedEquipe.colors?.primary || '#2196f3' }}>
-                  🌿 {subBranch.name}
+                <strong style={{ fontSize: 14, color: 'var(--coeur)' }}>
+                  {subBranch.name}
                 </strong>
                 <button
                   onClick={() => onDeleteSubBranch(subBranch.id)}
                   style={{
                     padding: '2px 6px',
-                    backgroundColor: '#dc3545',
+                    backgroundColor: '#a13d3d',
                     color: 'white',
                     border: 'none',
-                    borderRadius: 3,
+                    borderRadius: 'var(--rayon-bouton)',
                     cursor: 'pointer',
                     fontSize: 11
                   }}
@@ -123,7 +123,7 @@ export default function SubBranchManager({
                 <strong>Membres ({subBranch.members.length}):</strong>
               </div>
               {subBranch.members.length === 0 ? (
-                <div style={{ fontSize: 12, color: '#666', fontStyle: 'italic', marginBottom: 8 }}>
+                <div style={{ fontSize: 12, color: 'var(--encre-douce)', fontStyle: 'italic', marginBottom: 8 }}>
                   Aucun membre
                 </div>
               ) : (
@@ -138,8 +138,8 @@ export default function SubBranchManager({
                           justifyContent: 'space-between',
                           alignItems: 'center',
                           padding: 6,
-                          backgroundColor: 'white',
-                          borderRadius: 4,
+                          backgroundColor: 'var(--fond)',
+                          borderRadius: 'var(--rayon-bouton)',
                           marginBottom: 4,
                           fontSize: 12
                         }}
@@ -149,10 +149,10 @@ export default function SubBranchManager({
                           onClick={() => onRemoveMemberFromSubBranch(subBranch.id, memberId)}
                           style={{
                             padding: '2px 6px',
-                            backgroundColor: '#dc3545',
+                            backgroundColor: '#a13d3d',
                             color: 'white',
                             border: 'none',
-                            borderRadius: 3,
+                            borderRadius: 'var(--rayon-bouton)',
                             cursor: 'pointer',
                             fontSize: 10
                           }}
@@ -166,8 +166,8 @@ export default function SubBranchManager({
               )}
 
               <details style={{ fontSize: 12 }}>
-                <summary style={{ cursor: 'pointer', color: selectedEquipe.colors?.primary || '#2196f3', fontWeight: 'bold' }}>
-                  ➕ Ajouter un membre
+                <summary style={{ cursor: 'pointer', color: 'var(--coeur)', fontWeight: 'bold' }}>
+                  Ajouter un membre
                 </summary>
                 <div style={{ marginTop: 6, maxHeight: 150, overflowY: 'auto' }}>
                   {selectedEquipe.members
@@ -184,9 +184,9 @@ export default function SubBranchManager({
                             textAlign: 'left',
                             padding: 6,
                             marginBottom: 4,
-                            backgroundColor: 'white',
-                            border: '1px solid #dee2e6',
-                            borderRadius: 4,
+                            backgroundColor: 'var(--fond)',
+                            border: '1px solid var(--trait)',
+                            borderRadius: 'var(--rayon-bouton)',
                             cursor: 'pointer',
                             fontSize: 12
                           }}
@@ -196,7 +196,7 @@ export default function SubBranchManager({
                       ) : null;
                     })}
                   {selectedEquipe.members.filter(memberId => !subBranch.members.includes(memberId)).length === 0 && (
-                    <div style={{ fontSize: 11, color: '#666', fontStyle: 'italic', padding: 4 }}>
+                    <div style={{ fontSize: 11, color: 'var(--encre-douce)', fontStyle: 'italic', padding: 4 }}>
                       Tous les membres sont déjà dans cette sous-branche
                     </div>
                   )}

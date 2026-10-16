@@ -10,47 +10,47 @@ export default function EquipeStats({ stats }) {
     }}>
       <div style={{
         padding: 12,
-        backgroundColor: '#e3f2fd',
-        borderRadius: 6,
-        border: '1px solid #90caf9'
+        backgroundColor: 'var(--douceur)',
+        borderRadius: 'var(--rayon-carte)',
+        border: '1px solid var(--trait)'
       }}>
-        <div style={{ fontSize: 24, fontWeight: 'bold', color: '#1976d2' }}>
+        <div style={{ fontSize: 24, fontWeight: 'bold', color: 'var(--coeur)' }}>
           {stats.total}
         </div>
-        <div style={{ fontSize: 12, color: '#666' }}>Total équipes</div>
+        <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>Total équipes</div>
       </div>
       <div style={{
         padding: 12,
-        backgroundColor: '#e8f5e9',
-        borderRadius: 6,
-        border: '1px solid #81c784'
+        backgroundColor: 'var(--douceur)',
+        borderRadius: 'var(--rayon-carte)',
+        border: '1px solid var(--trait)'
       }}>
-        <div style={{ fontSize: 24, fontWeight: 'bold', color: '#388e3c' }}>
+        <div style={{ fontSize: 24, fontWeight: 'bold', color: '#2e7d4f' }}>
           {stats.active}
         </div>
-        <div style={{ fontSize: 12, color: '#666' }}>Équipes actives</div>
+        <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>Équipes actives</div>
       </div>
       <div style={{
         padding: 12,
-        backgroundColor: '#fff3e0',
-        borderRadius: 6,
-        border: '1px solid #ffb74d'
+        backgroundColor: 'var(--douceur)',
+        borderRadius: 'var(--rayon-carte)',
+        border: '1px solid var(--trait)'
       }}>
-        <div style={{ fontSize: 24, fontWeight: 'bold', color: '#f57c00' }}>
+        <div style={{ fontSize: 24, fontWeight: 'bold', color: 'var(--or)' }}>
           {stats.totalMembers}
         </div>
-        <div style={{ fontSize: 12, color: '#666' }}>Total membres</div>
+        <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>Total membres</div>
       </div>
       <div style={{
         padding: 12,
-        backgroundColor: '#f3e5f5',
-        borderRadius: 6,
-        border: '1px solid #ba68c8'
+        backgroundColor: 'var(--douceur)',
+        borderRadius: 'var(--rayon-carte)',
+        border: '1px solid var(--trait)'
       }}>
-        <div style={{ fontSize: 24, fontWeight: 'bold', color: '#7b1fa2' }}>
+        <div style={{ fontSize: 24, fontWeight: 'bold', color: 'var(--coeur)' }}>
           {stats.avgMembersPerTeam}
         </div>
-        <div style={{ fontSize: 12, color: '#666' }}>Moy. membres/équipe</div>
+        <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>Moy. membres/équipe</div>
       </div>
     </div>
   );

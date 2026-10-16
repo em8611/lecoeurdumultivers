@@ -368,12 +368,12 @@ export default function EquipesManager() {
           right: 20,
           zIndex: 1000,
           padding: '12px 20px',
-          borderRadius: 6,
+          borderRadius: 'var(--rayon-bouton)',
           color: 'white',
           backgroundColor:
-            notification.type === 'success' ? '#28a745' :
-            notification.type === 'error' ? '#dc3545' : '#17a2b8',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+            notification.type === 'success' ? '#2e7d4f' :
+            notification.type === 'error' ? '#a13d3d' : 'var(--coeur)',
+          boxShadow: 'var(--ombre-survol)',
           animation: 'slideIn 0.3s ease'
         }}>
           {notification.message}
@@ -383,22 +383,22 @@ export default function EquipesManager() {
       {/* En-tête avec statistiques */}
       <div style={{ marginBottom: 20 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-          <h2 style={{ margin: 0 }}>👥 Gestion des Équipes et Groupes</h2>
+          <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Gestion des Équipes et Groupes</h2>
           <div style={{ display: 'flex', gap: 10 }}>
             <button
               onClick={gotoFiches}
               style={{
                 padding: '8px 16px',
-                backgroundColor: '#3949ab',
-                color: 'white',
-                border: 'none',
-                borderRadius: 4,
+                backgroundColor: 'var(--fond-carte)',
+                color: 'var(--encre)',
+                border: '1px solid var(--trait)',
+                borderRadius: 'var(--rayon-bouton)',
                 cursor: 'pointer',
                 fontWeight: 'bold'
               }}
               title="Ouvrir le viewer des fiches"
             >
-              📄 Fiches
+              Fiches
             </button>
             <button
               onClick={() => {
@@ -433,57 +433,57 @@ export default function EquipesManager() {
               }}
               style={{
                 padding: '8px 16px',
-                backgroundColor: '#28a745',
-                color: 'white',
+                backgroundColor: 'var(--coeur)',
+                color: 'var(--sur-coeur)',
                 border: 'none',
-                borderRadius: 4,
+                borderRadius: 'var(--rayon-bouton)',
                 cursor: 'pointer',
                 fontWeight: 'bold'
               }}
             >
-              {showForm ? '✕ Annuler' : '+ Nouvelle Équipe/Groupe'}
+              {showForm ? 'Annuler' : '+ Nouvelle Équipe/Groupe'}
             </button>
             <button
               onClick={() => setShowBatchImport(true)}
               style={{
                 padding: '8px 16px',
-                backgroundColor: '#6f42c1',
-                color: 'white',
+                backgroundColor: 'var(--or)',
+                color: 'var(--sur-or)',
                 border: 'none',
-                borderRadius: 4,
+                borderRadius: 'var(--rayon-bouton)',
                 cursor: 'pointer',
                 fontWeight: 'bold'
               }}
               title="Importer plusieurs équipes par leurs noms"
             >
-              📝 Import Batch
+              Import Batch
             </button>
             <button
               onClick={() => exportElementsToFile(equipes, 'equipes_export.json')}
               style={{
                 padding: '8px 16px',
-                backgroundColor: '#2196f3',
-                color: 'white',
-                border: 'none',
-                borderRadius: 4,
+                backgroundColor: 'var(--fond-carte)',
+                color: 'var(--encre)',
+                border: '1px solid var(--trait)',
+                borderRadius: 'var(--rayon-bouton)',
                 cursor: 'pointer'
               }}
               title="Exporter toutes les équipes/groupes en JSON"
             >
-              ⬇️ Exporter
+              Exporter
             </button>
             <label style={{
               padding: '8px 16px',
-              backgroundColor: '#17a2b8',
-              color: 'white',
-              border: 'none',
-              borderRadius: 4,
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               marginBottom: 0
             }}
               title="Importer une ou plusieurs équipes/groupes depuis un ou plusieurs fichiers JSON"
             >
-              ⬆️ Importer
+              Importer
               <input
                 type="file"
                 accept=".json"
@@ -518,14 +518,14 @@ export default function EquipesManager() {
         <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
           <input
             type="text"
-            placeholder="🔍 Rechercher une équipe..."
+            placeholder="Rechercher une équipe..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{
               flex: 1,
               padding: '8px 12px',
-              borderRadius: 4,
-              border: '1px solid #ced4da',
+              borderRadius: 'var(--rayon-bouton)',
+              border: '1px solid var(--trait)',
               fontSize: 14
             }}
           />
@@ -534,8 +534,8 @@ export default function EquipesManager() {
             onChange={(e) => setFilterType(e.target.value)}
             style={{
               padding: '8px 12px',
-              borderRadius: 4,
-              border: '1px solid #ced4da',
+              borderRadius: 'var(--rayon-bouton)',
+              border: '1px solid var(--trait)',
               fontSize: 14,
               minWidth: 150
             }}
@@ -545,13 +545,13 @@ export default function EquipesManager() {
               <option key={type} value={type}>{type}</option>
             ))}
           </select>
-          <div style={{ display: 'flex', gap: 4, border: '1px solid #ced4da', borderRadius: 4, overflow: 'hidden' }}>
+          <div style={{ display: 'flex', gap: 4, border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', overflow: 'hidden' }}>
             <button
               onClick={() => setViewMode('list')}
               style={{
                 padding: '8px 12px',
-                backgroundColor: viewMode === 'list' ? '#2196f3' : 'white',
-                color: viewMode === 'list' ? 'white' : '#333',
+                backgroundColor: viewMode === 'list' ? 'var(--coeur)' : 'var(--fond-carte)',
+                color: viewMode === 'list' ? 'var(--sur-coeur)' : 'var(--encre)',
                 border: 'none',
                 cursor: 'pointer'
               }}
@@ -563,8 +563,8 @@ export default function EquipesManager() {
               onClick={() => setViewMode('cards')}
               style={{
                 padding: '8px 12px',
-                backgroundColor: viewMode === 'cards' ? '#2196f3' : 'white',
-                color: viewMode === 'cards' ? 'white' : '#333',
+                backgroundColor: viewMode === 'cards' ? 'var(--coeur)' : 'var(--fond-carte)',
+                color: viewMode === 'cards' ? 'var(--sur-coeur)' : 'var(--encre)',
                 border: 'none',
                 cursor: 'pointer'
               }}
