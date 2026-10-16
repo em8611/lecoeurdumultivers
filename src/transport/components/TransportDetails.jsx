@@ -3,8 +3,6 @@ import FicheTransportButton from '../../components/common/FicheTransportButton.j
 
 export default function TransportDetails({
   selectedTransport,
-  getCategoryIcon,
-  getStatusIcon,
   getCharacterById,
   getTerritoireById,
   getUniversById
@@ -16,58 +14,57 @@ export default function TransportDetails({
   return (
     <div style={{
       flex: 1,
-      border: '1px solid #ddd',
+      border: '1px solid var(--trait)',
       padding: 16,
-      borderRadius: 8,
-      backgroundColor: '#ffffff',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 15 }}>
-        <span style={{ fontSize: 32 }}>{getCategoryIcon(selectedTransport.category)}</span>
         <div style={{ flex: 1 }}>
-          <h3 style={{ margin: 0, color: '#2196f3' }}>{selectedTransport.name}</h3>
-          <div style={{ fontSize: 14, color: '#666' }}>{selectedTransport.category || 'Catégorie inconnue'}</div>
+          <h3 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>{selectedTransport.name}</h3>
+          <div style={{ fontSize: 14, color: 'var(--encre-douce)' }}>{selectedTransport.category || 'Catégorie inconnue'}</div>
         </div>
         <FicheTransportButton transport={selectedTransport} />
       </div>
 
       <div style={{ display: 'flex', gap: 8, marginBottom: 15, flexWrap: 'wrap' }}>
-        <span style={{ padding: '4px 10px', backgroundColor: '#e3f2fd', color: '#1976d2', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
-          {getStatusIcon(selectedTransport.status)} {selectedTransport.status}
+        <span style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
+          {selectedTransport.status}
         </span>
         {selectedTransport.speed && (
-          <span style={{ padding: '4px 10px', backgroundColor: '#fff3cd', color: '#856404', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
-            💨 {selectedTransport.speed}
+          <span style={{ padding: '4px 10px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
+            {selectedTransport.speed}
           </span>
         )}
         {selectedTransport.capacity && (
-          <span style={{ padding: '4px 10px', backgroundColor: '#e8f5e9', color: '#2e7d32', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
-            📦 {selectedTransport.capacity}
+          <span style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
+            {selectedTransport.capacity}
           </span>
         )}
       </div>
 
       {selectedTransport.description && (
         <div style={{ marginBottom: 15 }}>
-          <strong>📘 Description :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>{selectedTransport.description}</p>
+          <strong style={{ color: 'var(--encre)' }}>Description :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>{selectedTransport.description}</p>
         </div>
       )}
 
       {selectedTransport.origin && (
-        <div style={{ marginBottom: 15, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
-          <strong style={{ color: '#2196f3' }}>🛠️ Origine / Fabricant :</strong>
-          <p style={{ margin: '8px 0 0 0', color: '#555', lineHeight: 1.5 }}>{selectedTransport.origin}</p>
+        <div style={{ marginBottom: 15, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
+          <strong style={{ color: 'var(--coeur)' }}>Origine / Fabricant :</strong>
+          <p style={{ margin: '8px 0 0 0', color: 'var(--encre)', lineHeight: 1.5 }}>{selectedTransport.origin}</p>
         </div>
       )}
 
       {pilotes.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🧑 Pilotes / Conducteurs :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Pilotes / Conducteurs :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {pilotes.map(c => (
-              <span key={c.id} style={{ padding: '4px 10px', backgroundColor: '#ffe0b2', color: '#a15c00', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={c.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {c.name}
               </span>
             ))}
@@ -77,10 +74,10 @@ export default function TransportDetails({
 
       {territoires.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🏔️ Territoires desservis :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Territoires desservis :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {territoires.map(t => (
-              <span key={t.id} style={{ padding: '4px 10px', backgroundColor: '#e8f5e9', color: '#2e7d32', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={t.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {t.name}
               </span>
             ))}
@@ -90,10 +87,10 @@ export default function TransportDetails({
 
       {universList.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🌌 Univers accessibles :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Univers accessibles :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {universList.map(u => (
-              <span key={u.id} style={{ padding: '4px 10px', backgroundColor: '#f3e5f5', color: '#6a1b9a', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={u.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {u.name}
               </span>
             ))}
@@ -103,10 +100,10 @@ export default function TransportDetails({
 
       {selectedTransport.tags && selectedTransport.tags.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🏷️ Tags :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Tags :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {selectedTransport.tags.map((tag, idx) => (
-              <span key={idx} style={{ padding: '4px 10px', backgroundColor: '#fce4ec', color: '#ad1457', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={idx} style={{ padding: '4px 10px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {tag}
               </span>
             ))}
@@ -116,10 +113,10 @@ export default function TransportDetails({
 
       {selectedTransport.images && selectedTransport.images.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🖼️ Illustrations :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Illustrations :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {selectedTransport.images.map((src, idx) => (
-              <img key={idx} src={src} alt={`${selectedTransport.name} ${idx + 1}`} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 6, border: '1px solid #ddd' }} />
+              <img key={idx} src={src} alt={`${selectedTransport.name} ${idx + 1}`} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }} />
             ))}
           </div>
         </div>

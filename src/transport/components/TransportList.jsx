@@ -1,22 +1,28 @@
 import React from 'react';
 import AccordionList from '../../components/common/AccordionList.jsx';
 
-export default function TransportList({ transports, selectedTransport, onSelect, onDelete, onEdit, getCategoryIcon, getStatusIcon }) {
+export default function TransportList({ transports, selectedTransport, onSelect, onDelete, onEdit }) {
   const renderHeader = (transport) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 18 }}>{getCategoryIcon(transport.category)}</span>
-        <strong style={{ fontSize: 16 }}>{transport.name}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{transport.name}</strong>
+        {transport.status && (
+          <span style={{
+            fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+            padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+          }}>
+            {transport.status}
+          </span>
+        )}
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
         {transport.category || 'Catégorie inconnue'}
-        {transport.status && ` • ${getStatusIcon(transport.status)} ${transport.status}`}
       </div>
     </div>
   );
 
   const renderContent = (transport) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {transport.description && (
         <div>
           <strong>Description :</strong>
