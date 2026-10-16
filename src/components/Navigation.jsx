@@ -21,7 +21,8 @@ const TABS = [
   { key: 'technologie', label: 'Technologie & Sciences' },
   { key: 'culture', label: 'Culture & Société' },
   { key: 'calendriers', label: 'Calendriers & Ères' },
-  { key: 'transport', label: 'Transport & Voyage' }
+  { key: 'transport', label: 'Transport & Voyage' },
+  { key: 'galerie', label: 'Galerie' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {
