@@ -80,6 +80,10 @@ export const FORM_FIELD_SETS = {
   ere: [
     'name', 'status', 'calendrierId', 'startDate', 'endDate', 'description',
     'majorEventIds', 'tags'
+  ],
+  transport: [
+    'name', 'category', 'status', 'speed', 'capacity', 'description', 'origin',
+    'pilotIds', 'territoireIds', 'universIds', 'tags'
   ]
 };
 

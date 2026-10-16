@@ -32,7 +32,8 @@ const EMPTY_STATE = {
   technologies: [],
   traditions: [],
   calendriers: [],
-  eres: []
+  eres: [],
+  transports: []
 };
 
 function loadInitialState() {
@@ -79,7 +80,8 @@ const CATEGORY_ALIASES = {
   technologie: 'technologies',
   tradition: 'traditions',
   calendrier: 'calendriers',
-  ere: 'eres'
+  ere: 'eres',
+  transport: 'transports'
 };
 
 function resolveCategory(category) {

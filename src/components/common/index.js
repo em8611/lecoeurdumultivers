@@ -20,3 +20,4 @@ export { default as FicheRouteButton } from './FicheRouteButton.jsx';
 export { default as FicheTraditionButton } from './FicheTraditionButton.jsx';
 export { default as FicheCalendrierButton } from './FicheCalendrierButton.jsx';
 export { default as FicheEreButton } from './FicheEreButton.jsx';
+export { default as FicheTransportButton } from './FicheTransportButton.jsx';

@@ -792,3 +792,30 @@ export function exportFicheEre(ere) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheTransport(transport) {
+  const lines = [
+    `# Fiche technique — ${transport.name || 'Sans nom'}`,
+    '',
+    `Catégorie : ${transport.category || '-'}`,
+    `Statut : ${transport.status || '-'}`,
+    `Vitesse : ${transport.speed || '-'}`,
+    `Capacité : ${transport.capacity || '-'}`,
+    '',
+    '## Description',
+    transport.description || '-',
+    '',
+    '## Origine / Fabricant',
+    transport.origin || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(transport.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

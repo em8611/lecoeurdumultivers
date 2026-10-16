@@ -23,7 +23,8 @@ const MODULES = [
   { key: 'economie', label: 'Économie & Commerce', icon: '💰', count: s => s.ressources.length + s.routesCommerciales.length },
   { key: 'technologie', label: 'Technologie & Sciences', icon: '🔬', count: s => s.sciences.length + s.technologies.length },
   { key: 'culture', label: 'Culture & Société', icon: '🏺', count: s => s.traditions.length },
-  { key: 'calendriers', label: 'Calendriers & Ères', icon: '⏳', count: s => s.calendriers.length + s.eres.length }
+  { key: 'calendriers', label: 'Calendriers & Ères', icon: '⏳', count: s => s.calendriers.length + s.eres.length },
+  { key: 'transport', label: 'Transport & Voyage', icon: '🧭', count: s => s.transports.length }
 ];
 
 // Collections dont les entrées possèdent un nom + des dates, pour l'activité récente
@@ -55,7 +56,8 @@ const RECENT_SOURCES = [
   { moduleKey: 'technologie', label: 'Discipline Technologique', icon: '🔬', stateKey: 'technologies' },
   { moduleKey: 'culture', label: 'Tradition', icon: '🏺', stateKey: 'traditions' },
   { moduleKey: 'calendriers', label: 'Calendrier', icon: '⏳', stateKey: 'calendriers' },
-  { moduleKey: 'calendriers', label: 'Ère', icon: '⏳', stateKey: 'eres' }
+  { moduleKey: 'calendriers', label: 'Ère', icon: '⏳', stateKey: 'eres' },
+  { moduleKey: 'transport', label: 'Moyen de Transport', icon: '🧭', stateKey: 'transports' }
 ];
 
 function timeAgo(isoDate) {
