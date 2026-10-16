@@ -1,0 +1,2 @@
+export { UNIVERSE_FRANCHISES, UNIVERSE_FRANCHISE_GROUPS, FRANCHISE_CATEGORIES } from './franchises.js';
+export { UNIVERSES, UNIVERSE_GROUPS } from './universes.js';
