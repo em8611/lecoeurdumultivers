@@ -1,40 +1,112 @@
+/* Design system "Cœur du Multivers" — jetons de marque (thème Jour) */
+:root {
+  --fond: #f3f3f2;
+  --fond-carte: #ffffff;
+  --douceur: #dfd5eb;
+  --encre: #2f3031;
+  --encre-douce: #5f5c68;
+  --coeur: #6e3071;
+  --sur-coeur: #ffffff;
+  --or: #e1b14d;
+  --sur-or: #2f3031;
+  --brume: #898693;
+  --trait: rgba(137, 134, 147, 0.45);
+  --nuit-1: #23183d;
+  --nuit-2: #3f2b67;
+  --nuit-3: #5b4292;
+  --sur-nuit: #f8f2ff;
+  --anneau-focus: var(--coeur);
+  --lien: var(--coeur);
+
+  --police-affichage: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --police-texte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --police-mono: ui-monospace, Consolas, 'Courier New', monospace;
+
+  --espace-1: 4px;
+  --espace-2: 8px;
+  --espace-3: 12px;
+  --espace-4: 16px;
+  --espace-6: 24px;
+  --espace-8: 32px;
+  --espace-12: 48px;
+
+  --rayon-bouton: 10px;
+  --rayon-image: 12px;
+  --rayon-carte: 14px;
+  --rayon-banniere: 16px;
+  --rayon-carte-large: 18px;
+  --rayon-heros: 24px;
+  --rayon-pilule: 999px;
+
+  --ombre-legere: 0 8px 24px rgba(47, 48, 49, 0.08);
+  --ombre-survol: 0 14px 34px rgba(47, 48, 49, 0.14);
+  --ombre-entete: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: var(--police-texte);
+  background-color: var(--fond);
+  color: var(--encre);
+}
+
+a {
+  color: var(--lien);
+}
+
+:focus-visible {
+  outline: 2px solid var(--anneau-focus);
+  outline-offset: 2px;
 }
 
 .main-nav {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px 16px;
-  background-color: #1f1b2e;
+  gap: var(--espace-2);
+  padding: var(--espace-3) var(--espace-4);
+  background: linear-gradient(135deg, var(--nuit-1), var(--nuit-2), var(--nuit-3));
+  box-shadow: var(--ombre-entete);
   position: relative;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-2);
+  color: var(--sur-nuit);
+  font-family: var(--police-affichage);
+  font-size: 19px;
+  font-weight: 600;
+  padding: 0 var(--espace-3) 0 var(--espace-1);
+  margin-right: var(--espace-2);
+  border-right: 1px solid rgba(248, 242, 255, 0.18);
 }
 
 .main-nav button {
   background: none;
   border: none;
-  color: #e0d9f0;
-  padding: 8px 12px;
-  border-radius: 6px;
+  color: var(--sur-nuit);
+  padding: var(--espace-2) var(--espace-3);
+  border-radius: var(--rayon-pilule);
   cursor: pointer;
   font-size: 14px;
+  font-family: var(--police-texte);
   white-space: nowrap;
 }
 
 .main-nav button:hover {
-  background-color: #352c4a;
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 .main-nav button.active {
-  background-color: #5b4a8a;
-  color: white;
+  background-color: var(--or);
+  color: var(--sur-or);
+  font-weight: 600;
 }
 
 .nav-group {
@@ -48,20 +120,21 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  background-color: #2a2340;
-  border: 1px solid #45396b;
-  border-radius: 8px;
+  background-color: var(--nuit-2);
+  border: 1px solid rgba(248, 242, 255, 0.18);
+  border-radius: var(--rayon-carte);
   padding: 6px;
   min-width: 220px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--ombre-survol);
   z-index: 100;
 }
 
 .nav-dropdown button {
   width: 100%;
   text-align: left;
+  border-radius: var(--rayon-bouton);
 }
 
 .home-page {
-  padding: 32px;
+  padding: var(--espace-8);
 }

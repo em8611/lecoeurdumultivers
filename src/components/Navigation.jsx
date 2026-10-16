@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
+import coeurEmblemeNuit from '../assets/coeur-embleme-nuit.svg';
 
-const HOME_TAB = { key: 'home', label: 'Accueil', icon: '🏠' };
-const GALERIE_TAB = { key: 'galerie', label: 'Galerie', icon: '🖼️' };
+const HOME_TAB = { key: 'home', label: 'Accueil' };
+const GALERIE_TAB = { key: 'galerie', label: 'Galerie' };
 
 const GROUPS = [
   {
     key: 'personnages',
     label: 'Personnages & Sociétés',
-    icon: '👥',
     tabs: [
       { key: 'elements', label: 'Éléments' },
       { key: 'relations', label: 'Relations' },
@@ -19,7 +19,6 @@ const GROUPS = [
   {
     key: 'monde',
     label: 'Monde & Politique',
-    icon: '🌍',
     tabs: [
       { key: 'geographie', label: 'Cartes & Géographie' },
       { key: 'univers', label: 'Univers / Multivers' },
@@ -31,7 +30,6 @@ const GROUPS = [
   {
     key: 'savoirs',
     label: 'Savoirs & Systèmes',
-    icon: '📚',
     tabs: [
       { key: 'dictionnaire', label: 'Dictionnaire' },
       { key: 'concepts', label: 'Concepts' },
@@ -43,7 +41,6 @@ const GROUPS = [
   {
     key: 'recits',
     label: 'Récits & Temps',
-    icon: '📖',
     tabs: [
       { key: 'chronologie', label: 'Chronologie' },
       { key: 'quetes', label: 'Quêtes & Intrigues' },
@@ -77,11 +74,16 @@ export function Navigation({ activeTab, setActiveTab }) {
 
   return (
     <nav className="main-nav" ref={navRef}>
+      <div className="nav-brand">
+        <img src={coeurEmblemeNuit} alt="" width={28} height={28} />
+        <span>Cœur du Multivers</span>
+      </div>
+
       <button
         className={activeTab === HOME_TAB.key ? 'active' : ''}
         onClick={() => selectTab(HOME_TAB.key)}
       >
-        {HOME_TAB.icon} {HOME_TAB.label}
+        {HOME_TAB.label}
       </button>
 
       {GROUPS.map(group => (
@@ -90,7 +92,7 @@ export function Navigation({ activeTab, setActiveTab }) {
             className={isGroupActive(group) || openGroup === group.key ? 'active' : ''}
             onClick={() => setOpenGroup(openGroup === group.key ? null : group.key)}
           >
-            {group.icon} {group.label} {openGroup === group.key ? '▲' : '▼'}
+            {group.label} {openGroup === group.key ? '▲' : '▼'}
           </button>
           {openGroup === group.key && (
             <div className="nav-dropdown">
@@ -112,7 +114,7 @@ export function Navigation({ activeTab, setActiveTab }) {
         className={activeTab === GALERIE_TAB.key ? 'active' : ''}
         onClick={() => selectTab(GALERIE_TAB.key)}
       >
-        {GALERIE_TAB.icon} {GALERIE_TAB.label}
+        {GALERIE_TAB.label}
       </button>
     </nav>
   );

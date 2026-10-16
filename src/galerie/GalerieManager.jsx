@@ -8,7 +8,7 @@ function Lightbox({ image, onClose, onNavigate }) {
     <div
       onClick={onClose}
       style={{
-        position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.75)',
+        position: 'fixed', inset: 0, backgroundColor: 'rgba(23,17,42,0.75)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         zIndex: 2000, padding: 24
       }}
@@ -16,33 +16,33 @@ function Lightbox({ image, onClose, onNavigate }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          backgroundColor: 'white', borderRadius: 10, padding: 16,
-          maxWidth: '90vw', maxHeight: '90vh', boxShadow: '0 8px 24px rgba(0,0,0,0.35)',
+          backgroundColor: 'var(--fond-carte)', borderRadius: 'var(--rayon-carte-large)', padding: 16,
+          maxWidth: '90vw', maxHeight: '90vh', boxShadow: 'var(--ombre-survol)',
           display: 'flex', flexDirection: 'column', gap: 12
         }}
       >
         <img
           src={image.src}
           alt={image.entityName}
-          style={{ maxWidth: '100%', maxHeight: '70vh', objectFit: 'contain', borderRadius: 6 }}
+          style={{ maxWidth: '100%', maxHeight: '70vh', objectFit: 'contain', borderRadius: 'var(--rayon-image)' }}
         />
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
           <div>
-            <strong style={{ fontSize: 15 }}>{image.entityName || 'Sans nom'}</strong>
-            <div style={{ fontSize: 12, color: '#888' }}>{image.icon} {image.typeLabel}</div>
+            <strong style={{ fontSize: 15, color: 'var(--encre)' }}>{image.entityName || 'Sans nom'}</strong>
+            <div style={{ fontSize: 12, color: 'var(--encre-douce)' }}>{image.typeLabel}</div>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button
               onClick={() => onNavigate(image.moduleKey)}
-              style={{ padding: '8px 14px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer', fontWeight: 'bold' }}
+              style={{ padding: '8px 14px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             >
               Ouvrir le module
             </button>
             <button
               onClick={onClose}
-              style={{ padding: '8px 14px', backgroundColor: '#6c757d', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer' }}
+              style={{ padding: '8px 14px', backgroundColor: 'var(--brume)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
             >
-              ✕ Fermer
+              Fermer
             </button>
           </div>
         </div>
@@ -70,8 +70,7 @@ export default function GalerieManager({ onNavigate }) {
         entityId: entity.id,
         entityName: entity.name,
         moduleKey: source.moduleKey,
-        typeLabel: source.label,
-        icon: source.icon
+        typeLabel: source.label
       }))
     );
   });
@@ -90,41 +89,41 @@ export default function GalerieManager({ onNavigate }) {
   return (
     <div style={{ padding: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>🖼️ Galerie</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Galerie</h2>
       </div>
 
-      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
+      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
         <div style={{ flex: 2 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Recherche</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Recherche</label>
           <input
             type="text"
-            placeholder="🔍 Rechercher par nom de fiche..."
+            placeholder="Rechercher par nom de fiche..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ flex: 1 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Module</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Module</label>
           <select
             value={filterModule}
             onChange={(e) => setFilterModule(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="Tous">Tous les modules</option>
             {modulesWithImages.map(m => (
-              <option key={m.key} value={m.key}>{m.icon} {m.label}</option>
+              <option key={m.key} value={m.key}>{m.label}</option>
             ))}
           </select>
         </div>
       </div>
 
-      <p style={{ color: '#888', fontSize: 13, marginTop: -8, marginBottom: 20 }}>
+      <p style={{ color: 'var(--encre-douce)', fontSize: 13, marginTop: -8, marginBottom: 20 }}>
         {filteredImages.length} image{filteredImages.length === 1 ? '' : 's'} affichée{filteredImages.length === 1 ? '' : 's'} sur {allImages.length} au total.
       </p>
 
       {filteredImages.length === 0 ? (
-        <p style={{ color: '#999', fontStyle: 'italic' }}>
+        <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic' }}>
           Aucune image ne correspond aux filtres sélectionnés. Ajoutez des illustrations depuis les fiches des différents modules.
         </p>
       ) : (
@@ -138,22 +137,24 @@ export default function GalerieManager({ onNavigate }) {
               key={`${img.moduleKey}-${img.entityId}-${img.idx}-${index}`}
               onClick={() => setLightboxImage(img)}
               style={{
-                padding: 0, border: '1px solid #ddd', borderRadius: 8,
-                overflow: 'hidden', cursor: 'pointer', backgroundColor: 'white',
-                textAlign: 'left'
+                padding: 0, border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)',
+                overflow: 'hidden', cursor: 'pointer', backgroundColor: 'var(--fond-carte)',
+                textAlign: 'left', boxShadow: 'var(--ombre-legere)', transition: 'box-shadow 220ms ease'
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = 'var(--ombre-survol)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'var(--ombre-legere)'; }}
               title={img.entityName}
             >
               <img
                 src={img.src}
                 alt={img.entityName}
-                style={{ width: '100%', height: 130, objectFit: 'cover', display: 'block' }}
+                style={{ width: '100%', height: 130, objectFit: 'cover', display: 'block', borderRadius: 'var(--rayon-image) var(--rayon-image) 0 0' }}
               />
               <div style={{ padding: '6px 8px' }}>
-                <div style={{ fontSize: 12, fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div style={{ fontSize: 12, fontWeight: 'bold', color: 'var(--encre)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {img.entityName || 'Sans nom'}
                 </div>
-                <div style={{ fontSize: 11, color: '#888' }}>{img.icon} {img.typeLabel}</div>
+                <div style={{ fontSize: 11, color: 'var(--encre-douce)' }}>{img.typeLabel}</div>
               </div>
             </button>
           ))}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useElementsState } from '../state/elementsStore.jsx';
 import { MODULES, ENTITY_SOURCES as RECENT_SOURCES } from '../utils/moduleRegistry.js';
+import coeurEmbleme from '../assets/coeur-embleme.svg';
 
 function timeAgo(isoDate) {
   const date = new Date(isoDate);
@@ -26,7 +27,6 @@ export function Home({ onNavigate }) {
       ...item,
       __moduleKey: source.moduleKey,
       __typeLabel: source.label,
-      __icon: source.icon,
       __date: item.updatedAt || item.createdAt
     })))
     .filter(item => item.__date)
@@ -38,19 +38,31 @@ export function Home({ onNavigate }) {
   };
 
   return (
-    <div style={{ padding: 24, maxWidth: 1100, margin: '0 auto' }}>
-      <div style={{ marginBottom: 28 }}>
-        <h1 style={{ margin: 0 }}>🌠 Le Coeur du Multivers</h1>
-        <p style={{ color: '#666', fontSize: 15, marginTop: 8 }}>
-          {totalEntries} fiche{totalEntries === 1 ? '' : 's'} répartie{totalEntries === 1 ? '' : 's'} sur {MODULES.length} modules.
-        </p>
+    <div className="home-page" style={{ maxWidth: 1100, margin: '0 auto' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--espace-4)', marginBottom: 'var(--espace-8)' }}>
+        <img src={coeurEmbleme} alt="" width={48} height={48} />
+        <div>
+          <h1 style={{
+            margin: 0,
+            fontFamily: 'var(--police-affichage)',
+            fontSize: 48,
+            lineHeight: '52px',
+            fontWeight: 600,
+            color: 'var(--coeur)'
+          }}>
+            Cœur du Multivers
+          </h1>
+          <p style={{ color: 'var(--encre-douce)', fontSize: 15, marginTop: 'var(--espace-2)' }}>
+            {totalEntries} fiche{totalEntries === 1 ? '' : 's'} répartie{totalEntries === 1 ? '' : 's'} sur {MODULES.length} modules.
+          </p>
+        </div>
       </div>
 
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-        gap: 16,
-        marginBottom: 32
+        gap: 'var(--espace-4)',
+        marginBottom: 'var(--espace-8)'
       }}>
         {MODULES.map(m => {
           const count = m.count(state);
@@ -60,26 +72,19 @@ export function Home({ onNavigate }) {
               onClick={() => goTo(m.key)}
               style={{
                 textAlign: 'left',
-                padding: 16,
-                borderRadius: 10,
-                border: '1px solid #dee2e6',
-                backgroundColor: '#fff',
+                padding: 'var(--espace-4)',
+                borderRadius: 'var(--rayon-carte)',
+                border: '1px solid var(--trait)',
+                backgroundColor: 'var(--fond-carte)',
                 cursor: 'pointer',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
-                transition: 'transform 0.1s, box-shadow 0.1s'
+                boxShadow: 'var(--ombre-legere)',
+                transition: 'box-shadow 220ms ease'
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 4px 10px rgba(0,0,0,0.12)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
+              onMouseEnter={(e) => { e.currentTarget.style.boxShadow = 'var(--ombre-survol)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'var(--ombre-legere)'; }}
             >
-              <div style={{ fontSize: 28, marginBottom: 8 }}>{m.icon}</div>
-              <div style={{ fontWeight: 'bold', fontSize: 15, marginBottom: 4 }}>{m.label}</div>
-              <div style={{ fontSize: 13, color: '#888' }}>
+              <div style={{ fontWeight: 'bold', fontSize: 15, marginBottom: 4, color: 'var(--encre)' }}>{m.label}</div>
+              <div style={{ fontSize: 13, color: 'var(--encre-douce)' }}>
                 {count} fiche{count === 1 ? '' : 's'}
               </div>
             </button>
@@ -88,13 +93,13 @@ export function Home({ onNavigate }) {
       </div>
 
       <div>
-        <h3 style={{ marginBottom: 12 }}>🕒 Activité récente</h3>
+        <h3 style={{ marginBottom: 'var(--espace-3)', color: 'var(--encre)' }}>Activité récente</h3>
         {recentItems.length === 0 ? (
-          <p style={{ color: '#999', fontStyle: 'italic' }}>
+          <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic' }}>
             Aucune fiche créée pour le moment. Choisissez un module ci-dessus pour commencer.
           </p>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--espace-2)' }}>
             {recentItems.map((item, idx) => (
               <button
                 key={`${item.__moduleKey}-${item.id}-${idx}`}
@@ -102,21 +107,20 @@ export function Home({ onNavigate }) {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 12,
+                  gap: 'var(--espace-3)',
                   padding: '10px 14px',
-                  borderRadius: 8,
-                  border: '1px solid #eee',
-                  backgroundColor: '#f8f9fa',
+                  borderRadius: 'var(--rayon-bouton)',
+                  border: '1px solid var(--trait)',
+                  backgroundColor: 'var(--douceur)',
                   cursor: 'pointer',
                   textAlign: 'left'
                 }}
               >
-                <span style={{ fontSize: 18 }}>{item.__icon}</span>
                 <div style={{ flex: 1 }}>
-                  <strong style={{ fontSize: 14 }}>{item.name || 'Sans nom'}</strong>
-                  <span style={{ fontSize: 12, color: '#888', marginLeft: 8 }}>{item.__typeLabel}</span>
+                  <strong style={{ fontSize: 14, color: 'var(--encre)' }}>{item.name || 'Sans nom'}</strong>
+                  <span style={{ fontSize: 12, color: 'var(--encre-douce)', marginLeft: 8 }}>{item.__typeLabel}</span>
                 </div>
-                <span style={{ fontSize: 12, color: '#aaa' }}>{timeAgo(item.__date)}</span>
+                <span style={{ fontSize: 12, color: 'var(--encre-douce)' }}>{timeAgo(item.__date)}</span>
               </button>
             ))}
           </div>
