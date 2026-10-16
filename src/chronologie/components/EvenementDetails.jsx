@@ -3,7 +3,6 @@ import FicheEvenementButton from '../../components/common/FicheEvenementButton.j
 
 export default function EvenementDetails({
   selectedEvenement,
-  getCategoryIcon,
   getCharacterById,
   getLocationById,
   getEquipeById,
@@ -20,20 +19,19 @@ export default function EvenementDetails({
   return (
     <div style={{
       flex: 1,
-      border: '1px solid #ddd',
+      border: '1px solid var(--trait)',
       padding: 16,
-      borderRadius: 8,
-      backgroundColor: '#ffffff',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 15 }}>
-        <span style={{ fontSize: 32 }}>{getCategoryIcon(selectedEvenement.category)}</span>
         <div style={{ flex: 1 }}>
-          <h3 style={{ margin: 0, color: '#2196f3' }}>
+          <h3 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>
             {selectedEvenement.name}
           </h3>
-          <div style={{ fontSize: 14, color: '#666' }}>
+          <div style={{ fontSize: 14, color: 'var(--encre-douce)' }}>
             {selectedEvenement.category}
             {selectedEvenement.date && ` • ${selectedEvenement.date}`}
           </div>
@@ -41,15 +39,15 @@ export default function EvenementDetails({
         <div style={{ display: 'flex', gap: 6 }}>
           <button
             onClick={() => onEdit(selectedEvenement)}
-            style={{ padding: '6px 10px', backgroundColor: '#ffc107', color: '#333', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 12, fontWeight: 'bold' }}
+            style={{ padding: '6px 10px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12, fontWeight: 'bold' }}
           >
-            ✏️ Modifier
+            Modifier
           </button>
           <button
             onClick={() => onDelete(selectedEvenement.id)}
-            style={{ padding: '6px 10px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 12 }}
+            style={{ padding: '6px 10px', backgroundColor: '#a13d3d', color: 'white', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12 }}
           >
-            ✕ Supprimer
+            Supprimer
           </button>
           <FicheEvenementButton evenement={selectedEvenement} />
         </div>
@@ -57,17 +55,17 @@ export default function EvenementDetails({
 
       {selectedEvenement.description && (
         <div style={{ marginBottom: 15 }}>
-          <strong>📘 Description :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>
+          <strong style={{ color: 'var(--encre)' }}>Description :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>
             {selectedEvenement.description}
           </p>
         </div>
       )}
 
       {selectedEvenement.consequences && (
-        <div style={{ marginBottom: 15, padding: 12, backgroundColor: '#f0f4ff', borderRadius: 6, border: '1px solid #2196f3' }}>
-          <strong style={{ color: '#1565c0' }}>💥 Conséquences / Impact :</strong>
-          <p style={{ margin: '8px 0 0 0', fontSize: 14, color: '#1565c0', whiteSpace: 'pre-wrap' }}>
+        <div style={{ marginBottom: 15, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
+          <strong style={{ color: 'var(--coeur)' }}>Conséquences / Impact :</strong>
+          <p style={{ margin: '8px 0 0 0', fontSize: 14, color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>
             {selectedEvenement.consequences}
           </p>
         </div>
@@ -75,10 +73,10 @@ export default function EvenementDetails({
 
       {relatedCharacters.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🧑 Personnages impliqués :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Personnages impliqués :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {relatedCharacters.map(c => (
-              <span key={c.id} style={{ padding: '4px 10px', backgroundColor: '#e7f3ff', color: '#0c5460', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={c.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {c.name}
               </span>
             ))}
@@ -88,10 +86,10 @@ export default function EvenementDetails({
 
       {relatedLocations.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🗺️ Lieux concernés :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Lieux concernés :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {relatedLocations.map(l => (
-              <span key={l.id} style={{ padding: '4px 10px', backgroundColor: '#e8f5e9', color: '#2e7d32', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={l.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {l.name}
               </span>
             ))}
@@ -101,10 +99,10 @@ export default function EvenementDetails({
 
       {relatedEquipes.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>👥 Équipes impliquées :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Équipes impliquées :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {relatedEquipes.map(eq => (
-              <span key={eq.id} style={{ padding: '4px 10px', backgroundColor: '#fff3e0', color: '#e65100', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={eq.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {eq.name}
               </span>
             ))}
@@ -114,7 +112,7 @@ export default function EvenementDetails({
 
       {relatedEvenements.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🔗 Événements liés :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Événements liés :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {relatedEvenements.map(ev => (
               <button
@@ -122,16 +120,16 @@ export default function EvenementDetails({
                 onClick={() => onSelectEvenement(ev)}
                 style={{
                   padding: '4px 10px',
-                  backgroundColor: '#e3f2fd',
-                  color: '#1976d2',
-                  border: '1px solid #90caf9',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--douceur)',
+                  color: 'var(--coeur)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold',
                   cursor: 'pointer'
                 }}
               >
-                {getCategoryIcon(ev.category)} {ev.name}
+                {ev.name}
               </button>
             ))}
           </div>
@@ -140,16 +138,16 @@ export default function EvenementDetails({
 
       {selectedEvenement.tags && selectedEvenement.tags.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🏷️ Tags :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Tags :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {selectedEvenement.tags.map((tag, idx) => (
               <span
                 key={idx}
                 style={{
                   padding: '4px 10px',
-                  backgroundColor: '#f3e5f5',
-                  color: '#6a1b9a',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--or)',
+                  color: 'var(--sur-or)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold'
                 }}
@@ -163,14 +161,14 @@ export default function EvenementDetails({
 
       {selectedEvenement.images && selectedEvenement.images.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🖼️ Illustrations :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Illustrations :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {selectedEvenement.images.map((src, idx) => (
               <img
                 key={idx}
                 src={src}
                 alt={`${selectedEvenement.name} ${idx + 1}`}
-                style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 6, border: '1px solid #ddd' }}
+                style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }}
               />
             ))}
           </div>

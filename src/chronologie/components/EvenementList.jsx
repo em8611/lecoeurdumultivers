@@ -6,24 +6,27 @@ export default function EvenementList({
   selectedEvenement,
   onSelect,
   onDelete,
-  onEdit,
-  getCategoryIcon
+  onEdit
 }) {
   const renderHeader = (ev) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 20 }}>{getCategoryIcon(ev.category)}</span>
-        <strong style={{ fontSize: 16 }}>{ev.name}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{ev.name}</strong>
+        <span style={{
+          fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+        }}>
+          {ev.category}
+        </span>
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
-        {ev.category}
-        {ev.date && ` • ${ev.date}`}
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
+        {ev.date}
       </div>
     </div>
   );
 
   const renderContent = (ev) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {ev.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Description :</strong>

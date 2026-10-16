@@ -15,21 +15,6 @@ const categoryOptions = [
   'Fondation', 'Catastrophe', 'Traité/Accord', 'Autre'
 ];
 
-const categoryIcons = {
-  'Naissance': '👶',
-  'Mort': '⚰️',
-  'Bataille': '⚔️',
-  'Découverte': '🔍',
-  'Fondation': '🏛️',
-  'Catastrophe': '🌋',
-  'Traité/Accord': '🤝',
-  'Autre': '📌'
-};
-
-function getCategoryIcon(category) {
-  return categoryIcons[category] || '📌';
-}
-
 function sortEvenements(evenements) {
   return [...evenements].sort((a, b) => {
     const orderA = typeof a.order === 'number' ? a.order : Infinity;
@@ -165,23 +150,23 @@ export default function ChronologieManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>🕰️ Chronologie / Événements</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Chronologie / Événements</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={gotoFiches}
-            style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Ouvrir le viewer des fiches techniques"
           >
-            📄 Fiches
+            Fiches
           </button>
           <button
             onClick={() => {
@@ -194,26 +179,26 @@ export default function ChronologieManager() {
                 setIsEditing(false);
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {showForm ? '✕ Annuler' : '+ Nouvel Événement'}
+            {showForm ? 'Annuler' : '+ Nouvel Événement'}
           </button>
           <button
             onClick={() => setShowBatchImport(true)}
-            style={{ padding: '8px 16px', backgroundColor: '#6f42c1', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Importer plusieurs événements par leurs noms"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <button
             onClick={() => exportElementsToFile(evenements, 'chronologie_export.json')}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
             title="Exporter tous les événements en JSON"
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }} title="Importer des événements depuis JSON">
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }} title="Importer des événements depuis JSON">
+            Importer
             <input
               type="file"
               accept=".json"
@@ -256,57 +241,57 @@ export default function ChronologieManager() {
         description="Entrez un nom d'événement par ligne. Chaque événement sera créé avec des valeurs par défaut que vous pourrez modifier ensuite."
       />
 
-      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
+      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
         <div style={{ flex: 2 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Recherche</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Recherche</label>
           <input
             type="text"
-            placeholder="🔍 Rechercher un événement, une date, une description..."
+            placeholder="Rechercher un événement, une date, une description..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ flex: 1 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Catégorie</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Catégorie</label>
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="Tous">Toutes les catégories</option>
             {categoryOptions.map(cat => (
-              <option key={cat} value={cat}>{getCategoryIcon(cat)} {cat}</option>
+              <option key={cat} value={cat}>{cat}</option>
             ))}
           </select>
         </div>
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4 }}>
-          <div style={{ display: 'flex', gap: 4, border: '1px solid #ced4da', borderRadius: 4, overflow: 'hidden' }}>
+          <div style={{ display: 'flex', gap: 4, border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', overflow: 'hidden' }}>
             <button
               onClick={() => setViewMode('timeline')}
               style={{
                 padding: '8px 12px',
-                backgroundColor: viewMode === 'timeline' ? '#2196f3' : 'white',
-                color: viewMode === 'timeline' ? 'white' : '#333',
+                backgroundColor: viewMode === 'timeline' ? 'var(--coeur)' : 'var(--fond-carte)',
+                color: viewMode === 'timeline' ? 'var(--sur-coeur)' : 'var(--encre)',
                 border: 'none',
                 cursor: 'pointer'
               }}
               title="Vue frise chronologique"
             >
-              📈 Frise
+              Frise
             </button>
             <button
               onClick={() => setViewMode('list')}
               style={{
                 padding: '8px 12px',
-                backgroundColor: viewMode === 'list' ? '#2196f3' : 'white',
-                color: viewMode === 'list' ? 'white' : '#333',
+                backgroundColor: viewMode === 'list' ? 'var(--coeur)' : 'var(--fond-carte)',
+                color: viewMode === 'list' ? 'var(--sur-coeur)' : 'var(--encre)',
                 border: 'none',
                 cursor: 'pointer'
               }}
               title="Vue liste"
             >
-              ☰ Liste
+              Liste
             </button>
           </div>
         </div>
@@ -333,7 +318,7 @@ export default function ChronologieManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>
+          <h3 style={{ color: 'var(--encre)' }}>
             {filterCategory === 'Tous' ? 'Tous les événements' : filterCategory}
             {' '}({filteredEvenements.length}/{evenements.length})
           </h3>
@@ -342,7 +327,6 @@ export default function ChronologieManager() {
               evenements={filteredEvenements}
               selectedEvenement={selectedEvenement}
               onSelect={setSelectedEvenement}
-              getCategoryIcon={getCategoryIcon}
             />
           ) : (
             <EvenementList
@@ -351,7 +335,6 @@ export default function ChronologieManager() {
               onSelect={setSelectedEvenement}
               onDelete={handleDeleteEvenement}
               onEdit={handleEditEvenement}
-              getCategoryIcon={getCategoryIcon}
             />
           )}
         </div>
@@ -359,7 +342,6 @@ export default function ChronologieManager() {
         {selectedEvenement && (
           <EvenementDetails
             selectedEvenement={selectedEvenement}
-            getCategoryIcon={getCategoryIcon}
             getCharacterById={getCharacterById}
             getLocationById={getLocationById}
             getEquipeById={getEquipeById}

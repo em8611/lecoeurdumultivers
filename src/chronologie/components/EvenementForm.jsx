@@ -15,11 +15,11 @@ function MultiSelectPicker({ label, options, selectedIds, onChange, placeholder 
 
   return (
     <div style={{ marginBottom: 20 }}>
-      <label style={{ display: 'block', marginBottom: 6, fontWeight: 'bold' }}>{label}</label>
+      <label style={{ display: 'block', marginBottom: 6, fontWeight: 'bold', color: 'var(--encre)' }}>{label}</label>
       {options.length === 0 ? (
-        <p style={{ fontSize: 13, color: '#999', fontStyle: 'italic', margin: 0 }}>{placeholder}</p>
+        <p style={{ fontSize: 13, color: 'var(--encre-douce)', fontStyle: 'italic', margin: 0 }}>{placeholder}</p>
       ) : (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, maxHeight: 140, overflowY: 'auto', padding: 8, border: '1px solid #ced4da', borderRadius: 4 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, maxHeight: 140, overflowY: 'auto', padding: 8, border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)' }}>
           {options.map(opt => {
             const isSelected = selectedIds.includes(opt.id);
             return (
@@ -29,13 +29,13 @@ function MultiSelectPicker({ label, options, selectedIds, onChange, placeholder 
                 onClick={() => toggle(opt.id)}
                 style={{
                   padding: '4px 10px',
-                  borderRadius: 12,
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold',
                   cursor: 'pointer',
-                  border: isSelected ? '1px solid #2196f3' : '1px solid #ced4da',
-                  backgroundColor: isSelected ? '#e3f2fd' : 'white',
-                  color: isSelected ? '#1976d2' : '#555'
+                  border: isSelected ? '1px solid var(--coeur)' : '1px solid var(--trait)',
+                  backgroundColor: isSelected ? 'var(--douceur)' : 'var(--fond-carte)',
+                  color: isSelected ? 'var(--coeur)' : 'var(--encre)'
                 }}
               >
                 {isSelected ? '✓ ' : ''}{opt.name}
@@ -65,8 +65,8 @@ export default function EvenementForm({
   const inputStyle = {
     width: '100%',
     padding: 8,
-    borderRadius: 4,
-    border: '1px solid #ced4da',
+    borderRadius: 'var(--rayon-bouton)',
+    border: '1px solid var(--trait)',
     fontSize: 14,
     boxSizing: 'border-box'
   };
@@ -81,13 +81,13 @@ export default function EvenementForm({
 
   return (
     <div style={{
-      backgroundColor: '#f8f9fa',
+      backgroundColor: 'var(--douceur)',
       padding: 24,
-      borderRadius: 8,
+      borderRadius: 'var(--rayon-carte)',
       marginBottom: 24,
-      border: '1px solid #dee2e6'
+      border: '1px solid var(--trait)'
     }}>
-      <h3 style={{ marginTop: 0, marginBottom: 20 }}>
+      <h3 style={{ marginTop: 0, marginBottom: 20, color: 'var(--encre)' }}>
         {isEditing ? "Modifier l'événement" : 'Créer un nouvel événement'}
       </h3>
 
@@ -225,29 +225,29 @@ export default function EvenementForm({
             type="submit"
             style={{
               padding: '10px 20px',
-              backgroundColor: '#28a745',
-              color: 'white',
+              backgroundColor: 'var(--coeur)',
+              color: 'var(--sur-coeur)',
               border: 'none',
-              borderRadius: 4,
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
           >
-            {isEditing ? '✓ Mettre à jour' : "✓ Créer l'événement"}
+            {isEditing ? 'Mettre à jour' : "Créer l'événement"}
           </button>
           <button
             type="button"
             onClick={onCancel}
             style={{
               padding: '10px 20px',
-              backgroundColor: '#6c757d',
-              color: 'white',
-              border: 'none',
-              borderRadius: 4,
+              backgroundColor: 'var(--fond-carte)',
+              color: 'var(--encre)',
+              border: '1px solid var(--trait)',
+              borderRadius: 'var(--rayon-bouton)',
               cursor: 'pointer'
             }}
           >
-            ✕ Annuler
+            Annuler
           </button>
         </div>
       </form>
