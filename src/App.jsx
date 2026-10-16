@@ -75,7 +75,7 @@ function App() {
         return <ArtefactsManager />;
       case 'home':
       default:
-        return <Home />;
+        return <Home onNavigate={setActiveTab} />;
     }
   };
 
