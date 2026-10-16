@@ -69,6 +69,10 @@ export const FORM_FIELD_SETS = {
   route: [
     'name', 'status', 'fromTerritoireId', 'toTerritoireId', 'description',
     'dangers', 'ressourceIds', 'equipeIds', 'tags'
+  ],
+  tradition: [
+    'name', 'category', 'description', 'origin', 'practice', 'significance',
+    'equipeIds', 'territoireIds', 'tags'
   ]
 };
 

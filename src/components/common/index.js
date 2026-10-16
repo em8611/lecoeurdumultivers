@@ -17,3 +17,4 @@ export { default as FicheLangueButton } from './FicheLangueButton.jsx';
 export { default as FicheArtefactButton } from './FicheArtefactButton.jsx';
 export { default as FicheRessourceButton } from './FicheRessourceButton.jsx';
 export { default as FicheRouteButton } from './FicheRouteButton.jsx';
+export { default as FicheTraditionButton } from './FicheTraditionButton.jsx';

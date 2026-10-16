@@ -29,7 +29,8 @@ const EMPTY_STATE = {
   ressources: [],
   routesCommerciales: [],
   sciences: [],
-  technologies: []
+  technologies: [],
+  traditions: []
 };
 
 function loadInitialState() {
@@ -73,7 +74,8 @@ const CATEGORY_ALIASES = {
   ressource: 'ressources',
   route: 'routesCommerciales',
   science: 'sciences',
-  technologie: 'technologies'
+  technologie: 'technologies',
+  tradition: 'traditions'
 };
 
 function resolveCategory(category) {

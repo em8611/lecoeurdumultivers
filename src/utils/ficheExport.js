@@ -712,3 +712,33 @@ export function exportFicheRoute(route) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheTradition(tradition) {
+  const lines = [
+    `# Fiche technique — ${tradition.name || 'Sans nom'}`,
+    '',
+    `Catégorie : ${tradition.category || '-'}`,
+    '',
+    '## Description',
+    tradition.description || '-',
+    '',
+    '## Origine / Histoire',
+    tradition.origin || '-',
+    '',
+    '## Déroulement / Pratique',
+    tradition.practice || '-',
+    '',
+    '## Signification / Symbolique',
+    tradition.significance || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(tradition.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}

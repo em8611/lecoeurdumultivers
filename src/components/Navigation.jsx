@@ -18,7 +18,8 @@ const TABS = [
   { key: 'langues', label: 'Langues & Écritures' },
   { key: 'artefacts', label: 'Artefacts & Reliques' },
   { key: 'economie', label: 'Économie & Commerce' },
-  { key: 'technologie', label: 'Technologie & Sciences' }
+  { key: 'technologie', label: 'Technologie & Sciences' },
+  { key: 'culture', label: 'Culture & Société' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {
