@@ -15,15 +15,6 @@ const diviniteAlignmentOptions = ['Bienveillant', 'Malveillant', 'Neutre', 'Ambi
 const mytheCategoryOptions = ['Mythe fondateur', 'Légende', 'Prophétie', 'Conte', 'Malédiction', 'Rituel', 'Autre'];
 const mytheTruthOptions = ['Vérifié', 'Contesté', 'Réfuté', 'Inconnu'];
 
-const diviniteStatusIcons = { 'Vénéré': '🙏', 'Oublié': '🕸️', 'Déchu': '⛓️', 'Scellé': '🔒', 'Disparu': '💨' };
-const mytheCategoryIcons = {
-  'Mythe fondateur': '🌟', 'Légende': '📖', 'Prophétie': '🔮',
-  'Conte': '🕯️', 'Malédiction': '☠️', 'Rituel': '🪄', 'Autre': '📜'
-};
-
-function getDiviniteStatusIcon(status) { return diviniteStatusIcons[status] || '🙏'; }
-function getMytheCategoryIcon(category) { return mytheCategoryIcons[category] || '📜'; }
-
 export default function ReligionManager() {
   const { divinites, mythes, characters, concepts, evenements } = useElementsState();
   const { addElement, deleteElement, updateElement } = useElementsActions();
@@ -193,57 +184,57 @@ export default function ReligionManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>⛩️ Religion & Mythologie</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Religion & Mythologie</h2>
         <button
           onClick={gotoFiches}
-          style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+          style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           title="Ouvrir le viewer des fiches techniques"
         >
-          📄 Fiches
+          Fiches
         </button>
       </div>
 
-      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid #dee2e6' }}>
+      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid var(--trait)' }}>
         <button
           onClick={() => switchTab('divinites')}
           style={{
             padding: '10px 18px',
             border: 'none',
-            borderBottom: subTab === 'divinites' ? '2px solid #2196f3' : '2px solid transparent',
+            borderBottom: subTab === 'divinites' ? '2px solid var(--coeur)' : '2px solid transparent',
             marginBottom: -2,
             backgroundColor: 'transparent',
-            color: subTab === 'divinites' ? '#2196f3' : '#666',
+            color: subTab === 'divinites' ? 'var(--coeur)' : 'var(--encre-douce)',
             fontWeight: subTab === 'divinites' ? 'bold' : 'normal',
             cursor: 'pointer',
             fontSize: 14
           }}
         >
-          🙏 Divinités & Panthéons ({divinites.length})
+          Divinités & Panthéons ({divinites.length})
         </button>
         <button
           onClick={() => switchTab('mythes')}
           style={{
             padding: '10px 18px',
             border: 'none',
-            borderBottom: subTab === 'mythes' ? '2px solid #2196f3' : '2px solid transparent',
+            borderBottom: subTab === 'mythes' ? '2px solid var(--coeur)' : '2px solid transparent',
             marginBottom: -2,
             backgroundColor: 'transparent',
-            color: subTab === 'mythes' ? '#2196f3' : '#666',
+            color: subTab === 'mythes' ? 'var(--coeur)' : 'var(--encre-douce)',
             fontWeight: subTab === 'mythes' ? 'bold' : 'normal',
             cursor: 'pointer',
             fontSize: 14
           }}
         >
-          📖 Mythes & Légendes ({mythes.length})
+          Mythes & Légendes ({mythes.length})
         </button>
       </div>
 
@@ -251,10 +242,10 @@ export default function ReligionManager() {
         <div style={{ flex: 2 }}>
           <input
             type="text"
-            placeholder={subTab === 'divinites' ? '🔍 Rechercher une divinité, un panthéon...' : '🔍 Rechercher un mythe, une légende...'}
+            placeholder={subTab === 'divinites' ? 'Rechercher une divinité, un panthéon...' : 'Rechercher un mythe, une légende...'}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -280,20 +271,20 @@ export default function ReligionManager() {
                 }
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
             {(subTab === 'divinites' ? showDiviniteForm : showMytheForm)
-              ? '✕ Annuler'
+              ? 'Annuler'
               : subTab === 'divinites' ? '+ Nouvelle Divinité' : '+ Nouveau Mythe'}
           </button>
           <button
             onClick={handleExport}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }}>
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }}>
+            Importer
             <input
               type="file"
               accept=".json"
@@ -337,20 +328,18 @@ export default function ReligionManager() {
       {subTab === 'divinites' ? (
         <div style={{ display: 'flex', gap: 20 }}>
           <div style={{ flex: 1 }}>
-            <h3>Divinités & Panthéons ({filteredDivinites.length}/{divinites.length})</h3>
+            <h3 style={{ color: 'var(--encre)' }}>Divinités & Panthéons ({filteredDivinites.length}/{divinites.length})</h3>
             <DiviniteList
               divinites={filteredDivinites}
               selectedDivinite={selectedDivinite}
               onSelect={setSelectedDivinite}
               onDelete={handleDeleteDivinite}
               onEdit={handleEditDivinite}
-              getStatusIcon={getDiviniteStatusIcon}
             />
           </div>
           {selectedDivinite && (
             <DiviniteDetails
               selectedDivinite={selectedDivinite}
-              getStatusIcon={getDiviniteStatusIcon}
               getCharacterById={getCharacterById}
               getConceptById={getConceptById}
             />
@@ -359,20 +348,18 @@ export default function ReligionManager() {
       ) : (
         <div style={{ display: 'flex', gap: 20 }}>
           <div style={{ flex: 1 }}>
-            <h3>Mythes & Légendes ({filteredMythes.length}/{mythes.length})</h3>
+            <h3 style={{ color: 'var(--encre)' }}>Mythes & Légendes ({filteredMythes.length}/{mythes.length})</h3>
             <MytheList
               mythes={filteredMythes}
               selectedMythe={selectedMythe}
               onSelect={setSelectedMythe}
               onDelete={handleDeleteMythe}
               onEdit={handleEditMythe}
-              getCategoryIcon={getMytheCategoryIcon}
             />
           </div>
           {selectedMythe && (
             <MytheDetails
               selectedMythe={selectedMythe}
-              getCategoryIcon={getMytheCategoryIcon}
               getDiviniteById={getDiviniteById}
               getCharacterById={getCharacterById}
               getEvenementById={getEvenementById}

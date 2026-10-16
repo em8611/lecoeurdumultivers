@@ -1,14 +1,19 @@
 import React from 'react';
 import AccordionList from '../../components/common/AccordionList.jsx';
 
-export default function DiviniteList({ divinites, selectedDivinite, onSelect, onDelete, onEdit, getStatusIcon }) {
+export default function DiviniteList({ divinites, selectedDivinite, onSelect, onDelete, onEdit }) {
   const renderHeader = (d) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 18 }}>{getStatusIcon(d.status)}</span>
-        <strong style={{ fontSize: 16 }}>{d.name}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{d.name}</strong>
+        <span style={{
+          fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+        }}>
+          {d.status}
+        </span>
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
         {d.pantheon || 'Panthéon inconnu'}
         {d.alignment && ` • ${d.alignment}`}
         {d.domains && d.domains.length > 0 && ` • ${d.domains.join(', ')}`}
@@ -17,7 +22,7 @@ export default function DiviniteList({ divinites, selectedDivinite, onSelect, on
   );
 
   const renderContent = (d) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {d.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Description :</strong>

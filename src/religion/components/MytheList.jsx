@@ -1,22 +1,26 @@
 import React from 'react';
 import AccordionList from '../../components/common/AccordionList.jsx';
 
-export default function MytheList({ mythes, selectedMythe, onSelect, onDelete, onEdit, getCategoryIcon }) {
+export default function MytheList({ mythes, selectedMythe, onSelect, onDelete, onEdit }) {
   const renderHeader = (m) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 20 }}>{getCategoryIcon(m.category)}</span>
-        <strong style={{ fontSize: 16 }}>{m.name}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{m.name}</strong>
+        <span style={{
+          fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+        }}>
+          {m.category}
+        </span>
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
-        {m.category}
-        {m.truthStatus && ` • ${m.truthStatus}`}
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
+        {m.truthStatus}
       </div>
     </div>
   );
 
   const renderContent = (m) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {m.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Récit :</strong>
