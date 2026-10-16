@@ -11,17 +11,6 @@ import TraditionDetails from './components/TraditionDetails.jsx';
 
 const categoryOptions = ['Coutume', 'Fête / Rituel', 'Art', 'Vêtement / Mode', 'Norme sociale', 'Autre'];
 
-const categoryIcons = {
-  'Coutume': '📜',
-  'Fête / Rituel': '🎉',
-  'Art': '🎨',
-  'Vêtement / Mode': '👗',
-  'Norme sociale': '📏',
-  'Autre': '🌀'
-};
-
-function getCategoryIcon(category) { return categoryIcons[category] || '🌀'; }
-
 export default function CultureManager() {
   const { traditions, equipes, territoires } = useElementsState();
   const { addElement, deleteElement, updateElement } = useElementsActions();
@@ -123,23 +112,23 @@ export default function CultureManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>🏺 Culture & Société</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Culture & Société</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={gotoFiches}
-            style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Ouvrir le viewer des fiches techniques"
           >
-            📄 Fiches
+            Fiches
           </button>
           <button
             onClick={() => {
@@ -152,26 +141,26 @@ export default function CultureManager() {
                 setIsEditing(false);
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {showForm ? '✕ Annuler' : '+ Nouvelle Tradition'}
+            {showForm ? 'Annuler' : '+ Nouvelle Tradition'}
           </button>
           <button
             onClick={() => setShowBatchImport(true)}
-            style={{ padding: '8px 16px', backgroundColor: '#6f42c1', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Importer plusieurs traditions par leurs noms"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <button
             onClick={() => exportElementsToFile(traditions, 'traditions_export.json')}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
             title="Exporter toutes les traditions en JSON"
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }} title="Importer des traditions depuis JSON">
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }} title="Importer des traditions depuis JSON">
+            Importer
             <input
               type="file"
               accept=".json"
@@ -214,27 +203,27 @@ export default function CultureManager() {
         description="Entrez un nom de tradition par ligne. Chaque tradition sera créée avec des valeurs par défaut que vous pourrez modifier ensuite."
       />
 
-      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
+      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
         <div style={{ flex: 2 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Recherche</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Recherche</label>
           <input
             type="text"
-            placeholder="🔍 Rechercher une tradition, une description..."
+            placeholder="Rechercher une tradition, une description..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ flex: 1 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Catégorie</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Catégorie</label>
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="Toutes">Toutes les catégories</option>
             {categoryOptions.map(c => (
-              <option key={c} value={c}>{getCategoryIcon(c)} {c}</option>
+              <option key={c} value={c}>{c}</option>
             ))}
           </select>
         </div>
@@ -259,7 +248,7 @@ export default function CultureManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>
+          <h3 style={{ color: 'var(--encre)' }}>
             Toutes les traditions ({filteredTraditions.length}/{traditions.length})
           </h3>
           <TraditionList
@@ -268,14 +257,12 @@ export default function CultureManager() {
             onSelect={setSelectedTradition}
             onDelete={handleDeleteTradition}
             onEdit={handleEditTradition}
-            getCategoryIcon={getCategoryIcon}
           />
         </div>
 
         {selectedTradition && (
           <TraditionDetails
             selectedTradition={selectedTradition}
-            getCategoryIcon={getCategoryIcon}
             getEquipeById={getEquipeById}
             getTerritoireById={getTerritoireById}
           />
