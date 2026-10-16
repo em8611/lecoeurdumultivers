@@ -13,28 +13,28 @@ function TerritoireNode({ territoire, children, selectedTerritoire, onSelect, on
           alignItems: 'center',
           padding: '8px 10px',
           marginBottom: 4,
-          borderRadius: 6,
+          borderRadius: 'var(--rayon-bouton)',
           cursor: 'pointer',
-          backgroundColor: isSelected ? '#f0f4ff' : 'white',
-          border: isSelected ? '2px solid #2196f3' : '1px solid #dee2e6'
+          backgroundColor: isSelected ? 'var(--douceur)' : 'var(--fond-carte)',
+          border: isSelected ? '2px solid var(--coeur)' : '1px solid var(--trait)'
         }}
       >
         <div>
-          <strong style={{ fontSize: 14 }}>{territoire.name}</strong>
-          <span style={{ fontSize: 11, color: '#999', marginLeft: 8 }}>{territoire.type}</span>
+          <strong style={{ fontSize: 14, color: 'var(--encre)' }}>{territoire.name}</strong>
+          <span style={{ fontSize: 11, color: 'var(--encre-douce)', marginLeft: 8 }}>{territoire.type}</span>
         </div>
         <div style={{ display: 'flex', gap: 4 }}>
           <button
             onClick={(e) => { e.stopPropagation(); onEdit(territoire); }}
-            style={{ padding: '3px 7px', fontSize: 11, border: '1px solid #ccc', borderRadius: 4, background: 'white', cursor: 'pointer' }}
+            style={{ padding: '3px 8px', fontSize: 11, border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', background: 'var(--fond-carte)', color: 'var(--encre)', cursor: 'pointer' }}
           >
-            ✏️
+            Modifier
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); onDelete(territoire.id); }}
-            style={{ padding: '3px 7px', fontSize: 11, border: 'none', borderRadius: 4, background: '#dc3545', color: 'white', cursor: 'pointer' }}
+            style={{ padding: '3px 8px', fontSize: 11, border: 'none', borderRadius: 'var(--rayon-bouton)', background: '#a13d3d', color: 'white', cursor: 'pointer' }}
           >
-            ✕
+            Supprimer
           </button>
         </div>
       </div>
@@ -46,7 +46,7 @@ function TerritoireNode({ territoire, children, selectedTerritoire, onSelect, on
 export default function TerritoireTree({ territoires, selectedTerritoire, onSelect, onDelete, onEdit }) {
   if (territoires.length === 0) {
     return (
-      <p style={{ color: '#666', fontStyle: 'italic', textAlign: 'center', padding: 40 }}>
+      <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic', textAlign: 'center', padding: 40 }}>
         Aucun territoire créé. Cliquez sur « + Nouveau Territoire » pour commencer.
       </p>
     );

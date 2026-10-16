@@ -5,8 +5,8 @@ export default function CarteForm({ formData, setFormData, onSubmit, onCancel, t
   const inputStyle = {
     width: '100%',
     padding: 8,
-    borderRadius: 4,
-    border: '1px solid #ced4da',
+    borderRadius: 'var(--rayon-bouton)',
+    border: '1px solid var(--trait)',
     fontSize: 14,
     boxSizing: 'border-box'
   };
@@ -24,13 +24,13 @@ export default function CarteForm({ formData, setFormData, onSubmit, onCancel, t
 
   return (
     <div style={{
-      backgroundColor: '#f8f9fa',
+      backgroundColor: 'var(--douceur)',
       padding: 24,
-      borderRadius: 8,
+      borderRadius: 'var(--rayon-carte)',
       marginBottom: 24,
-      border: '1px solid #dee2e6'
+      border: '1px solid var(--trait)'
     }}>
-      <h3 style={{ marginTop: 0, marginBottom: 20 }}>
+      <h3 style={{ marginTop: 0, marginBottom: 20, color: 'var(--encre)' }}>
         {isEditing ? 'Modifier la carte' : 'Créer une nouvelle carte'}
       </h3>
 
@@ -77,11 +77,11 @@ export default function CarteForm({ formData, setFormData, onSubmit, onCancel, t
           <label style={{ display: 'block', marginBottom: 6, fontWeight: 'bold' }}>Image de la carte</label>
           <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
             <div style={{ flex: 1 }}>
-              <label style={{ display: 'block', marginBottom: 4, fontSize: 12, color: '#666' }}>Upload un fichier</label>
+              <label style={{ display: 'block', marginBottom: 4, fontSize: 12, color: 'var(--encre-douce)' }}>Upload un fichier</label>
               <input type="file" accept="image/*" onChange={handleFile} />
             </div>
             <div style={{ flex: 1 }}>
-              <label style={{ display: 'block', marginBottom: 4, fontSize: 12, color: '#666' }}>Ou URL externe</label>
+              <label style={{ display: 'block', marginBottom: 4, fontSize: 12, color: 'var(--encre-douce)' }}>Ou URL externe</label>
               <input
                 type="text"
                 value={formData.image && formData.image.startsWith('data:') ? '' : formData.image}
@@ -96,7 +96,7 @@ export default function CarteForm({ formData, setFormData, onSubmit, onCancel, t
               <img
                 src={formData.image}
                 alt="Aperçu de la carte"
-                style={{ maxWidth: '100%', maxHeight: 200, borderRadius: 6, border: '1px solid #ddd' }}
+                style={{ maxWidth: '100%', maxHeight: 200, borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }}
                 onError={(e) => { e.target.style.display = 'none'; }}
               />
             </div>
@@ -116,16 +116,16 @@ export default function CarteForm({ formData, setFormData, onSubmit, onCancel, t
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             type="submit"
-            style={{ padding: '10px 20px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '10px 20px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {isEditing ? '✓ Mettre à jour' : '✓ Créer la carte'}
+            {isEditing ? 'Mettre à jour' : 'Créer la carte'}
           </button>
           <button
             type="button"
             onClick={onCancel}
-            style={{ padding: '10px 20px', backgroundColor: '#6c757d', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '10px 20px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
           >
-            ✕ Annuler
+            Annuler
           </button>
         </div>
       </form>

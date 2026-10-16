@@ -6,8 +6,8 @@ export default function TerritoireForm({ formData, setFormData, onSubmit, onCanc
   const inputStyle = {
     width: '100%',
     padding: 8,
-    borderRadius: 4,
-    border: '1px solid #ced4da',
+    borderRadius: 'var(--rayon-bouton)',
+    border: '1px solid var(--trait)',
     fontSize: 14,
     boxSizing: 'border-box'
   };
@@ -18,13 +18,13 @@ export default function TerritoireForm({ formData, setFormData, onSubmit, onCanc
 
   return (
     <div style={{
-      backgroundColor: '#f8f9fa',
+      backgroundColor: 'var(--douceur)',
       padding: 24,
-      borderRadius: 8,
+      borderRadius: 'var(--rayon-carte)',
       marginBottom: 24,
-      border: '1px solid #dee2e6'
+      border: '1px solid var(--trait)'
     }}>
-      <h3 style={{ marginTop: 0, marginBottom: 20 }}>
+      <h3 style={{ marginTop: 0, marginBottom: 20, color: 'var(--encre)' }}>
         {isEditing ? 'Modifier le territoire' : 'Créer un nouveau territoire'}
       </h3>
 
@@ -123,16 +123,16 @@ export default function TerritoireForm({ formData, setFormData, onSubmit, onCanc
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             type="submit"
-            style={{ padding: '10px 20px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '10px 20px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {isEditing ? '✓ Mettre à jour' : '✓ Créer le territoire'}
+            {isEditing ? 'Mettre à jour' : 'Créer le territoire'}
           </button>
           <button
             type="button"
             onClick={onCancel}
-            style={{ padding: '10px 20px', backgroundColor: '#6c757d', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '10px 20px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
           >
-            ✕ Annuler
+            Annuler
           </button>
         </div>
       </form>

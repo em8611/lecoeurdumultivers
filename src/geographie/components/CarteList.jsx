@@ -3,7 +3,7 @@ import React from 'react';
 export default function CarteList({ cartes, selectedCarte, onSelect, onDelete, onEdit, getTerritoireById }) {
   if (cartes.length === 0) {
     return (
-      <p style={{ color: '#666', fontStyle: 'italic', textAlign: 'center', padding: 40 }}>
+      <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic', textAlign: 'center', padding: 40 }}>
         Aucune carte créée. Cliquez sur « + Nouvelle Carte » pour commencer.
       </p>
     );
@@ -23,46 +23,44 @@ export default function CarteList({ cartes, selectedCarte, onSelect, onDelete, o
               display: 'flex',
               gap: 12,
               padding: 10,
-              borderRadius: 8,
-              border: isSelected ? '2px solid #2196f3' : '1px solid #dee2e6',
-              backgroundColor: isSelected ? '#f0f4ff' : 'white'
+              borderRadius: 'var(--rayon-carte)',
+              border: isSelected ? '2px solid var(--coeur)' : '1px solid var(--trait)',
+              backgroundColor: isSelected ? 'var(--douceur)' : 'var(--fond-carte)'
             }}
           >
             {carte.image ? (
               <img
                 src={carte.image}
                 alt={carte.name}
-                style={{ width: 64, height: 64, objectFit: 'cover', borderRadius: 6, border: '1px solid #ddd', flexShrink: 0 }}
+                style={{ width: 64, height: 64, objectFit: 'cover', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)', flexShrink: 0 }}
                 onError={(e) => { e.target.style.display = 'none'; }}
               />
             ) : (
-              <div style={{ width: 64, height: 64, borderRadius: 6, backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 24 }}>
-                🗺️
-              </div>
+              <div style={{ width: 64, height: 64, borderRadius: 'var(--rayon-image)', backgroundColor: 'var(--douceur)', flexShrink: 0 }} />
             )}
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <strong style={{ fontSize: 15 }}>{carte.name}</strong>
+                <strong style={{ fontSize: 15, color: 'var(--encre)' }}>{carte.name}</strong>
                 <div style={{ display: 'flex', gap: 4 }}>
                   <button
                     onClick={(e) => { e.stopPropagation(); onEdit(carte); }}
-                    style={{ padding: '3px 7px', fontSize: 11, border: '1px solid #ccc', borderRadius: 4, background: 'white', cursor: 'pointer' }}
+                    style={{ padding: '3px 8px', fontSize: 11, border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', background: 'var(--fond-carte)', color: 'var(--encre)', cursor: 'pointer' }}
                   >
-                    ✏️
+                    Modifier
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); onDelete(carte.id); }}
-                    style={{ padding: '3px 7px', fontSize: 11, border: 'none', borderRadius: 4, background: '#dc3545', color: 'white', cursor: 'pointer' }}
+                    style={{ padding: '3px 8px', fontSize: 11, border: 'none', borderRadius: 'var(--rayon-bouton)', background: '#a13d3d', color: 'white', cursor: 'pointer' }}
                   >
-                    ✕
+                    Supprimer
                   </button>
                 </div>
               </div>
-              <div style={{ fontSize: 12, color: '#666', marginTop: 2 }}>
+              <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 2 }}>
                 {territoire ? territoire.name : 'Aucun territoire lié'} • {(carte.points || []).length} point(s)
               </div>
               {carte.description && (
-                <div style={{ fontSize: 12, color: '#888', marginTop: 4 }}>
+                <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
                   {carte.description.slice(0, 90)}{carte.description.length > 90 ? '…' : ''}
                 </div>
               )}
