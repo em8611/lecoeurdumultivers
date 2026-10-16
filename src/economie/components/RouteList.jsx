@@ -1,26 +1,32 @@
 import React from 'react';
 import AccordionList from '../../components/common/AccordionList.jsx';
 
-export default function RouteList({ routes, selectedRoute, onSelect, onDelete, onEdit, getStatusIcon, getTerritoireById }) {
+export default function RouteList({ routes, selectedRoute, onSelect, onDelete, onEdit, getTerritoireById }) {
   const renderHeader = (route) => {
     const from = route.fromTerritoireId ? getTerritoireById(route.fromTerritoireId) : null;
     const to = route.toTerritoireId ? getTerritoireById(route.toTerritoireId) : null;
     return (
       <div style={{ flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 18 }}>{getStatusIcon(route.status)}</span>
-          <strong style={{ fontSize: 16 }}>{route.name}</strong>
+          <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{route.name}</strong>
+          {route.status && (
+            <span style={{
+              fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+              padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+            }}>
+              {route.status}
+            </span>
+          )}
         </div>
-        <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+        <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
           {from?.name || '?'} → {to?.name || '?'}
-          {route.status && ` • ${route.status}`}
         </div>
       </div>
     );
   };
 
   const renderContent = (route) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {route.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Description :</strong>

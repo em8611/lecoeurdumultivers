@@ -14,17 +14,6 @@ const ressourceCategoryOptions = ['Monnaie', 'Matière première', 'Denrée de l
 const ressourceRarityOptions = ['Commune', 'Peu commune', 'Rare', 'Très rare', 'Inestimable'];
 const routeStatusOptions = ['Active', 'Dangereuse', 'Coupée', 'Saisonnière', 'Secrète'];
 
-const ressourceCategoryIcons = {
-  'Monnaie': '🪙', 'Matière première': '⛏️', 'Denrée de luxe': '🍷',
-  'Ressource magique': '🔮', 'Autre': '📦'
-};
-const routeStatusIcons = {
-  'Active': '🟢', 'Dangereuse': '⚠️', 'Coupée': '🚫', 'Saisonnière': '🍂', 'Secrète': '🤫'
-};
-
-function getRessourceCategoryIcon(category) { return ressourceCategoryIcons[category] || '📦'; }
-function getRouteStatusIcon(status) { return routeStatusIcons[status] || '❓'; }
-
 export default function EconomieManager() {
   const { ressources, routesCommerciales, territoires, equipes } = useElementsState();
   const { addElement, deleteElement, updateElement } = useElementsActions();
@@ -186,68 +175,68 @@ export default function EconomieManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>💰 Économie & Commerce</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Économie & Commerce</h2>
         <button
           onClick={gotoFiches}
-          style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+          style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           title="Ouvrir le viewer des fiches techniques"
         >
-          📄 Fiches
+          Fiches
         </button>
       </div>
 
-      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid #dee2e6' }}>
+      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid var(--trait)' }}>
         <button
           onClick={() => switchTab('ressources')}
           style={{
             padding: '10px 18px',
             border: 'none',
-            borderBottom: subTab === 'ressources' ? '2px solid #2196f3' : '2px solid transparent',
+            borderBottom: subTab === 'ressources' ? '2px solid var(--coeur)' : '2px solid transparent',
             marginBottom: -2,
             backgroundColor: 'transparent',
-            color: subTab === 'ressources' ? '#2196f3' : '#666',
+            color: subTab === 'ressources' ? 'var(--coeur)' : 'var(--encre-douce)',
             fontWeight: subTab === 'ressources' ? 'bold' : 'normal',
             cursor: 'pointer',
             fontSize: 14
           }}
         >
-          🪙 Ressources & Monnaies ({ressources.length})
+          Ressources & Monnaies ({ressources.length})
         </button>
         <button
           onClick={() => switchTab('routes')}
           style={{
             padding: '10px 18px',
             border: 'none',
-            borderBottom: subTab === 'routes' ? '2px solid #2196f3' : '2px solid transparent',
+            borderBottom: subTab === 'routes' ? '2px solid var(--coeur)' : '2px solid transparent',
             marginBottom: -2,
             backgroundColor: 'transparent',
-            color: subTab === 'routes' ? '#2196f3' : '#666',
+            color: subTab === 'routes' ? 'var(--coeur)' : 'var(--encre-douce)',
             fontWeight: subTab === 'routes' ? 'bold' : 'normal',
             cursor: 'pointer',
             fontSize: 14
           }}
         >
-          🛤️ Routes Commerciales ({routesCommerciales.length})
+          Routes Commerciales ({routesCommerciales.length})
         </button>
       </div>
 
-      <div style={{ display: 'flex', gap: 15, marginBottom: 20 }}>
+      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
         <div style={{ flex: 2 }}>
           <input
             type="text"
-            placeholder={subTab === 'ressources' ? '🔍 Rechercher une ressource, une monnaie...' : '🔍 Rechercher une route commerciale...'}
+            placeholder={subTab === 'ressources' ? 'Rechercher une ressource, une monnaie...' : 'Rechercher une route commerciale...'}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -273,20 +262,20 @@ export default function EconomieManager() {
                 }
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
             {(subTab === 'ressources' ? showRessourceForm : showRouteForm)
-              ? '✕ Annuler'
+              ? 'Annuler'
               : subTab === 'ressources' ? '+ Nouvelle Ressource' : '+ Nouvelle Route'}
           </button>
           <button
             onClick={handleExport}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }}>
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }}>
+            Importer
             <input
               type="file"
               accept=".json"
@@ -328,20 +317,20 @@ export default function EconomieManager() {
       {subTab === 'ressources' ? (
         <div style={{ display: 'flex', gap: 20 }}>
           <div style={{ flex: 1 }}>
-            <h3>Ressources & Monnaies ({filteredRessources.length}/{ressources.length})</h3>
+            <h3 style={{ color: 'var(--encre)' }}>
+              Ressources & Monnaies ({filteredRessources.length}/{ressources.length})
+            </h3>
             <RessourceList
               ressources={filteredRessources}
               selectedRessource={selectedRessource}
               onSelect={setSelectedRessource}
               onDelete={handleDeleteRessource}
               onEdit={handleEditRessource}
-              getCategoryIcon={getRessourceCategoryIcon}
             />
           </div>
           {selectedRessource && (
             <RessourceDetails
               selectedRessource={selectedRessource}
-              getCategoryIcon={getRessourceCategoryIcon}
               getTerritoireById={getTerritoireById}
             />
           )}
@@ -349,21 +338,21 @@ export default function EconomieManager() {
       ) : (
         <div style={{ display: 'flex', gap: 20 }}>
           <div style={{ flex: 1 }}>
-            <h3>Routes Commerciales ({filteredRoutes.length}/{routesCommerciales.length})</h3>
+            <h3 style={{ color: 'var(--encre)' }}>
+              Routes Commerciales ({filteredRoutes.length}/{routesCommerciales.length})
+            </h3>
             <RouteList
               routes={filteredRoutes}
               selectedRoute={selectedRoute}
               onSelect={setSelectedRoute}
               onDelete={handleDeleteRoute}
               onEdit={handleEditRoute}
-              getStatusIcon={getRouteStatusIcon}
               getTerritoireById={getTerritoireById}
             />
           </div>
           {selectedRoute && (
             <RouteDetails
               selectedRoute={selectedRoute}
-              getStatusIcon={getRouteStatusIcon}
               getTerritoireById={getTerritoireById}
               getRessourceById={getRessourceById}
               getEquipeById={getEquipeById}
