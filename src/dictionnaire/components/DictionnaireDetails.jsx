@@ -4,7 +4,6 @@ import FicheTermeButton from '../../components/common/FicheTermeButton.jsx';
 export default function DictionnaireDetails({
   selectedTerme,
   allTermes,
-  getCategoryIcon,
   onSelectTerme
 }) {
   const relatedEntries = (selectedTerme.relatedTerms || [])
@@ -14,20 +13,19 @@ export default function DictionnaireDetails({
   return (
     <div style={{
       flex: 1,
-      border: '1px solid #ddd',
+      border: '1px solid var(--trait)',
       padding: 16,
-      borderRadius: 8,
-      backgroundColor: '#ffffff',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 15 }}>
-        <span style={{ fontSize: 32 }}>{getCategoryIcon(selectedTerme.category)}</span>
         <div style={{ flex: 1 }}>
-          <h3 style={{ margin: 0, color: '#2196f3' }}>
+          <h3 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>
             {selectedTerme.term}
           </h3>
-          <div style={{ fontSize: 14, color: '#666' }}>
+          <div style={{ fontSize: 14, color: 'var(--encre-douce)' }}>
             {selectedTerme.category}
             {selectedTerme.pronunciation && ` • ${selectedTerme.pronunciation}`}
           </div>
@@ -37,8 +35,8 @@ export default function DictionnaireDetails({
 
       {selectedTerme.definition && (
         <div style={{ marginBottom: 15 }}>
-          <strong>📘 Définition :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>
+          <strong style={{ color: 'var(--encre)' }}>Définition :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>
             {selectedTerme.definition}
           </p>
         </div>
@@ -46,17 +44,17 @@ export default function DictionnaireDetails({
 
       {selectedTerme.origin && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🌍 Origine / Étymologie :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>
+          <strong style={{ color: 'var(--encre)' }}>Origine / Étymologie :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>
             {selectedTerme.origin}
           </p>
         </div>
       )}
 
       {selectedTerme.examples && (
-        <div style={{ marginBottom: 15, padding: 12, backgroundColor: '#f0f4ff', borderRadius: 6, border: '1px solid #2196f3' }}>
-          <strong style={{ color: '#1565c0' }}>💬 Exemples d'usage :</strong>
-          <p style={{ margin: '8px 0 0 0', fontSize: 14, color: '#1565c0', whiteSpace: 'pre-wrap' }}>
+        <div style={{ marginBottom: 15, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
+          <strong style={{ color: 'var(--coeur)' }}>Exemples d'usage :</strong>
+          <p style={{ margin: '8px 0 0 0', fontSize: 14, color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>
             {selectedTerme.examples}
           </p>
         </div>
@@ -64,7 +62,7 @@ export default function DictionnaireDetails({
 
       {relatedEntries.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🔗 Termes liés :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Termes liés :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {relatedEntries.map(entry => (
               <button
@@ -72,16 +70,16 @@ export default function DictionnaireDetails({
                 onClick={() => onSelectTerme(entry)}
                 style={{
                   padding: '4px 10px',
-                  backgroundColor: '#e3f2fd',
-                  color: '#1976d2',
-                  border: '1px solid #90caf9',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--douceur)',
+                  color: 'var(--coeur)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold',
                   cursor: 'pointer'
                 }}
               >
-                {getCategoryIcon(entry.category)} {entry.term}
+                {entry.term}
               </button>
             ))}
           </div>
@@ -89,23 +87,23 @@ export default function DictionnaireDetails({
       )}
 
       {selectedTerme.relatedTerms && selectedTerme.relatedTerms.length > relatedEntries.length && (
-        <div style={{ marginBottom: 15, fontSize: 12, color: '#999', fontStyle: 'italic' }}>
+        <div style={{ marginBottom: 15, fontSize: 12, color: 'var(--encre-douce)', fontStyle: 'italic' }}>
           D'autres termes liés référencés n'ont pas encore de fiche dans le dictionnaire.
         </div>
       )}
 
       {selectedTerme.tags && selectedTerme.tags.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🏷️ Tags :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Tags :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {selectedTerme.tags.map((tag, idx) => (
               <span
                 key={idx}
                 style={{
                   padding: '4px 10px',
-                  backgroundColor: '#fff3cd',
-                  color: '#856404',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--or)',
+                  color: 'var(--sur-or)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold'
                 }}
@@ -119,14 +117,14 @@ export default function DictionnaireDetails({
 
       {selectedTerme.images && selectedTerme.images.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🖼️ Illustrations :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Illustrations :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {selectedTerme.images.map((src, idx) => (
               <img
                 key={idx}
                 src={src}
                 alt={`${selectedTerme.term} ${idx + 1}`}
-                style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 6, border: '1px solid #ddd' }}
+                style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }}
               />
             ))}
           </div>

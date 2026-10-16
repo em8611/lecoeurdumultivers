@@ -6,27 +6,30 @@ export default function DictionnaireList({
   selectedTerme,
   onSelect,
   onDelete,
-  onEdit,
-  getCategoryIcon
+  onEdit
 }) {
   const renderHeader = (terme) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 20 }}>{getCategoryIcon(terme.category)}</span>
-        <strong style={{ fontSize: 16 }}>{terme.term}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{terme.term}</strong>
         {terme.pronunciation && (
-          <span style={{ fontSize: 12, color: '#999', fontStyle: 'italic' }}>{terme.pronunciation}</span>
+          <span style={{ fontSize: 12, color: 'var(--encre-douce)', fontStyle: 'italic' }}>{terme.pronunciation}</span>
         )}
+        <span style={{
+          fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+        }}>
+          {terme.category}
+        </span>
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
-        {terme.category}
-        {terme.definition && ` • ${terme.definition.slice(0, 80)}${terme.definition.length > 80 ? '…' : ''}`}
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
+        {terme.definition && `${terme.definition.slice(0, 80)}${terme.definition.length > 80 ? '…' : ''}`}
       </div>
     </div>
   );
 
   const renderContent = (terme) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {terme.definition && (
         <div style={{ marginBottom: 12 }}>
           <strong>Définition :</strong>
