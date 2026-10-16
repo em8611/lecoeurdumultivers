@@ -12,19 +12,6 @@ import LangueDetails from './components/LangueDetails.jsx';
 const statusOptions = ['Vivante', 'Morte', 'En évolution', 'Sacrée', 'Secrète', 'Autre'];
 const writingSystemOptions = ['Alphabet', 'Syllabaire', 'Idéogrammes', 'Runes', 'Orale uniquement', 'Autre'];
 
-const statusIcons = {
-  'Vivante': '🟢',
-  'Morte': '💀',
-  'En évolution': '🌱',
-  'Sacrée': '✨',
-  'Secrète': '🤫',
-  'Autre': '❓'
-};
-
-function getStatusIcon(status) {
-  return statusIcons[status] || '❓';
-}
-
 export default function LanguesManager() {
   const { langues, territoires, equipes, characters } = useElementsState();
   const { addElement, deleteElement, updateElement } = useElementsActions();
@@ -143,23 +130,23 @@ export default function LanguesManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>🗣️ Langues & Écritures</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Langues & Écritures</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <button
             onClick={gotoFiches}
-            style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Ouvrir le viewer des fiches techniques"
           >
-            📄 Fiches
+            Fiches
           </button>
           <button
             onClick={() => {
@@ -172,26 +159,26 @@ export default function LanguesManager() {
                 setIsEditing(false);
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
-            {showForm ? '✕ Annuler' : '+ Nouvelle Langue'}
+            {showForm ? 'Annuler' : '+ Nouvelle Langue'}
           </button>
           <button
             onClick={() => setShowBatchImport(true)}
-            style={{ padding: '8px 16px', backgroundColor: '#6f42c1', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Importer plusieurs langues par leurs noms"
           >
-            📝 Import Batch
+            Import Batch
           </button>
           <button
             onClick={() => exportElementsToFile(langues, 'langues_export.json')}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
             title="Exporter toutes les langues en JSON"
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }} title="Importer des langues depuis JSON">
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }} title="Importer des langues depuis JSON">
+            Importer
             <input
               type="file"
               accept=".json"
@@ -234,27 +221,27 @@ export default function LanguesManager() {
         description="Entrez un nom de langue par ligne. Chaque langue sera créée avec des valeurs par défaut que vous pourrez modifier ensuite."
       />
 
-      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
+      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
         <div style={{ flex: 2 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Recherche</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Recherche</label>
           <input
             type="text"
-            placeholder="🔍 Rechercher une langue, une famille, une description..."
+            placeholder="Rechercher une langue, une famille, une description..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ flex: 1 }}>
-          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold' }}>Statut</label>
+          <label style={{ display: 'block', marginBottom: 5, fontSize: 12, fontWeight: 'bold', color: 'var(--encre)' }}>Statut</label>
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="Tous">Tous les statuts</option>
             {statusOptions.map(s => (
-              <option key={s} value={s}>{getStatusIcon(s)} {s}</option>
+              <option key={s} value={s}>{s}</option>
             ))}
           </select>
         </div>
@@ -282,7 +269,7 @@ export default function LanguesManager() {
 
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>
+          <h3 style={{ color: 'var(--encre)' }}>
             Toutes les langues ({filteredLangues.length}/{langues.length})
           </h3>
           <LangueList
@@ -291,14 +278,12 @@ export default function LanguesManager() {
             onSelect={setSelectedLangue}
             onDelete={handleDeleteLangue}
             onEdit={handleEditLangue}
-            getStatusIcon={getStatusIcon}
           />
         </div>
 
         {selectedLangue && (
           <LangueDetails
             selectedLangue={selectedLangue}
-            getStatusIcon={getStatusIcon}
             getLangueById={getLangueById}
             getTerritoireById={getTerritoireById}
             getEquipeById={getEquipeById}

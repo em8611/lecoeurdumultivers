@@ -3,7 +3,6 @@ import FicheLangueButton from '../../components/common/FicheLangueButton.jsx';
 
 export default function LangueDetails({
   selectedLangue,
-  getStatusIcon,
   getLangueById,
   getTerritoireById,
   getEquipeById,
@@ -18,18 +17,17 @@ export default function LangueDetails({
   return (
     <div style={{
       flex: 1,
-      border: '1px solid #ddd',
+      border: '1px solid var(--trait)',
       padding: 16,
-      borderRadius: 8,
-      backgroundColor: '#ffffff',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 15 }}>
-        <span style={{ fontSize: 32 }}>{getStatusIcon(selectedLangue.status)}</span>
         <div style={{ flex: 1 }}>
-          <h3 style={{ margin: 0, color: '#2196f3' }}>{selectedLangue.name}</h3>
-          <div style={{ fontSize: 14, color: '#666' }}>
+          <h3 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>{selectedLangue.name}</h3>
+          <div style={{ fontSize: 14, color: 'var(--encre-douce)' }}>
             {selectedLangue.family || 'Famille inconnue'}
           </div>
         </div>
@@ -37,41 +35,41 @@ export default function LangueDetails({
       </div>
 
       <div style={{ display: 'flex', gap: 8, marginBottom: 15 }}>
-        <span style={{ padding: '4px 10px', backgroundColor: '#e3f2fd', color: '#1976d2', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+        <span style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
           {selectedLangue.status}
         </span>
         {selectedLangue.writingSystem && (
-          <span style={{ padding: '4px 10px', backgroundColor: '#fff3cd', color: '#856404', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
-            ✍️ {selectedLangue.writingSystem}
+          <span style={{ padding: '4px 10px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
+            {selectedLangue.writingSystem}
           </span>
         )}
       </div>
 
       {selectedLangue.description && (
         <div style={{ marginBottom: 15 }}>
-          <strong>📘 Description :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>{selectedLangue.description}</p>
+          <strong style={{ color: 'var(--encre)' }}>Description :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>{selectedLangue.description}</p>
         </div>
       )}
 
       {selectedLangue.phonetics && (
-        <div style={{ marginBottom: 15, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
-          <strong style={{ color: '#2196f3' }}>🔊 Phonétique / Prononciation :</strong>
-          <p style={{ margin: '8px 0 0 0', color: '#555', lineHeight: 1.5 }}>{selectedLangue.phonetics}</p>
+        <div style={{ marginBottom: 15, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
+          <strong style={{ color: 'var(--coeur)' }}>Phonétique / Prononciation :</strong>
+          <p style={{ margin: '8px 0 0 0', color: 'var(--encre)', lineHeight: 1.5 }}>{selectedLangue.phonetics}</p>
         </div>
       )}
 
       {selectedLangue.grammar && (
         <div style={{ marginBottom: 15 }}>
-          <strong>📐 Grammaire :</strong>
-          <p style={{ margin: '4px 0', color: '#555', lineHeight: 1.5 }}>{selectedLangue.grammar}</p>
+          <strong style={{ color: 'var(--encre)' }}>Grammaire :</strong>
+          <p style={{ margin: '4px 0', color: 'var(--encre)', lineHeight: 1.5 }}>{selectedLangue.grammar}</p>
         </div>
       )}
 
       {selectedLangue.samplePhrases && selectedLangue.samplePhrases.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>💬 Phrases types :</strong>
-          <ul style={{ margin: '6px 0 0 0', paddingLeft: 20, color: '#555', lineHeight: 1.6 }}>
+          <strong style={{ color: 'var(--encre)' }}>Phrases types :</strong>
+          <ul style={{ margin: '6px 0 0 0', paddingLeft: 20, color: 'var(--encre)', lineHeight: 1.6 }}>
             {selectedLangue.samplePhrases.map((phrase, idx) => (
               <li key={idx}>{phrase}</li>
             ))}
@@ -81,7 +79,7 @@ export default function LangueDetails({
 
       {relatedLangues.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🔗 Langues apparentées :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Langues apparentées :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {relatedLangues.map(l => (
               <button
@@ -89,16 +87,16 @@ export default function LangueDetails({
                 onClick={() => onSelectLangue(l)}
                 style={{
                   padding: '4px 10px',
-                  backgroundColor: '#e3f2fd',
-                  color: '#1976d2',
-                  border: '1px solid #90caf9',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--douceur)',
+                  color: 'var(--coeur)',
+                  border: '1px solid var(--trait)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12,
                   fontWeight: 'bold',
                   cursor: 'pointer'
                 }}
               >
-                {getStatusIcon(l.status)} {l.name}
+                {l.name}
               </button>
             ))}
           </div>
@@ -107,10 +105,10 @@ export default function LangueDetails({
 
       {territoires.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🏔️ Territoires :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Territoires :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {territoires.map(t => (
-              <span key={t.id} style={{ padding: '4px 10px', backgroundColor: '#e8f5e9', color: '#2e7d32', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={t.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {t.name}
               </span>
             ))}
@@ -120,10 +118,10 @@ export default function LangueDetails({
 
       {equipesLinked.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>👥 Peuples / Équipes locuteurs :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Peuples / Équipes locuteurs :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {equipesLinked.map(e => (
-              <span key={e.id} style={{ padding: '4px 10px', backgroundColor: '#f3e5f5', color: '#6a1b9a', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={e.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {e.name}
               </span>
             ))}
@@ -133,10 +131,10 @@ export default function LangueDetails({
 
       {characters.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🧑 Personnages locuteurs :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Personnages locuteurs :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {characters.map(c => (
-              <span key={c.id} style={{ padding: '4px 10px', backgroundColor: '#ffe0b2', color: '#a15c00', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={c.id} style={{ padding: '4px 10px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {c.name}
               </span>
             ))}
@@ -146,10 +144,10 @@ export default function LangueDetails({
 
       {selectedLangue.tags && selectedLangue.tags.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🏷️ Tags :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Tags :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {selectedLangue.tags.map((tag, idx) => (
-              <span key={idx} style={{ padding: '4px 10px', backgroundColor: '#fce4ec', color: '#ad1457', borderRadius: 12, fontSize: 12, fontWeight: 'bold' }}>
+              <span key={idx} style={{ padding: '4px 10px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, fontWeight: 'bold' }}>
                 {tag}
               </span>
             ))}
@@ -159,10 +157,10 @@ export default function LangueDetails({
 
       {selectedLangue.images && selectedLangue.images.length > 0 && (
         <div style={{ marginBottom: 15 }}>
-          <strong>🖼️ Illustrations :</strong>
+          <strong style={{ color: 'var(--encre)' }}>Illustrations :</strong>
           <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {selectedLangue.images.map((src, idx) => (
-              <img key={idx} src={src} alt={`${selectedLangue.name} ${idx + 1}`} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 6, border: '1px solid #ddd' }} />
+              <img key={idx} src={src} alt={`${selectedLangue.name} ${idx + 1}`} style={{ width: 100, height: 100, objectFit: 'cover', borderRadius: 'var(--rayon-image)', border: '1px solid var(--trait)' }} />
             ))}
           </div>
         </div>

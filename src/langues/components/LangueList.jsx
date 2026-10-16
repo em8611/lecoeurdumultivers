@@ -1,14 +1,19 @@
 import React from 'react';
 import AccordionList from '../../components/common/AccordionList.jsx';
 
-export default function LangueList({ langues, selectedLangue, onSelect, onDelete, onEdit, getStatusIcon }) {
+export default function LangueList({ langues, selectedLangue, onSelect, onDelete, onEdit }) {
   const renderHeader = (langue) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 18 }}>{getStatusIcon(langue.status)}</span>
-        <strong style={{ fontSize: 16 }}>{langue.name}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{langue.name}</strong>
+        <span style={{
+          fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+        }}>
+          {langue.status}
+        </span>
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
         {langue.family || 'Famille inconnue'}
         {langue.writingSystem && ` • ${langue.writingSystem}`}
       </div>
@@ -16,7 +21,7 @@ export default function LangueList({ langues, selectedLangue, onSelect, onDelete
   );
 
   const renderContent = (langue) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {langue.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Description :</strong>
