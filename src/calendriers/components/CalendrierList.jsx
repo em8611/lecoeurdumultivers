@@ -6,11 +6,8 @@ export default function CalendrierList({ calendriers, selectedCalendrier, onSele
     const univers = calendrier.universId ? getUniversById(calendrier.universId) : null;
     return (
       <div style={{ flex: 1 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 18 }}>🗓️</span>
-          <strong style={{ fontSize: 16 }}>{calendrier.name}</strong>
-        </div>
-        <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{calendrier.name}</strong>
+        <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
           {univers?.name || 'Transversal'}
         </div>
       </div>
@@ -18,7 +15,7 @@ export default function CalendrierList({ calendriers, selectedCalendrier, onSele
   };
 
   const renderContent = (calendrier) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {calendrier.description && (
         <div>
           <strong>Description :</strong>

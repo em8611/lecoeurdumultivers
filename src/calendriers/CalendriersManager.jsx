@@ -12,12 +12,6 @@ import EreDetails from './components/EreDetails.jsx';
 
 const ereStatusOptions = ['En cours', 'Terminée', 'Légendaire / Mythique', 'Contestée'];
 
-const ereStatusIcons = {
-  'En cours': '🟢', 'Terminée': '⚫', 'Légendaire / Mythique': '✨', 'Contestée': '❓'
-};
-
-function getEreStatusIcon(status) { return ereStatusIcons[status] || '❓'; }
-
 export default function CalendriersManager() {
   const { calendriers, eres, universMultivers, evenements } = useElementsState();
   const { addElement, deleteElement, updateElement } = useElementsActions();
@@ -178,68 +172,68 @@ export default function CalendriersManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '10px 16px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'info' ? '#17a2b8' : '#dc3545',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h2 style={{ margin: 0 }}>⏳ Calendriers & Ères</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Calendriers & Ères</h2>
         <button
           onClick={gotoFiches}
-          style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+          style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           title="Ouvrir le viewer des fiches techniques"
         >
-          📄 Fiches
+          Fiches
         </button>
       </div>
 
-      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid #dee2e6' }}>
+      <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid var(--trait)' }}>
         <button
           onClick={() => switchTab('calendriers')}
           style={{
             padding: '10px 18px',
             border: 'none',
-            borderBottom: subTab === 'calendriers' ? '2px solid #2196f3' : '2px solid transparent',
+            borderBottom: subTab === 'calendriers' ? '2px solid var(--coeur)' : '2px solid transparent',
             marginBottom: -2,
             backgroundColor: 'transparent',
-            color: subTab === 'calendriers' ? '#2196f3' : '#666',
+            color: subTab === 'calendriers' ? 'var(--coeur)' : 'var(--encre-douce)',
             fontWeight: subTab === 'calendriers' ? 'bold' : 'normal',
             cursor: 'pointer',
             fontSize: 14
           }}
         >
-          🗓️ Calendriers ({calendriers.length})
+          Calendriers ({calendriers.length})
         </button>
         <button
           onClick={() => switchTab('eres')}
           style={{
             padding: '10px 18px',
             border: 'none',
-            borderBottom: subTab === 'eres' ? '2px solid #2196f3' : '2px solid transparent',
+            borderBottom: subTab === 'eres' ? '2px solid var(--coeur)' : '2px solid transparent',
             marginBottom: -2,
             backgroundColor: 'transparent',
-            color: subTab === 'eres' ? '#2196f3' : '#666',
+            color: subTab === 'eres' ? 'var(--coeur)' : 'var(--encre-douce)',
             fontWeight: subTab === 'eres' ? 'bold' : 'normal',
             cursor: 'pointer',
             fontSize: 14
           }}
         >
-          ⌛ Ères ({eres.length})
+          Ères ({eres.length})
         </button>
       </div>
 
-      <div style={{ display: 'flex', gap: 15, marginBottom: 20 }}>
+      <div style={{ display: 'flex', gap: 15, marginBottom: 20, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
         <div style={{ flex: 2 }}>
           <input
             type="text"
-            placeholder={subTab === 'calendriers' ? '🔍 Rechercher un calendrier...' : '🔍 Rechercher une ère...'}
+            placeholder={subTab === 'calendriers' ? 'Rechercher un calendrier...' : 'Rechercher une ère...'}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -265,20 +259,20 @@ export default function CalendriersManager() {
                 }
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontWeight: 'bold' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
             {(subTab === 'calendriers' ? showCalendrierForm : showEreForm)
-              ? '✕ Annuler'
+              ? 'Annuler'
               : subTab === 'calendriers' ? '+ Nouveau Calendrier' : '+ Nouvelle Ère'}
           </button>
           <button
             onClick={handleExport}
-            style={{ padding: '8px 16px', backgroundColor: '#2196f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
           >
-            ⬇️ Exporter
+            Exporter
           </button>
-          <label style={{ padding: '8px 16px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', marginBottom: 0 }}>
-            ⬆️ Importer
+          <label style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', marginBottom: 0 }}>
+            Importer
             <input
               type="file"
               accept=".json"
@@ -317,7 +311,7 @@ export default function CalendriersManager() {
       {subTab === 'calendriers' ? (
         <div style={{ display: 'flex', gap: 20 }}>
           <div style={{ flex: 1 }}>
-            <h3>Calendriers ({filteredCalendriers.length}/{calendriers.length})</h3>
+            <h3 style={{ color: 'var(--encre)' }}>Calendriers ({filteredCalendriers.length}/{calendriers.length})</h3>
             <CalendrierList
               calendriers={filteredCalendriers}
               selectedCalendrier={selectedCalendrier}
@@ -337,20 +331,18 @@ export default function CalendriersManager() {
       ) : (
         <div style={{ display: 'flex', gap: 20 }}>
           <div style={{ flex: 1 }}>
-            <h3>Ères ({filteredEres.length}/{eres.length})</h3>
+            <h3 style={{ color: 'var(--encre)' }}>Ères ({filteredEres.length}/{eres.length})</h3>
             <EreList
               eres={filteredEres}
               selectedEre={selectedEre}
               onSelect={setSelectedEre}
               onDelete={handleDeleteEre}
               onEdit={handleEditEre}
-              getStatusIcon={getEreStatusIcon}
             />
           </div>
           {selectedEre && (
             <EreDetails
               selectedEre={selectedEre}
-              getStatusIcon={getEreStatusIcon}
               getCalendrierById={getCalendrierById}
               getEvenementById={getEvenementById}
             />
