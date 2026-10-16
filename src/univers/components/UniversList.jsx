@@ -1,14 +1,19 @@
 import React from 'react';
 import AccordionList from '../../components/common/AccordionList.jsx';
 
-export default function UniversList({ universList, selectedUnivers, onSelect, onDelete, onEdit, getStatusIcon }) {
+export default function UniversList({ universList, selectedUnivers, onSelect, onDelete, onEdit }) {
   const renderHeader = (univers) => (
     <div style={{ flex: 1 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <span style={{ fontSize: 18 }}>{getStatusIcon(univers.status)}</span>
-        <strong style={{ fontSize: 16 }}>{univers.name}</strong>
+        <strong style={{ fontSize: 16, color: 'var(--encre)' }}>{univers.name}</strong>
+        <span style={{
+          fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+          padding: '2px 8px', borderRadius: 'var(--rayon-pilule)', backgroundColor: 'var(--douceur)', color: 'var(--encre)'
+        }}>
+          {univers.status}
+        </span>
       </div>
-      <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
         {univers.franchise || 'Franchise inconnue'}
         {univers.group && ` • ${univers.group}`}
         {univers.dangerLevel && ` • ${univers.dangerLevel}`}
@@ -17,7 +22,7 @@ export default function UniversList({ universList, selectedUnivers, onSelect, on
   );
 
   const renderContent = (univers) => (
-    <div style={{ fontSize: 14, color: '#555' }}>
+    <div style={{ fontSize: 14, color: 'var(--encre)' }}>
       {univers.description && (
         <div style={{ marginBottom: 12 }}>
           <strong>Description :</strong>
