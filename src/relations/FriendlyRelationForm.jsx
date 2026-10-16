@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function FriendlyRelationForm({ formData, setFormData }) {
   return (
-  <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#e6fffa', borderRadius: 12, border: '1px solid #b2f5ea' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#0f766e' }}>🤝 Informations amicales</h4>
+  <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Informations amicales</h4>
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 22, alignItems: 'start' }}>
         {/* Confiance / proximité */}
         <div style={{ marginBottom: 18 }}>
@@ -12,7 +12,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
           type="text"
           value={formData.friendlyEmAlias || ''}
           onChange={(e) => setFormData({ ...formData, friendlyEmAlias: e.target.value })}
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           placeholder="Alias d'Em..."
         />
       </div>
@@ -22,7 +22,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
           <select
             value={formData.friendlyArchetype || ''}
             onChange={(e) => setFormData({ ...formData, friendlyArchetype: e.target.value })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Amical/e">Amical/e</option>
@@ -53,7 +53,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             onChange={(e) => setFormData({ ...formData, friendlyTrustLevel: parseInt(e.target.value) })}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
             {['Naissante', 'Sympathie', 'Solide', 'Forte', 'Indéfectible'][(formData.friendlyTrustLevel || 3) - 1]}
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
           <select
             value={formData.friendlyContactFrequency || ''}
             onChange={(e) => setFormData({ ...formData, friendlyContactFrequency: e.target.value })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Quotidien">Quotidien</option>
@@ -79,7 +79,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
           <select
             value={formData.friendlyPrimaryChannel || ''}
             onChange={(e) => setFormData({ ...formData, friendlyPrimaryChannel: e.target.value })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="En personne">En personne</option>
@@ -96,7 +96,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             value={formData.friendlyGroup || ''}
             onChange={(e) => setFormData({ ...formData, friendlyGroup: e.target.value })}
             placeholder="Nom du groupe, promo, guilde..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         {/* Intérêts communs */}
@@ -107,7 +107,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             value={formData.friendlySharedInterests || ''}
             onChange={(e) => setFormData({ ...formData, friendlySharedInterests: e.target.value })}
             placeholder="Ex: lecture, escalade, jeux, art..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         {/* Activités favorites */}
@@ -118,7 +118,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             value={formData.friendlyFavoriteActivities || ''}
             onChange={(e) => setFormData({ ...formData, friendlyFavoriteActivities: e.target.value })}
             placeholder="Sorties, sport, discussion, voyage..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         {/* Blagues privées / références */}
@@ -129,7 +129,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             value={formData.friendlyInsideJokes || ''}
             onChange={(e) => setFormData({ ...formData, friendlyInsideJokes: e.target.value })}
             placeholder="Private jokes, surnoms, codes..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
         {/* Type de soutien */}
@@ -140,7 +140,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             value={formData.friendlySupportType || ''}
             onChange={(e) => setFormData({ ...formData, friendlySupportType: e.target.value })}
             placeholder="Émotionnel, pratique, créatif, logistique..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         {/* Première rencontre */}
@@ -150,7 +150,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             type="date"
             value={formData.friendlyFirstMeetingDate || ''}
             onChange={(e) => setFormData({ ...formData, friendlyFirstMeetingDate: e.target.value })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -160,7 +160,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             value={formData.friendlyFirstMeetingPlace || ''}
             onChange={(e) => setFormData({ ...formData, friendlyFirstMeetingPlace: e.target.value })}
             placeholder="École, café, internet, aventure..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         {/* Conflits / divergences */}
@@ -171,7 +171,7 @@ export default function FriendlyRelationForm({ formData, setFormData }) {
             value={formData.friendlyConflictNotes || ''}
             onChange={(e) => setFormData({ ...formData, friendlyConflictNotes: e.target.value })}
             placeholder="Malentendus, désaccords, ruptures puis réconciliations..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
       </div>

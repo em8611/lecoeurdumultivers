@@ -27,24 +27,24 @@ export default function ProfessionalRelationForm({ formData, setFormData }) {
     width: '100%',
     padding: 8,
     borderRadius: 4,
-    border: `1px solid ${hasError ? '#dc3545' : '#ced4da'}`,
+    border: `1px solid ${hasError ? '#a13d3d' : 'var(--trait)'}`,
     fontSize: 14,
-    backgroundColor: hasError ? '#fff5f5' : 'white'
+    backgroundColor: hasError ? 'var(--douceur)' : 'white'
   });
 
   const label = (text, required) => (
     <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>
-      {text}{required && <span style={{ color: '#dc3545' }}> *</span>}
+      {text}{required && <span style={{ color: '#a13d3d' }}> *</span>}
     </label>
   );
 
   const help = (field) => errors[field] ? (
-    <div style={{ fontSize: 11, color: '#dc3545', marginTop: 4 }}>{errors[field]}</div>
+    <div style={{ fontSize: 11, color: '#a13d3d', marginTop: 4 }}>{errors[field]}</div>
   ) : null;
 
   return (
-  <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#f0fff4', borderRadius: 12, border: '1px solid #c6f6d5' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#22543d' }}>💼 Informations professionnelles détaillées</h4>
+  <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Informations professionnelles détaillées</h4>
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 22, alignItems: 'start' }}>
         <div>
           {label('Hiérarchie', false)}
@@ -304,7 +304,7 @@ export default function ProfessionalRelationForm({ formData, setFormData }) {
       </div>
       {/* Résumé rapide des manques */}
       {Object.keys(errors).length > 0 && (
-        <div style={{ marginTop: 12, background: '#fff5f5', border: '1px solid #fecaca', padding: 10, borderRadius: 6, fontSize: 12, color: '#b91c1c' }}>
+        <div style={{ marginTop: 12, background: 'var(--douceur)', border: '1px solid var(--trait)', borderLeft: '3px solid var(--or)', padding: 10, borderRadius: 'var(--rayon-carte)', fontSize: 12, color: '#a13d3d' }}>
           Champs à compléter avant validation idéale: {Object.keys(errors).join(', ')}
         </div>
       )}

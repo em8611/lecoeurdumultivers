@@ -7,15 +7,15 @@ export default function LoveRelationForm({ formData, setFormData }) {
   const jealousyLabel = ['Aucune', 'Légère', 'Modérée', 'Forte', 'Toxique'][((formData.jealousyLevel || 2) - 1)];
 
   return (
-  <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#fff1f2', borderRadius: 12, border: '1px solid #fecdd3' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#be123c' }}>❤️ Relation amoureuse – Détails</h4>
+  <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Relation amoureuse – Détails</h4>
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 22, alignItems: 'start' }}>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Statut romantique</label>
           <select
             value={formData.romanticStatus || ''}
             onChange={(e) => handle('romanticStatus', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Naissante">Naissante</option>
@@ -36,7 +36,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('commitmentLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{levelLabel}</div>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>{levelLabel}</div>
         </div>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Jalousie: {formData.jealousyLevel || 2}/5</label>
@@ -48,14 +48,14 @@ export default function LoveRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('jealousyLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{jealousyLabel}</div>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>{jealousyLabel}</div>
         </div>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Co-habitation</label>
           <select
             value={formData.cohabitationStatus || ''}
             onChange={(e) => handle('cohabitationStatus', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Non">Non</option>
@@ -70,7 +70,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
             value={formData.loveLanguages || ''}
             onChange={(e) => handle('loveLanguages', e.target.value)}
             placeholder="Mots, temps, cadeaux, services, contact..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -78,7 +78,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
           <select
             value={formData.secretRelationship || ''}
             onChange={(e) => handle('secretRelationship', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Non">Non</option>
@@ -90,7 +90,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
           <select
             value={formData.familyApproval || ''}
             onChange={(e) => handle('familyApproval', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Oui">Oui</option>
@@ -104,7 +104,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
             type="date"
             value={formData.anniversaryDate || ''}
             onChange={(e) => handle('anniversaryDate', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -114,7 +114,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
             value={formData.firstMeetingStory || ''}
             onChange={(e) => handle('firstMeetingStory', e.target.value)}
             placeholder="Rencontre, déclic, contexte..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -124,7 +124,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
             value={formData.sharedRituals || ''}
             onChange={(e) => handle('sharedRituals', e.target.value)}
             placeholder="Rendez-vous, codes, traditions..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -134,7 +134,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
             value={formData.dealBreakers || ''}
             onChange={(e) => handle('dealBreakers', e.target.value)}
             placeholder="Valeurs, comportements, limites..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -144,7 +144,7 @@ export default function LoveRelationForm({ formData, setFormData }) {
             value={formData.intimacyNotes || ''}
             onChange={(e) => handle('intimacyNotes', e.target.value)}
             placeholder="Confiance, vulnérabilités, respect du consentement..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fda4af', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
       </div>

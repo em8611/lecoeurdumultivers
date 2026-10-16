@@ -11,15 +11,15 @@ export default function CompanionRelationForm({ formData, setFormData }) {
   const handle = (field, value) => setFormData({ ...formData, [field]: value });
 
   return (
-    <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#fffbea', borderRadius: 12, border: '2px solid #fde68a' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#92400e' }}>🐾 Compagnon – Détails enrichis</h4>
+    <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Compagnon – Détails enrichis</h4>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 22, alignItems: 'start' }}>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Type de compagnon</label>
           <select
             value={formData.companionType || ''}
             onChange={(e) => handle('companionType', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Animal">Animal</option>
@@ -37,7 +37,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             value={formData.companionSpecies || ''}
             onChange={(e) => handle('companionSpecies', e.target.value)}
             placeholder="Espèce, série, classification..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -47,7 +47,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             value={formData.companionOrigin || ''}
             onChange={(e) => handle('companionOrigin', e.target.value)}
             placeholder="Lieu, créateur, circonstances..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column' }}>
@@ -57,7 +57,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             value={formData.companionAbilities || ''}
             onChange={(e) => handle('companionAbilities', e.target.value)}
             placeholder={abilitiesPlaceholder}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
         <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column' }}>
@@ -67,7 +67,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             value={formData.companionNeeds || ''}
             onChange={(e) => handle('companionNeeds', e.target.value)}
             placeholder={needsPlaceholder}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
         {/* Niveaux relationnels */}
@@ -81,7 +81,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('bondLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{bondLabel}</div>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>{bondLabel}</div>
         </div>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Autonomie: {formData.autonomyLevel || 3}/5</label>
@@ -93,7 +93,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('autonomyLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{autonomyLabel}</div>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>{autonomyLabel}</div>
         </div>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Niveau d'entraînement: {formData.trainingLevel || 3}/5</label>
@@ -105,7 +105,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('trainingLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{trainingLabel}</div>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>{trainingLabel}</div>
         </div>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Responsable des soins</label>
@@ -114,7 +114,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             value={formData.careResponsibility || ''}
             onChange={(e) => handle('careResponsibility', e.target.value)}
             placeholder="Qui s'en occupe principalement?"
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -122,7 +122,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
           <select
             value={formData.travelTogether || ''}
             onChange={(e) => handle('travelTogether', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Toujours">Toujours</option>
@@ -138,7 +138,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             type="date"
             value={formData.firstEncounterDate || ''}
             onChange={(e) => handle('firstEncounterDate', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -148,7 +148,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             value={formData.favoriteActivities || ''}
             onChange={(e) => handle('favoriteActivities', e.target.value)}
             placeholder="Course, chasse, méditation..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -158,7 +158,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             value={formData.expectedLifespan || ''}
             onChange={(e) => handle('expectedLifespan', e.target.value)}
             placeholder="Ex: 12 ans, cycle énergétique illimité..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column' }}>
@@ -168,7 +168,7 @@ export default function CompanionRelationForm({ formData, setFormData }) {
             value={formData.healthNotes || ''}
             onChange={(e) => handle('healthNotes', e.target.value)}
             placeholder="Fragilités, pathologies, maintenance spéciale, évolution possible..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #d6bcfa', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
       </div>

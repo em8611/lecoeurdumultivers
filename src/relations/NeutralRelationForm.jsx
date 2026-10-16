@@ -4,8 +4,8 @@ export default function NeutralRelationForm({ formData, setFormData }) {
   const handle = (field, value) => setFormData({ ...formData, [field]: value });
 
   return (
-    <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#f8f9fa', borderRadius: 12, border: '1px solid #dee2e6' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#6c757d' }}>⚪ Relation Neutre – Détails</h4>
+    <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Relation Neutre – Détails</h4>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 22, alignItems: 'start' }}>
 
         {/* Nature de la neutralité */}
@@ -14,7 +14,7 @@ export default function NeutralRelationForm({ formData, setFormData }) {
           <select
             value={formData.neutralNature || ''}
             onChange={(e) => handle('neutralNature', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Indifférence mutuelle">Indifférence mutuelle</option>
@@ -32,7 +32,7 @@ export default function NeutralRelationForm({ formData, setFormData }) {
           <select
             value={formData.neutralContactFrequency || ''}
             onChange={(e) => handle('neutralContactFrequency', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Jamais">Jamais</option>
@@ -50,7 +50,7 @@ export default function NeutralRelationForm({ formData, setFormData }) {
             value={formData.neutralContext || ''}
             onChange={(e) => handle('neutralContext', e.target.value)}
             placeholder="Lieu, situation, cadre..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
 
@@ -65,7 +65,7 @@ export default function NeutralRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('neutralInterestLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
             {['Aucun', 'Très faible', 'Minime', 'Léger', 'Modéré'][((formData.neutralInterestLevel || 1) - 1)]}
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function NeutralRelationForm({ formData, setFormData }) {
           <select
             value={formData.neutralEvolutionPotential || ''}
             onChange={(e) => handle('neutralEvolutionPotential', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Aucun">Aucun</option>
@@ -94,7 +94,7 @@ export default function NeutralRelationForm({ formData, setFormData }) {
             value={formData.neutralReason || ''}
             onChange={(e) => handle('neutralReason', e.target.value)}
             placeholder="Pourquoi cette relation reste-t-elle neutre? Manque d'opportunité, choix délibéré, circonstances..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
 
@@ -106,7 +106,7 @@ export default function NeutralRelationForm({ formData, setFormData }) {
             value={formData.neutralBarriers || ''}
             onChange={(e) => handle('neutralBarriers', e.target.value)}
             placeholder="Différences culturelles, manque d'intérêts communs, distance géographique..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
 
@@ -118,7 +118,7 @@ export default function NeutralRelationForm({ formData, setFormData }) {
             value={formData.neutralNotes || ''}
             onChange={(e) => handle('neutralNotes', e.target.value)}
             placeholder="Observations, impressions, contexte particulier..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
 

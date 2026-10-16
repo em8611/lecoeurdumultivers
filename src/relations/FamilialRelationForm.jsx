@@ -5,8 +5,8 @@ export default function FamilialRelationForm({ formData, setFormData }) {
   const isAdoptif = formData.biologicalLink === 'Adoptif';
 
   return (
-  <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#eef4ff', borderRadius: 12, border: '1px solid #cbd9ff' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#364fc7' }}>🏠 Informations familiales détaillées</h4>
+  <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Informations familiales détaillées</h4>
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 22, alignItems: 'start' }}>
         {/* Lien biologique */}
         <div>
@@ -14,7 +14,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
           <select
             value={formData.biologicalLink}
             onChange={(e) => setFormData({ ...formData, biologicalLink: e.target.value })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Biologique">Biologique</option>
@@ -32,7 +32,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
             value={formData.familyBranch || ''}
             onChange={(e) => setFormData({ ...formData, familyBranch: e.target.value })}
             placeholder="Ex: Ligne maternelle, Clan X..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
 
@@ -42,7 +42,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
           <select
             value={formData.familyStatus || ''}
             onChange={(e) => setFormData({ ...formData, familyStatus: e.target.value })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Aîné">Aîné</option>
@@ -60,7 +60,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
           <select
             value={formData.cohabitation || ''}
             onChange={(e) => setFormData({ ...formData, cohabitation: e.target.value })}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Même foyer">Même foyer</option>
@@ -77,7 +77,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
             <select
               value={formData.isLegalGuardian || ''}
               onChange={(e) => setFormData({ ...formData, isLegalGuardian: e.target.value })}
-              style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+              style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
             >
               <option value="">Sélectionner...</option>
               <option value="Oui">Oui</option>
@@ -94,7 +94,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
             <select
               value={formData.custody || ''}
               onChange={(e) => setFormData({ ...formData, custody: e.target.value })}
-              style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+              style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
             >
               <option value="">Sélectionner...</option>
               <option value="Principale">Principale</option>
@@ -113,7 +113,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
               type="date"
               value={formData.adoptionDate || ''}
               onChange={(e) => setFormData({ ...formData, adoptionDate: e.target.value })}
-              style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+              style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
             />
           </div>
         )}
@@ -126,7 +126,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
             value={formData.surnameUsed || ''}
             onChange={(e) => setFormData({ ...formData, surnameUsed: e.target.value })}
             placeholder="Ex: 'Mamie', 'Papa', 'Sissi'..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
 
@@ -141,7 +141,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
             onChange={(e) => setFormData({ ...formData, emotionalCloseness: parseInt(e.target.value) })}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
             {['Distant', 'Faible', 'Modéré', 'Proche', 'Fusionnel'][(formData.emotionalCloseness || 3) - 1]}
           </div>
         </div>
@@ -155,7 +155,7 @@ export default function FamilialRelationForm({ formData, setFormData }) {
           value={formData.familyNotes || ''}
           onChange={(e) => setFormData({ ...formData, familyNotes: e.target.value })}
           placeholder="Conflits, soutien, traditions, secrets..."
-          style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+          style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
         />
       </div>
     </div>

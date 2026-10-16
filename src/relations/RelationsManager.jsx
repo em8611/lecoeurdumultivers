@@ -346,25 +346,25 @@ export default function RelationsManager() {
       {notification && (
         <div style={{
           position: 'fixed', top: 20, right: 20, zIndex: 1000,
-          padding: '12px 20px', borderRadius: 6, color: 'white',
-          backgroundColor: notification.type === 'success' ? '#28a745' : notification.type === 'error' ? '#dc3545' : '#17a2b8',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+          padding: '10px 16px', borderRadius: 'var(--rayon-bouton)', color: 'white',
+          backgroundColor: notification.type === 'success' ? '#2e7d4f' : notification.type === 'info' ? 'var(--coeur)' : '#a13d3d',
+          boxShadow: 'var(--ombre-survol)'
         }}>
           {notification.message}
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <h2>🔗 Gestion des Relations</h2>
+        <h2 style={{ margin: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Gestion des Relations</h2>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           <button
             onClick={gotoFiches}
-            style={{ padding: '8px 12px', backgroundColor: '#4a5568', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Ouvrir le viewer des fiches techniques"
           >
-            📄 Fiches
+            Fiches
           </button>
-          <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#555' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--encre-douce)' }}>
             <input
               type="checkbox"
               checked={syncCharacters}
@@ -375,14 +375,14 @@ export default function RelationsManager() {
           {/* Boutons Import/Export */}
           <button
             onClick={handleExport}
-            style={{ padding: '8px 12px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}
             title="Exporter les relations"
-          >⬇️ Exporter</button>
+          >Exporter</button>
           <button
             onClick={() => setShowBatchImport(true)}
-            style={{ padding: '8px 12px', backgroundColor: '#ff9800', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 12px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
             title="Créer plusieurs relations en lot"
-          >📦 Import Batch</button>
+          >Import Batch</button>
           <label style={{ display: 'inline-block', margin: 0 }} title="Importer des relations">
             <input
               type="file"
@@ -390,7 +390,7 @@ export default function RelationsManager() {
               style={{ display: 'none' }}
               onChange={handleImport}
             />
-            <span style={{ padding: '8px 12px', backgroundColor: '#17a2b8', color: 'white', borderRadius: 4, cursor: 'pointer', userSelect: 'none' }}>⬆️ Importer</span>
+            <span style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', userSelect: 'none' }}>Importer</span>
           </label>
           <button
             onClick={() => {
@@ -404,7 +404,7 @@ export default function RelationsManager() {
                 setFormData({ ...DEFAULT_RELATION, history: [] });
               }
             }}
-            style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}
           >
             {showForm ? 'Annuler' : '+ Nouvelle Relation'}
           </button>
@@ -413,8 +413,8 @@ export default function RelationsManager() {
 
       {/* Formulaire */}
       {showForm && (
-  <div style={{ backgroundColor: '#f8f9fa', padding: 24, borderRadius: 14, marginBottom: 24, border: '1px solid #dee2e6', boxShadow: '0 4px 14px rgba(0,0,0,0.06)' }}>
-          <h3 style={{ marginTop: 0 }}>{isEditing ? 'Modifier la relation' : 'Créer une relation'}</h3>
+  <div style={{ backgroundColor: 'var(--douceur)', padding: 24, borderRadius: 'var(--rayon-carte)', marginBottom: 24, border: '1px solid var(--trait)' }}>
+          <h3 style={{ marginTop: 0, color: 'var(--encre)' }}>{isEditing ? 'Modifier la relation' : 'Créer une relation'}</h3>
           <form onSubmit={handleSubmit} className="relations-form">
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
               <div>
@@ -422,7 +422,7 @@ export default function RelationsManager() {
                 <select
                   value={formData.fromId}
                   onChange={(e) => setFormData({ ...formData, fromId: e.target.value })}
-                  style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+                  style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
                 >
                   <option value="">Sélectionner...</option>
                   {characters.map(c => (
@@ -435,7 +435,7 @@ export default function RelationsManager() {
                 <select
                   value={formData.toId}
                   onChange={(e) => setFormData({ ...formData, toId: e.target.value })}
-                  style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+                  style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
                 >
                   <option value="">Sélectionner...</option>
                   {characters.map(c => (
@@ -451,7 +451,7 @@ export default function RelationsManager() {
                 <select
                   value={formData.type}
                   onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                  style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+                  style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
                 >
                   {RELATION_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
@@ -461,7 +461,7 @@ export default function RelationsManager() {
                 <select
                   value={formData.direction}
                   onChange={(e) => setFormData({ ...formData, direction: e.target.value })}
-                  style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+                  style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
                 >
                   <option value="Bilatérale">Bilatérale</option>
                   <option value="Unilatérale">Unilatérale</option>
@@ -475,7 +475,7 @@ export default function RelationsManager() {
                   onChange={(e) => setFormData({ ...formData, intensity: parseInt(e.target.value) })}
                   style={{ width: '100%' }}
                 />
-                <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{getIntensityLabel(formData.intensity)}</div>
+                <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>{getIntensityLabel(formData.intensity)}</div>
               </div>
             </div>
 
@@ -500,7 +500,7 @@ export default function RelationsManager() {
                 <select
                   value={formData.status}
                   onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                  style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+                  style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
                 >
                   {RELATION_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
@@ -512,17 +512,17 @@ export default function RelationsManager() {
                     type="text" value={currentTag}
                     onChange={(e) => setCurrentTag(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleAddTag(); } }}
-                    style={{ flex: 1, padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+                    style={{ flex: 1, padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
                     placeholder="Ajouter un tag"
                   />
-                  <button type="button" onClick={handleAddTag} style={{ padding: '8px 12px', backgroundColor: '#17a2b8', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>Ajouter</button>
+                  <button type="button" onClick={handleAddTag} style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}>Ajouter</button>
                 </div>
                 {formData.tags.length > 0 && (
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 8 }}>
                     {formData.tags.map(t => (
-                      <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '3px 8px', backgroundColor: '#e7f3ff', border: '1px solid #90caf9', borderRadius: 12, fontSize: 12 }}>
+                      <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '3px 8px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', borderRadius: 'var(--rayon-pilule)', fontSize: 12 }}>
                         {t}
-                        <button type="button" onClick={() => handleRemoveTag(t)} style={{ background: 'none', border: 'none', color: '#dc3545', cursor: 'pointer', fontWeight: 'bold' }}>×</button>
+                        <button type="button" onClick={() => handleRemoveTag(t)} style={{ background: 'none', border: 'none', color: 'var(--sur-or)', cursor: 'pointer', fontWeight: 'bold' }}>×</button>
                       </span>
                     ))}
                   </div>
@@ -533,39 +533,39 @@ export default function RelationsManager() {
             {/* Champ Description supprimé (redondant avec le panneau de détails et l'historique) */}
 
             {/* Historique commun */}
-            <div style={{ marginBottom: 20, padding: 16, backgroundColor: '#f7f7f9', border: '1px solid #e2e3e5', borderRadius: 10 }}>
+            <div style={{ marginBottom: 20, padding: 16, backgroundColor: 'var(--douceur)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)' }}>
               <label style={{ display: 'block', marginBottom: 8, fontWeight: 'bold' }}>Historique de la relation</label>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 200px auto', gap: 14, alignItems: 'end', marginBottom: 14 }}>
                 <div>
-                  <div style={{ fontSize: 12, color: '#666', marginBottom: 4 }}>Événement / Note</div>
+                  <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginBottom: 4 }}>Événement / Note</div>
                   <input
                     type="text"
                     value={newHistoryText}
                     onChange={(e) => setNewHistoryText(e.target.value)}
                     placeholder="Ex: Rencontre tendue, Promotion, Trêve, Dispute, Sauvetage..."
-                    style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+                    style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
                   />
                 </div>
                 <div>
-                  <div style={{ fontSize: 12, color: '#666', marginBottom: 4 }}>Type associé</div>
+                  <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginBottom: 4 }}>Type associé</div>
                   <select
                     value={newHistoryType}
                     onChange={(e) => setNewHistoryType(e.target.value)}
-                    style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+                    style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
                   >
                     <option value="">(Optionnel)</option>
                     {RELATION_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                   </select>
                 </div>
                 <div>
-                  <button type="button" onClick={handleAddHistory} style={{ padding: '8px 12px', backgroundColor: '#17a2b8', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>Ajouter</button>
+                  <button type="button" onClick={handleAddHistory} style={{ padding: '8px 12px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}>Ajouter</button>
                 </div>
               </div>
               {(formData.history || []).length > 0 && (
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {formData.history.map((entry, idx) => (
-                    <li key={entry.id} style={{ display: 'flex', gap: 12, alignItems: 'center', background: '#fff', border: '1px solid #e5e7eb', borderRadius: 8, padding: 10 }}>
-                      <span style={{ minWidth: 22, height: 22, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: '#e5e7eb', borderRadius: 999, fontSize: 12, color: '#374151' }}>
+                    <li key={entry.id} style={{ display: 'flex', gap: 12, alignItems: 'center', background: 'var(--fond-carte)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)', padding: 10 }}>
+                      <span style={{ minWidth: 22, height: 22, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'var(--douceur)', borderRadius: 'var(--rayon-pilule)', fontSize: 12, color: 'var(--encre)' }}>
                         {(entry.position ?? (idx + 1))}
                       </span>
 
@@ -576,12 +576,12 @@ export default function RelationsManager() {
                             value={editingHistory.text}
                             onChange={(e) => setEditingHistory({ ...editingHistory, text: e.target.value })}
                             placeholder="Événement / Note"
-                            style={{ width: '100%', padding: 6, borderRadius: 4, border: '1px solid #ced4da', fontSize: 13 }}
+                            style={{ width: '100%', padding: 6, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 13 }}
                           />
                           <select
                             value={editingHistory.historyType}
                             onChange={(e) => setEditingHistory({ ...editingHistory, historyType: e.target.value })}
-                            style={{ width: '100%', padding: 6, borderRadius: 4, border: '1px solid #ced4da', fontSize: 13 }}
+                            style={{ width: '100%', padding: 6, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 13 }}
                           >
                             <option value="">(Type optionnel)</option>
                             {RELATION_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
@@ -589,33 +589,33 @@ export default function RelationsManager() {
                           <select
                             value={editingHistory.historyStatus}
                             onChange={(e) => setEditingHistory({ ...editingHistory, historyStatus: e.target.value })}
-                            style={{ width: '100%', padding: 6, borderRadius: 4, border: '1px solid #ced4da', fontSize: 13 }}
+                            style={{ width: '100%', padding: 6, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 13 }}
                           >
                             {RELATION_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
                           </select>
                           <div style={{ display: 'flex', gap: 6, justifyContent: 'flex-end' }}>
-                            <button type="button" onClick={handleSaveEditHistory} style={{ padding: '6px 10px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 12 }}>Enregistrer</button>
-                            <button type="button" onClick={handleCancelEditHistory} style={{ padding: '6px 10px', backgroundColor: '#6c757d', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 12 }}>Annuler</button>
+                            <button type="button" onClick={handleSaveEditHistory} style={{ padding: '6px 10px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12 }}>Enregistrer</button>
+                            <button type="button" onClick={handleCancelEditHistory} style={{ padding: '6px 10px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12 }}>Annuler</button>
                           </div>
                         </div>
                       ) : (
                         <>
                           {entry.historyType && (
-                            <span style={{ padding: '2px 8px', backgroundColor: getTypeColor(entry.historyType), color: '#fff', borderRadius: 12, fontSize: 11 }}>
+                            <span style={{ padding: '2px 8px', backgroundColor: getTypeColor(entry.historyType), color: '#fff', borderRadius: 'var(--rayon-pilule)', fontSize: 11 }}>
                               {entry.historyType}
                             </span>
                           )}
                           {entry.historyStatus && (
-                            <span style={{ padding: '2px 8px', backgroundColor: '#343a40', color: '#fff', borderRadius: 12, fontSize: 11 }}>
+                            <span style={{ padding: '2px 8px', backgroundColor: 'var(--nuit-2)', color: 'var(--sur-nuit)', borderRadius: 'var(--rayon-pilule)', fontSize: 11 }}>
                               {entry.historyStatus}
                             </span>
                           )}
                           <span style={{ flex: 1 }}>{entry.text || ''}</span>
                           <div style={{ display: 'flex', gap: 6 }}>
-                            <button type="button" onClick={() => handleStartEditHistory(entry)} title="Modifier" style={{ padding: '4px 8px', backgroundColor: '#ffc107', color: '#000', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 12 }}>✏️</button>
-                            <button type="button" onClick={() => handleMoveHistory(entry.id, 'up')} disabled={idx === 0} title="Monter" style={{ padding: '4px 6px', backgroundColor: '#e5e7eb', color: '#111', border: 'none', borderRadius: 4, cursor: idx === 0 ? 'not-allowed' : 'pointer', fontSize: 12 }}>▲</button>
-                            <button type="button" onClick={() => handleMoveHistory(entry.id, 'down')} disabled={idx === (formData.history.length - 1)} title="Descendre" style={{ padding: '4px 6px', backgroundColor: '#e5e7eb', color: '#111', border: 'none', borderRadius: 4, cursor: idx === (formData.history.length - 1) ? 'not-allowed' : 'pointer', fontSize: 12 }}>▼</button>
-                            <button type="button" onClick={() => handleRemoveHistory(entry.id)} style={{ padding: '4px 8px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 12 }}>Supprimer</button>
+                            <button type="button" onClick={() => handleStartEditHistory(entry)} title="Modifier" style={{ padding: '4px 8px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12, fontWeight: 'bold' }}>Modifier</button>
+                            <button type="button" onClick={() => handleMoveHistory(entry.id, 'up')} disabled={idx === 0} title="Monter" style={{ padding: '4px 6px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: idx === 0 ? 'not-allowed' : 'pointer', fontSize: 12 }}>▲</button>
+                            <button type="button" onClick={() => handleMoveHistory(entry.id, 'down')} disabled={idx === (formData.history.length - 1)} title="Descendre" style={{ padding: '4px 6px', backgroundColor: 'var(--douceur)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: idx === (formData.history.length - 1) ? 'not-allowed' : 'pointer', fontSize: 12 }}>▼</button>
+                            <button type="button" onClick={() => handleRemoveHistory(entry.id)} style={{ padding: '4px 8px', backgroundColor: '#a13d3d', color: 'white', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12 }}>Supprimer</button>
                           </div>
                         </>
                       )}
@@ -626,10 +626,10 @@ export default function RelationsManager() {
             </div>
 
             <div style={{ display: 'flex', gap: 10 }}>
-              <button type="submit" style={{ padding: '8px 16px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>
+              <button type="submit" style={{ padding: '8px 16px', backgroundColor: 'var(--coeur)', color: 'var(--sur-coeur)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontWeight: 'bold' }}>
                 {isEditing ? 'Mettre à jour' : 'Créer'}
               </button>
-              <button type="button" onClick={() => { setShowForm(false); setIsEditing(false); setFormData({ ...DEFAULT_RELATION, history: [] }); }} style={{ padding: '8px 16px', backgroundColor: '#6c757d', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>Annuler</button>
+              <button type="button" onClick={() => { setShowForm(false); setIsEditing(false); setFormData({ ...DEFAULT_RELATION, history: [] }); }} style={{ padding: '8px 16px', backgroundColor: 'var(--fond-carte)', color: 'var(--encre)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer' }}>Annuler</button>
             </div>
           </form>
         </div>
@@ -637,23 +637,23 @@ export default function RelationsManager() {
 
       {/* Filtres */}
       {!showForm && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1fr', gap: 12, marginBottom: 16, padding: 12, backgroundColor: '#f8f9fa', borderRadius: 6 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1fr', gap: 12, marginBottom: 16, padding: 12, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)' }}>
           <input
             type="text" placeholder="Recherche (noms, tags)"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            style={{ padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}
+            style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
-          <select value={filterType} onChange={(e) => setFilterType(e.target.value)} style={{ padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}>
+          <select value={filterType} onChange={(e) => setFilterType(e.target.value)} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}>
             <option value="Tous">Tous les types</option>
             {RELATION_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
           </select>
-          <select value={filterCharacterId} onChange={(e) => setFilterCharacterId(e.target.value)} style={{ padding: 8, borderRadius: 4, border: '1px solid #ced4da', fontSize: 14 }}>
+          <select value={filterCharacterId} onChange={(e) => setFilterCharacterId(e.target.value)} style={{ padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}>
             <option value="Tous">Tous les personnages</option>
             {characters.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>
           <div>
-            <label style={{ display: 'block', fontSize: 12, color: '#666', marginBottom: 4 }}>Intensité min.</label>
+            <label style={{ display: 'block', fontSize: 12, color: 'var(--encre-douce)', marginBottom: 4 }}>Intensité min.</label>
             <input type="range" min={1} max={5} value={filterMinIntensity} onChange={(e) => setFilterMinIntensity(parseInt(e.target.value))} style={{ width: '100%' }} />
           </div>
         </div>
@@ -662,9 +662,9 @@ export default function RelationsManager() {
       {/* Liste + détails */}
       <div style={{ display: 'flex', gap: 20 }}>
         <div style={{ flex: 1 }}>
-          <h3>Relations ({filteredRelations.length}/{relations.length})</h3>
+          <h3 style={{ color: 'var(--encre)' }}>Relations ({filteredRelations.length}/{relations.length})</h3>
           {filteredRelations.length === 0 ? (
-            <p style={{ color: '#666', fontStyle: 'italic' }}>Aucune relation. Créez-en une pour commencer.</p>
+            <p style={{ color: 'var(--encre-douce)', fontStyle: 'italic' }}>Aucune relation. Créez-en une pour commencer.</p>
           ) : (
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {filteredRelations.map(rel => {
@@ -673,36 +673,36 @@ export default function RelationsManager() {
                 return (
                   <li key={rel.id}
                     onClick={() => setSelectedRelation(rel)}
-                    style={{ cursor: 'pointer', padding: 12, backgroundColor: selectedRelation?.id === rel.id ? '#e3f2fd' : '#fff', border: selectedRelation?.id === rel.id ? '2px solid #2196f3' : '1px solid #dee2e6', borderRadius: 8, marginBottom: 10 }}>
+                    style={{ cursor: 'pointer', padding: 12, backgroundColor: selectedRelation?.id === rel.id ? 'var(--douceur)' : 'var(--fond-carte)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)', marginBottom: 10 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                          <span style={{ padding: '2px 10px', backgroundColor: getTypeColor(rel.type), color: 'white', borderRadius: 12, fontSize: 12 }}>{rel.type}</span>
+                          <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '2px 10px', backgroundColor: getTypeColor(rel.type), color: 'white', borderRadius: 'var(--rayon-pilule)' }}>{rel.type}</span>
                           <strong style={{ fontSize: 15 }}>
                             {from?.name} {rel.direction === 'Bilatérale' ? '↔' : '→'} {to?.name}
                           </strong>
-                          <span style={{ padding: '2px 8px', backgroundColor: getIntensityColor(rel.intensity), color: 'white', borderRadius: 6, fontSize: 12 }}>
+                          <span style={{ padding: '2px 8px', backgroundColor: getIntensityColor(rel.intensity), color: 'white', borderRadius: 'var(--rayon-pilule)', fontSize: 12 }}>
                             {getIntensityLabel(rel.intensity)}
                           </span>
                         </div>
-                        <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+                        <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
                           {rel.status}{rel.since ? ` • depuis ${new Date(rel.since).toLocaleDateString('fr-FR')}` : ''}
                         </div>
                       </div>
                       <div style={{ display: 'flex', gap: 6 }}>
                         <button
                           onClick={(e) => { e.stopPropagation(); handleEditRelation(rel); }}
-                          style={{ padding: '4px 10px', backgroundColor: '#ffc107', color: '#000', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 12, fontWeight: 'bold' }}
+                          style={{ padding: '4px 10px', backgroundColor: 'var(--or)', color: 'var(--sur-or)', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12, fontWeight: 'bold' }}
                           title="Modifier"
                         >
-                          ✏️
+                          Modifier
                         </button>
                         <button
                           onClick={(e) => { e.stopPropagation(); handleDeleteRelation(rel.id); }}
-                          style={{ padding: '4px 8px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 12 }}
+                          style={{ padding: '4px 8px', backgroundColor: '#a13d3d', color: 'white', border: 'none', borderRadius: 'var(--rayon-bouton)', cursor: 'pointer', fontSize: 12 }}
                           title="Supprimer"
                         >
-                          ✕
+                          Supprimer
                         </button>
                       </div>
                     </div>

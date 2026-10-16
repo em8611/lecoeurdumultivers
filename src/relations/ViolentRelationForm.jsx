@@ -8,11 +8,11 @@ export default function ViolentRelationForm({ formData, setFormData }) {
   const isVictim = formData.type === 'Victime';
 
   return (
-    <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#fff5f5', borderRadius: 12, border: '2px solid #fc8181' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#c53030' }}>
-        ⚠️ {formData.type} – Relation traumatique
+    <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)', borderLeft: '3px solid var(--or)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>
+        {formData.type} – Relation traumatique
       </h4>
-      <div style={{ padding: 12, backgroundColor: '#ffe5e5', border: '1px solid #fc8181', borderRadius: 8, marginBottom: 16, fontSize: 13, color: '#c53030' }}>
+      <div style={{ padding: 12, backgroundColor: 'var(--douceur)', border: '1px solid var(--trait)', borderLeft: '3px solid var(--or)', borderRadius: 'var(--rayon-carte)', marginBottom: 16, fontSize: 13, color: 'var(--encre)' }}>
         <strong>Avertissement:</strong> Contenu sensible. Ces informations doivent être traitées avec précaution et respect.
       </div>
 
@@ -24,7 +24,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
           <select
             value={formData.violenceType || ''}
             onChange={(e) => handle('violenceType', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Physique">Physique</option>
@@ -44,7 +44,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             type="date"
             value={formData.violenceDate || ''}
             onChange={(e) => handle('violenceDate', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
 
@@ -56,7 +56,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             value={formData.violenceDuration || ''}
             onChange={(e) => handle('violenceDuration', e.target.value)}
             placeholder="Ex: Incident unique, 6 mois, 2 ans..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
 
@@ -67,7 +67,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             <select
               value={formData.violenceFrequency || ''}
               onChange={(e) => handle('violenceFrequency', e.target.value)}
-              style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+              style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
             >
               <option value="">Sélectionner...</option>
               <option value="Unique">Incident unique</option>
@@ -91,7 +91,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('violenceSeverity', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
             {['Mineure', 'Modérée', 'Sérieuse', 'Grave', 'Extrême'][((formData.violenceSeverity || 3) - 1)]}
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('traumaLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
             {['Léger', 'Modéré', 'Important', 'Sévère', 'Dévastateur'][((formData.traumaLevel || 3) - 1)]}
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.murderCircumstances || ''}
                 onChange={(e) => handle('murderCircumstances', e.target.value)}
                 placeholder="Contexte, lieu, moment, conditions..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
               />
             </div>
 
@@ -133,7 +133,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.murderMethod || ''}
                 onChange={(e) => handle('murderMethod', e.target.value)}
                 placeholder="Arme, poison, accident..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
               />
             </div>
 
@@ -144,7 +144,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.murderMotive || ''}
                 onChange={(e) => handle('murderMotive', e.target.value)}
                 placeholder="Vengeance, gain, passion..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
               />
             </div>
 
@@ -153,7 +153,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
               <select
                 value={formData.murderPremeditation || ''}
                 onChange={(e) => handle('murderPremeditation', e.target.value)}
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
               >
                 <option value="">Sélectionner...</option>
                 <option value="Aucune - Accident">Aucune - Accident</option>
@@ -170,7 +170,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.bodyDiscovery || ''}
                 onChange={(e) => handle('bodyDiscovery', e.target.value)}
                 placeholder="Par qui, quand, où..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
               />
             </div>
 
@@ -181,7 +181,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.investigation || ''}
                 onChange={(e) => handle('investigation', e.target.value)}
                 placeholder="Statut, suspects, preuves..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
               />
             </div>
 
@@ -190,7 +190,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
               <select
                 value={formData.suspicionLevel || ''}
                 onChange={(e) => handle('suspicionLevel', e.target.value)}
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
               >
                 <option value="">Sélectionner...</option>
                 <option value="Aucune">Aucune</option>
@@ -213,7 +213,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.abuseType || ''}
                 onChange={(e) => handle('abuseType', e.target.value)}
                 placeholder="Contrôle, manipulation, violence..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
               />
             </div>
 
@@ -224,7 +224,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.powerDynamics || ''}
                 onChange={(e) => handle('powerDynamics', e.target.value)}
                 placeholder="Position d'autorité, dépendance économique, isolement..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
               />
             </div>
 
@@ -235,7 +235,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.manipulationTactics || ''}
                 onChange={(e) => handle('manipulationTactics', e.target.value)}
                 placeholder="Gaslighting, isolement, menaces, chantage affectif..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
               />
             </div>
           </>
@@ -251,7 +251,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.escapeAttempts || ''}
                 onChange={(e) => handle('escapeAttempts', e.target.value)}
                 placeholder="Nombre, nature, succès/échec, conséquences..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
               />
             </div>
 
@@ -262,7 +262,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.supportReceived || ''}
                 onChange={(e) => handle('supportReceived', e.target.value)}
                 placeholder="Thérapie, amis, famille, refuge..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
               />
             </div>
 
@@ -271,7 +271,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
               <select
                 value={formData.recoveryStatus || ''}
                 onChange={(e) => handle('recoveryStatus', e.target.value)}
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
               >
                 <option value="">Sélectionner...</option>
                 <option value="Début du processus">Début du processus</option>
@@ -289,7 +289,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
                 value={formData.protectionMeasures || ''}
                 onChange={(e) => handle('protectionMeasures', e.target.value)}
                 placeholder="Ordonnance restrictive, changement d'identité, refuge..."
-                style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+                style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
               />
             </div>
           </>
@@ -303,7 +303,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             value={formData.violenceCircumstances || ''}
             onChange={(e) => handle('violenceCircumstances', e.target.value)}
             placeholder="Contexte complet, déclencheurs, escalade..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
 
@@ -314,7 +314,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             value={formData.witnessesInvolved || ''}
             onChange={(e) => handle('witnessesInvolved', e.target.value)}
             placeholder="Noms, rôles..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
 
@@ -325,7 +325,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             value={formData.legalConsequences || ''}
             onChange={(e) => handle('legalConsequences', e.target.value)}
             placeholder="Plainte, procès, jugement..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
 
@@ -336,7 +336,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             value={formData.triggerWarnings || ''}
             onChange={(e) => handle('triggerWarnings', e.target.value)}
             placeholder="Triggers spécifiques à noter pour les lecteurs..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
 
@@ -347,7 +347,7 @@ export default function ViolentRelationForm({ formData, setFormData }) {
             value={formData.violenceNotes || ''}
             onChange={(e) => handle('violenceNotes', e.target.value)}
             placeholder="Informations complémentaires, évolution, contexte narratif..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #fc8181', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
 

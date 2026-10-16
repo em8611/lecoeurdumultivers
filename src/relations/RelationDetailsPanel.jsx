@@ -14,15 +14,15 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
   return (
     <div style={{
       flex: 1,
-      border: '1px solid #ddd',
+      border: '1px solid var(--trait)',
       padding: 16,
-      borderRadius: 8,
-      backgroundColor: '#fff',
+      borderRadius: 'var(--rayon-carte)',
+      backgroundColor: 'var(--fond-carte)',
       maxHeight: '80vh',
       overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-        <h3 style={{ marginTop: 0, color: '#2196f3' }}>Détails de la relation</h3>
+        <h3 style={{ marginTop: 0, fontFamily: 'var(--police-affichage)', fontWeight: 600, color: 'var(--coeur)' }}>Détails de la relation</h3>
         <FicheRelationButton
           relation={{
             ...relation,
@@ -39,7 +39,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           padding: '4px 12px',
           backgroundColor: getTypeColor(relation.type),
           color: 'white',
-          borderRadius: 12,
+          borderRadius: 'var(--rayon-pilule)',
           fontWeight: 'bold',
           fontSize: 13
         }}>
@@ -49,7 +49,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           padding: '2px 8px',
           backgroundColor: getIntensityColor(relation.intensity),
           color: 'white',
-          borderRadius: 8,
+          borderRadius: 'var(--rayon-pilule)',
           fontSize: 12
         }}>
           {getIntensityLabel(relation.intensity)}
@@ -80,17 +80,17 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
 
       {/* Champs conditionnels - Idole */}
       {relation.type === 'Idole' && (
-        <div style={{ marginBottom: 20, padding: 16, backgroundColor: '#fffbea', border: '1px solid #f3d27a', borderRadius: 10 }}>
+        <div style={{ marginBottom: 20, padding: 16, backgroundColor: 'var(--douceur)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)' }}>
           {relation.idolPublicPersona && (
             <div style={{ marginBottom: 10 }}>
               <strong>Personna publique:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.idolPublicPersona}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.idolPublicPersona}</p>
             </div>
           )}
           {relation.idolRealPersona && (
             <div style={{ marginBottom: 10 }}>
               <strong>Personna réelle:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.idolRealPersona}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.idolRealPersona}</p>
             </div>
           )}
           {relation.idolDistanceLevel && (
@@ -111,19 +111,19 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.idolFanPerception && (
             <div style={{ marginBottom: 10 }}>
               <strong>Perception des admirateurs:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.idolFanPerception}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.idolFanPerception}</p>
             </div>
           )}
           {relation.idolContradictions && (
             <div style={{ marginBottom: 10 }}>
               <strong>Contradictions:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.idolContradictions}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.idolContradictions}</p>
             </div>
           )}
           {relation.idolBoundaries && (
             <div style={{ marginBottom: 10 }}>
               <strong>Limites:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.idolBoundaries}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.idolBoundaries}</p>
             </div>
           )}
         </div>
@@ -131,7 +131,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
 
       {/* Champs conditionnels - Fanatique */}
       {relation.type === 'Fanatique' && (
-        <div style={{ marginBottom: 20, padding: 16, backgroundColor: '#fff5fb', border: '1px solid #f3a0c2', borderRadius: 10 }}>
+        <div style={{ marginBottom: 20, padding: 16, backgroundColor: 'var(--douceur)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)' }}>
           {relation.fanaticDevotionLevel && (
             <div style={{ marginBottom: 10 }}>
               <strong>Niveau de dévotion:</strong> {relation.fanaticDevotionLevel}/5
@@ -140,19 +140,19 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.fanaticBeliefSystem && (
             <div style={{ marginBottom: 10 }}>
               <strong>Système de croyances:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.fanaticBeliefSystem}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.fanaticBeliefSystem}</p>
             </div>
           )}
           {relation.fanaticMotivations && (
             <div style={{ marginBottom: 10 }}>
               <strong>Motivations:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.fanaticMotivations}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.fanaticMotivations}</p>
             </div>
           )}
           {relation.fanaticBehaviorPatterns && (
             <div style={{ marginBottom: 10 }}>
               <strong>Schémas comportementaux:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.fanaticBehaviorPatterns}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.fanaticBehaviorPatterns}</p>
             </div>
           )}
           {relation.fanaticRisks && (
@@ -173,7 +173,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.fanaticEscalationSigns && (
             <div style={{ marginBottom: 10 }}>
               <strong>Signes d'escalade:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.fanaticEscalationSigns}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.fanaticEscalationSigns}</p>
             </div>
           )}
         </div>
@@ -188,15 +188,15 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
               .slice()
               .sort((a,b)=> (a.position ?? 0) - (b.position ?? 0))
               .map((h,i) => (
-              <div key={h.id} style={{ padding: '6px 10px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 6, display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ minWidth: 20, textAlign: 'center', fontSize: 11, color: '#555', fontWeight: 'bold' }}>{h.position ?? (i+1)}</span>
+              <div key={h.id} style={{ padding: '6px 10px', background: 'var(--fond-carte)', border: '1px solid var(--trait)', borderRadius: 'var(--rayon-carte)', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span style={{ minWidth: 20, textAlign: 'center', fontSize: 11, color: 'var(--encre-douce)', fontWeight: 'bold' }}>{h.position ?? (i+1)}</span>
                 {h.historyType && (
-                  <span style={{ padding: '2px 8px', backgroundColor: getTypeColor(h.historyType), color: '#fff', borderRadius: 12, fontSize: 11 }}>
+                  <span style={{ padding: '2px 8px', backgroundColor: getTypeColor(h.historyType), color: '#fff', borderRadius: 'var(--rayon-pilule)', fontSize: 11 }}>
                     {h.historyType}
                   </span>
                 )}
                 {h.historyStatus && (
-                  <span style={{ padding: '2px 8px', backgroundColor: '#343a40', color: '#fff', borderRadius: 12, fontSize: 11 }}>
+                  <span style={{ padding: '2px 8px', backgroundColor: 'var(--nuit-2)', color: 'var(--sur-nuit)', borderRadius: 'var(--rayon-pilule)', fontSize: 11 }}>
                     {h.historyStatus}
                   </span>
                 )}
@@ -258,7 +258,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.familyNotes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Notes familiales:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.familyNotes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.familyNotes}</p>
             </div>
           )}
         </>
@@ -325,7 +325,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.type === 'Protégé·e' && relation.developmentGoals && (
             <div style={{ marginBottom: 10 }}>
               <strong>Objectifs:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.developmentGoals}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.developmentGoals}</p>
             </div>
           )}
           {relation.professionalEndDate && (
@@ -336,7 +336,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.performanceNotes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Notes:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.performanceNotes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.performanceNotes}</p>
             </div>
           )}
           {(relation.type === 'Professeur' || relation.type === 'Formateur') && relation.teachingSubject && (
@@ -388,13 +388,13 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.companionAbilities && (
             <div style={{ marginBottom: 10 }}>
               <strong>Capacités:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.companionAbilities}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.companionAbilities}</p>
             </div>
           )}
           {relation.companionNeeds && (
             <div style={{ marginBottom: 10 }}>
               <strong>Besoins:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.companionNeeds}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.companionNeeds}</p>
             </div>
           )}
           {relation.bondLevel && (
@@ -440,7 +440,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.healthNotes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Santé / Risques:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.healthNotes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.healthNotes}</p>
             </div>
           )}
         </>
@@ -460,17 +460,17 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
       )}
         {/* Champs avancés Créateur / Propriétaire */}
         {relation.type === 'Créateur' && (
-          <div style={{ marginBottom: 18, padding: 14, background:'#f8f5ff', border:'1px solid #e2d9fb', borderRadius:10 }}>
+          <div style={{ marginBottom: 18, padding: 14, background:'var(--douceur)', border:'1px solid var(--trait)', borderRadius:'var(--rayon-carte)' }}>
             {relation.creationPurpose && (
               <div style={{ marginBottom:10 }}>
                 <strong>But / Finalité:</strong>
-                <p style={{ margin:'6px 0', color:'#555', whiteSpace:'pre-wrap' }}>{relation.creationPurpose}</p>
+                <p style={{ margin:'6px 0', color: 'var(--encre)', whiteSpace:'pre-wrap' }}>{relation.creationPurpose}</p>
               </div>
             )}
             {relation.creationProcess && (
               <div style={{ marginBottom:10 }}>
                 <strong>Processus:</strong>
-                <p style={{ margin:'6px 0', color:'#555', whiteSpace:'pre-wrap' }}>{relation.creationProcess}</p>
+                <p style={{ margin:'6px 0', color: 'var(--encre)', whiteSpace:'pre-wrap' }}>{relation.creationProcess}</p>
               </div>
             )}
             {relation.creationMaterials && (
@@ -496,7 +496,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
             {relation.creationSafeguards && (
               <div style={{ marginBottom:10 }}>
                 <strong>Sécurités / Verrous:</strong>
-                <p style={{ margin:'6px 0', color:'#555', whiteSpace:'pre-wrap' }}>{relation.creationSafeguards}</p>
+                <p style={{ margin:'6px 0', color: 'var(--encre)', whiteSpace:'pre-wrap' }}>{relation.creationSafeguards}</p>
               </div>
             )}
             {relation.creationUpgradePotential && (
@@ -512,7 +512,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           </div>
         )}
         {relation.type === 'Propriétaire' && (
-          <div style={{ marginBottom: 18, padding: 14, background:'#f8f5ff', border:'1px solid #e2d9fb', borderRadius:10 }}>
+          <div style={{ marginBottom: 18, padding: 14, background:'var(--douceur)', border:'1px solid var(--trait)', borderRadius:'var(--rayon-carte)' }}>
             {relation.ownershipAcquisitionMethod && (
               <div style={{ marginBottom:10 }}>
                 <strong>Méthode d'acquisition:</strong> {relation.ownershipAcquisitionMethod}
@@ -526,7 +526,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
             {relation.ownershipRightsScope && (
               <div style={{ marginBottom:10 }}>
                 <strong>Étendue des droits:</strong>
-                <p style={{ margin:'6px 0', color:'#555', whiteSpace:'pre-wrap' }}>{relation.ownershipRightsScope}</p>
+                <p style={{ margin:'6px 0', color: 'var(--encre)', whiteSpace:'pre-wrap' }}>{relation.ownershipRightsScope}</p>
               </div>
             )}
             {relation.ownershipRestrictions && (
@@ -547,7 +547,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
             {relation.ownershipTransferHistory && (
               <div style={{ marginBottom:10 }}>
                 <strong>Historique transferts:</strong>
-                <p style={{ margin:'6px 0', color:'#555', whiteSpace:'pre-wrap' }}>{relation.ownershipTransferHistory}</p>
+                <p style={{ margin:'6px 0', color: 'var(--encre)', whiteSpace:'pre-wrap' }}>{relation.ownershipTransferHistory}</p>
               </div>
             )}
             {relation.ownershipLiability && (
@@ -563,7 +563,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
             {relation.ownershipNotes && (
               <div style={{ marginBottom:10 }}>
                 <strong>Notes propriété:</strong>
-                <p style={{ margin:'6px 0', color:'#555', whiteSpace:'pre-wrap' }}>{relation.ownershipNotes}</p>
+                <p style={{ margin:'6px 0', color: 'var(--encre)', whiteSpace:'pre-wrap' }}>{relation.ownershipNotes}</p>
               </div>
             )}
           </div>
@@ -580,7 +580,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.specialOrigin && (
             <div style={{ marginBottom: 10 }}>
               <strong>Origine:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.specialOrigin}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.specialOrigin}</p>
             </div>
           )}
           {relation.specialConnectionLevel && (
@@ -591,7 +591,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.specialPowers && (
             <div style={{ marginBottom: 10 }}>
               <strong>Pouvoirs/Capacités:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.specialPowers}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.specialPowers}</p>
             </div>
           )}
           {relation.specialSymbol && (
@@ -602,19 +602,19 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.specialConditions && (
             <div style={{ marginBottom: 10 }}>
               <strong>Conditions:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.specialConditions}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.specialConditions}</p>
             </div>
           )}
           {relation.specialConsequences && (
             <div style={{ marginBottom: 10 }}>
               <strong>Conséquences:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.specialConsequences}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.specialConsequences}</p>
             </div>
           )}
           {relation.specialNature && (
             <div style={{ marginBottom: 10 }}>
               <strong>Description:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.specialNature}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.specialNature}</p>
             </div>
           )}
         </>
@@ -667,7 +667,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.allianceTerms && (
             <div style={{ marginBottom: 10 }}>
               <strong>Termes:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.allianceTerms}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.allianceTerms}</p>
             </div>
           )}
           {relation.pactName && (
@@ -693,7 +693,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.allianceNotes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Notes:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.allianceNotes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.allianceNotes}</p>
             </div>
           )}
         </>
@@ -745,7 +745,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.firstMeetingStory && (
             <div style={{ marginBottom: 10 }}>
               <strong>Rencontre:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.firstMeetingStory}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.firstMeetingStory}</p>
             </div>
           )}
           {relation.sharedRituals && (
@@ -761,7 +761,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.intimacyNotes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Intimité:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.intimacyNotes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.intimacyNotes}</p>
             </div>
           )}
         </>
@@ -778,7 +778,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.rivalryOrigin && (
             <div style={{ marginBottom: 10 }}>
               <strong>Origine:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.rivalryOrigin}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.rivalryOrigin}</p>
             </div>
           )}
           {relation.escalationLevel && (
@@ -829,19 +829,19 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.notableClashes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Affrontements notables:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.notableClashes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.notableClashes}</p>
             </div>
           )}
           {relation.rulesOfEngagement && (
             <div style={{ marginBottom: 10 }}>
               <strong>Règles:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.rulesOfEngagement}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.rulesOfEngagement}</p>
             </div>
           )}
           {relation.stakes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Enjeux:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.stakes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.stakes}</p>
             </div>
           )}
         </>
@@ -867,7 +867,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.enmityOrigin && (
             <div style={{ marginBottom: 10 }}>
               <strong>Origine de l'inimitié:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.enmityOrigin}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.enmityOrigin}</p>
             </div>
           )}
           {relation.methods && (
@@ -913,7 +913,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.psychologicalWarfare && (
             <div style={{ marginBottom: 10 }}>
               <strong>Guerre psychologique:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.psychologicalWarfare}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.psychologicalWarfare}</p>
             </div>
           )}
           {relation.leverage && (
@@ -955,24 +955,24 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.neutralReason && (
             <div style={{ marginBottom: 10 }}>
               <strong>Raison de la neutralité:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.neutralReason}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.neutralReason}</p>
             </div>
           )}
           {relation.neutralBarriers && (
             <div style={{ marginBottom: 10 }}>
               <strong>Barrières / Obstacles:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.neutralBarriers}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.neutralBarriers}</p>
             </div>
           )}
           {relation.neutralNotes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Notes:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.neutralNotes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.neutralNotes}</p>
 
       {/* Champs conditionnels - Relations violentes */}
       {(relation.type === 'Abuseur' || relation.type === 'Victime' || relation.type === 'Meurtrier') && (
-        <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#fff5f5', border: '2px solid #fc8181', borderRadius: 12 }}>
-          <h4 style={{ marginTop: 0, marginBottom: 12, color: '#c53030' }}>⚠️ Informations sensibles</h4>
+        <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', border: '1px solid var(--trait)', borderLeft: '3px solid var(--or)', borderRadius: 'var(--rayon-carte)' }}>
+          <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Informations sensibles</h4>
           {relation.violenceType && (
             <div style={{ marginBottom: 10 }}>
               <strong>Type de violence:</strong> {relation.violenceType}
@@ -1006,7 +1006,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.violenceCircumstances && (
             <div style={{ marginBottom: 10 }}>
               <strong>Circonstances:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.violenceCircumstances}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.violenceCircumstances}</p>
             </div>
           )}
           {relation.witnessesInvolved && (
@@ -1024,7 +1024,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
               {relation.murderCircumstances && (
                 <div style={{ marginBottom: 10 }}>
                   <strong>Circonstances du meurtre:</strong>
-                  <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.murderCircumstances}</p>
+                  <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.murderCircumstances}</p>
                 </div>
               )}
               {relation.murderMethod && (
@@ -1045,13 +1045,13 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
               {relation.bodyDiscovery && (
                 <div style={{ marginBottom: 10 }}>
                   <strong>Découverte du corps:</strong>
-                  <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.bodyDiscovery}</p>
+                  <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.bodyDiscovery}</p>
                 </div>
               )}
               {relation.investigation && (
                 <div style={{ marginBottom: 10 }}>
                   <strong>Enquête:</strong>
-                  <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.investigation}</p>
+                  <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.investigation}</p>
                 </div>
               )}
               {relation.suspicionLevel && (
@@ -1071,13 +1071,13 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
               {relation.powerDynamics && (
                 <div style={{ marginBottom: 10 }}>
                   <strong>Dynamique de pouvoir:</strong>
-                  <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.powerDynamics}</p>
+                  <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.powerDynamics}</p>
                 </div>
               )}
               {relation.manipulationTactics && (
                 <div style={{ marginBottom: 10 }}>
                   <strong>Tactiques de manipulation:</strong>
-                  <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.manipulationTactics}</p>
+                  <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.manipulationTactics}</p>
                 </div>
               )}
             </>
@@ -1087,7 +1087,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
               {relation.escapeAttempts && (
                 <div style={{ marginBottom: 10 }}>
                   <strong>Tentatives d'échappement:</strong>
-                  <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.escapeAttempts}</p>
+                  <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.escapeAttempts}</p>
                 </div>
               )}
               {relation.supportReceived && (
@@ -1103,7 +1103,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
               {relation.protectionMeasures && (
                 <div style={{ marginBottom: 10 }}>
                   <strong>Mesures de protection:</strong>
-                  <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.protectionMeasures}</p>
+                  <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.protectionMeasures}</p>
                 </div>
               )}
             </>
@@ -1111,13 +1111,13 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.triggerWarnings && (
             <div style={{ marginBottom: 10 }}>
               <strong>Avertissements de contenu:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.triggerWarnings}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.triggerWarnings}</p>
             </div>
           )}
           {relation.violenceNotes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Notes additionnelles:</strong>
-              <p style={{ margin: '6px 0', color: '#555', whiteSpace: 'pre-wrap' }}>{relation.violenceNotes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)', whiteSpace: 'pre-wrap' }}>{relation.violenceNotes}</p>
             </div>
           )}
         </div>
@@ -1162,7 +1162,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.friendlyInsideJokes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Blagues privées:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.friendlyInsideJokes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.friendlyInsideJokes}</p>
             </div>
           )}
           {relation.friendlySupportType && (
@@ -1183,7 +1183,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
           {relation.friendlyConflictNotes && (
             <div style={{ marginBottom: 10 }}>
               <strong>Conflits / Divergences:</strong>
-              <p style={{ margin: '6px 0', color: '#555' }}>{relation.friendlyConflictNotes}</p>
+              <p style={{ margin: '6px 0', color: 'var(--encre)' }}>{relation.friendlyConflictNotes}</p>
             </div>
           )}
         </>
@@ -1199,9 +1199,9 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
                 key={tag}
                 style={{
                   padding: '3px 8px',
-                  backgroundColor: '#e7f3ff',
-                  border: '1px solid #90caf9',
-                  borderRadius: 12,
+                  backgroundColor: 'var(--or)',
+                  color: 'var(--sur-or)',
+                  borderRadius: 'var(--rayon-pilule)',
                   fontSize: 12
                 }}
               >
@@ -1212,7 +1212,7 @@ export default function RelationDetailsPanel({ relation, characterById, onClose 
         </div>
       )}
 
-      <div style={{ fontSize: 12, color: '#999', marginTop: 16 }}>
+      <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 16 }}>
         Créée le {new Date(relation.createdAt).toLocaleString('fr-FR')}
       </div>
     </div>

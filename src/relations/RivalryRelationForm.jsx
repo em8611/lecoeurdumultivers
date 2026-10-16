@@ -7,15 +7,15 @@ export default function RivalryRelationForm({ formData, setFormData }) {
   const respectLabel = ['Aucun', 'Faible', 'Mitigé', 'Présent', 'Elevé'][((formData.respectLevel || 3) - 1)];
 
   return (
-  <div style={{ marginBottom: 20, padding: 20, backgroundColor: '#f0f9ff', borderRadius: 12, border: '1px solid #bae6fd' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#0369a1' }}>⚔️ Rivalité – Détails</h4>
+  <div style={{ marginBottom: 20, padding: 20, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)', borderLeft: '3px solid var(--or)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Rivalité – Détails</h4>
   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 22, alignItems: 'start' }}>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Type de compétition</label>
           <select
             value={formData.competitionType || ''}
             onChange={(e) => handle('competitionType', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Statut">Statut</option>
@@ -34,7 +34,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             value={formData.rivalryOrigin || ''}
             onChange={(e) => handle('rivalryOrigin', e.target.value)}
             placeholder="Incident déclencheur, héritage, conflit idéologique..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
         <div>
@@ -47,7 +47,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('escalationLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#555', marginTop: 4 }}>{escalationLabel}</div>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>{escalationLabel}</div>
         </div>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Respect mutuel: {formData.respectLevel || 3}/5</label>
@@ -59,14 +59,14 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('respectLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#555', marginTop: 4 }}>{respectLabel}</div>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>{respectLabel}</div>
         </div>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Fair-play</label>
           <select
             value={formData.fairnessLevel || ''}
             onChange={(e) => handle('fairnessLevel', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Elevé">Élevé</option>
@@ -82,7 +82,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             value={formData.currentScore || ''}
             onChange={(e) => handle('currentScore', e.target.value)}
             placeholder="Ex: 3-2, Supériorité tactique..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -90,7 +90,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
           <select
             value={formData.truceStatus || ''}
             onChange={(e) => handle('truceStatus', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Aucune">Aucune</option>
@@ -104,7 +104,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
           <select
             value={formData.sabotageNotes || ''}
             onChange={(e) => handle('sabotageNotes', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Jamais">Jamais</option>
@@ -118,7 +118,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
           <select
             value={formData.publicPerception || ''}
             onChange={(e) => handle('publicPerception', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Méconnue">Méconnue</option>
@@ -134,7 +134,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             value={formData.alliesInvolved || ''}
             onChange={(e) => handle('alliesInvolved', e.target.value)}
             placeholder="Nom(s), factions, soutien externe..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -143,7 +143,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             type="date"
             value={formData.nextConfrontationDate || ''}
             onChange={(e) => handle('nextConfrontationDate', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -153,7 +153,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             value={formData.notableClashes || ''}
             onChange={(e) => handle('notableClashes', e.target.value)}
             placeholder="Moments marquants, retournements, humiliations..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -163,7 +163,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             value={formData.rulesOfEngagement || ''}
             onChange={(e) => handle('rulesOfEngagement', e.target.value)}
             placeholder="Limites acceptées, code d'honneur..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -173,7 +173,7 @@ export default function RivalryRelationForm({ formData, setFormData }) {
             value={formData.stakes || ''}
             onChange={(e) => handle('stakes', e.target.value)}
             placeholder="Ce qui est en jeu: réputation, territoire, pouvoir..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #7dd3fc', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
       </div>

@@ -4,15 +4,15 @@ export default function AllyRelationForm({ formData, setFormData }) {
   const handle = (field, value) => setFormData({ ...formData, [field]: value });
 
   return (
-    <div style={{ marginBottom: 15, padding: 15, backgroundColor: '#eff6ff', borderRadius: 8, border: '2px solid #bfdbfe' }}>
-      <h4 style={{ marginTop: 0, marginBottom: 12, color: '#1d4ed8' }}>🛡️ Alliance – Détails</h4>
+    <div style={{ marginBottom: 15, padding: 15, backgroundColor: 'var(--douceur)', borderRadius: 'var(--rayon-carte)', border: '1px solid var(--trait)' }}>
+      <h4 style={{ marginTop: 0, marginBottom: 12, color: 'var(--coeur)' }}>Alliance – Détails</h4>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 15 }}>
         <div>
           <label style={{ display: 'block', marginBottom: 5, fontWeight: 'bold' }}>Portée de l'alliance</label>
           <select
             value={formData.allianceScope || ''}
             onChange={(e) => handle('allianceScope', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Opérationnelle">Opérationnelle</option>
@@ -25,7 +25,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
           <select
             value={formData.allianceMotivation || ''}
             onChange={(e) => handle('allianceMotivation', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Ennemi commun">Ennemi commun</option>
@@ -40,7 +40,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
           <select
             value={formData.resourceSharing || ''}
             onChange={(e) => handle('resourceSharing', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Oui">Oui</option>
@@ -53,7 +53,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
           <select
             value={formData.riskTolerance || ''}
             onChange={(e) => handle('riskTolerance', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Faible">Faible</option>
@@ -71,7 +71,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
             onChange={(e) => handle('allianceTrustLevel', parseInt(e.target.value))}
             style={{ width: '100%' }}
           />
-          <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
+          <div style={{ fontSize: 12, color: 'var(--encre-douce)', marginTop: 4 }}>
             {['Fragile', 'Prudent', 'Solide', 'Élevé', 'Total'][((formData.allianceTrustLevel || 3) - 1)]}
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
           <select
             value={formData.coordinationFrequency || ''}
             onChange={(e) => handle('coordinationFrequency', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Quotidienne">Quotidienne</option>
@@ -94,7 +94,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
           <select
             value={formData.secrecyLevel || ''}
             onChange={(e) => handle('secrecyLevel', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           >
             <option value="">Sélectionner...</option>
             <option value="Ouverte">Ouverte</option>
@@ -109,7 +109,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
             value={formData.supportTypes || ''}
             onChange={(e) => handle('supportTypes', e.target.value)}
             placeholder="Renseignements, logistique, militaire, financier... (séparer par des virgules)"
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -119,7 +119,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
             value={formData.allianceTerms || ''}
             onChange={(e) => handle('allianceTerms', e.target.value)}
             placeholder="Ce que chacun s'engage à faire, limites, clauses..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
         <div>
@@ -129,7 +129,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
             value={formData.pactName || ''}
             onChange={(e) => handle('pactName', e.target.value)}
             placeholder="Nom ou référence symbolique"
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -139,7 +139,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
             value={formData.pactSymbol || ''}
             onChange={(e) => handle('pactSymbol', e.target.value)}
             placeholder="Sceau, insigne, couleur..."
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -148,7 +148,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
             type="date"
             value={formData.allianceStartDate || ''}
             onChange={(e) => handle('allianceStartDate', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div>
@@ -157,7 +157,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
             type="date"
             value={formData.allianceEndDate || ''}
             onChange={(e) => handle('allianceEndDate', e.target.value)}
-            style={{ width: '100%', padding: 8, borderRadius: 4, border: '1px solid #93c5fd', fontSize: 14 }}
+            style={{ width: '100%', padding: 8, borderRadius: 'var(--rayon-bouton)', border: '1px solid var(--trait)', fontSize: 14 }}
           />
         </div>
         <div style={{ gridColumn: 'span 2' }}>
@@ -167,7 +167,7 @@ export default function AllyRelationForm({ formData, setFormData }) {
             value={formData.allianceNotes || ''}
             onChange={(e) => handle('allianceNotes', e.target.value)}
             placeholder="Historique, incidents, conditions spéciales, personnes clés..."
-            style={{ width: '100%', padding: 8, border: '1px solid #93c5fd', borderRadius: 4, fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', padding: 8, border: '1px solid var(--trait)', borderRadius: 'var(--rayon-bouton)', fontSize: 14, fontFamily: 'inherit', resize: 'vertical' }}
           />
         </div>
       </div>
