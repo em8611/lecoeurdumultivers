@@ -20,7 +20,8 @@ const MODULES = [
   { key: 'quetes', label: 'Quêtes & Intrigues', icon: '🗡️', count: s => s.quetes.length },
   { key: 'langues', label: 'Langues & Écritures', icon: '🗣️', count: s => s.langues.length },
   { key: 'artefacts', label: 'Artefacts & Reliques', icon: '🗝️', count: s => s.artefacts.length },
-  { key: 'economie', label: 'Économie & Commerce', icon: '💰', count: s => s.ressources.length + s.routesCommerciales.length }
+  { key: 'economie', label: 'Économie & Commerce', icon: '💰', count: s => s.ressources.length + s.routesCommerciales.length },
+  { key: 'technologie', label: 'Technologie & Sciences', icon: '🔬', count: s => s.sciences.length + s.technologies.length }
 ];
 
 // Collections dont les entrées possèdent un nom + des dates, pour l'activité récente
@@ -47,7 +48,9 @@ const RECENT_SOURCES = [
   { moduleKey: 'langues', label: 'Langue', icon: '🗣️', stateKey: 'langues' },
   { moduleKey: 'artefacts', label: 'Artefact', icon: '🗝️', stateKey: 'artefacts' },
   { moduleKey: 'economie', label: 'Ressource', icon: '💰', stateKey: 'ressources' },
-  { moduleKey: 'economie', label: 'Route commerciale', icon: '💰', stateKey: 'routesCommerciales' }
+  { moduleKey: 'economie', label: 'Route commerciale', icon: '💰', stateKey: 'routesCommerciales' },
+  { moduleKey: 'technologie', label: 'Discipline Scientifique', icon: '🔬', stateKey: 'sciences' },
+  { moduleKey: 'technologie', label: 'Discipline Technologique', icon: '🔬', stateKey: 'technologies' }
 ];
 
 function timeAgo(isoDate) {

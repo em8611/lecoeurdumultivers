@@ -17,6 +17,7 @@ import { QuetesManager } from './quetes';
 import { LanguesManager } from './langues';
 import { ArtefactsManager } from './artefacts';
 import { EconomieManager } from './economie';
+import { TechnologieManager } from './technologie';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
@@ -37,7 +38,8 @@ const MODULE_MAP = {
   quetes: 'quetes',
   langues: 'langues',
   artefacts: 'artefacts',
-  economie: 'economie'
+  economie: 'economie',
+  technologie: 'technologie'
 };
 
 function App() {
@@ -77,6 +79,8 @@ function App() {
         return <ArtefactsManager />;
       case 'economie':
         return <EconomieManager />;
+      case 'technologie':
+        return <TechnologieManager />;
       case 'home':
       default:
         return <Home onNavigate={setActiveTab} />;

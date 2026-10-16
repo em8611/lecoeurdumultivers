@@ -27,7 +27,9 @@ const EMPTY_STATE = {
   langues: [],
   artefacts: [],
   ressources: [],
-  routesCommerciales: []
+  routesCommerciales: [],
+  sciences: [],
+  technologies: []
 };
 
 function loadInitialState() {
@@ -69,7 +71,9 @@ const CATEGORY_ALIASES = {
   langue: 'langues',
   artefact: 'artefacts',
   ressource: 'ressources',
-  route: 'routesCommerciales'
+  route: 'routesCommerciales',
+  science: 'sciences',
+  technologie: 'technologies'
 };
 
 function resolveCategory(category) {
