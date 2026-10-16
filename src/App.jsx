@@ -15,6 +15,7 @@ import { UniversManager } from './univers';
 import { ReligionManager } from './religion';
 import { QuetesManager } from './quetes';
 import { LanguesManager } from './langues';
+import { ArtefactsManager } from './artefacts';
 import { ElementsProvider } from './state/elementsStore.jsx';
 
 // Mapping module slug -> tab key (on ajoutera une entrée par module reconstruit)
@@ -33,7 +34,8 @@ const MODULE_MAP = {
   univers: 'univers',
   religion: 'religion',
   quetes: 'quetes',
-  langues: 'langues'
+  langues: 'langues',
+  artefacts: 'artefacts'
 };
 
 function App() {
@@ -69,6 +71,8 @@ function App() {
         return <QuetesManager />;
       case 'langues':
         return <LanguesManager />;
+      case 'artefacts':
+        return <ArtefactsManager />;
       case 'home':
       default:
         return <Home />;

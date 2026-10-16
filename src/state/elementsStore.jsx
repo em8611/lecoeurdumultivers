@@ -24,7 +24,8 @@ const EMPTY_STATE = {
   divinites: [],
   mythes: [],
   quetes: [],
-  langues: []
+  langues: [],
+  artefacts: []
 };
 
 function loadInitialState() {
@@ -63,7 +64,8 @@ const CATEGORY_ALIASES = {
   divinite: 'divinites',
   mythe: 'mythes',
   quete: 'quetes',
-  langue: 'langues'
+  langue: 'langues',
+  artefact: 'artefacts'
 };
 
 function resolveCategory(category) {

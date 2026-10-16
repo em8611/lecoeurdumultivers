@@ -57,6 +57,11 @@ export const FORM_FIELD_SETS = {
     'name', 'family', 'status', 'writingSystem', 'description', 'phonetics',
     'grammar', 'samplePhrases', 'relatedLanguageIds', 'territoireIds',
     'equipeIds', 'characterIds', 'tags'
+  ],
+  artefact: [
+    'name', 'category', 'status', 'description', 'powers', 'history',
+    'creator', 'currentOwnerId', 'previousOwnerIds', 'locationId',
+    'relatedQuestIds', 'relatedEventIds', 'tags'
   ]
 };
 

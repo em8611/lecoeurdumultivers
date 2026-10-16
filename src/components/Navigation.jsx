@@ -15,7 +15,8 @@ const TABS = [
   { key: 'univers', label: 'Univers / Multivers' },
   { key: 'religion', label: 'Religion & Mythologie' },
   { key: 'quetes', label: 'Quêtes & Intrigues' },
-  { key: 'langues', label: 'Langues & Écritures' }
+  { key: 'langues', label: 'Langues & Écritures' },
+  { key: 'artefacts', label: 'Artefacts & Reliques' }
 ];
 
 export function Navigation({ activeTab, setActiveTab }) {

@@ -636,3 +636,32 @@ export function exportFicheLangue(langue) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+export function exportFicheArtefact(artefact) {
+  const lines = [
+    `# Fiche technique — ${artefact.name || 'Sans nom'}`,
+    '',
+    `Catégorie : ${artefact.category || '-'}`,
+    `État : ${artefact.status || '-'}`,
+    `Créateur : ${artefact.creator || '-'}`,
+    '',
+    '## Description',
+    artefact.description || '-',
+    '',
+    '## Pouvoirs / Propriétés',
+    artefact.powers || '-',
+    '',
+    '## Histoire / Origine',
+    artefact.history || '-',
+  ];
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fiche-${slugify(artefact.name)}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
